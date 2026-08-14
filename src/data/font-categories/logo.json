@@ -1,0 +1,1402 @@
+[
+  {
+    "slug": "albert-sans",
+    "family": "Albert Sans",
+    "category": "logo",
+    "googleQuery": "Albert+Sans:wght@400",
+    "stack": "'Albert Sans', sans-serif"
+  },
+  {
+    "slug": "archivo",
+    "family": "Archivo",
+    "category": "logo",
+    "googleQuery": "Archivo:wght@400",
+    "stack": "'Archivo', sans-serif"
+  },
+  {
+    "slug": "archivo-black",
+    "family": "Archivo Black",
+    "category": "logo",
+    "googleQuery": "Archivo+Black:wght@400",
+    "stack": "'Archivo Black', sans-serif"
+  },
+  {
+    "slug": "archivo-narrow",
+    "family": "Archivo Narrow",
+    "category": "logo",
+    "googleQuery": "Archivo+Narrow:wght@400",
+    "stack": "'Archivo Narrow', sans-serif"
+  },
+  {
+    "slug": "asap",
+    "family": "Asap",
+    "category": "logo",
+    "googleQuery": "Asap:wght@400",
+    "stack": "'Asap', sans-serif"
+  },
+  {
+    "slug": "asap-condensed",
+    "family": "Asap Condensed",
+    "category": "logo",
+    "googleQuery": "Asap+Condensed:wght@400",
+    "stack": "'Asap Condensed', sans-serif"
+  },
+  {
+    "slug": "barlow",
+    "family": "Barlow",
+    "category": "logo",
+    "googleQuery": "Barlow:wght@400",
+    "stack": "'Barlow', sans-serif"
+  },
+  {
+    "slug": "barlow-condensed",
+    "family": "Barlow Condensed",
+    "category": "logo",
+    "googleQuery": "Barlow+Condensed:wght@400",
+    "stack": "'Barlow Condensed', sans-serif"
+  },
+  {
+    "slug": "barlow-semi-condensed",
+    "family": "Barlow Semi Condensed",
+    "category": "logo",
+    "googleQuery": "Barlow+Semi+Condensed:wght@400",
+    "stack": "'Barlow Semi Condensed', sans-serif"
+  },
+  {
+    "slug": "cabin",
+    "family": "Cabin",
+    "category": "logo",
+    "googleQuery": "Cabin:wght@400",
+    "stack": "'Cabin', sans-serif"
+  },
+  {
+    "slug": "cabin-condensed",
+    "family": "Cabin Condensed",
+    "category": "logo",
+    "googleQuery": "Cabin+Condensed:wght@400",
+    "stack": "'Cabin Condensed', sans-serif"
+  },
+  {
+    "slug": "cabin-sketch",
+    "family": "Cabin Sketch",
+    "category": "logo",
+    "googleQuery": "Cabin+Sketch:wght@400",
+    "stack": "'Cabin Sketch', sans-serif"
+  },
+  {
+    "slug": "catamaran",
+    "family": "Catamaran",
+    "category": "logo",
+    "googleQuery": "Catamaran:wght@400",
+    "stack": "'Catamaran', sans-serif"
+  },
+  {
+    "slug": "chivo",
+    "family": "Chivo",
+    "category": "logo",
+    "googleQuery": "Chivo:wght@400",
+    "stack": "'Chivo', sans-serif"
+  },
+  {
+    "slug": "chivo-mono",
+    "family": "Chivo Mono",
+    "category": "logo",
+    "googleQuery": "Chivo+Mono:wght@400",
+    "stack": "'Chivo Mono', sans-serif"
+  },
+  {
+    "slug": "comfortaa",
+    "family": "Comfortaa",
+    "category": "logo",
+    "googleQuery": "Comfortaa:wght@400",
+    "stack": "'Comfortaa', sans-serif"
+  },
+  {
+    "slug": "dm-sans",
+    "family": "DM Sans",
+    "category": "logo",
+    "googleQuery": "DM+Sans:wght@400",
+    "stack": "'DM Sans', sans-serif"
+  },
+  {
+    "slug": "epilogue",
+    "family": "Epilogue",
+    "category": "logo",
+    "googleQuery": "Epilogue:wght@400",
+    "stack": "'Epilogue', sans-serif"
+  },
+  {
+    "slug": "exo",
+    "family": "Exo",
+    "category": "logo",
+    "googleQuery": "Exo:wght@400",
+    "stack": "'Exo', sans-serif"
+  },
+  {
+    "slug": "exo-2",
+    "family": "Exo 2",
+    "category": "logo",
+    "googleQuery": "Exo+2:wght@400",
+    "stack": "'Exo 2', sans-serif"
+  },
+  {
+    "slug": "figtree",
+    "family": "Figtree",
+    "category": "logo",
+    "googleQuery": "Figtree:wght@400",
+    "stack": "'Figtree', sans-serif"
+  },
+  {
+    "slug": "fira-sans",
+    "family": "Fira Sans",
+    "category": "logo",
+    "googleQuery": "Fira+Sans:wght@400",
+    "stack": "'Fira Sans', sans-serif"
+  },
+  {
+    "slug": "fira-sans-condensed",
+    "family": "Fira Sans Condensed",
+    "category": "logo",
+    "googleQuery": "Fira+Sans+Condensed:wght@400",
+    "stack": "'Fira Sans Condensed', sans-serif"
+  },
+  {
+    "slug": "fira-sans-extra-condensed",
+    "family": "Fira Sans Extra Condensed",
+    "category": "logo",
+    "googleQuery": "Fira+Sans+Extra+Condensed:wght@400",
+    "stack": "'Fira Sans Extra Condensed', sans-serif"
+  },
+  {
+    "slug": "geist",
+    "family": "Geist",
+    "category": "logo",
+    "googleQuery": "Geist:wght@400",
+    "stack": "'Geist', sans-serif"
+  },
+  {
+    "slug": "geist-mono",
+    "family": "Geist Mono",
+    "category": "logo",
+    "googleQuery": "Geist+Mono:wght@400",
+    "stack": "'Geist Mono', sans-serif"
+  },
+  {
+    "slug": "hanken-grotesk",
+    "family": "Hanken Grotesk",
+    "category": "logo",
+    "googleQuery": "Hanken+Grotesk:wght@400",
+    "stack": "'Hanken Grotesk', sans-serif"
+  },
+  {
+    "slug": "hind",
+    "family": "Hind",
+    "category": "logo",
+    "googleQuery": "Hind:wght@400",
+    "stack": "'Hind', sans-serif"
+  },
+  {
+    "slug": "hind-guntur",
+    "family": "Hind Guntur",
+    "category": "logo",
+    "googleQuery": "Hind+Guntur:wght@400",
+    "stack": "'Hind Guntur', sans-serif"
+  },
+  {
+    "slug": "hind-madurai",
+    "family": "Hind Madurai",
+    "category": "logo",
+    "googleQuery": "Hind+Madurai:wght@400",
+    "stack": "'Hind Madurai', sans-serif"
+  },
+  {
+    "slug": "hind-mysuru",
+    "family": "Hind Mysuru",
+    "category": "logo",
+    "googleQuery": "Hind+Mysuru:wght@400",
+    "stack": "'Hind Mysuru', sans-serif"
+  },
+  {
+    "slug": "hind-siliguri",
+    "family": "Hind Siliguri",
+    "category": "logo",
+    "googleQuery": "Hind+Siliguri:wght@400",
+    "stack": "'Hind Siliguri', sans-serif"
+  },
+  {
+    "slug": "hind-vadodara",
+    "family": "Hind Vadodara",
+    "category": "logo",
+    "googleQuery": "Hind+Vadodara:wght@400",
+    "stack": "'Hind Vadodara', sans-serif"
+  },
+  {
+    "slug": "inter",
+    "family": "Inter",
+    "category": "logo",
+    "googleQuery": "Inter:wght@400",
+    "stack": "'Inter', sans-serif"
+  },
+  {
+    "slug": "inter-tight",
+    "family": "Inter Tight",
+    "category": "logo",
+    "googleQuery": "Inter+Tight:wght@400",
+    "stack": "'Inter Tight', sans-serif"
+  },
+  {
+    "slug": "josefin-sans",
+    "family": "Josefin Sans",
+    "category": "logo",
+    "googleQuery": "Josefin+Sans:wght@400",
+    "stack": "'Josefin Sans', sans-serif"
+  },
+  {
+    "slug": "josefin-slab",
+    "family": "Josefin Slab",
+    "category": "logo",
+    "googleQuery": "Josefin+Slab:wght@400",
+    "stack": "'Josefin Slab', sans-serif"
+  },
+  {
+    "slug": "karla",
+    "family": "Karla",
+    "category": "logo",
+    "googleQuery": "Karla:wght@400",
+    "stack": "'Karla', sans-serif"
+  },
+  {
+    "slug": "karla-tamil-inclined",
+    "family": "Karla Tamil Inclined",
+    "category": "logo",
+    "googleQuery": "Karla+Tamil+Inclined:wght@400",
+    "stack": "'Karla Tamil Inclined', sans-serif"
+  },
+  {
+    "slug": "karla-tamil-upright",
+    "family": "Karla Tamil Upright",
+    "category": "logo",
+    "googleQuery": "Karla+Tamil+Upright:wght@400",
+    "stack": "'Karla Tamil Upright', sans-serif"
+  },
+  {
+    "slug": "libre-franklin",
+    "family": "Libre Franklin",
+    "category": "logo",
+    "googleQuery": "Libre+Franklin:wght@400",
+    "stack": "'Libre Franklin', sans-serif"
+  },
+  {
+    "slug": "manrope",
+    "family": "Manrope",
+    "category": "logo",
+    "googleQuery": "Manrope:wght@400",
+    "stack": "'Manrope', sans-serif"
+  },
+  {
+    "slug": "montserrat",
+    "family": "Montserrat",
+    "category": "logo",
+    "googleQuery": "Montserrat:wght@400",
+    "stack": "'Montserrat', sans-serif"
+  },
+  {
+    "slug": "montserrat-alternates",
+    "family": "Montserrat Alternates",
+    "category": "logo",
+    "googleQuery": "Montserrat+Alternates:wght@400",
+    "stack": "'Montserrat Alternates', sans-serif"
+  },
+  {
+    "slug": "montserrat-underline",
+    "family": "Montserrat Underline",
+    "category": "logo",
+    "googleQuery": "Montserrat+Underline:wght@400",
+    "stack": "'Montserrat Underline', sans-serif"
+  },
+  {
+    "slug": "noto-sans",
+    "family": "Noto Sans",
+    "category": "logo",
+    "googleQuery": "Noto+Sans:wght@400",
+    "stack": "'Noto Sans', sans-serif"
+  },
+  {
+    "slug": "noto-sans-sora-sompeng",
+    "family": "Noto Sans Sora Sompeng",
+    "category": "logo",
+    "googleQuery": "Noto+Sans+Sora+Sompeng:wght@400",
+    "stack": "'Noto Sans Sora Sompeng', sans-serif"
+  },
+  {
+    "slug": "nunito",
+    "family": "Nunito",
+    "category": "logo",
+    "googleQuery": "Nunito:wght@400",
+    "stack": "'Nunito', sans-serif"
+  },
+  {
+    "slug": "nunito-sans",
+    "family": "Nunito Sans",
+    "category": "logo",
+    "googleQuery": "Nunito+Sans:wght@400",
+    "stack": "'Nunito Sans', sans-serif"
+  },
+  {
+    "slug": "onest",
+    "family": "Onest",
+    "category": "logo",
+    "googleQuery": "Onest:wght@400",
+    "stack": "'Onest', sans-serif"
+  },
+  {
+    "slug": "outfit",
+    "family": "Outfit",
+    "category": "logo",
+    "googleQuery": "Outfit:wght@400",
+    "stack": "'Outfit', sans-serif"
+  },
+  {
+    "slug": "plus-jakarta-sans",
+    "family": "Plus Jakarta Sans",
+    "category": "logo",
+    "googleQuery": "Plus+Jakarta+Sans:wght@400",
+    "stack": "'Plus Jakarta Sans', sans-serif"
+  },
+  {
+    "slug": "poppins",
+    "family": "Poppins",
+    "category": "logo",
+    "googleQuery": "Poppins:wght@400",
+    "stack": "'Poppins', sans-serif"
+  },
+  {
+    "slug": "public-sans",
+    "family": "Public Sans",
+    "category": "logo",
+    "googleQuery": "Public+Sans:wght@400",
+    "stack": "'Public Sans', sans-serif"
+  },
+  {
+    "slug": "quicksand",
+    "family": "Quicksand",
+    "category": "logo",
+    "googleQuery": "Quicksand:wght@400",
+    "stack": "'Quicksand', sans-serif"
+  },
+  {
+    "slug": "raleway",
+    "family": "Raleway",
+    "category": "logo",
+    "googleQuery": "Raleway:wght@400",
+    "stack": "'Raleway', sans-serif"
+  },
+  {
+    "slug": "raleway-dots",
+    "family": "Raleway Dots",
+    "category": "logo",
+    "googleQuery": "Raleway+Dots:wght@400",
+    "stack": "'Raleway Dots', sans-serif"
+  },
+  {
+    "slug": "red-hat-display",
+    "family": "Red Hat Display",
+    "category": "logo",
+    "googleQuery": "Red+Hat+Display:wght@400",
+    "stack": "'Red Hat Display', sans-serif"
+  },
+  {
+    "slug": "red-hat-mono",
+    "family": "Red Hat Mono",
+    "category": "logo",
+    "googleQuery": "Red+Hat+Mono:wght@400",
+    "stack": "'Red Hat Mono', sans-serif"
+  },
+  {
+    "slug": "red-hat-text",
+    "family": "Red Hat Text",
+    "category": "logo",
+    "googleQuery": "Red+Hat+Text:wght@400",
+    "stack": "'Red Hat Text', sans-serif"
+  },
+  {
+    "slug": "rubik",
+    "family": "Rubik",
+    "category": "logo",
+    "googleQuery": "Rubik:wght@400",
+    "stack": "'Rubik', sans-serif"
+  },
+  {
+    "slug": "sora",
+    "family": "Sora",
+    "category": "logo",
+    "googleQuery": "Sora:wght@400",
+    "stack": "'Sora', sans-serif"
+  },
+  {
+    "slug": "source-sans-3",
+    "family": "Source Sans 3",
+    "category": "logo",
+    "googleQuery": "Source+Sans+3:wght@400",
+    "stack": "'Source Sans 3', sans-serif"
+  },
+  {
+    "slug": "space-grotesk",
+    "family": "Space Grotesk",
+    "category": "logo",
+    "googleQuery": "Space+Grotesk:wght@400",
+    "stack": "'Space Grotesk', sans-serif"
+  },
+  {
+    "slug": "tiro-devanagari-hindi",
+    "family": "Tiro Devanagari Hindi",
+    "category": "logo",
+    "googleQuery": "Tiro+Devanagari+Hindi:wght@400",
+    "stack": "'Tiro Devanagari Hindi', sans-serif"
+  },
+  {
+    "slug": "titillium-web",
+    "family": "Titillium Web",
+    "category": "logo",
+    "googleQuery": "Titillium+Web:wght@400",
+    "stack": "'Titillium Web', sans-serif"
+  },
+  {
+    "slug": "urbanist",
+    "family": "Urbanist",
+    "category": "logo",
+    "googleQuery": "Urbanist:wght@400",
+    "stack": "'Urbanist', sans-serif"
+  },
+  {
+    "slug": "work-sans",
+    "family": "Work Sans",
+    "category": "logo",
+    "googleQuery": "Work+Sans:wght@400",
+    "stack": "'Work Sans', sans-serif"
+  },
+  {
+    "slug": "abeezee",
+    "family": "ABeeZee",
+    "category": "logo",
+    "googleQuery": "ABeeZee:wght@400",
+    "stack": "'ABeeZee', sans-serif"
+  },
+  {
+    "slug": "ar-one-sans",
+    "family": "AR One Sans",
+    "category": "logo",
+    "googleQuery": "AR+One+Sans:wght@400",
+    "stack": "'AR One Sans', sans-serif"
+  },
+  {
+    "slug": "abel",
+    "family": "Abel",
+    "category": "logo",
+    "googleQuery": "Abel:wght@400",
+    "stack": "'Abel', sans-serif"
+  },
+  {
+    "slug": "aclonica",
+    "family": "Aclonica",
+    "category": "logo",
+    "googleQuery": "Aclonica:wght@400",
+    "stack": "'Aclonica', sans-serif"
+  },
+  {
+    "slug": "acme",
+    "family": "Acme",
+    "category": "logo",
+    "googleQuery": "Acme:wght@400",
+    "stack": "'Acme', sans-serif"
+  },
+  {
+    "slug": "actor",
+    "family": "Actor",
+    "category": "logo",
+    "googleQuery": "Actor:wght@400",
+    "stack": "'Actor', sans-serif"
+  },
+  {
+    "slug": "advent-pro",
+    "family": "Advent Pro",
+    "category": "logo",
+    "googleQuery": "Advent+Pro:wght@400",
+    "stack": "'Advent Pro', sans-serif"
+  },
+  {
+    "slug": "afacad",
+    "family": "Afacad",
+    "category": "logo",
+    "googleQuery": "Afacad:wght@400",
+    "stack": "'Afacad', sans-serif"
+  },
+  {
+    "slug": "afacad-flux",
+    "family": "Afacad Flux",
+    "category": "logo",
+    "googleQuery": "Afacad+Flux:wght@400",
+    "stack": "'Afacad Flux', sans-serif"
+  },
+  {
+    "slug": "agdasima",
+    "family": "Agdasima",
+    "category": "logo",
+    "googleQuery": "Agdasima:wght@400",
+    "stack": "'Agdasima', sans-serif"
+  },
+  {
+    "slug": "akatab",
+    "family": "Akatab",
+    "category": "logo",
+    "googleQuery": "Akatab:wght@400",
+    "stack": "'Akatab', sans-serif"
+  },
+  {
+    "slug": "akshar",
+    "family": "Akshar",
+    "category": "logo",
+    "googleQuery": "Akshar:wght@400",
+    "stack": "'Akshar', sans-serif"
+  },
+  {
+    "slug": "akt",
+    "family": "Akt",
+    "category": "logo",
+    "googleQuery": "Akt:wght@400",
+    "stack": "'Akt', sans-serif"
+  },
+  {
+    "slug": "alan-sans",
+    "family": "Alan Sans",
+    "category": "logo",
+    "googleQuery": "Alan+Sans:wght@400",
+    "stack": "'Alan Sans', sans-serif"
+  },
+  {
+    "slug": "alata",
+    "family": "Alata",
+    "category": "logo",
+    "googleQuery": "Alata:wght@400",
+    "stack": "'Alata', sans-serif"
+  },
+  {
+    "slug": "alatsi",
+    "family": "Alatsi",
+    "category": "logo",
+    "googleQuery": "Alatsi:wght@400",
+    "stack": "'Alatsi', sans-serif"
+  },
+  {
+    "slug": "aldrich",
+    "family": "Aldrich",
+    "category": "logo",
+    "googleQuery": "Aldrich:wght@400",
+    "stack": "'Aldrich', sans-serif"
+  },
+  {
+    "slug": "alef",
+    "family": "Alef",
+    "category": "logo",
+    "googleQuery": "Alef:wght@400",
+    "stack": "'Alef', sans-serif"
+  },
+  {
+    "slug": "alegreya-sans",
+    "family": "Alegreya Sans",
+    "category": "logo",
+    "googleQuery": "Alegreya+Sans:wght@400",
+    "stack": "'Alegreya Sans', sans-serif"
+  },
+  {
+    "slug": "alegreya-sans-sc",
+    "family": "Alegreya Sans SC",
+    "category": "logo",
+    "googleQuery": "Alegreya+Sans+SC:wght@400",
+    "stack": "'Alegreya Sans SC', sans-serif"
+  },
+  {
+    "slug": "alexandria",
+    "family": "Alexandria",
+    "category": "logo",
+    "googleQuery": "Alexandria:wght@400",
+    "stack": "'Alexandria', sans-serif"
+  },
+  {
+    "slug": "allerta",
+    "family": "Allerta",
+    "category": "logo",
+    "googleQuery": "Allerta:wght@400",
+    "stack": "'Allerta', sans-serif"
+  },
+  {
+    "slug": "allerta-stencil",
+    "family": "Allerta Stencil",
+    "category": "logo",
+    "googleQuery": "Allerta+Stencil:wght@400",
+    "stack": "'Allerta Stencil', sans-serif"
+  },
+  {
+    "slug": "almarai",
+    "family": "Almarai",
+    "category": "logo",
+    "googleQuery": "Almarai:wght@400",
+    "stack": "'Almarai', sans-serif"
+  },
+  {
+    "slug": "alumni-sans",
+    "family": "Alumni Sans",
+    "category": "logo",
+    "googleQuery": "Alumni+Sans:wght@400",
+    "stack": "'Alumni Sans', sans-serif"
+  },
+  {
+    "slug": "alumni-sans-collegiate-one",
+    "family": "Alumni Sans Collegiate One",
+    "category": "logo",
+    "googleQuery": "Alumni+Sans+Collegiate+One:wght@400",
+    "stack": "'Alumni Sans Collegiate One', sans-serif"
+  },
+  {
+    "slug": "alumni-sans-pinstripe",
+    "family": "Alumni Sans Pinstripe",
+    "category": "logo",
+    "googleQuery": "Alumni+Sans+Pinstripe:wght@400",
+    "stack": "'Alumni Sans Pinstripe', sans-serif"
+  },
+  {
+    "slug": "alumni-sans-sc",
+    "family": "Alumni Sans SC",
+    "category": "logo",
+    "googleQuery": "Alumni+Sans+SC:wght@400",
+    "stack": "'Alumni Sans SC', sans-serif"
+  },
+  {
+    "slug": "amaranth",
+    "family": "Amaranth",
+    "category": "logo",
+    "googleQuery": "Amaranth:wght@400",
+    "stack": "'Amaranth', sans-serif"
+  },
+  {
+    "slug": "amarna",
+    "family": "Amarna",
+    "category": "logo",
+    "googleQuery": "Amarna:wght@400",
+    "stack": "'Amarna', sans-serif"
+  },
+  {
+    "slug": "amiko",
+    "family": "Amiko",
+    "category": "logo",
+    "googleQuery": "Amiko:wght@400",
+    "stack": "'Amiko', sans-serif"
+  },
+  {
+    "slug": "anaheim",
+    "family": "Anaheim",
+    "category": "logo",
+    "googleQuery": "Anaheim:wght@400",
+    "stack": "'Anaheim', sans-serif"
+  },
+  {
+    "slug": "ancizar-sans",
+    "family": "Ancizar Sans",
+    "category": "logo",
+    "googleQuery": "Ancizar+Sans:wght@400",
+    "stack": "'Ancizar Sans', sans-serif"
+  },
+  {
+    "slug": "andika",
+    "family": "Andika",
+    "category": "logo",
+    "googleQuery": "Andika:wght@400",
+    "stack": "'Andika', sans-serif"
+  },
+  {
+    "slug": "anek-bangla",
+    "family": "Anek Bangla",
+    "category": "logo",
+    "googleQuery": "Anek+Bangla:wght@400",
+    "stack": "'Anek Bangla', sans-serif"
+  },
+  {
+    "slug": "anek-devanagari",
+    "family": "Anek Devanagari",
+    "category": "logo",
+    "googleQuery": "Anek+Devanagari:wght@400",
+    "stack": "'Anek Devanagari', sans-serif"
+  },
+  {
+    "slug": "anek-gujarati",
+    "family": "Anek Gujarati",
+    "category": "logo",
+    "googleQuery": "Anek+Gujarati:wght@400",
+    "stack": "'Anek Gujarati', sans-serif"
+  },
+  {
+    "slug": "anek-gurmukhi",
+    "family": "Anek Gurmukhi",
+    "category": "logo",
+    "googleQuery": "Anek+Gurmukhi:wght@400",
+    "stack": "'Anek Gurmukhi', sans-serif"
+  },
+  {
+    "slug": "anek-kannada",
+    "family": "Anek Kannada",
+    "category": "logo",
+    "googleQuery": "Anek+Kannada:wght@400",
+    "stack": "'Anek Kannada', sans-serif"
+  },
+  {
+    "slug": "anek-latin",
+    "family": "Anek Latin",
+    "category": "logo",
+    "googleQuery": "Anek+Latin:wght@400",
+    "stack": "'Anek Latin', sans-serif"
+  },
+  {
+    "slug": "anek-malayalam",
+    "family": "Anek Malayalam",
+    "category": "logo",
+    "googleQuery": "Anek+Malayalam:wght@400",
+    "stack": "'Anek Malayalam', sans-serif"
+  },
+  {
+    "slug": "anek-odia",
+    "family": "Anek Odia",
+    "category": "logo",
+    "googleQuery": "Anek+Odia:wght@400",
+    "stack": "'Anek Odia', sans-serif"
+  },
+  {
+    "slug": "anek-tamil",
+    "family": "Anek Tamil",
+    "category": "logo",
+    "googleQuery": "Anek+Tamil:wght@400",
+    "stack": "'Anek Tamil', sans-serif"
+  },
+  {
+    "slug": "anek-telugu",
+    "family": "Anek Telugu",
+    "category": "logo",
+    "googleQuery": "Anek+Telugu:wght@400",
+    "stack": "'Anek Telugu', sans-serif"
+  },
+  {
+    "slug": "anta",
+    "family": "Anta",
+    "category": "logo",
+    "googleQuery": "Anta:wght@400",
+    "stack": "'Anta', sans-serif"
+  },
+  {
+    "slug": "antic",
+    "family": "Antic",
+    "category": "logo",
+    "googleQuery": "Antic:wght@400",
+    "stack": "'Antic', sans-serif"
+  },
+  {
+    "slug": "anuphan",
+    "family": "Anuphan",
+    "category": "logo",
+    "googleQuery": "Anuphan:wght@400",
+    "stack": "'Anuphan', sans-serif"
+  },
+  {
+    "slug": "arimo",
+    "family": "Arimo",
+    "category": "logo",
+    "googleQuery": "Arimo:wght@400",
+    "stack": "'Arimo', sans-serif"
+  },
+  {
+    "slug": "armata",
+    "family": "Armata",
+    "category": "logo",
+    "googleQuery": "Armata:wght@400",
+    "stack": "'Armata', sans-serif"
+  },
+  {
+    "slug": "arsenal",
+    "family": "Arsenal",
+    "category": "logo",
+    "googleQuery": "Arsenal:wght@400",
+    "stack": "'Arsenal', sans-serif"
+  },
+  {
+    "slug": "arsenal-sc",
+    "family": "Arsenal SC",
+    "category": "logo",
+    "googleQuery": "Arsenal+SC:wght@400",
+    "stack": "'Arsenal SC', sans-serif"
+  },
+  {
+    "slug": "arya",
+    "family": "Arya",
+    "category": "logo",
+    "googleQuery": "Arya:wght@400",
+    "stack": "'Arya', sans-serif"
+  },
+  {
+    "slug": "asimovian",
+    "family": "Asimovian",
+    "category": "logo",
+    "googleQuery": "Asimovian:wght@400",
+    "stack": "'Asimovian', sans-serif"
+  },
+  {
+    "slug": "assistant",
+    "family": "Assistant",
+    "category": "logo",
+    "googleQuery": "Assistant:wght@400",
+    "stack": "'Assistant', sans-serif"
+  },
+  {
+    "slug": "asta-sans",
+    "family": "Asta Sans",
+    "category": "logo",
+    "googleQuery": "Asta+Sans:wght@400",
+    "stack": "'Asta Sans', sans-serif"
+  },
+  {
+    "slug": "athiti",
+    "family": "Athiti",
+    "category": "logo",
+    "googleQuery": "Athiti:wght@400",
+    "stack": "'Athiti', sans-serif"
+  },
+  {
+    "slug": "atkinson-hyperlegible",
+    "family": "Atkinson Hyperlegible",
+    "category": "logo",
+    "googleQuery": "Atkinson+Hyperlegible:wght@400",
+    "stack": "'Atkinson Hyperlegible', sans-serif"
+  },
+  {
+    "slug": "atkinson-hyperlegible-mono",
+    "family": "Atkinson Hyperlegible Mono",
+    "category": "logo",
+    "googleQuery": "Atkinson+Hyperlegible+Mono:wght@400",
+    "stack": "'Atkinson Hyperlegible Mono', sans-serif"
+  },
+  {
+    "slug": "atkinson-hyperlegible-next",
+    "family": "Atkinson Hyperlegible Next",
+    "category": "logo",
+    "googleQuery": "Atkinson+Hyperlegible+Next:wght@400",
+    "stack": "'Atkinson Hyperlegible Next', sans-serif"
+  },
+  {
+    "slug": "average-sans",
+    "family": "Average Sans",
+    "category": "logo",
+    "googleQuery": "Average+Sans:wght@400",
+    "stack": "'Average Sans', sans-serif"
+  },
+  {
+    "slug": "b612",
+    "family": "B612",
+    "category": "logo",
+    "googleQuery": "B612:wght@400",
+    "stack": "'B612', sans-serif"
+  },
+  {
+    "slug": "bbh-bartle",
+    "family": "BBH Bartle",
+    "category": "logo",
+    "googleQuery": "BBH+Bartle:wght@400",
+    "stack": "'BBH Bartle', sans-serif"
+  },
+  {
+    "slug": "bbh-bogle",
+    "family": "BBH Bogle",
+    "category": "logo",
+    "googleQuery": "BBH+Bogle:wght@400",
+    "stack": "'BBH Bogle', sans-serif"
+  },
+  {
+    "slug": "bbh-hegarty",
+    "family": "BBH Hegarty",
+    "category": "logo",
+    "googleQuery": "BBH+Hegarty:wght@400",
+    "stack": "'BBH Hegarty', sans-serif"
+  },
+  {
+    "slug": "biz-udgothic",
+    "family": "BIZ UDGothic",
+    "category": "logo",
+    "googleQuery": "BIZ+UDGothic:wght@400",
+    "stack": "'BIZ UDGothic', sans-serif"
+  },
+  {
+    "slug": "biz-udpgothic",
+    "family": "BIZ UDPGothic",
+    "category": "logo",
+    "googleQuery": "BIZ+UDPGothic:wght@400",
+    "stack": "'BIZ UDPGothic', sans-serif"
+  },
+  {
+    "slug": "bai-jamjuree",
+    "family": "Bai Jamjuree",
+    "category": "logo",
+    "googleQuery": "Bai+Jamjuree:wght@400",
+    "stack": "'Bai Jamjuree', sans-serif"
+  },
+  {
+    "slug": "basic",
+    "family": "Basic",
+    "category": "logo",
+    "googleQuery": "Basic:wght@400",
+    "stack": "'Basic', sans-serif"
+  },
+  {
+    "slug": "bayon",
+    "family": "Bayon",
+    "category": "logo",
+    "googleQuery": "Bayon:wght@400",
+    "stack": "'Bayon', sans-serif"
+  },
+  {
+    "slug": "be-vietnam-pro",
+    "family": "Be Vietnam Pro",
+    "category": "logo",
+    "googleQuery": "Be+Vietnam+Pro:wght@400",
+    "stack": "'Be Vietnam Pro', sans-serif"
+  },
+  {
+    "slug": "beiruti",
+    "family": "Beiruti",
+    "category": "logo",
+    "googleQuery": "Beiruti:wght@400",
+    "stack": "'Beiruti', sans-serif"
+  },
+  {
+    "slug": "belanosima",
+    "family": "Belanosima",
+    "category": "logo",
+    "googleQuery": "Belanosima:wght@400",
+    "stack": "'Belanosima', sans-serif"
+  },
+  {
+    "slug": "belleza",
+    "family": "Belleza",
+    "category": "logo",
+    "googleQuery": "Belleza:wght@400",
+    "stack": "'Belleza', sans-serif"
+  },
+  {
+    "slug": "benchnine",
+    "family": "BenchNine",
+    "category": "logo",
+    "googleQuery": "BenchNine:wght@400",
+    "stack": "'BenchNine', sans-serif"
+  },
+  {
+    "slug": "biryani",
+    "family": "Biryani",
+    "category": "logo",
+    "googleQuery": "Biryani:wght@400",
+    "stack": "'Biryani', sans-serif"
+  },
+  {
+    "slug": "black-han-sans",
+    "family": "Black Han Sans",
+    "category": "logo",
+    "googleQuery": "Black+Han+Sans:wght@400",
+    "stack": "'Black Han Sans', sans-serif"
+  },
+  {
+    "slug": "blinker",
+    "family": "Blinker",
+    "category": "logo",
+    "googleQuery": "Blinker:wght@400",
+    "stack": "'Blinker', sans-serif"
+  },
+  {
+    "slug": "bpmf-huninn",
+    "family": "Bpmf Huninn",
+    "category": "logo",
+    "googleQuery": "Bpmf+Huninn:wght@400",
+    "stack": "'Bpmf Huninn', sans-serif"
+  },
+  {
+    "slug": "bpmf-zihi-kai-std",
+    "family": "Bpmf Zihi Kai Std",
+    "category": "logo",
+    "googleQuery": "Bpmf+Zihi+Kai+Std:wght@400",
+    "stack": "'Bpmf Zihi Kai Std', sans-serif"
+  },
+  {
+    "slug": "braah-one",
+    "family": "Braah One",
+    "category": "logo",
+    "googleQuery": "Braah+One:wght@400",
+    "stack": "'Braah One', sans-serif"
+  },
+  {
+    "slug": "bricolage-grotesque",
+    "family": "Bricolage Grotesque",
+    "category": "logo",
+    "googleQuery": "Bricolage+Grotesque:wght@400",
+    "stack": "'Bricolage Grotesque', sans-serif"
+  },
+  {
+    "slug": "bubbler-one",
+    "family": "Bubbler One",
+    "category": "logo",
+    "googleQuery": "Bubbler+One:wght@400",
+    "stack": "'Bubbler One', sans-serif"
+  },
+  {
+    "slug": "bytesized",
+    "family": "Bytesized",
+    "category": "logo",
+    "googleQuery": "Bytesized:wght@400",
+    "stack": "'Bytesized', sans-serif"
+  },
+  {
+    "slug": "cagliostro",
+    "family": "Cagliostro",
+    "category": "logo",
+    "googleQuery": "Cagliostro:wght@400",
+    "stack": "'Cagliostro', sans-serif"
+  },
+  {
+    "slug": "cairo",
+    "family": "Cairo",
+    "category": "logo",
+    "googleQuery": "Cairo:wght@400",
+    "stack": "'Cairo', sans-serif"
+  },
+  {
+    "slug": "cairo-play",
+    "family": "Cairo Play",
+    "category": "logo",
+    "googleQuery": "Cairo+Play:wght@400",
+    "stack": "'Cairo Play', sans-serif"
+  },
+  {
+    "slug": "cal-sans",
+    "family": "Cal Sans",
+    "category": "logo",
+    "googleQuery": "Cal+Sans:wght@400",
+    "stack": "'Cal Sans', sans-serif"
+  },
+  {
+    "slug": "cambay",
+    "family": "Cambay",
+    "category": "logo",
+    "googleQuery": "Cambay:wght@400",
+    "stack": "'Cambay', sans-serif"
+  },
+  {
+    "slug": "candal",
+    "family": "Candal",
+    "category": "logo",
+    "googleQuery": "Candal:wght@400",
+    "stack": "'Candal', sans-serif"
+  },
+  {
+    "slug": "cantarell",
+    "family": "Cantarell",
+    "category": "logo",
+    "googleQuery": "Cantarell:wght@400",
+    "stack": "'Cantarell', sans-serif"
+  },
+  {
+    "slug": "cantora-one",
+    "family": "Cantora One",
+    "category": "logo",
+    "googleQuery": "Cantora+One:wght@400",
+    "stack": "'Cantora One', sans-serif"
+  },
+  {
+    "slug": "capriola",
+    "family": "Capriola",
+    "category": "logo",
+    "googleQuery": "Capriola:wght@400",
+    "stack": "'Capriola', sans-serif"
+  },
+  {
+    "slug": "carlito",
+    "family": "Carlito",
+    "category": "logo",
+    "googleQuery": "Carlito:wght@400",
+    "stack": "'Carlito', sans-serif"
+  },
+  {
+    "slug": "carme",
+    "family": "Carme",
+    "category": "logo",
+    "googleQuery": "Carme:wght@400",
+    "stack": "'Carme', sans-serif"
+  },
+  {
+    "slug": "carrois-gothic",
+    "family": "Carrois Gothic",
+    "category": "logo",
+    "googleQuery": "Carrois+Gothic:wght@400",
+    "stack": "'Carrois Gothic', sans-serif"
+  },
+  {
+    "slug": "carrois-gothic-sc",
+    "family": "Carrois Gothic SC",
+    "category": "logo",
+    "googleQuery": "Carrois+Gothic+SC:wght@400",
+    "stack": "'Carrois Gothic SC', sans-serif"
+  },
+  {
+    "slug": "cascadia-code",
+    "family": "Cascadia Code",
+    "category": "logo",
+    "googleQuery": "Cascadia+Code:wght@400",
+    "stack": "'Cascadia Code', sans-serif"
+  },
+  {
+    "slug": "cascadia-mono",
+    "family": "Cascadia Mono",
+    "category": "logo",
+    "googleQuery": "Cascadia+Mono:wght@400",
+    "stack": "'Cascadia Mono', sans-serif"
+  },
+  {
+    "slug": "chakra-petch",
+    "family": "Chakra Petch",
+    "category": "logo",
+    "googleQuery": "Chakra+Petch:wght@400",
+    "stack": "'Chakra Petch', sans-serif"
+  },
+  {
+    "slug": "changa",
+    "family": "Changa",
+    "category": "logo",
+    "googleQuery": "Changa:wght@400",
+    "stack": "'Changa', sans-serif"
+  },
+  {
+    "slug": "chathura",
+    "family": "Chathura",
+    "category": "logo",
+    "googleQuery": "Chathura:wght@400",
+    "stack": "'Chathura', sans-serif"
+  },
+  {
+    "slug": "chau-philomene-one",
+    "family": "Chau Philomene One",
+    "category": "logo",
+    "googleQuery": "Chau+Philomene+One:wght@400",
+    "stack": "'Chau Philomene One', sans-serif"
+  },
+  {
+    "slug": "chiron-goround-tc",
+    "family": "Chiron GoRound TC",
+    "category": "logo",
+    "googleQuery": "Chiron+GoRound+TC:wght@400",
+    "stack": "'Chiron GoRound TC', sans-serif"
+  },
+  {
+    "slug": "chiron-hei-hk",
+    "family": "Chiron Hei HK",
+    "category": "logo",
+    "googleQuery": "Chiron+Hei+HK:wght@400",
+    "stack": "'Chiron Hei HK', sans-serif"
+  },
+  {
+    "slug": "chocolate-classical-sans",
+    "family": "Chocolate Classical Sans",
+    "category": "logo",
+    "googleQuery": "Chocolate+Classical+Sans:wght@400",
+    "stack": "'Chocolate Classical Sans', sans-serif"
+  },
+  {
+    "slug": "comme",
+    "family": "Comme",
+    "category": "logo",
+    "googleQuery": "Comme:wght@400",
+    "stack": "'Comme', sans-serif"
+  },
+  {
+    "slug": "commissioner",
+    "family": "Commissioner",
+    "category": "logo",
+    "googleQuery": "Commissioner:wght@400",
+    "stack": "'Commissioner', sans-serif"
+  },
+  {
+    "slug": "convergence",
+    "family": "Convergence",
+    "category": "logo",
+    "googleQuery": "Convergence:wght@400",
+    "stack": "'Convergence', sans-serif"
+  },
+  {
+    "slug": "cossette-texte",
+    "family": "Cossette Texte",
+    "category": "logo",
+    "googleQuery": "Cossette+Texte:wght@400",
+    "stack": "'Cossette Texte', sans-serif"
+  },
+  {
+    "slug": "cossette-titre",
+    "family": "Cossette Titre",
+    "category": "logo",
+    "googleQuery": "Cossette+Titre:wght@400",
+    "stack": "'Cossette Titre', sans-serif"
+  },
+  {
+    "slug": "cuprum",
+    "family": "Cuprum",
+    "category": "logo",
+    "googleQuery": "Cuprum:wght@400",
+    "stack": "'Cuprum', sans-serif"
+  },
+  {
+    "slug": "darker-grotesque",
+    "family": "Darker Grotesque",
+    "category": "logo",
+    "googleQuery": "Darker+Grotesque:wght@400",
+    "stack": "'Darker Grotesque', sans-serif"
+  },
+  {
+    "slug": "days-one",
+    "family": "Days One",
+    "category": "logo",
+    "googleQuery": "Days+One:wght@400",
+    "stack": "'Days One', sans-serif"
+  },
+  {
+    "slug": "denk-one",
+    "family": "Denk One",
+    "category": "logo",
+    "googleQuery": "Denk+One:wght@400",
+    "stack": "'Denk One', sans-serif"
+  },
+  {
+    "slug": "dhurjati",
+    "family": "Dhurjati",
+    "category": "logo",
+    "googleQuery": "Dhurjati:wght@400",
+    "stack": "'Dhurjati', sans-serif"
+  },
+  {
+    "slug": "didact-gothic",
+    "family": "Didact Gothic",
+    "category": "logo",
+    "googleQuery": "Didact+Gothic:wght@400",
+    "stack": "'Didact Gothic', sans-serif"
+  },
+  {
+    "slug": "do-hyeon",
+    "family": "Do Hyeon",
+    "category": "logo",
+    "googleQuery": "Do+Hyeon:wght@400",
+    "stack": "'Do Hyeon', sans-serif"
+  },
+  {
+    "slug": "dongle",
+    "family": "Dongle",
+    "category": "logo",
+    "googleQuery": "Dongle:wght@400",
+    "stack": "'Dongle', sans-serif"
+  },
+  {
+    "slug": "doppio-one",
+    "family": "Doppio One",
+    "category": "logo",
+    "googleQuery": "Doppio+One:wght@400",
+    "stack": "'Doppio One', sans-serif"
+  },
+  {
+    "slug": "dorsa",
+    "family": "Dorsa",
+    "category": "logo",
+    "googleQuery": "Dorsa:wght@400",
+    "stack": "'Dorsa', sans-serif"
+  },
+  {
+    "slug": "dosis",
+    "family": "Dosis",
+    "category": "logo",
+    "googleQuery": "Dosis:wght@400",
+    "stack": "'Dosis', sans-serif"
+  },
+  {
+    "slug": "dotgothic16",
+    "family": "DotGothic16",
+    "category": "logo",
+    "googleQuery": "DotGothic16:wght@400",
+    "stack": "'DotGothic16', sans-serif"
+  },
+  {
+    "slug": "doto",
+    "family": "Doto",
+    "category": "logo",
+    "googleQuery": "Doto:wght@400",
+    "stack": "'Doto', sans-serif"
+  },
+  {
+    "slug": "duru-sans",
+    "family": "Duru Sans",
+    "category": "logo",
+    "googleQuery": "Duru+Sans:wght@400",
+    "stack": "'Duru Sans', sans-serif"
+  },
+  {
+    "slug": "economica",
+    "family": "Economica",
+    "category": "logo",
+    "googleQuery": "Economica:wght@400",
+    "stack": "'Economica', sans-serif"
+  },
+  {
+    "slug": "el-messiri",
+    "family": "El Messiri",
+    "category": "logo",
+    "googleQuery": "El+Messiri:wght@400",
+    "stack": "'El Messiri', sans-serif"
+  },
+  {
+    "slug": "electrolize",
+    "family": "Electrolize",
+    "category": "logo",
+    "googleQuery": "Electrolize:wght@400",
+    "stack": "'Electrolize', sans-serif"
+  },
+  {
+    "slug": "elms-sans",
+    "family": "Elms Sans",
+    "category": "logo",
+    "googleQuery": "Elms+Sans:wght@400",
+    "stack": "'Elms Sans', sans-serif"
+  },
+  {
+    "slug": "encode-sans",
+    "family": "Encode Sans",
+    "category": "logo",
+    "googleQuery": "Encode+Sans:wght@400",
+    "stack": "'Encode Sans', sans-serif"
+  },
+  {
+    "slug": "encode-sans-condensed",
+    "family": "Encode Sans Condensed",
+    "category": "logo",
+    "googleQuery": "Encode+Sans+Condensed:wght@400",
+    "stack": "'Encode Sans Condensed', sans-serif"
+  },
+  {
+    "slug": "encode-sans-expanded",
+    "family": "Encode Sans Expanded",
+    "category": "logo",
+    "googleQuery": "Encode+Sans+Expanded:wght@400",
+    "stack": "'Encode Sans Expanded', sans-serif"
+  },
+  {
+    "slug": "encode-sans-sc",
+    "family": "Encode Sans SC",
+    "category": "logo",
+    "googleQuery": "Encode+Sans+SC:wght@400",
+    "stack": "'Encode Sans SC', sans-serif"
+  }
+]

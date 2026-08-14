@@ -1,0 +1,1402 @@
+[
+  {
+    "slug": "abhaya-libre",
+    "family": "Abhaya Libre",
+    "category": "book",
+    "googleQuery": "Abhaya+Libre:wght@400",
+    "stack": "'Abhaya Libre', serif"
+  },
+  {
+    "slug": "abyssinica-sil",
+    "family": "Abyssinica SIL",
+    "category": "book",
+    "googleQuery": "Abyssinica+SIL:wght@400",
+    "stack": "'Abyssinica SIL', serif"
+  },
+  {
+    "slug": "adamina",
+    "family": "Adamina",
+    "category": "book",
+    "googleQuery": "Adamina:wght@400",
+    "stack": "'Adamina', serif"
+  },
+  {
+    "slug": "alegreya",
+    "family": "Alegreya",
+    "category": "book",
+    "googleQuery": "Alegreya:wght@400",
+    "stack": "'Alegreya', serif"
+  },
+  {
+    "slug": "alegreya-sc",
+    "family": "Alegreya SC",
+    "category": "book",
+    "googleQuery": "Alegreya+SC:wght@400",
+    "stack": "'Alegreya SC', serif"
+  },
+  {
+    "slug": "aleo",
+    "family": "Aleo",
+    "category": "book",
+    "googleQuery": "Aleo:wght@400",
+    "stack": "'Aleo', serif"
+  },
+  {
+    "slug": "alice",
+    "family": "Alice",
+    "category": "book",
+    "googleQuery": "Alice:wght@400",
+    "stack": "'Alice', serif"
+  },
+  {
+    "slug": "alike",
+    "family": "Alike",
+    "category": "book",
+    "googleQuery": "Alike:wght@400",
+    "stack": "'Alike', serif"
+  },
+  {
+    "slug": "alike-angular",
+    "family": "Alike Angular",
+    "category": "book",
+    "googleQuery": "Alike+Angular:wght@400",
+    "stack": "'Alike Angular', serif"
+  },
+  {
+    "slug": "almendra",
+    "family": "Almendra",
+    "category": "book",
+    "googleQuery": "Almendra:wght@400",
+    "stack": "'Almendra', serif"
+  },
+  {
+    "slug": "almendra-sc",
+    "family": "Almendra SC",
+    "category": "book",
+    "googleQuery": "Almendra+SC:wght@400",
+    "stack": "'Almendra SC', serif"
+  },
+  {
+    "slug": "alyamama",
+    "family": "Alyamama",
+    "category": "book",
+    "googleQuery": "Alyamama:wght@400",
+    "stack": "'Alyamama', serif"
+  },
+  {
+    "slug": "amethysta",
+    "family": "Amethysta",
+    "category": "book",
+    "googleQuery": "Amethysta:wght@400",
+    "stack": "'Amethysta', serif"
+  },
+  {
+    "slug": "amiri",
+    "family": "Amiri",
+    "category": "book",
+    "googleQuery": "Amiri:wght@400",
+    "stack": "'Amiri', serif"
+  },
+  {
+    "slug": "amiri-quran",
+    "family": "Amiri Quran",
+    "category": "book",
+    "googleQuery": "Amiri+Quran:wght@400",
+    "stack": "'Amiri Quran', serif"
+  },
+  {
+    "slug": "ancizar-serif",
+    "family": "Ancizar Serif",
+    "category": "book",
+    "googleQuery": "Ancizar+Serif:wght@400",
+    "stack": "'Ancizar Serif', serif"
+  },
+  {
+    "slug": "andada-pro",
+    "family": "Andada Pro",
+    "category": "book",
+    "googleQuery": "Andada+Pro:wght@400",
+    "stack": "'Andada Pro', serif"
+  },
+  {
+    "slug": "annapurna-sil",
+    "family": "Annapurna SIL",
+    "category": "book",
+    "googleQuery": "Annapurna+SIL:wght@400",
+    "stack": "'Annapurna SIL', serif"
+  },
+  {
+    "slug": "antic-didone",
+    "family": "Antic Didone",
+    "category": "book",
+    "googleQuery": "Antic+Didone:wght@400",
+    "stack": "'Antic Didone', serif"
+  },
+  {
+    "slug": "antic-slab",
+    "family": "Antic Slab",
+    "category": "book",
+    "googleQuery": "Antic+Slab:wght@400",
+    "stack": "'Antic Slab', serif"
+  },
+  {
+    "slug": "aoboshi-one",
+    "family": "Aoboshi One",
+    "category": "book",
+    "googleQuery": "Aoboshi+One:wght@400",
+    "stack": "'Aoboshi One', serif"
+  },
+  {
+    "slug": "arapey",
+    "family": "Arapey",
+    "category": "book",
+    "googleQuery": "Arapey:wght@400",
+    "stack": "'Arapey', serif"
+  },
+  {
+    "slug": "arbutus",
+    "family": "Arbutus",
+    "category": "book",
+    "googleQuery": "Arbutus:wght@400",
+    "stack": "'Arbutus', serif"
+  },
+  {
+    "slug": "arbutus-slab",
+    "family": "Arbutus Slab",
+    "category": "book",
+    "googleQuery": "Arbutus+Slab:wght@400",
+    "stack": "'Arbutus Slab', serif"
+  },
+  {
+    "slug": "aref-ruqaa",
+    "family": "Aref Ruqaa",
+    "category": "book",
+    "googleQuery": "Aref+Ruqaa:wght@400",
+    "stack": "'Aref Ruqaa', serif"
+  },
+  {
+    "slug": "aref-ruqaa-ink",
+    "family": "Aref Ruqaa Ink",
+    "category": "book",
+    "googleQuery": "Aref+Ruqaa+Ink:wght@400",
+    "stack": "'Aref Ruqaa Ink', serif"
+  },
+  {
+    "slug": "artifika",
+    "family": "Artifika",
+    "category": "book",
+    "googleQuery": "Artifika:wght@400",
+    "stack": "'Artifika', serif"
+  },
+  {
+    "slug": "arvo",
+    "family": "Arvo",
+    "category": "book",
+    "googleQuery": "Arvo:wght@400",
+    "stack": "'Arvo', serif"
+  },
+  {
+    "slug": "asar",
+    "family": "Asar",
+    "category": "book",
+    "googleQuery": "Asar:wght@400",
+    "stack": "'Asar', serif"
+  },
+  {
+    "slug": "asul",
+    "family": "Asul",
+    "category": "book",
+    "googleQuery": "Asul:wght@400",
+    "stack": "'Asul', serif"
+  },
+  {
+    "slug": "average",
+    "family": "Average",
+    "category": "book",
+    "googleQuery": "Average:wght@400",
+    "stack": "'Average', serif"
+  },
+  {
+    "slug": "biz-udmincho",
+    "family": "BIZ UDMincho",
+    "category": "book",
+    "googleQuery": "BIZ+UDMincho:wght@400",
+    "stack": "'BIZ UDMincho', serif"
+  },
+  {
+    "slug": "biz-udpmincho",
+    "family": "BIZ UDPMincho",
+    "category": "book",
+    "googleQuery": "BIZ+UDPMincho:wght@400",
+    "stack": "'BIZ UDPMincho', serif"
+  },
+  {
+    "slug": "bjcree",
+    "family": "BJCree",
+    "category": "book",
+    "googleQuery": "BJCree:wght@400",
+    "stack": "'BJCree', serif"
+  },
+  {
+    "slug": "bacasime-antique",
+    "family": "Bacasime Antique",
+    "category": "book",
+    "googleQuery": "Bacasime+Antique:wght@400",
+    "stack": "'Bacasime Antique', serif"
+  },
+  {
+    "slug": "balthazar",
+    "family": "Balthazar",
+    "category": "book",
+    "googleQuery": "Balthazar:wght@400",
+    "stack": "'Balthazar', serif"
+  },
+  {
+    "slug": "baskervville",
+    "family": "Baskervville",
+    "category": "book",
+    "googleQuery": "Baskervville:wght@400",
+    "stack": "'Baskervville', serif"
+  },
+  {
+    "slug": "baskervville-sc",
+    "family": "Baskervville SC",
+    "category": "book",
+    "googleQuery": "Baskervville+SC:wght@400",
+    "stack": "'Baskervville SC', serif"
+  },
+  {
+    "slug": "belgrano",
+    "family": "Belgrano",
+    "category": "book",
+    "googleQuery": "Belgrano:wght@400",
+    "stack": "'Belgrano', serif"
+  },
+  {
+    "slug": "bellefair",
+    "family": "Bellefair",
+    "category": "book",
+    "googleQuery": "Bellefair:wght@400",
+    "stack": "'Bellefair', serif"
+  },
+  {
+    "slug": "benne",
+    "family": "Benne",
+    "category": "book",
+    "googleQuery": "Benne:wght@400",
+    "stack": "'Benne', serif"
+  },
+  {
+    "slug": "bentham",
+    "family": "Bentham",
+    "category": "book",
+    "googleQuery": "Bentham:wght@400",
+    "stack": "'Bentham', serif"
+  },
+  {
+    "slug": "besley",
+    "family": "Besley",
+    "category": "book",
+    "googleQuery": "Besley:wght@400",
+    "stack": "'Besley', serif"
+  },
+  {
+    "slug": "bevan",
+    "family": "Bevan",
+    "category": "book",
+    "googleQuery": "Bevan:wght@400",
+    "stack": "'Bevan', serif"
+  },
+  {
+    "slug": "bhutuka-expanded-one",
+    "family": "BhuTuka Expanded One",
+    "category": "book",
+    "googleQuery": "BhuTuka+Expanded+One:wght@400",
+    "stack": "'BhuTuka Expanded One', serif"
+  },
+  {
+    "slug": "biorhyme",
+    "family": "BioRhyme",
+    "category": "book",
+    "googleQuery": "BioRhyme:wght@400",
+    "stack": "'BioRhyme', serif"
+  },
+  {
+    "slug": "biorhyme-expanded",
+    "family": "BioRhyme Expanded",
+    "category": "book",
+    "googleQuery": "BioRhyme+Expanded:wght@400",
+    "stack": "'BioRhyme Expanded', serif"
+  },
+  {
+    "slug": "bitter",
+    "family": "Bitter",
+    "category": "book",
+    "googleQuery": "Bitter:wght@400",
+    "stack": "'Bitter', serif"
+  },
+  {
+    "slug": "bodoni-moda",
+    "family": "Bodoni Moda",
+    "category": "book",
+    "googleQuery": "Bodoni+Moda:wght@400",
+    "stack": "'Bodoni Moda', serif"
+  },
+  {
+    "slug": "bodoni-moda-sc",
+    "family": "Bodoni Moda SC",
+    "category": "book",
+    "googleQuery": "Bodoni+Moda+SC:wght@400",
+    "stack": "'Bodoni Moda SC', serif"
+  },
+  {
+    "slug": "bona-nova",
+    "family": "Bona Nova",
+    "category": "book",
+    "googleQuery": "Bona+Nova:wght@400",
+    "stack": "'Bona Nova', serif"
+  },
+  {
+    "slug": "bona-nova-sc",
+    "family": "Bona Nova SC",
+    "category": "book",
+    "googleQuery": "Bona+Nova+SC:wght@400",
+    "stack": "'Bona Nova SC', serif"
+  },
+  {
+    "slug": "brawler",
+    "family": "Brawler",
+    "category": "book",
+    "googleQuery": "Brawler:wght@400",
+    "stack": "'Brawler', serif"
+  },
+  {
+    "slug": "bree-serif",
+    "family": "Bree Serif",
+    "category": "book",
+    "googleQuery": "Bree+Serif:wght@400",
+    "stack": "'Bree Serif', serif"
+  },
+  {
+    "slug": "brygada-1918",
+    "family": "Brygada 1918",
+    "category": "book",
+    "googleQuery": "Brygada+1918:wght@400",
+    "stack": "'Brygada 1918', serif"
+  },
+  {
+    "slug": "buenard",
+    "family": "Buenard",
+    "category": "book",
+    "googleQuery": "Buenard:wght@400",
+    "stack": "'Buenard', serif"
+  },
+  {
+    "slug": "cactus-classical-serif",
+    "family": "Cactus Classical Serif",
+    "category": "book",
+    "googleQuery": "Cactus+Classical+Serif:wght@400",
+    "stack": "'Cactus Classical Serif', serif"
+  },
+  {
+    "slug": "caladea",
+    "family": "Caladea",
+    "category": "book",
+    "googleQuery": "Caladea:wght@400",
+    "stack": "'Caladea', serif"
+  },
+  {
+    "slug": "cambo",
+    "family": "Cambo",
+    "category": "book",
+    "googleQuery": "Cambo:wght@400",
+    "stack": "'Cambo', serif"
+  },
+  {
+    "slug": "cantata-one",
+    "family": "Cantata One",
+    "category": "book",
+    "googleQuery": "Cantata+One:wght@400",
+    "stack": "'Cantata One', serif"
+  },
+  {
+    "slug": "cardo",
+    "family": "Cardo",
+    "category": "book",
+    "googleQuery": "Cardo:wght@400",
+    "stack": "'Cardo', serif"
+  },
+  {
+    "slug": "castoro",
+    "family": "Castoro",
+    "category": "book",
+    "googleQuery": "Castoro:wght@400",
+    "stack": "'Castoro', serif"
+  },
+  {
+    "slug": "caudex",
+    "family": "Caudex",
+    "category": "book",
+    "googleQuery": "Caudex:wght@400",
+    "stack": "'Caudex', serif"
+  },
+  {
+    "slug": "charis-sil",
+    "family": "Charis SIL",
+    "category": "book",
+    "googleQuery": "Charis+SIL:wght@400",
+    "stack": "'Charis SIL', serif"
+  },
+  {
+    "slug": "chiron-sung-hk",
+    "family": "Chiron Sung HK",
+    "category": "book",
+    "googleQuery": "Chiron+Sung+HK:wght@400",
+    "stack": "'Chiron Sung HK', serif"
+  },
+  {
+    "slug": "copse",
+    "family": "Copse",
+    "category": "book",
+    "googleQuery": "Copse:wght@400",
+    "stack": "'Copse', serif"
+  },
+  {
+    "slug": "coustard",
+    "family": "Coustard",
+    "category": "book",
+    "googleQuery": "Coustard:wght@400",
+    "stack": "'Coustard', serif"
+  },
+  {
+    "slug": "crete-round",
+    "family": "Crete Round",
+    "category": "book",
+    "googleQuery": "Crete+Round:wght@400",
+    "stack": "'Crete Round', serif"
+  },
+  {
+    "slug": "crimson-pro",
+    "family": "Crimson Pro",
+    "category": "book",
+    "googleQuery": "Crimson+Pro:wght@400",
+    "stack": "'Crimson Pro', serif"
+  },
+  {
+    "slug": "crimson-text",
+    "family": "Crimson Text",
+    "category": "book",
+    "googleQuery": "Crimson+Text:wght@400",
+    "stack": "'Crimson Text', serif"
+  },
+  {
+    "slug": "cutive",
+    "family": "Cutive",
+    "category": "book",
+    "googleQuery": "Cutive:wght@400",
+    "stack": "'Cutive', serif"
+  },
+  {
+    "slug": "dm-serif-display",
+    "family": "DM Serif Display",
+    "category": "book",
+    "googleQuery": "DM+Serif+Display:wght@400",
+    "stack": "'DM Serif Display', serif"
+  },
+  {
+    "slug": "dm-serif-text",
+    "family": "DM Serif Text",
+    "category": "book",
+    "googleQuery": "DM+Serif+Text:wght@400",
+    "stack": "'DM Serif Text', serif"
+  },
+  {
+    "slug": "dai-banna-sil",
+    "family": "Dai Banna SIL",
+    "category": "book",
+    "googleQuery": "Dai+Banna+SIL:wght@400",
+    "stack": "'Dai Banna SIL', serif"
+  },
+  {
+    "slug": "danfo",
+    "family": "Danfo",
+    "category": "book",
+    "googleQuery": "Danfo:wght@400",
+    "stack": "'Danfo', serif"
+  },
+  {
+    "slug": "david-libre",
+    "family": "David Libre",
+    "category": "book",
+    "googleQuery": "David+Libre:wght@400",
+    "stack": "'David Libre', serif"
+  },
+  {
+    "slug": "diphylleia",
+    "family": "Diphylleia",
+    "category": "book",
+    "googleQuery": "Diphylleia:wght@400",
+    "stack": "'Diphylleia', serif"
+  },
+  {
+    "slug": "domine",
+    "family": "Domine",
+    "category": "book",
+    "googleQuery": "Domine:wght@400",
+    "stack": "'Domine', serif"
+  },
+  {
+    "slug": "donegal-one",
+    "family": "Donegal One",
+    "category": "book",
+    "googleQuery": "Donegal+One:wght@400",
+    "stack": "'Donegal One', serif"
+  },
+  {
+    "slug": "eb-garamond",
+    "family": "EB Garamond",
+    "category": "book",
+    "googleQuery": "EB+Garamond:wght@400",
+    "stack": "'EB Garamond', serif"
+  },
+  {
+    "slug": "eczar",
+    "family": "Eczar",
+    "category": "book",
+    "googleQuery": "Eczar:wght@400",
+    "stack": "'Eczar', serif"
+  },
+  {
+    "slug": "enriqueta",
+    "family": "Enriqueta",
+    "category": "book",
+    "googleQuery": "Enriqueta:wght@400",
+    "stack": "'Enriqueta', serif"
+  },
+  {
+    "slug": "epunda-slab",
+    "family": "Epunda Slab",
+    "category": "book",
+    "googleQuery": "Epunda+Slab:wght@400",
+    "stack": "'Epunda Slab', serif"
+  },
+  {
+    "slug": "esteban",
+    "family": "Esteban",
+    "category": "book",
+    "googleQuery": "Esteban:wght@400",
+    "stack": "'Esteban', serif"
+  },
+  {
+    "slug": "fanwood-text",
+    "family": "Fanwood Text",
+    "category": "book",
+    "googleQuery": "Fanwood+Text:wght@400",
+    "stack": "'Fanwood Text', serif"
+  },
+  {
+    "slug": "fauna-one",
+    "family": "Fauna One",
+    "category": "book",
+    "googleQuery": "Fauna+One:wght@400",
+    "stack": "'Fauna One', serif"
+  },
+  {
+    "slug": "faustina",
+    "family": "Faustina",
+    "category": "book",
+    "googleQuery": "Faustina:wght@400",
+    "stack": "'Faustina', serif"
+  },
+  {
+    "slug": "fenix",
+    "family": "Fenix",
+    "category": "book",
+    "googleQuery": "Fenix:wght@400",
+    "stack": "'Fenix', serif"
+  },
+  {
+    "slug": "fjord-one",
+    "family": "Fjord One",
+    "category": "book",
+    "googleQuery": "Fjord+One:wght@400",
+    "stack": "'Fjord One', serif"
+  },
+  {
+    "slug": "frank-ruhl-libre",
+    "family": "Frank Ruhl Libre",
+    "category": "book",
+    "googleQuery": "Frank+Ruhl+Libre:wght@400",
+    "stack": "'Frank Ruhl Libre', serif"
+  },
+  {
+    "slug": "fraunces",
+    "family": "Fraunces",
+    "category": "book",
+    "googleQuery": "Fraunces:wght@400",
+    "stack": "'Fraunces', serif"
+  },
+  {
+    "slug": "gfs-didot",
+    "family": "GFS Didot",
+    "category": "book",
+    "googleQuery": "GFS+Didot:wght@400",
+    "stack": "'GFS Didot', serif"
+  },
+  {
+    "slug": "gabriela",
+    "family": "Gabriela",
+    "category": "book",
+    "googleQuery": "Gabriela:wght@400",
+    "stack": "'Gabriela', serif"
+  },
+  {
+    "slug": "gelasio",
+    "family": "Gelasio",
+    "category": "book",
+    "googleQuery": "Gelasio:wght@400",
+    "stack": "'Gelasio', serif"
+  },
+  {
+    "slug": "gentium-book-plus",
+    "family": "Gentium Book Plus",
+    "category": "book",
+    "googleQuery": "Gentium+Book+Plus:wght@400",
+    "stack": "'Gentium Book Plus', serif"
+  },
+  {
+    "slug": "gentium-plus",
+    "family": "Gentium Plus",
+    "category": "book",
+    "googleQuery": "Gentium+Plus:wght@400",
+    "stack": "'Gentium Plus', serif"
+  },
+  {
+    "slug": "gilda-display",
+    "family": "Gilda Display",
+    "category": "book",
+    "googleQuery": "Gilda+Display:wght@400",
+    "stack": "'Gilda Display', serif"
+  },
+  {
+    "slug": "glegoo",
+    "family": "Glegoo",
+    "category": "book",
+    "googleQuery": "Glegoo:wght@400",
+    "stack": "'Glegoo', serif"
+  },
+  {
+    "slug": "gloock",
+    "family": "Gloock",
+    "category": "book",
+    "googleQuery": "Gloock:wght@400",
+    "stack": "'Gloock', serif"
+  },
+  {
+    "slug": "goudy-bookletter-1911",
+    "family": "Goudy Bookletter 1911",
+    "category": "book",
+    "googleQuery": "Goudy+Bookletter+1911:wght@400",
+    "stack": "'Goudy Bookletter 1911', serif"
+  },
+  {
+    "slug": "gowun-batang",
+    "family": "Gowun Batang",
+    "category": "book",
+    "googleQuery": "Gowun+Batang:wght@400",
+    "stack": "'Gowun Batang', serif"
+  },
+  {
+    "slug": "graduate",
+    "family": "Graduate",
+    "category": "book",
+    "googleQuery": "Graduate:wght@400",
+    "stack": "'Graduate', serif"
+  },
+  {
+    "slug": "grandiflora-one",
+    "family": "Grandiflora One",
+    "category": "book",
+    "googleQuery": "Grandiflora+One:wght@400",
+    "stack": "'Grandiflora One', serif"
+  },
+  {
+    "slug": "grenze",
+    "family": "Grenze",
+    "category": "book",
+    "googleQuery": "Grenze:wght@400",
+    "stack": "'Grenze', serif"
+  },
+  {
+    "slug": "gulzar",
+    "family": "Gulzar",
+    "category": "book",
+    "googleQuery": "Gulzar:wght@400",
+    "stack": "'Gulzar', serif"
+  },
+  {
+    "slug": "gupter",
+    "family": "Gupter",
+    "category": "book",
+    "googleQuery": "Gupter:wght@400",
+    "stack": "'Gupter', serif"
+  },
+  {
+    "slug": "habibi",
+    "family": "Habibi",
+    "category": "book",
+    "googleQuery": "Habibi:wght@400",
+    "stack": "'Habibi', serif"
+  },
+  {
+    "slug": "hahmlet",
+    "family": "Hahmlet",
+    "category": "book",
+    "googleQuery": "Hahmlet:wght@400",
+    "stack": "'Hahmlet', serif"
+  },
+  {
+    "slug": "halant",
+    "family": "Halant",
+    "category": "book",
+    "googleQuery": "Halant:wght@400",
+    "stack": "'Halant', serif"
+  },
+  {
+    "slug": "hanuman",
+    "family": "Hanuman",
+    "category": "book",
+    "googleQuery": "Hanuman:wght@400",
+    "stack": "'Hanuman', serif"
+  },
+  {
+    "slug": "headland-one",
+    "family": "Headland One",
+    "category": "book",
+    "googleQuery": "Headland+One:wght@400",
+    "stack": "'Headland One', serif"
+  },
+  {
+    "slug": "hedvig-letters-serif",
+    "family": "Hedvig Letters Serif",
+    "category": "book",
+    "googleQuery": "Hedvig+Letters+Serif:wght@400",
+    "stack": "'Hedvig Letters Serif', serif"
+  },
+  {
+    "slug": "hepta-slab",
+    "family": "Hepta Slab",
+    "category": "book",
+    "googleQuery": "Hepta+Slab:wght@400",
+    "stack": "'Hepta Slab', serif"
+  },
+  {
+    "slug": "hina-mincho",
+    "family": "Hina Mincho",
+    "category": "book",
+    "googleQuery": "Hina+Mincho:wght@400",
+    "stack": "'Hina Mincho', serif"
+  },
+  {
+    "slug": "holtwood-one-sc",
+    "family": "Holtwood One SC",
+    "category": "book",
+    "googleQuery": "Holtwood+One+SC:wght@400",
+    "stack": "'Holtwood One SC', serif"
+  },
+  {
+    "slug": "ibm-plex-serif",
+    "family": "IBM Plex Serif",
+    "category": "book",
+    "googleQuery": "IBM+Plex+Serif:wght@400",
+    "stack": "'IBM Plex Serif', serif"
+  },
+  {
+    "slug": "im-fell-dw-pica",
+    "family": "IM Fell DW Pica",
+    "category": "book",
+    "googleQuery": "IM+Fell+DW+Pica:wght@400",
+    "stack": "'IM Fell DW Pica', serif"
+  },
+  {
+    "slug": "im-fell-dw-pica-sc",
+    "family": "IM Fell DW Pica SC",
+    "category": "book",
+    "googleQuery": "IM+Fell+DW+Pica+SC:wght@400",
+    "stack": "'IM Fell DW Pica SC', serif"
+  },
+  {
+    "slug": "im-fell-double-pica",
+    "family": "IM Fell Double Pica",
+    "category": "book",
+    "googleQuery": "IM+Fell+Double+Pica:wght@400",
+    "stack": "'IM Fell Double Pica', serif"
+  },
+  {
+    "slug": "im-fell-double-pica-sc",
+    "family": "IM Fell Double Pica SC",
+    "category": "book",
+    "googleQuery": "IM+Fell+Double+Pica+SC:wght@400",
+    "stack": "'IM Fell Double Pica SC', serif"
+  },
+  {
+    "slug": "im-fell-english",
+    "family": "IM Fell English",
+    "category": "book",
+    "googleQuery": "IM+Fell+English:wght@400",
+    "stack": "'IM Fell English', serif"
+  },
+  {
+    "slug": "im-fell-english-sc",
+    "family": "IM Fell English SC",
+    "category": "book",
+    "googleQuery": "IM+Fell+English+SC:wght@400",
+    "stack": "'IM Fell English SC', serif"
+  },
+  {
+    "slug": "im-fell-french-canon",
+    "family": "IM Fell French Canon",
+    "category": "book",
+    "googleQuery": "IM+Fell+French+Canon:wght@400",
+    "stack": "'IM Fell French Canon', serif"
+  },
+  {
+    "slug": "im-fell-french-canon-sc",
+    "family": "IM Fell French Canon SC",
+    "category": "book",
+    "googleQuery": "IM+Fell+French+Canon+SC:wght@400",
+    "stack": "'IM Fell French Canon SC', serif"
+  },
+  {
+    "slug": "im-fell-great-primer",
+    "family": "IM Fell Great Primer",
+    "category": "book",
+    "googleQuery": "IM+Fell+Great+Primer:wght@400",
+    "stack": "'IM Fell Great Primer', serif"
+  },
+  {
+    "slug": "im-fell-great-primer-sc",
+    "family": "IM Fell Great Primer SC",
+    "category": "book",
+    "googleQuery": "IM+Fell+Great+Primer+SC:wght@400",
+    "stack": "'IM Fell Great Primer SC', serif"
+  },
+  {
+    "slug": "ibarra-real-nova",
+    "family": "Ibarra Real Nova",
+    "category": "book",
+    "googleQuery": "Ibarra+Real+Nova:wght@400",
+    "stack": "'Ibarra Real Nova', serif"
+  },
+  {
+    "slug": "idiqlat",
+    "family": "Idiqlat",
+    "category": "book",
+    "googleQuery": "Idiqlat:wght@400",
+    "stack": "'Idiqlat', serif"
+  },
+  {
+    "slug": "imbue",
+    "family": "Imbue",
+    "category": "book",
+    "googleQuery": "Imbue:wght@400",
+    "stack": "'Imbue', serif"
+  },
+  {
+    "slug": "inika",
+    "family": "Inika",
+    "category": "book",
+    "googleQuery": "Inika:wght@400",
+    "stack": "'Inika', serif"
+  },
+  {
+    "slug": "inknut-antiqua",
+    "family": "Inknut Antiqua",
+    "category": "book",
+    "googleQuery": "Inknut+Antiqua:wght@400",
+    "stack": "'Inknut Antiqua', serif"
+  },
+  {
+    "slug": "inria-serif",
+    "family": "Inria Serif",
+    "category": "book",
+    "googleQuery": "Inria+Serif:wght@400",
+    "stack": "'Inria Serif', serif"
+  },
+  {
+    "slug": "instrument-serif",
+    "family": "Instrument Serif",
+    "category": "book",
+    "googleQuery": "Instrument+Serif:wght@400",
+    "stack": "'Instrument Serif', serif"
+  },
+  {
+    "slug": "jacques-francois",
+    "family": "Jacques Francois",
+    "category": "book",
+    "googleQuery": "Jacques+Francois:wght@400",
+    "stack": "'Jacques Francois', serif"
+  },
+  {
+    "slug": "joan",
+    "family": "Joan",
+    "category": "book",
+    "googleQuery": "Joan:wght@400",
+    "stack": "'Joan', serif"
+  },
+  {
+    "slug": "jomolhari",
+    "family": "Jomolhari",
+    "category": "book",
+    "googleQuery": "Jomolhari:wght@400",
+    "stack": "'Jomolhari', serif"
+  },
+  {
+    "slug": "judson",
+    "family": "Judson",
+    "category": "book",
+    "googleQuery": "Judson:wght@400",
+    "stack": "'Judson', serif"
+  },
+  {
+    "slug": "junge",
+    "family": "Junge",
+    "category": "book",
+    "googleQuery": "Junge:wght@400",
+    "stack": "'Junge', serif"
+  },
+  {
+    "slug": "kadwa",
+    "family": "Kadwa",
+    "category": "book",
+    "googleQuery": "Kadwa:wght@400",
+    "stack": "'Kadwa', serif"
+  },
+  {
+    "slug": "kaisei-decol",
+    "family": "Kaisei Decol",
+    "category": "book",
+    "googleQuery": "Kaisei+Decol:wght@400",
+    "stack": "'Kaisei Decol', serif"
+  },
+  {
+    "slug": "kaisei-harunoumi",
+    "family": "Kaisei HarunoUmi",
+    "category": "book",
+    "googleQuery": "Kaisei+HarunoUmi:wght@400",
+    "stack": "'Kaisei HarunoUmi', serif"
+  },
+  {
+    "slug": "kaisei-opti",
+    "family": "Kaisei Opti",
+    "category": "book",
+    "googleQuery": "Kaisei+Opti:wght@400",
+    "stack": "'Kaisei Opti', serif"
+  },
+  {
+    "slug": "kaisei-tokumin",
+    "family": "Kaisei Tokumin",
+    "category": "book",
+    "googleQuery": "Kaisei+Tokumin:wght@400",
+    "stack": "'Kaisei Tokumin', serif"
+  },
+  {
+    "slug": "kalnia",
+    "family": "Kalnia",
+    "category": "book",
+    "googleQuery": "Kalnia:wght@400",
+    "stack": "'Kalnia', serif"
+  },
+  {
+    "slug": "kameron",
+    "family": "Kameron",
+    "category": "book",
+    "googleQuery": "Kameron:wght@400",
+    "stack": "'Kameron', serif"
+  },
+  {
+    "slug": "karma",
+    "family": "Karma",
+    "category": "book",
+    "googleQuery": "Karma:wght@400",
+    "stack": "'Karma', serif"
+  },
+  {
+    "slug": "kay-pho-du",
+    "family": "Kay Pho Du",
+    "category": "book",
+    "googleQuery": "Kay+Pho+Du:wght@400",
+    "stack": "'Kay Pho Du', serif"
+  },
+  {
+    "slug": "kiwi-maru",
+    "family": "Kiwi Maru",
+    "category": "book",
+    "googleQuery": "Kiwi+Maru:wght@400",
+    "stack": "'Kiwi Maru', serif"
+  },
+  {
+    "slug": "koh-santepheap",
+    "family": "Koh Santepheap",
+    "category": "book",
+    "googleQuery": "Koh+Santepheap:wght@400",
+    "stack": "'Koh Santepheap', serif"
+  },
+  {
+    "slug": "kotta-one",
+    "family": "Kotta One",
+    "category": "book",
+    "googleQuery": "Kotta+One:wght@400",
+    "stack": "'Kotta One', serif"
+  },
+  {
+    "slug": "kreon",
+    "family": "Kreon",
+    "category": "book",
+    "googleQuery": "Kreon:wght@400",
+    "stack": "'Kreon', serif"
+  },
+  {
+    "slug": "kurale",
+    "family": "Kurale",
+    "category": "book",
+    "googleQuery": "Kurale:wght@400",
+    "stack": "'Kurale', serif"
+  },
+  {
+    "slug": "labrada",
+    "family": "Labrada",
+    "category": "book",
+    "googleQuery": "Labrada:wght@400",
+    "stack": "'Labrada', serif"
+  },
+  {
+    "slug": "laila",
+    "family": "Laila",
+    "category": "book",
+    "googleQuery": "Laila:wght@400",
+    "stack": "'Laila', serif"
+  },
+  {
+    "slug": "lateef",
+    "family": "Lateef",
+    "category": "book",
+    "googleQuery": "Lateef:wght@400",
+    "stack": "'Lateef', serif"
+  },
+  {
+    "slug": "ledger",
+    "family": "Ledger",
+    "category": "book",
+    "googleQuery": "Ledger:wght@400",
+    "stack": "'Ledger', serif"
+  },
+  {
+    "slug": "libertinus-serif",
+    "family": "Libertinus Serif",
+    "category": "book",
+    "googleQuery": "Libertinus+Serif:wght@400",
+    "stack": "'Libertinus Serif', serif"
+  },
+  {
+    "slug": "libre-baskerville",
+    "family": "Libre Baskerville",
+    "category": "book",
+    "googleQuery": "Libre+Baskerville:wght@400",
+    "stack": "'Libre Baskerville', serif"
+  },
+  {
+    "slug": "libre-bodoni",
+    "family": "Libre Bodoni",
+    "category": "book",
+    "googleQuery": "Libre+Bodoni:wght@400",
+    "stack": "'Libre Bodoni', serif"
+  },
+  {
+    "slug": "libre-caslon-display",
+    "family": "Libre Caslon Display",
+    "category": "book",
+    "googleQuery": "Libre+Caslon+Display:wght@400",
+    "stack": "'Libre Caslon Display', serif"
+  },
+  {
+    "slug": "libre-caslon-text",
+    "family": "Libre Caslon Text",
+    "category": "book",
+    "googleQuery": "Libre+Caslon+Text:wght@400",
+    "stack": "'Libre Caslon Text', serif"
+  },
+  {
+    "slug": "linden-hill",
+    "family": "Linden Hill",
+    "category": "book",
+    "googleQuery": "Linden+Hill:wght@400",
+    "stack": "'Linden Hill', serif"
+  },
+  {
+    "slug": "lisu-bosa",
+    "family": "Lisu Bosa",
+    "category": "book",
+    "googleQuery": "Lisu+Bosa:wght@400",
+    "stack": "'Lisu Bosa', serif"
+  },
+  {
+    "slug": "literata",
+    "family": "Literata",
+    "category": "book",
+    "googleQuery": "Literata:wght@400",
+    "stack": "'Literata', serif"
+  },
+  {
+    "slug": "lora",
+    "family": "Lora",
+    "category": "book",
+    "googleQuery": "Lora:wght@400",
+    "stack": "'Lora', serif"
+  },
+  {
+    "slug": "lusitana",
+    "family": "Lusitana",
+    "category": "book",
+    "googleQuery": "Lusitana:wght@400",
+    "stack": "'Lusitana', serif"
+  },
+  {
+    "slug": "lustria",
+    "family": "Lustria",
+    "category": "book",
+    "googleQuery": "Lustria:wght@400",
+    "stack": "'Lustria', serif"
+  },
+  {
+    "slug": "maiden-orange",
+    "family": "Maiden Orange",
+    "category": "book",
+    "googleQuery": "Maiden+Orange:wght@400",
+    "stack": "'Maiden Orange', serif"
+  },
+  {
+    "slug": "maitree",
+    "family": "Maitree",
+    "category": "book",
+    "googleQuery": "Maitree:wght@400",
+    "stack": "'Maitree', serif"
+  },
+  {
+    "slug": "maname",
+    "family": "Maname",
+    "category": "book",
+    "googleQuery": "Maname:wght@400",
+    "stack": "'Maname', serif"
+  },
+  {
+    "slug": "manuale",
+    "family": "Manuale",
+    "category": "book",
+    "googleQuery": "Manuale:wght@400",
+    "stack": "'Manuale', serif"
+  },
+  {
+    "slug": "marcellus",
+    "family": "Marcellus",
+    "category": "book",
+    "googleQuery": "Marcellus:wght@400",
+    "stack": "'Marcellus', serif"
+  },
+  {
+    "slug": "marcellus-sc",
+    "family": "Marcellus SC",
+    "category": "book",
+    "googleQuery": "Marcellus+SC:wght@400",
+    "stack": "'Marcellus SC', serif"
+  },
+  {
+    "slug": "markazi-text",
+    "family": "Markazi Text",
+    "category": "book",
+    "googleQuery": "Markazi+Text:wght@400",
+    "stack": "'Markazi Text', serif"
+  },
+  {
+    "slug": "marko-one",
+    "family": "Marko One",
+    "category": "book",
+    "googleQuery": "Marko+One:wght@400",
+    "stack": "'Marko One', serif"
+  },
+  {
+    "slug": "martel",
+    "family": "Martel",
+    "category": "book",
+    "googleQuery": "Martel:wght@400",
+    "stack": "'Martel', serif"
+  },
+  {
+    "slug": "mate",
+    "family": "Mate",
+    "category": "book",
+    "googleQuery": "Mate:wght@400",
+    "stack": "'Mate', serif"
+  },
+  {
+    "slug": "mate-sc",
+    "family": "Mate SC",
+    "category": "book",
+    "googleQuery": "Mate+SC:wght@400",
+    "stack": "'Mate SC', serif"
+  },
+  {
+    "slug": "merriweather",
+    "family": "Merriweather",
+    "category": "book",
+    "googleQuery": "Merriweather:wght@400",
+    "stack": "'Merriweather', serif"
+  },
+  {
+    "slug": "mirza",
+    "family": "Mirza",
+    "category": "book",
+    "googleQuery": "Mirza:wght@400",
+    "stack": "'Mirza', serif"
+  },
+  {
+    "slug": "montaga",
+    "family": "Montaga",
+    "category": "book",
+    "googleQuery": "Montaga:wght@400",
+    "stack": "'Montaga', serif"
+  },
+  {
+    "slug": "montagu-slab",
+    "family": "Montagu Slab",
+    "category": "book",
+    "googleQuery": "Montagu+Slab:wght@400",
+    "stack": "'Montagu Slab', serif"
+  },
+  {
+    "slug": "namdhinggo",
+    "family": "Namdhinggo",
+    "category": "book",
+    "googleQuery": "Namdhinggo:wght@400",
+    "stack": "'Namdhinggo', serif"
+  },
+  {
+    "slug": "nanum-myeongjo",
+    "family": "Nanum Myeongjo",
+    "category": "book",
+    "googleQuery": "Nanum+Myeongjo:wght@400",
+    "stack": "'Nanum Myeongjo', serif"
+  },
+  {
+    "slug": "neuton",
+    "family": "Neuton",
+    "category": "book",
+    "googleQuery": "Neuton:wght@400",
+    "stack": "'Neuton', serif"
+  },
+  {
+    "slug": "new-tegomin",
+    "family": "New Tegomin",
+    "category": "book",
+    "googleQuery": "New+Tegomin:wght@400",
+    "stack": "'New Tegomin', serif"
+  },
+  {
+    "slug": "newsreader",
+    "family": "Newsreader",
+    "category": "book",
+    "googleQuery": "Newsreader:wght@400",
+    "stack": "'Newsreader', serif"
+  },
+  {
+    "slug": "noticia-text",
+    "family": "Noticia Text",
+    "category": "book",
+    "googleQuery": "Noticia+Text:wght@400",
+    "stack": "'Noticia Text', serif"
+  },
+  {
+    "slug": "noto-naskh-arabic",
+    "family": "Noto Naskh Arabic",
+    "category": "book",
+    "googleQuery": "Noto+Naskh+Arabic:wght@400",
+    "stack": "'Noto Naskh Arabic', serif"
+  },
+  {
+    "slug": "noto-nastaliq-urdu",
+    "family": "Noto Nastaliq Urdu",
+    "category": "book",
+    "googleQuery": "Noto+Nastaliq+Urdu:wght@400",
+    "stack": "'Noto Nastaliq Urdu', serif"
+  },
+  {
+    "slug": "noto-rashi-hebrew",
+    "family": "Noto Rashi Hebrew",
+    "category": "book",
+    "googleQuery": "Noto+Rashi+Hebrew:wght@400",
+    "stack": "'Noto Rashi Hebrew', serif"
+  },
+  {
+    "slug": "noto-serif",
+    "family": "Noto Serif",
+    "category": "book",
+    "googleQuery": "Noto+Serif:wght@400",
+    "stack": "'Noto Serif', serif"
+  },
+  {
+    "slug": "noto-serif-ahom",
+    "family": "Noto Serif Ahom",
+    "category": "book",
+    "googleQuery": "Noto+Serif+Ahom:wght@400",
+    "stack": "'Noto Serif Ahom', serif"
+  },
+  {
+    "slug": "noto-serif-armenian",
+    "family": "Noto Serif Armenian",
+    "category": "book",
+    "googleQuery": "Noto+Serif+Armenian:wght@400",
+    "stack": "'Noto Serif Armenian', serif"
+  },
+  {
+    "slug": "noto-serif-balinese",
+    "family": "Noto Serif Balinese",
+    "category": "book",
+    "googleQuery": "Noto+Serif+Balinese:wght@400",
+    "stack": "'Noto Serif Balinese', serif"
+  },
+  {
+    "slug": "noto-serif-bengali",
+    "family": "Noto Serif Bengali",
+    "category": "book",
+    "googleQuery": "Noto+Serif+Bengali:wght@400",
+    "stack": "'Noto Serif Bengali', serif"
+  },
+  {
+    "slug": "noto-serif-devanagari",
+    "family": "Noto Serif Devanagari",
+    "category": "book",
+    "googleQuery": "Noto+Serif+Devanagari:wght@400",
+    "stack": "'Noto Serif Devanagari', serif"
+  },
+  {
+    "slug": "noto-serif-display",
+    "family": "Noto Serif Display",
+    "category": "book",
+    "googleQuery": "Noto+Serif+Display:wght@400",
+    "stack": "'Noto Serif Display', serif"
+  },
+  {
+    "slug": "noto-serif-dives-akuru",
+    "family": "Noto Serif Dives Akuru",
+    "category": "book",
+    "googleQuery": "Noto+Serif+Dives+Akuru:wght@400",
+    "stack": "'Noto Serif Dives Akuru', serif"
+  },
+  {
+    "slug": "noto-serif-dogra",
+    "family": "Noto Serif Dogra",
+    "category": "book",
+    "googleQuery": "Noto+Serif+Dogra:wght@400",
+    "stack": "'Noto Serif Dogra', serif"
+  }
+]

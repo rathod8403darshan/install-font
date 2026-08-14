@@ -1,0 +1,1402 @@
+[
+  {
+    "slug": "audiowide",
+    "family": "Audiowide",
+    "category": "game",
+    "googleQuery": "Audiowide:wght@400",
+    "stack": "'Audiowide', system-ui"
+  },
+  {
+    "slug": "black-ops-one",
+    "family": "Black Ops One",
+    "category": "game",
+    "googleQuery": "Black+Ops+One:wght@400",
+    "stack": "'Black Ops One', system-ui"
+  },
+  {
+    "slug": "bungee",
+    "family": "Bungee",
+    "category": "game",
+    "googleQuery": "Bungee:wght@400",
+    "stack": "'Bungee', system-ui"
+  },
+  {
+    "slug": "bungee-hairline",
+    "family": "Bungee Hairline",
+    "category": "game",
+    "googleQuery": "Bungee+Hairline:wght@400",
+    "stack": "'Bungee Hairline', system-ui"
+  },
+  {
+    "slug": "bungee-inline",
+    "family": "Bungee Inline",
+    "category": "game",
+    "googleQuery": "Bungee+Inline:wght@400",
+    "stack": "'Bungee Inline', system-ui"
+  },
+  {
+    "slug": "bungee-outline",
+    "family": "Bungee Outline",
+    "category": "game",
+    "googleQuery": "Bungee+Outline:wght@400",
+    "stack": "'Bungee Outline', system-ui"
+  },
+  {
+    "slug": "bungee-shade",
+    "family": "Bungee Shade",
+    "category": "game",
+    "googleQuery": "Bungee+Shade:wght@400",
+    "stack": "'Bungee Shade', system-ui"
+  },
+  {
+    "slug": "bungee-spice",
+    "family": "Bungee Spice",
+    "category": "game",
+    "googleQuery": "Bungee+Spice:wght@400",
+    "stack": "'Bungee Spice', system-ui"
+  },
+  {
+    "slug": "bungee-tint",
+    "family": "Bungee Tint",
+    "category": "game",
+    "googleQuery": "Bungee+Tint:wght@400",
+    "stack": "'Bungee Tint', system-ui"
+  },
+  {
+    "slug": "coral-pixels",
+    "family": "Coral Pixels",
+    "category": "game",
+    "googleQuery": "Coral+Pixels:wght@400",
+    "stack": "'Coral Pixels', system-ui"
+  },
+  {
+    "slug": "cutive-mono",
+    "family": "Cutive Mono",
+    "category": "game",
+    "googleQuery": "Cutive+Mono:wght@400",
+    "stack": "'Cutive Mono', system-ui"
+  },
+  {
+    "slug": "faster-one",
+    "family": "Faster One",
+    "category": "game",
+    "googleQuery": "Faster+One:wght@400",
+    "stack": "'Faster One', system-ui"
+  },
+  {
+    "slug": "geo",
+    "family": "Geo",
+    "category": "game",
+    "googleQuery": "Geo:wght@400",
+    "stack": "'Geo', system-ui"
+  },
+  {
+    "slug": "geologica",
+    "family": "Geologica",
+    "category": "game",
+    "googleQuery": "Geologica:wght@400",
+    "stack": "'Geologica', system-ui"
+  },
+  {
+    "slug": "geom",
+    "family": "Geom",
+    "category": "game",
+    "googleQuery": "Geom:wght@400",
+    "stack": "'Geom', system-ui"
+  },
+  {
+    "slug": "georama",
+    "family": "Georama",
+    "category": "game",
+    "googleQuery": "Georama:wght@400",
+    "stack": "'Georama', system-ui"
+  },
+  {
+    "slug": "geostar",
+    "family": "Geostar",
+    "category": "game",
+    "googleQuery": "Geostar:wght@400",
+    "stack": "'Geostar', system-ui"
+  },
+  {
+    "slug": "geostar-fill",
+    "family": "Geostar Fill",
+    "category": "game",
+    "googleQuery": "Geostar+Fill:wght@400",
+    "stack": "'Geostar Fill', system-ui"
+  },
+  {
+    "slug": "honk",
+    "family": "Honk",
+    "category": "game",
+    "googleQuery": "Honk:wght@400",
+    "stack": "'Honk', system-ui"
+  },
+  {
+    "slug": "jersey-10",
+    "family": "Jersey 10",
+    "category": "game",
+    "googleQuery": "Jersey+10:wght@400",
+    "stack": "'Jersey 10', system-ui"
+  },
+  {
+    "slug": "jersey-10-charted",
+    "family": "Jersey 10 Charted",
+    "category": "game",
+    "googleQuery": "Jersey+10+Charted:wght@400",
+    "stack": "'Jersey 10 Charted', system-ui"
+  },
+  {
+    "slug": "jersey-15",
+    "family": "Jersey 15",
+    "category": "game",
+    "googleQuery": "Jersey+15:wght@400",
+    "stack": "'Jersey 15', system-ui"
+  },
+  {
+    "slug": "jersey-15-charted",
+    "family": "Jersey 15 Charted",
+    "category": "game",
+    "googleQuery": "Jersey+15+Charted:wght@400",
+    "stack": "'Jersey 15 Charted', system-ui"
+  },
+  {
+    "slug": "jersey-20",
+    "family": "Jersey 20",
+    "category": "game",
+    "googleQuery": "Jersey+20:wght@400",
+    "stack": "'Jersey 20', system-ui"
+  },
+  {
+    "slug": "jersey-20-charted",
+    "family": "Jersey 20 Charted",
+    "category": "game",
+    "googleQuery": "Jersey+20+Charted:wght@400",
+    "stack": "'Jersey 20 Charted', system-ui"
+  },
+  {
+    "slug": "jersey-25",
+    "family": "Jersey 25",
+    "category": "game",
+    "googleQuery": "Jersey+25:wght@400",
+    "stack": "'Jersey 25', system-ui"
+  },
+  {
+    "slug": "jersey-25-charted",
+    "family": "Jersey 25 Charted",
+    "category": "game",
+    "googleQuery": "Jersey+25+Charted:wght@400",
+    "stack": "'Jersey 25 Charted', system-ui"
+  },
+  {
+    "slug": "joti-one",
+    "family": "Joti One",
+    "category": "game",
+    "googleQuery": "Joti+One:wght@400",
+    "stack": "'Joti One', system-ui"
+  },
+  {
+    "slug": "kode-mono",
+    "family": "Kode Mono",
+    "category": "game",
+    "googleQuery": "Kode+Mono:wght@400",
+    "stack": "'Kode Mono', system-ui"
+  },
+  {
+    "slug": "major-mono-display",
+    "family": "Major Mono Display",
+    "category": "game",
+    "googleQuery": "Major+Mono+Display:wght@400",
+    "stack": "'Major Mono Display', system-ui"
+  },
+  {
+    "slug": "monoton",
+    "family": "Monoton",
+    "category": "game",
+    "googleQuery": "Monoton:wght@400",
+    "stack": "'Monoton', system-ui"
+  },
+  {
+    "slug": "nabla",
+    "family": "Nabla",
+    "category": "game",
+    "googleQuery": "Nabla:wght@400",
+    "stack": "'Nabla', system-ui"
+  },
+  {
+    "slug": "noto-sans-georgian",
+    "family": "Noto Sans Georgian",
+    "category": "game",
+    "googleQuery": "Noto+Sans+Georgian:wght@400",
+    "stack": "'Noto Sans Georgian', system-ui"
+  },
+  {
+    "slug": "noto-serif-georgian",
+    "family": "Noto Serif Georgian",
+    "category": "game",
+    "googleQuery": "Noto+Serif+Georgian:wght@400",
+    "stack": "'Noto Serif Georgian', system-ui"
+  },
+  {
+    "slug": "orbitron",
+    "family": "Orbitron",
+    "category": "game",
+    "googleQuery": "Orbitron:wght@400",
+    "stack": "'Orbitron', system-ui"
+  },
+  {
+    "slug": "pixelify-sans",
+    "family": "Pixelify Sans",
+    "category": "game",
+    "googleQuery": "Pixelify+Sans:wght@400",
+    "stack": "'Pixelify Sans', system-ui"
+  },
+  {
+    "slug": "press-start-2p",
+    "family": "Press Start 2P",
+    "category": "game",
+    "googleQuery": "Press+Start+2P:wght@400",
+    "stack": "'Press Start 2P', system-ui"
+  },
+  {
+    "slug": "rubik-beastly",
+    "family": "Rubik Beastly",
+    "category": "game",
+    "googleQuery": "Rubik+Beastly:wght@400",
+    "stack": "'Rubik Beastly', system-ui"
+  },
+  {
+    "slug": "rubik-broken-fax",
+    "family": "Rubik Broken Fax",
+    "category": "game",
+    "googleQuery": "Rubik+Broken+Fax:wght@400",
+    "stack": "'Rubik Broken Fax', system-ui"
+  },
+  {
+    "slug": "rubik-bubbles",
+    "family": "Rubik Bubbles",
+    "category": "game",
+    "googleQuery": "Rubik+Bubbles:wght@400",
+    "stack": "'Rubik Bubbles', system-ui"
+  },
+  {
+    "slug": "rubik-glitch",
+    "family": "Rubik Glitch",
+    "category": "game",
+    "googleQuery": "Rubik+Glitch:wght@400",
+    "stack": "'Rubik Glitch', system-ui"
+  },
+  {
+    "slug": "rubik-glitch-pop",
+    "family": "Rubik Glitch Pop",
+    "category": "game",
+    "googleQuery": "Rubik+Glitch+Pop:wght@400",
+    "stack": "'Rubik Glitch Pop', system-ui"
+  },
+  {
+    "slug": "rubik-lines",
+    "family": "Rubik Lines",
+    "category": "game",
+    "googleQuery": "Rubik+Lines:wght@400",
+    "stack": "'Rubik Lines', system-ui"
+  },
+  {
+    "slug": "rubik-microbe",
+    "family": "Rubik Microbe",
+    "category": "game",
+    "googleQuery": "Rubik+Microbe:wght@400",
+    "stack": "'Rubik Microbe', system-ui"
+  },
+  {
+    "slug": "rubik-moonrocks",
+    "family": "Rubik Moonrocks",
+    "category": "game",
+    "googleQuery": "Rubik+Moonrocks:wght@400",
+    "stack": "'Rubik Moonrocks', system-ui"
+  },
+  {
+    "slug": "rubik-pixels",
+    "family": "Rubik Pixels",
+    "category": "game",
+    "googleQuery": "Rubik+Pixels:wght@400",
+    "stack": "'Rubik Pixels', system-ui"
+  },
+  {
+    "slug": "rubik-puddles",
+    "family": "Rubik Puddles",
+    "category": "game",
+    "googleQuery": "Rubik+Puddles:wght@400",
+    "stack": "'Rubik Puddles', system-ui"
+  },
+  {
+    "slug": "rubik-scribble",
+    "family": "Rubik Scribble",
+    "category": "game",
+    "googleQuery": "Rubik+Scribble:wght@400",
+    "stack": "'Rubik Scribble', system-ui"
+  },
+  {
+    "slug": "rubik-spray-paint",
+    "family": "Rubik Spray Paint",
+    "category": "game",
+    "googleQuery": "Rubik+Spray+Paint:wght@400",
+    "stack": "'Rubik Spray Paint', system-ui"
+  },
+  {
+    "slug": "rubik-storm",
+    "family": "Rubik Storm",
+    "category": "game",
+    "googleQuery": "Rubik+Storm:wght@400",
+    "stack": "'Rubik Storm', system-ui"
+  },
+  {
+    "slug": "rubik-vinyl",
+    "family": "Rubik Vinyl",
+    "category": "game",
+    "googleQuery": "Rubik+Vinyl:wght@400",
+    "stack": "'Rubik Vinyl', system-ui"
+  },
+  {
+    "slug": "rubik-wet-paint",
+    "family": "Rubik Wet Paint",
+    "category": "game",
+    "googleQuery": "Rubik+Wet+Paint:wght@400",
+    "stack": "'Rubik Wet Paint', system-ui"
+  },
+  {
+    "slug": "share-tech-mono",
+    "family": "Share Tech Mono",
+    "category": "game",
+    "googleQuery": "Share+Tech+Mono:wght@400",
+    "stack": "'Share Tech Mono', system-ui"
+  },
+  {
+    "slug": "silkscreen",
+    "family": "Silkscreen",
+    "category": "game",
+    "googleQuery": "Silkscreen:wght@400",
+    "stack": "'Silkscreen', system-ui"
+  },
+  {
+    "slug": "sixtyfour",
+    "family": "Sixtyfour",
+    "category": "game",
+    "googleQuery": "Sixtyfour:wght@400",
+    "stack": "'Sixtyfour', system-ui"
+  },
+  {
+    "slug": "sixtyfour-convergence",
+    "family": "Sixtyfour Convergence",
+    "category": "game",
+    "googleQuery": "Sixtyfour+Convergence:wght@400",
+    "stack": "'Sixtyfour Convergence', system-ui"
+  },
+  {
+    "slug": "special-elite",
+    "family": "Special Elite",
+    "category": "game",
+    "googleQuery": "Special+Elite:wght@400",
+    "stack": "'Special Elite', system-ui"
+  },
+  {
+    "slug": "tourney",
+    "family": "Tourney",
+    "category": "game",
+    "googleQuery": "Tourney:wght@400",
+    "stack": "'Tourney', system-ui"
+  },
+  {
+    "slug": "vt323",
+    "family": "VT323",
+    "category": "game",
+    "googleQuery": "VT323:wght@400",
+    "stack": "'VT323', system-ui"
+  },
+  {
+    "slug": "wallpoet",
+    "family": "Wallpoet",
+    "category": "game",
+    "googleQuery": "Wallpoet:wght@400",
+    "stack": "'Wallpoet', system-ui"
+  },
+  {
+    "slug": "workbench",
+    "family": "Workbench",
+    "category": "game",
+    "googleQuery": "Workbench:wght@400",
+    "stack": "'Workbench', system-ui"
+  },
+  {
+    "slug": "anonymous-pro",
+    "family": "Anonymous Pro",
+    "category": "game",
+    "googleQuery": "Anonymous+Pro:wght@400",
+    "stack": "'Anonymous Pro', system-ui"
+  },
+  {
+    "slug": "azeret-mono",
+    "family": "Azeret Mono",
+    "category": "game",
+    "googleQuery": "Azeret+Mono:wght@400",
+    "stack": "'Azeret Mono', system-ui"
+  },
+  {
+    "slug": "b612-mono",
+    "family": "B612 Mono",
+    "category": "game",
+    "googleQuery": "B612+Mono:wght@400",
+    "stack": "'B612 Mono', system-ui"
+  },
+  {
+    "slug": "courier-prime",
+    "family": "Courier Prime",
+    "category": "game",
+    "googleQuery": "Courier+Prime:wght@400",
+    "stack": "'Courier Prime', system-ui"
+  },
+  {
+    "slug": "cousine",
+    "family": "Cousine",
+    "category": "game",
+    "googleQuery": "Cousine:wght@400",
+    "stack": "'Cousine', system-ui"
+  },
+  {
+    "slug": "dm-mono",
+    "family": "DM Mono",
+    "category": "game",
+    "googleQuery": "DM+Mono:wght@400",
+    "stack": "'DM Mono', system-ui"
+  },
+  {
+    "slug": "datatype",
+    "family": "Datatype",
+    "category": "game",
+    "googleQuery": "Datatype:wght@400",
+    "stack": "'Datatype', system-ui"
+  },
+  {
+    "slug": "fira-code",
+    "family": "Fira Code",
+    "category": "game",
+    "googleQuery": "Fira+Code:wght@400",
+    "stack": "'Fira Code', system-ui"
+  },
+  {
+    "slug": "fira-mono",
+    "family": "Fira Mono",
+    "category": "game",
+    "googleQuery": "Fira+Mono:wght@400",
+    "stack": "'Fira Mono', system-ui"
+  },
+  {
+    "slug": "fragment-mono",
+    "family": "Fragment Mono",
+    "category": "game",
+    "googleQuery": "Fragment+Mono:wght@400",
+    "stack": "'Fragment Mono', system-ui"
+  },
+  {
+    "slug": "google-sans-code",
+    "family": "Google Sans Code",
+    "category": "game",
+    "googleQuery": "Google+Sans+Code:wght@400",
+    "stack": "'Google Sans Code', system-ui"
+  },
+  {
+    "slug": "ibm-plex-mono",
+    "family": "IBM Plex Mono",
+    "category": "game",
+    "googleQuery": "IBM+Plex+Mono:wght@400",
+    "stack": "'IBM Plex Mono', system-ui"
+  },
+  {
+    "slug": "inconsolata",
+    "family": "Inconsolata",
+    "category": "game",
+    "googleQuery": "Inconsolata:wght@400",
+    "stack": "'Inconsolata', system-ui"
+  },
+  {
+    "slug": "intel-one-mono",
+    "family": "Intel One Mono",
+    "category": "game",
+    "googleQuery": "Intel+One+Mono:wght@400",
+    "stack": "'Intel One Mono', system-ui"
+  },
+  {
+    "slug": "iosevka-charon",
+    "family": "Iosevka Charon",
+    "category": "game",
+    "googleQuery": "Iosevka+Charon:wght@400",
+    "stack": "'Iosevka Charon', system-ui"
+  },
+  {
+    "slug": "iosevka-charon-mono",
+    "family": "Iosevka Charon Mono",
+    "category": "game",
+    "googleQuery": "Iosevka+Charon+Mono:wght@400",
+    "stack": "'Iosevka Charon Mono', system-ui"
+  },
+  {
+    "slug": "jetbrains-mono",
+    "family": "JetBrains Mono",
+    "category": "game",
+    "googleQuery": "JetBrains+Mono:wght@400",
+    "stack": "'JetBrains Mono', system-ui"
+  },
+  {
+    "slug": "lxgw-wenkai-mono-tc",
+    "family": "LXGW WenKai Mono TC",
+    "category": "game",
+    "googleQuery": "LXGW+WenKai+Mono+TC:wght@400",
+    "stack": "'LXGW WenKai Mono TC', system-ui"
+  },
+  {
+    "slug": "lekton",
+    "family": "Lekton",
+    "category": "game",
+    "googleQuery": "Lekton:wght@400",
+    "stack": "'Lekton', system-ui"
+  },
+  {
+    "slug": "libertinus-mono",
+    "family": "Libertinus Mono",
+    "category": "game",
+    "googleQuery": "Libertinus+Mono:wght@400",
+    "stack": "'Libertinus Mono', system-ui"
+  },
+  {
+    "slug": "lilex",
+    "family": "Lilex",
+    "category": "game",
+    "googleQuery": "Lilex:wght@400",
+    "stack": "'Lilex', system-ui"
+  },
+  {
+    "slug": "m-plus-1-code",
+    "family": "M PLUS 1 Code",
+    "category": "game",
+    "googleQuery": "M+PLUS+1+Code:wght@400",
+    "stack": "'M PLUS 1 Code', system-ui"
+  },
+  {
+    "slug": "martian-mono",
+    "family": "Martian Mono",
+    "category": "game",
+    "googleQuery": "Martian+Mono:wght@400",
+    "stack": "'Martian Mono', system-ui"
+  },
+  {
+    "slug": "monofett",
+    "family": "Monofett",
+    "category": "game",
+    "googleQuery": "Monofett:wght@400",
+    "stack": "'Monofett', system-ui"
+  },
+  {
+    "slug": "nova-mono",
+    "family": "Nova Mono",
+    "category": "game",
+    "googleQuery": "Nova+Mono:wght@400",
+    "stack": "'Nova Mono', system-ui"
+  },
+  {
+    "slug": "overpass-mono",
+    "family": "Overpass Mono",
+    "category": "game",
+    "googleQuery": "Overpass+Mono:wght@400",
+    "stack": "'Overpass Mono', system-ui"
+  },
+  {
+    "slug": "oxygen-mono",
+    "family": "Oxygen Mono",
+    "category": "game",
+    "googleQuery": "Oxygen+Mono:wght@400",
+    "stack": "'Oxygen Mono', system-ui"
+  },
+  {
+    "slug": "pt-mono",
+    "family": "PT Mono",
+    "category": "game",
+    "googleQuery": "PT+Mono:wght@400",
+    "stack": "'PT Mono', system-ui"
+  },
+  {
+    "slug": "reddit-mono",
+    "family": "Reddit Mono",
+    "category": "game",
+    "googleQuery": "Reddit+Mono:wght@400",
+    "stack": "'Reddit Mono', system-ui"
+  },
+  {
+    "slug": "roboto-mono",
+    "family": "Roboto Mono",
+    "category": "game",
+    "googleQuery": "Roboto+Mono:wght@400",
+    "stack": "'Roboto Mono', system-ui"
+  },
+  {
+    "slug": "sometype-mono",
+    "family": "Sometype Mono",
+    "category": "game",
+    "googleQuery": "Sometype+Mono:wght@400",
+    "stack": "'Sometype Mono', system-ui"
+  },
+  {
+    "slug": "source-code-pro",
+    "family": "Source Code Pro",
+    "category": "game",
+    "googleQuery": "Source+Code+Pro:wght@400",
+    "stack": "'Source Code Pro', system-ui"
+  },
+  {
+    "slug": "space-mono",
+    "family": "Space Mono",
+    "category": "game",
+    "googleQuery": "Space+Mono:wght@400",
+    "stack": "'Space Mono', system-ui"
+  },
+  {
+    "slug": "spline-sans-mono",
+    "family": "Spline Sans Mono",
+    "category": "game",
+    "googleQuery": "Spline+Sans+Mono:wght@400",
+    "stack": "'Spline Sans Mono', system-ui"
+  },
+  {
+    "slug": "syne-mono",
+    "family": "Syne Mono",
+    "category": "game",
+    "googleQuery": "Syne+Mono:wght@400",
+    "stack": "'Syne Mono', system-ui"
+  },
+  {
+    "slug": "ubuntu-mono",
+    "family": "Ubuntu Mono",
+    "category": "game",
+    "googleQuery": "Ubuntu+Mono:wght@400",
+    "stack": "'Ubuntu Mono', system-ui"
+  },
+  {
+    "slug": "ubuntu-sans-mono",
+    "family": "Ubuntu Sans Mono",
+    "category": "game",
+    "googleQuery": "Ubuntu+Sans+Mono:wght@400",
+    "stack": "'Ubuntu Sans Mono', system-ui"
+  },
+  {
+    "slug": "victor-mono",
+    "family": "Victor Mono",
+    "category": "game",
+    "googleQuery": "Victor+Mono:wght@400",
+    "stack": "'Victor Mono', system-ui"
+  },
+  {
+    "slug": "xanh-mono",
+    "family": "Xanh Mono",
+    "category": "game",
+    "googleQuery": "Xanh+Mono:wght@400",
+    "stack": "'Xanh Mono', system-ui"
+  },
+  {
+    "slug": "griffy",
+    "family": "Griffy",
+    "category": "game",
+    "googleQuery": "Griffy:wght@400",
+    "stack": "'Griffy', system-ui"
+  },
+  {
+    "slug": "gugi",
+    "family": "Gugi",
+    "category": "game",
+    "googleQuery": "Gugi:wght@400",
+    "stack": "'Gugi', system-ui"
+  },
+  {
+    "slug": "hanalei",
+    "family": "Hanalei",
+    "category": "game",
+    "googleQuery": "Hanalei:wght@400",
+    "stack": "'Hanalei', system-ui"
+  },
+  {
+    "slug": "hanalei-fill",
+    "family": "Hanalei Fill",
+    "category": "game",
+    "googleQuery": "Hanalei+Fill:wght@400",
+    "stack": "'Hanalei Fill', system-ui"
+  },
+  {
+    "slug": "handjet",
+    "family": "Handjet",
+    "category": "game",
+    "googleQuery": "Handjet:wght@400",
+    "stack": "'Handjet', system-ui"
+  },
+  {
+    "slug": "happy-monkey",
+    "family": "Happy Monkey",
+    "category": "game",
+    "googleQuery": "Happy+Monkey:wght@400",
+    "stack": "'Happy Monkey', system-ui"
+  },
+  {
+    "slug": "henny-penny",
+    "family": "Henny Penny",
+    "category": "game",
+    "googleQuery": "Henny+Penny:wght@400",
+    "stack": "'Henny Penny', system-ui"
+  },
+  {
+    "slug": "iceberg",
+    "family": "Iceberg",
+    "category": "game",
+    "googleQuery": "Iceberg:wght@400",
+    "stack": "'Iceberg', system-ui"
+  },
+  {
+    "slug": "iceland",
+    "family": "Iceland",
+    "category": "game",
+    "googleQuery": "Iceland:wght@400",
+    "stack": "'Iceland', system-ui"
+  },
+  {
+    "slug": "irish-grover",
+    "family": "Irish Grover",
+    "category": "game",
+    "googleQuery": "Irish+Grover:wght@400",
+    "stack": "'Irish Grover', system-ui"
+  },
+  {
+    "slug": "jacquard-12",
+    "family": "Jacquard 12",
+    "category": "game",
+    "googleQuery": "Jacquard+12:wght@400",
+    "stack": "'Jacquard 12', system-ui"
+  },
+  {
+    "slug": "jacquard-12-charted",
+    "family": "Jacquard 12 Charted",
+    "category": "game",
+    "googleQuery": "Jacquard+12+Charted:wght@400",
+    "stack": "'Jacquard 12 Charted', system-ui"
+  },
+  {
+    "slug": "jacquard-24",
+    "family": "Jacquard 24",
+    "category": "game",
+    "googleQuery": "Jacquard+24:wght@400",
+    "stack": "'Jacquard 24', system-ui"
+  },
+  {
+    "slug": "jacquard-24-charted",
+    "family": "Jacquard 24 Charted",
+    "category": "game",
+    "googleQuery": "Jacquard+24+Charted:wght@400",
+    "stack": "'Jacquard 24 Charted', system-ui"
+  },
+  {
+    "slug": "jacquarda-bastarda-9",
+    "family": "Jacquarda Bastarda 9",
+    "category": "game",
+    "googleQuery": "Jacquarda+Bastarda+9:wght@400",
+    "stack": "'Jacquarda Bastarda 9', system-ui"
+  },
+  {
+    "slug": "jacquarda-bastarda-9-charted",
+    "family": "Jacquarda Bastarda 9 Charted",
+    "category": "game",
+    "googleQuery": "Jacquarda+Bastarda+9+Charted:wght@400",
+    "stack": "'Jacquarda Bastarda 9 Charted', system-ui"
+  },
+  {
+    "slug": "jacques-francois-shadow",
+    "family": "Jacques Francois Shadow",
+    "category": "game",
+    "googleQuery": "Jacques+Francois+Shadow:wght@400",
+    "stack": "'Jacques Francois Shadow', system-ui"
+  },
+  {
+    "slug": "jaini",
+    "family": "Jaini",
+    "category": "game",
+    "googleQuery": "Jaini:wght@400",
+    "stack": "'Jaini', system-ui"
+  },
+  {
+    "slug": "jaini-purva",
+    "family": "Jaini Purva",
+    "category": "game",
+    "googleQuery": "Jaini+Purva:wght@400",
+    "stack": "'Jaini Purva', system-ui"
+  },
+  {
+    "slug": "jomhuria",
+    "family": "Jomhuria",
+    "category": "game",
+    "googleQuery": "Jomhuria:wght@400",
+    "stack": "'Jomhuria', system-ui"
+  },
+  {
+    "slug": "kablammo",
+    "family": "Kablammo",
+    "category": "game",
+    "googleQuery": "Kablammo:wght@400",
+    "stack": "'Kablammo', system-ui"
+  },
+  {
+    "slug": "kalnia-glaze",
+    "family": "Kalnia Glaze",
+    "category": "game",
+    "googleQuery": "Kalnia+Glaze:wght@400",
+    "stack": "'Kalnia Glaze', system-ui"
+  },
+  {
+    "slug": "karantina",
+    "family": "Karantina",
+    "category": "game",
+    "googleQuery": "Karantina:wght@400",
+    "stack": "'Karantina', system-ui"
+  },
+  {
+    "slug": "katibeh",
+    "family": "Katibeh",
+    "category": "game",
+    "googleQuery": "Katibeh:wght@400",
+    "stack": "'Katibeh', system-ui"
+  },
+  {
+    "slug": "kavoon",
+    "family": "Kavoon",
+    "category": "game",
+    "googleQuery": "Kavoon:wght@400",
+    "stack": "'Kavoon', system-ui"
+  },
+  {
+    "slug": "keania-one",
+    "family": "Keania One",
+    "category": "game",
+    "googleQuery": "Keania+One:wght@400",
+    "stack": "'Keania One', system-ui"
+  },
+  {
+    "slug": "kelly-slab",
+    "family": "Kelly Slab",
+    "category": "game",
+    "googleQuery": "Kelly+Slab:wght@400",
+    "stack": "'Kelly Slab', system-ui"
+  },
+  {
+    "slug": "kenia",
+    "family": "Kenia",
+    "category": "game",
+    "googleQuery": "Kenia:wght@400",
+    "stack": "'Kenia', system-ui"
+  },
+  {
+    "slug": "kirang-haerang",
+    "family": "Kirang Haerang",
+    "category": "game",
+    "googleQuery": "Kirang+Haerang:wght@400",
+    "stack": "'Kirang Haerang', system-ui"
+  },
+  {
+    "slug": "knewave",
+    "family": "Knewave",
+    "category": "game",
+    "googleQuery": "Knewave:wght@400",
+    "stack": "'Knewave', system-ui"
+  },
+  {
+    "slug": "konkhmer-sleokchher",
+    "family": "Konkhmer Sleokchher",
+    "category": "game",
+    "googleQuery": "Konkhmer+Sleokchher:wght@400",
+    "stack": "'Konkhmer Sleokchher', system-ui"
+  },
+  {
+    "slug": "koulen",
+    "family": "Koulen",
+    "category": "game",
+    "googleQuery": "Koulen:wght@400",
+    "stack": "'Koulen', system-ui"
+  },
+  {
+    "slug": "kranky",
+    "family": "Kranky",
+    "category": "game",
+    "googleQuery": "Kranky:wght@400",
+    "stack": "'Kranky', system-ui"
+  },
+  {
+    "slug": "kumar-one",
+    "family": "Kumar One",
+    "category": "game",
+    "googleQuery": "Kumar+One:wght@400",
+    "stack": "'Kumar One', system-ui"
+  },
+  {
+    "slug": "kumar-one-outline",
+    "family": "Kumar One Outline",
+    "category": "game",
+    "googleQuery": "Kumar+One+Outline:wght@400",
+    "stack": "'Kumar One Outline', system-ui"
+  },
+  {
+    "slug": "lacquer",
+    "family": "Lacquer",
+    "category": "game",
+    "googleQuery": "Lacquer:wght@400",
+    "stack": "'Lacquer', system-ui"
+  },
+  {
+    "slug": "lancelot",
+    "family": "Lancelot",
+    "category": "game",
+    "googleQuery": "Lancelot:wght@400",
+    "stack": "'Lancelot', system-ui"
+  },
+  {
+    "slug": "langar",
+    "family": "Langar",
+    "category": "game",
+    "googleQuery": "Langar:wght@400",
+    "stack": "'Langar', system-ui"
+  },
+  {
+    "slug": "lemon",
+    "family": "Lemon",
+    "category": "game",
+    "googleQuery": "Lemon:wght@400",
+    "stack": "'Lemon', system-ui"
+  },
+  {
+    "slug": "lemonada",
+    "family": "Lemonada",
+    "category": "game",
+    "googleQuery": "Lemonada:wght@400",
+    "stack": "'Lemonada', system-ui"
+  },
+  {
+    "slug": "libertinus-keyboard",
+    "family": "Libertinus Keyboard",
+    "category": "game",
+    "googleQuery": "Libertinus+Keyboard:wght@400",
+    "stack": "'Libertinus Keyboard', system-ui"
+  },
+  {
+    "slug": "libertinus-math",
+    "family": "Libertinus Math",
+    "category": "game",
+    "googleQuery": "Libertinus+Math:wght@400",
+    "stack": "'Libertinus Math', system-ui"
+  },
+  {
+    "slug": "libertinus-serif-display",
+    "family": "Libertinus Serif Display",
+    "category": "game",
+    "googleQuery": "Libertinus+Serif+Display:wght@400",
+    "stack": "'Libertinus Serif Display', system-ui"
+  },
+  {
+    "slug": "libre-barcode-128",
+    "family": "Libre Barcode 128",
+    "category": "game",
+    "googleQuery": "Libre+Barcode+128:wght@400",
+    "stack": "'Libre Barcode 128', system-ui"
+  },
+  {
+    "slug": "libre-barcode-128-text",
+    "family": "Libre Barcode 128 Text",
+    "category": "game",
+    "googleQuery": "Libre+Barcode+128+Text:wght@400",
+    "stack": "'Libre Barcode 128 Text', system-ui"
+  },
+  {
+    "slug": "libre-barcode-39",
+    "family": "Libre Barcode 39",
+    "category": "game",
+    "googleQuery": "Libre+Barcode+39:wght@400",
+    "stack": "'Libre Barcode 39', system-ui"
+  },
+  {
+    "slug": "libre-barcode-39-extended",
+    "family": "Libre Barcode 39 Extended",
+    "category": "game",
+    "googleQuery": "Libre+Barcode+39+Extended:wght@400",
+    "stack": "'Libre Barcode 39 Extended', system-ui"
+  },
+  {
+    "slug": "libre-barcode-39-extended-text",
+    "family": "Libre Barcode 39 Extended Text",
+    "category": "game",
+    "googleQuery": "Libre+Barcode+39+Extended+Text:wght@400",
+    "stack": "'Libre Barcode 39 Extended Text', system-ui"
+  },
+  {
+    "slug": "libre-barcode-39-text",
+    "family": "Libre Barcode 39 Text",
+    "category": "game",
+    "googleQuery": "Libre+Barcode+39+Text:wght@400",
+    "stack": "'Libre Barcode 39 Text', system-ui"
+  },
+  {
+    "slug": "libre-barcode-ean13-text",
+    "family": "Libre Barcode EAN13 Text",
+    "category": "game",
+    "googleQuery": "Libre+Barcode+EAN13+Text:wght@400",
+    "stack": "'Libre Barcode EAN13 Text', system-ui"
+  },
+  {
+    "slug": "life-savers",
+    "family": "Life Savers",
+    "category": "game",
+    "googleQuery": "Life+Savers:wght@400",
+    "stack": "'Life Savers', system-ui"
+  },
+  {
+    "slug": "lilita-one",
+    "family": "Lilita One",
+    "category": "game",
+    "googleQuery": "Lilita+One:wght@400",
+    "stack": "'Lilita One', system-ui"
+  },
+  {
+    "slug": "lily-script-one",
+    "family": "Lily Script One",
+    "category": "game",
+    "googleQuery": "Lily+Script+One:wght@400",
+    "stack": "'Lily Script One', system-ui"
+  },
+  {
+    "slug": "limelight",
+    "family": "Limelight",
+    "category": "game",
+    "googleQuery": "Limelight:wght@400",
+    "stack": "'Limelight', system-ui"
+  },
+  {
+    "slug": "linefont",
+    "family": "Linefont",
+    "category": "game",
+    "googleQuery": "Linefont:wght@400",
+    "stack": "'Linefont', system-ui"
+  },
+  {
+    "slug": "londrina-outline",
+    "family": "Londrina Outline",
+    "category": "game",
+    "googleQuery": "Londrina+Outline:wght@400",
+    "stack": "'Londrina Outline', system-ui"
+  },
+  {
+    "slug": "londrina-shadow",
+    "family": "Londrina Shadow",
+    "category": "game",
+    "googleQuery": "Londrina+Shadow:wght@400",
+    "stack": "'Londrina Shadow', system-ui"
+  },
+  {
+    "slug": "londrina-sketch",
+    "family": "Londrina Sketch",
+    "category": "game",
+    "googleQuery": "Londrina+Sketch:wght@400",
+    "stack": "'Londrina Sketch', system-ui"
+  },
+  {
+    "slug": "londrina-solid",
+    "family": "Londrina Solid",
+    "category": "game",
+    "googleQuery": "Londrina+Solid:wght@400",
+    "stack": "'Londrina Solid', system-ui"
+  },
+  {
+    "slug": "love-ya-like-a-sister",
+    "family": "Love Ya Like A Sister",
+    "category": "game",
+    "googleQuery": "Love+Ya+Like+A+Sister:wght@400",
+    "stack": "'Love Ya Like A Sister', system-ui"
+  },
+  {
+    "slug": "luckiest-guy",
+    "family": "Luckiest Guy",
+    "category": "game",
+    "googleQuery": "Luckiest+Guy:wght@400",
+    "stack": "'Luckiest Guy', system-ui"
+  },
+  {
+    "slug": "luxurious-roman",
+    "family": "Luxurious Roman",
+    "category": "game",
+    "googleQuery": "Luxurious+Roman:wght@400",
+    "stack": "'Luxurious Roman', system-ui"
+  },
+  {
+    "slug": "macondo",
+    "family": "Macondo",
+    "category": "game",
+    "googleQuery": "Macondo:wght@400",
+    "stack": "'Macondo', system-ui"
+  },
+  {
+    "slug": "macondo-swash-caps",
+    "family": "Macondo Swash Caps",
+    "category": "game",
+    "googleQuery": "Macondo+Swash+Caps:wght@400",
+    "stack": "'Macondo Swash Caps', system-ui"
+  },
+  {
+    "slug": "manufacturing-consent",
+    "family": "Manufacturing Consent",
+    "category": "game",
+    "googleQuery": "Manufacturing+Consent:wght@400",
+    "stack": "'Manufacturing Consent', system-ui"
+  },
+  {
+    "slug": "margarine",
+    "family": "Margarine",
+    "category": "game",
+    "googleQuery": "Margarine:wght@400",
+    "stack": "'Margarine', system-ui"
+  },
+  {
+    "slug": "marhey",
+    "family": "Marhey",
+    "category": "game",
+    "googleQuery": "Marhey:wght@400",
+    "stack": "'Marhey', system-ui"
+  },
+  {
+    "slug": "mclaren",
+    "family": "McLaren",
+    "category": "game",
+    "googleQuery": "McLaren:wght@400",
+    "stack": "'McLaren', system-ui"
+  },
+  {
+    "slug": "medievalsharp",
+    "family": "MedievalSharp",
+    "category": "game",
+    "googleQuery": "MedievalSharp:wght@400",
+    "stack": "'MedievalSharp', system-ui"
+  },
+  {
+    "slug": "medula-one",
+    "family": "Medula One",
+    "category": "game",
+    "googleQuery": "Medula+One:wght@400",
+    "stack": "'Medula One', system-ui"
+  },
+  {
+    "slug": "megrim",
+    "family": "Megrim",
+    "category": "game",
+    "googleQuery": "Megrim:wght@400",
+    "stack": "'Megrim', system-ui"
+  },
+  {
+    "slug": "metal",
+    "family": "Metal",
+    "category": "game",
+    "googleQuery": "Metal:wght@400",
+    "stack": "'Metal', system-ui"
+  },
+  {
+    "slug": "metamorphous",
+    "family": "Metamorphous",
+    "category": "game",
+    "googleQuery": "Metamorphous:wght@400",
+    "stack": "'Metamorphous', system-ui"
+  },
+  {
+    "slug": "micro-5",
+    "family": "Micro 5",
+    "category": "game",
+    "googleQuery": "Micro+5:wght@400",
+    "stack": "'Micro 5', system-ui"
+  },
+  {
+    "slug": "micro-5-charted",
+    "family": "Micro 5 Charted",
+    "category": "game",
+    "googleQuery": "Micro+5+Charted:wght@400",
+    "stack": "'Micro 5 Charted', system-ui"
+  },
+  {
+    "slug": "milonga",
+    "family": "Milonga",
+    "category": "game",
+    "googleQuery": "Milonga:wght@400",
+    "stack": "'Milonga', system-ui"
+  },
+  {
+    "slug": "miltonian",
+    "family": "Miltonian",
+    "category": "game",
+    "googleQuery": "Miltonian:wght@400",
+    "stack": "'Miltonian', system-ui"
+  },
+  {
+    "slug": "miltonian-tattoo",
+    "family": "Miltonian Tattoo",
+    "category": "game",
+    "googleQuery": "Miltonian+Tattoo:wght@400",
+    "stack": "'Miltonian Tattoo', system-ui"
+  },
+  {
+    "slug": "miniver",
+    "family": "Miniver",
+    "category": "game",
+    "googleQuery": "Miniver:wght@400",
+    "stack": "'Miniver', system-ui"
+  },
+  {
+    "slug": "modak",
+    "family": "Modak",
+    "category": "game",
+    "googleQuery": "Modak:wght@400",
+    "stack": "'Modak', system-ui"
+  },
+  {
+    "slug": "modern-antiqua",
+    "family": "Modern Antiqua",
+    "category": "game",
+    "googleQuery": "Modern+Antiqua:wght@400",
+    "stack": "'Modern Antiqua', system-ui"
+  },
+  {
+    "slug": "mogra",
+    "family": "Mogra",
+    "category": "game",
+    "googleQuery": "Mogra:wght@400",
+    "stack": "'Mogra', system-ui"
+  },
+  {
+    "slug": "moirai-one",
+    "family": "Moirai One",
+    "category": "game",
+    "googleQuery": "Moirai+One:wght@400",
+    "stack": "'Moirai One', system-ui"
+  },
+  {
+    "slug": "monomakh",
+    "family": "Monomakh",
+    "category": "game",
+    "googleQuery": "Monomakh:wght@400",
+    "stack": "'Monomakh', system-ui"
+  },
+  {
+    "slug": "moo-lah-lah",
+    "family": "Moo Lah Lah",
+    "category": "game",
+    "googleQuery": "Moo+Lah+Lah:wght@400",
+    "stack": "'Moo Lah Lah', system-ui"
+  },
+  {
+    "slug": "moul",
+    "family": "Moul",
+    "category": "game",
+    "googleQuery": "Moul:wght@400",
+    "stack": "'Moul', system-ui"
+  },
+  {
+    "slug": "mountains-of-christmas",
+    "family": "Mountains of Christmas",
+    "category": "game",
+    "googleQuery": "Mountains+of+Christmas:wght@400",
+    "stack": "'Mountains of Christmas', system-ui"
+  },
+  {
+    "slug": "museomoderno",
+    "family": "MuseoModerno",
+    "category": "game",
+    "googleQuery": "MuseoModerno:wght@400",
+    "stack": "'MuseoModerno', system-ui"
+  },
+  {
+    "slug": "mystery-quest",
+    "family": "Mystery Quest",
+    "category": "game",
+    "googleQuery": "Mystery+Quest:wght@400",
+    "stack": "'Mystery Quest', system-ui"
+  },
+  {
+    "slug": "nixie-one",
+    "family": "Nixie One",
+    "category": "game",
+    "googleQuery": "Nixie+One:wght@400",
+    "stack": "'Nixie One', system-ui"
+  },
+  {
+    "slug": "nova-cut",
+    "family": "Nova Cut",
+    "category": "game",
+    "googleQuery": "Nova+Cut:wght@400",
+    "stack": "'Nova Cut', system-ui"
+  },
+  {
+    "slug": "nova-flat",
+    "family": "Nova Flat",
+    "category": "game",
+    "googleQuery": "Nova+Flat:wght@400",
+    "stack": "'Nova Flat', system-ui"
+  },
+  {
+    "slug": "nova-oval",
+    "family": "Nova Oval",
+    "category": "game",
+    "googleQuery": "Nova+Oval:wght@400",
+    "stack": "'Nova Oval', system-ui"
+  },
+  {
+    "slug": "nova-round",
+    "family": "Nova Round",
+    "category": "game",
+    "googleQuery": "Nova+Round:wght@400",
+    "stack": "'Nova Round', system-ui"
+  },
+  {
+    "slug": "nova-script",
+    "family": "Nova Script",
+    "category": "game",
+    "googleQuery": "Nova+Script:wght@400",
+    "stack": "'Nova Script', system-ui"
+  },
+  {
+    "slug": "nova-slim",
+    "family": "Nova Slim",
+    "category": "game",
+    "googleQuery": "Nova+Slim:wght@400",
+    "stack": "'Nova Slim', system-ui"
+  },
+  {
+    "slug": "nova-square",
+    "family": "Nova Square",
+    "category": "game",
+    "googleQuery": "Nova+Square:wght@400",
+    "stack": "'Nova Square', system-ui"
+  },
+  {
+    "slug": "odibee-sans",
+    "family": "Odibee Sans",
+    "category": "game",
+    "googleQuery": "Odibee+Sans:wght@400",
+    "stack": "'Odibee Sans', system-ui"
+  },
+  {
+    "slug": "offside",
+    "family": "Offside",
+    "category": "game",
+    "googleQuery": "Offside:wght@400",
+    "stack": "'Offside', system-ui"
+  },
+  {
+    "slug": "oi",
+    "family": "Oi",
+    "category": "game",
+    "googleQuery": "Oi:wght@400",
+    "stack": "'Oi', system-ui"
+  }
+]

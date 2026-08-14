@@ -1,0 +1,17 @@
+{
+  "name": "Install Fonts",
+  "short_name": "Install Fonts",
+  "description": "Install custom fonts on iPhone and iPad. Preview fonts, import TTF & OTF files, and install Google Fonts.",
+  "icons": [
+    {
+      "src": "/favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#07070a",
+  "background_color": "#07070a",
+  "display": "standalone",
+  "start_url": "/"
+}

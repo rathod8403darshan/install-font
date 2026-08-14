@@ -1,0 +1,1402 @@
+[
+  {
+    "slug": "alex-brush",
+    "family": "Alex Brush",
+    "category": "music",
+    "googleQuery": "Alex+Brush:wght@400",
+    "stack": "'Alex Brush', system-ui"
+  },
+  {
+    "slug": "alkalami",
+    "family": "Alkalami",
+    "category": "music",
+    "googleQuery": "Alkalami:wght@400",
+    "stack": "'Alkalami', system-ui"
+  },
+  {
+    "slug": "allura",
+    "family": "Allura",
+    "category": "music",
+    "googleQuery": "Allura:wght@400",
+    "stack": "'Allura', system-ui"
+  },
+  {
+    "slug": "amatic-sc",
+    "family": "Amatic SC",
+    "category": "music",
+    "googleQuery": "Amatic+SC:wght@400",
+    "stack": "'Amatic SC', system-ui"
+  },
+  {
+    "slug": "architects-daughter",
+    "family": "Architects Daughter",
+    "category": "music",
+    "googleQuery": "Architects+Daughter:wght@400",
+    "stack": "'Architects Daughter', system-ui"
+  },
+  {
+    "slug": "caveat",
+    "family": "Caveat",
+    "category": "music",
+    "googleQuery": "Caveat:wght@400",
+    "stack": "'Caveat', system-ui"
+  },
+  {
+    "slug": "caveat-brush",
+    "family": "Caveat Brush",
+    "category": "music",
+    "googleQuery": "Caveat+Brush:wght@400",
+    "stack": "'Caveat Brush', system-ui"
+  },
+  {
+    "slug": "cookie",
+    "family": "Cookie",
+    "category": "music",
+    "googleQuery": "Cookie:wght@400",
+    "stack": "'Cookie', system-ui"
+  },
+  {
+    "slug": "covered-by-your-grace",
+    "family": "Covered By Your Grace",
+    "category": "music",
+    "googleQuery": "Covered+By+Your+Grace:wght@400",
+    "stack": "'Covered By Your Grace', system-ui"
+  },
+  {
+    "slug": "dancing-script",
+    "family": "Dancing Script",
+    "category": "music",
+    "googleQuery": "Dancing+Script:wght@400",
+    "stack": "'Dancing Script', system-ui"
+  },
+  {
+    "slug": "euphoria-script",
+    "family": "Euphoria Script",
+    "category": "music",
+    "googleQuery": "Euphoria+Script:wght@400",
+    "stack": "'Euphoria Script', system-ui"
+  },
+  {
+    "slug": "gloria-hallelujah",
+    "family": "Gloria Hallelujah",
+    "category": "music",
+    "googleQuery": "Gloria+Hallelujah:wght@400",
+    "stack": "'Gloria Hallelujah', system-ui"
+  },
+  {
+    "slug": "grand-hotel",
+    "family": "Grand Hotel",
+    "category": "music",
+    "googleQuery": "Grand+Hotel:wght@400",
+    "stack": "'Grand Hotel', system-ui"
+  },
+  {
+    "slug": "great-vibes",
+    "family": "Great Vibes",
+    "category": "music",
+    "googleQuery": "Great+Vibes:wght@400",
+    "stack": "'Great Vibes', system-ui"
+  },
+  {
+    "slug": "just-another-hand",
+    "family": "Just Another Hand",
+    "category": "music",
+    "googleQuery": "Just+Another+Hand:wght@400",
+    "stack": "'Just Another Hand', system-ui"
+  },
+  {
+    "slug": "kalam",
+    "family": "Kalam",
+    "category": "music",
+    "googleQuery": "Kalam:wght@400",
+    "stack": "'Kalam', system-ui"
+  },
+  {
+    "slug": "kaushan-script",
+    "family": "Kaushan Script",
+    "category": "music",
+    "googleQuery": "Kaushan+Script:wght@400",
+    "stack": "'Kaushan Script', system-ui"
+  },
+  {
+    "slug": "leckerli-one",
+    "family": "Leckerli One",
+    "category": "music",
+    "googleQuery": "Leckerli+One:wght@400",
+    "stack": "'Leckerli One', system-ui"
+  },
+  {
+    "slug": "lobster",
+    "family": "Lobster",
+    "category": "music",
+    "googleQuery": "Lobster:wght@400",
+    "stack": "'Lobster', system-ui"
+  },
+  {
+    "slug": "lobster-two",
+    "family": "Lobster Two",
+    "category": "music",
+    "googleQuery": "Lobster+Two:wght@400",
+    "stack": "'Lobster Two', system-ui"
+  },
+  {
+    "slug": "loved-by-the-king",
+    "family": "Loved by the King",
+    "category": "music",
+    "googleQuery": "Loved+by+the+King:wght@400",
+    "stack": "'Loved by the King', system-ui"
+  },
+  {
+    "slug": "niconne",
+    "family": "Niconne",
+    "category": "music",
+    "googleQuery": "Niconne:wght@400",
+    "stack": "'Niconne', system-ui"
+  },
+  {
+    "slug": "nothing-you-could-do",
+    "family": "Nothing You Could Do",
+    "category": "music",
+    "googleQuery": "Nothing+You+Could+Do:wght@400",
+    "stack": "'Nothing You Could Do', system-ui"
+  },
+  {
+    "slug": "over-the-rainbow",
+    "family": "Over the Rainbow",
+    "category": "music",
+    "googleQuery": "Over+the+Rainbow:wght@400",
+    "stack": "'Over the Rainbow', system-ui"
+  },
+  {
+    "slug": "pacifico",
+    "family": "Pacifico",
+    "category": "music",
+    "googleQuery": "Pacifico:wght@400",
+    "stack": "'Pacifico', system-ui"
+  },
+  {
+    "slug": "parisienne",
+    "family": "Parisienne",
+    "category": "music",
+    "googleQuery": "Parisienne:wght@400",
+    "stack": "'Parisienne', system-ui"
+  },
+  {
+    "slug": "patrick-hand",
+    "family": "Patrick Hand",
+    "category": "music",
+    "googleQuery": "Patrick+Hand:wght@400",
+    "stack": "'Patrick Hand', system-ui"
+  },
+  {
+    "slug": "patrick-hand-sc",
+    "family": "Patrick Hand SC",
+    "category": "music",
+    "googleQuery": "Patrick+Hand+SC:wght@400",
+    "stack": "'Patrick Hand SC', system-ui"
+  },
+  {
+    "slug": "reenie-beanie",
+    "family": "Reenie Beanie",
+    "category": "music",
+    "googleQuery": "Reenie+Beanie:wght@400",
+    "stack": "'Reenie Beanie', system-ui"
+  },
+  {
+    "slug": "rock-salt",
+    "family": "Rock Salt",
+    "category": "music",
+    "googleQuery": "Rock+Salt:wght@400",
+    "stack": "'Rock Salt', system-ui"
+  },
+  {
+    "slug": "sacramento",
+    "family": "Sacramento",
+    "category": "music",
+    "googleQuery": "Sacramento:wght@400",
+    "stack": "'Sacramento', system-ui"
+  },
+  {
+    "slug": "satisfy",
+    "family": "Satisfy",
+    "category": "music",
+    "googleQuery": "Satisfy:wght@400",
+    "stack": "'Satisfy', system-ui"
+  },
+  {
+    "slug": "shadows-into-light",
+    "family": "Shadows Into Light",
+    "category": "music",
+    "googleQuery": "Shadows+Into+Light:wght@400",
+    "stack": "'Shadows Into Light', system-ui"
+  },
+  {
+    "slug": "shadows-into-light-two",
+    "family": "Shadows Into Light Two",
+    "category": "music",
+    "googleQuery": "Shadows+Into+Light+Two:wght@400",
+    "stack": "'Shadows Into Light Two', system-ui"
+  },
+  {
+    "slug": "swanky-and-moo-moo",
+    "family": "Swanky and Moo Moo",
+    "category": "music",
+    "googleQuery": "Swanky+and+Moo+Moo:wght@400",
+    "stack": "'Swanky and Moo Moo', system-ui"
+  },
+  {
+    "slug": "tangerine",
+    "family": "Tangerine",
+    "category": "music",
+    "googleQuery": "Tangerine:wght@400",
+    "stack": "'Tangerine', system-ui"
+  },
+  {
+    "slug": "the-girl-next-door",
+    "family": "The Girl Next Door",
+    "category": "music",
+    "googleQuery": "The+Girl+Next+Door:wght@400",
+    "stack": "'The Girl Next Door', system-ui"
+  },
+  {
+    "slug": "yellowtail",
+    "family": "Yellowtail",
+    "category": "music",
+    "googleQuery": "Yellowtail:wght@400",
+    "stack": "'Yellowtail', system-ui"
+  },
+  {
+    "slug": "aguafina-script",
+    "family": "Aguafina Script",
+    "category": "music",
+    "googleQuery": "Aguafina+Script:wght@400",
+    "stack": "'Aguafina Script', system-ui"
+  },
+  {
+    "slug": "allison",
+    "family": "Allison",
+    "category": "music",
+    "googleQuery": "Allison:wght@400",
+    "stack": "'Allison', system-ui"
+  },
+  {
+    "slug": "amita",
+    "family": "Amita",
+    "category": "music",
+    "googleQuery": "Amita:wght@400",
+    "stack": "'Amita', system-ui"
+  },
+  {
+    "slug": "annie-use-your-telescope",
+    "family": "Annie Use Your Telescope",
+    "category": "music",
+    "googleQuery": "Annie+Use+Your+Telescope:wght@400",
+    "stack": "'Annie Use Your Telescope', system-ui"
+  },
+  {
+    "slug": "are-you-serious",
+    "family": "Are You Serious",
+    "category": "music",
+    "googleQuery": "Are+You+Serious:wght@400",
+    "stack": "'Are You Serious', system-ui"
+  },
+  {
+    "slug": "arizonia",
+    "family": "Arizonia",
+    "category": "music",
+    "googleQuery": "Arizonia:wght@400",
+    "stack": "'Arizonia', system-ui"
+  },
+  {
+    "slug": "babylonica",
+    "family": "Babylonica",
+    "category": "music",
+    "googleQuery": "Babylonica:wght@400",
+    "stack": "'Babylonica', system-ui"
+  },
+  {
+    "slug": "bad-script",
+    "family": "Bad Script",
+    "category": "music",
+    "googleQuery": "Bad+Script:wght@400",
+    "stack": "'Bad Script', system-ui"
+  },
+  {
+    "slug": "ballet",
+    "family": "Ballet",
+    "category": "music",
+    "googleQuery": "Ballet:wght@400",
+    "stack": "'Ballet', system-ui"
+  },
+  {
+    "slug": "beau-rivage",
+    "family": "Beau Rivage",
+    "category": "music",
+    "googleQuery": "Beau+Rivage:wght@400",
+    "stack": "'Beau Rivage', system-ui"
+  },
+  {
+    "slug": "berkshire-swash",
+    "family": "Berkshire Swash",
+    "category": "music",
+    "googleQuery": "Berkshire+Swash:wght@400",
+    "stack": "'Berkshire Swash', system-ui"
+  },
+  {
+    "slug": "betania-patmos",
+    "family": "Betania Patmos",
+    "category": "music",
+    "googleQuery": "Betania+Patmos:wght@400",
+    "stack": "'Betania Patmos', system-ui"
+  },
+  {
+    "slug": "betania-patmos-gdl",
+    "family": "Betania Patmos GDL",
+    "category": "music",
+    "googleQuery": "Betania+Patmos+GDL:wght@400",
+    "stack": "'Betania Patmos GDL', system-ui"
+  },
+  {
+    "slug": "betania-patmos-in",
+    "family": "Betania Patmos In",
+    "category": "music",
+    "googleQuery": "Betania+Patmos+In:wght@400",
+    "stack": "'Betania Patmos In', system-ui"
+  },
+  {
+    "slug": "betania-patmos-in-gdl",
+    "family": "Betania Patmos In GDL",
+    "category": "music",
+    "googleQuery": "Betania+Patmos+In+GDL:wght@400",
+    "stack": "'Betania Patmos In GDL', system-ui"
+  },
+  {
+    "slug": "beth-ellen",
+    "family": "Beth Ellen",
+    "category": "music",
+    "googleQuery": "Beth+Ellen:wght@400",
+    "stack": "'Beth Ellen', system-ui"
+  },
+  {
+    "slug": "bilbo",
+    "family": "Bilbo",
+    "category": "music",
+    "googleQuery": "Bilbo:wght@400",
+    "stack": "'Bilbo', system-ui"
+  },
+  {
+    "slug": "bilbo-swash-caps",
+    "family": "Bilbo Swash Caps",
+    "category": "music",
+    "googleQuery": "Bilbo+Swash+Caps:wght@400",
+    "stack": "'Bilbo Swash Caps', system-ui"
+  },
+  {
+    "slug": "birthstone",
+    "family": "Birthstone",
+    "category": "music",
+    "googleQuery": "Birthstone:wght@400",
+    "stack": "'Birthstone', system-ui"
+  },
+  {
+    "slug": "birthstone-bounce",
+    "family": "Birthstone Bounce",
+    "category": "music",
+    "googleQuery": "Birthstone+Bounce:wght@400",
+    "stack": "'Birthstone Bounce', system-ui"
+  },
+  {
+    "slug": "bonbon",
+    "family": "Bonbon",
+    "category": "music",
+    "googleQuery": "Bonbon:wght@400",
+    "stack": "'Bonbon', system-ui"
+  },
+  {
+    "slug": "bonheur-royale",
+    "family": "Bonheur Royale",
+    "category": "music",
+    "googleQuery": "Bonheur+Royale:wght@400",
+    "stack": "'Bonheur Royale', system-ui"
+  },
+  {
+    "slug": "borel",
+    "family": "Borel",
+    "category": "music",
+    "googleQuery": "Borel:wght@400",
+    "stack": "'Borel', system-ui"
+  },
+  {
+    "slug": "bpmf-iansui",
+    "family": "Bpmf Iansui",
+    "category": "music",
+    "googleQuery": "Bpmf+Iansui:wght@400",
+    "stack": "'Bpmf Iansui', system-ui"
+  },
+  {
+    "slug": "butterfly-kids",
+    "family": "Butterfly Kids",
+    "category": "music",
+    "googleQuery": "Butterfly+Kids:wght@400",
+    "stack": "'Butterfly Kids', system-ui"
+  },
+  {
+    "slug": "calligraffitti",
+    "family": "Calligraffitti",
+    "category": "music",
+    "googleQuery": "Calligraffitti:wght@400",
+    "stack": "'Calligraffitti', system-ui"
+  },
+  {
+    "slug": "caramel",
+    "family": "Caramel",
+    "category": "music",
+    "googleQuery": "Caramel:wght@400",
+    "stack": "'Caramel', system-ui"
+  },
+  {
+    "slug": "carattere",
+    "family": "Carattere",
+    "category": "music",
+    "googleQuery": "Carattere:wght@400",
+    "stack": "'Carattere', system-ui"
+  },
+  {
+    "slug": "cause",
+    "family": "Cause",
+    "category": "music",
+    "googleQuery": "Cause:wght@400",
+    "stack": "'Cause', system-ui"
+  },
+  {
+    "slug": "cedarville-cursive",
+    "family": "Cedarville Cursive",
+    "category": "music",
+    "googleQuery": "Cedarville+Cursive:wght@400",
+    "stack": "'Cedarville Cursive', system-ui"
+  },
+  {
+    "slug": "charm",
+    "family": "Charm",
+    "category": "music",
+    "googleQuery": "Charm:wght@400",
+    "stack": "'Charm', system-ui"
+  },
+  {
+    "slug": "charmonman",
+    "family": "Charmonman",
+    "category": "music",
+    "googleQuery": "Charmonman:wght@400",
+    "stack": "'Charmonman', system-ui"
+  },
+  {
+    "slug": "cherish",
+    "family": "Cherish",
+    "category": "music",
+    "googleQuery": "Cherish:wght@400",
+    "stack": "'Cherish', system-ui"
+  },
+  {
+    "slug": "chilanka",
+    "family": "Chilanka",
+    "category": "music",
+    "googleQuery": "Chilanka:wght@400",
+    "stack": "'Chilanka', system-ui"
+  },
+  {
+    "slug": "clicker-script",
+    "family": "Clicker Script",
+    "category": "music",
+    "googleQuery": "Clicker+Script:wght@400",
+    "stack": "'Clicker Script', system-ui"
+  },
+  {
+    "slug": "comforter",
+    "family": "Comforter",
+    "category": "music",
+    "googleQuery": "Comforter:wght@400",
+    "stack": "'Comforter', system-ui"
+  },
+  {
+    "slug": "comforter-brush",
+    "family": "Comforter Brush",
+    "category": "music",
+    "googleQuery": "Comforter+Brush:wght@400",
+    "stack": "'Comforter Brush', system-ui"
+  },
+  {
+    "slug": "comic-neue",
+    "family": "Comic Neue",
+    "category": "music",
+    "googleQuery": "Comic+Neue:wght@400",
+    "stack": "'Comic Neue', system-ui"
+  },
+  {
+    "slug": "coming-soon",
+    "family": "Coming Soon",
+    "category": "music",
+    "googleQuery": "Coming+Soon:wght@400",
+    "stack": "'Coming Soon', system-ui"
+  },
+  {
+    "slug": "condiment",
+    "family": "Condiment",
+    "category": "music",
+    "googleQuery": "Condiment:wght@400",
+    "stack": "'Condiment', system-ui"
+  },
+  {
+    "slug": "corinthia",
+    "family": "Corinthia",
+    "category": "music",
+    "googleQuery": "Corinthia:wght@400",
+    "stack": "'Corinthia', system-ui"
+  },
+  {
+    "slug": "courgette",
+    "family": "Courgette",
+    "category": "music",
+    "googleQuery": "Courgette:wght@400",
+    "stack": "'Courgette', system-ui"
+  },
+  {
+    "slug": "crafty-girls",
+    "family": "Crafty Girls",
+    "category": "music",
+    "googleQuery": "Crafty+Girls:wght@400",
+    "stack": "'Crafty Girls', system-ui"
+  },
+  {
+    "slug": "damion",
+    "family": "Damion",
+    "category": "music",
+    "googleQuery": "Damion:wght@400",
+    "stack": "'Damion', system-ui"
+  },
+  {
+    "slug": "dawning-of-a-new-day",
+    "family": "Dawning of a New Day",
+    "category": "music",
+    "googleQuery": "Dawning+of+a+New+Day:wght@400",
+    "stack": "'Dawning of a New Day', system-ui"
+  },
+  {
+    "slug": "dekko",
+    "family": "Dekko",
+    "category": "music",
+    "googleQuery": "Dekko:wght@400",
+    "stack": "'Dekko', system-ui"
+  },
+  {
+    "slug": "delicious-handrawn",
+    "family": "Delicious Handrawn",
+    "category": "music",
+    "googleQuery": "Delicious+Handrawn:wght@400",
+    "stack": "'Delicious Handrawn', system-ui"
+  },
+  {
+    "slug": "delius",
+    "family": "Delius",
+    "category": "music",
+    "googleQuery": "Delius:wght@400",
+    "stack": "'Delius', system-ui"
+  },
+  {
+    "slug": "delius-swash-caps",
+    "family": "Delius Swash Caps",
+    "category": "music",
+    "googleQuery": "Delius+Swash+Caps:wght@400",
+    "stack": "'Delius Swash Caps', system-ui"
+  },
+  {
+    "slug": "delius-unicase",
+    "family": "Delius Unicase",
+    "category": "music",
+    "googleQuery": "Delius+Unicase:wght@400",
+    "stack": "'Delius Unicase', system-ui"
+  },
+  {
+    "slug": "devonshire",
+    "family": "Devonshire",
+    "category": "music",
+    "googleQuery": "Devonshire:wght@400",
+    "stack": "'Devonshire', system-ui"
+  },
+  {
+    "slug": "dr-sugiyama",
+    "family": "Dr Sugiyama",
+    "category": "music",
+    "googleQuery": "Dr+Sugiyama:wght@400",
+    "stack": "'Dr Sugiyama', system-ui"
+  },
+  {
+    "slug": "eagle-lake",
+    "family": "Eagle Lake",
+    "category": "music",
+    "googleQuery": "Eagle+Lake:wght@400",
+    "stack": "'Eagle Lake', system-ui"
+  },
+  {
+    "slug": "east-sea-dokdo",
+    "family": "East Sea Dokdo",
+    "category": "music",
+    "googleQuery": "East+Sea+Dokdo:wght@400",
+    "stack": "'East Sea Dokdo', system-ui"
+  },
+  {
+    "slug": "edu-au-vic-wa-nt-arrows",
+    "family": "Edu AU VIC WA NT Arrows",
+    "category": "music",
+    "googleQuery": "Edu+AU+VIC+WA+NT+Arrows:wght@400",
+    "stack": "'Edu AU VIC WA NT Arrows', system-ui"
+  },
+  {
+    "slug": "edu-au-vic-wa-nt-dots",
+    "family": "Edu AU VIC WA NT Dots",
+    "category": "music",
+    "googleQuery": "Edu+AU+VIC+WA+NT+Dots:wght@400",
+    "stack": "'Edu AU VIC WA NT Dots', system-ui"
+  },
+  {
+    "slug": "edu-au-vic-wa-nt-guides",
+    "family": "Edu AU VIC WA NT Guides",
+    "category": "music",
+    "googleQuery": "Edu+AU+VIC+WA+NT+Guides:wght@400",
+    "stack": "'Edu AU VIC WA NT Guides', system-ui"
+  },
+  {
+    "slug": "edu-au-vic-wa-nt-hand",
+    "family": "Edu AU VIC WA NT Hand",
+    "category": "music",
+    "googleQuery": "Edu+AU+VIC+WA+NT+Hand:wght@400",
+    "stack": "'Edu AU VIC WA NT Hand', system-ui"
+  },
+  {
+    "slug": "edu-au-vic-wa-nt-pre",
+    "family": "Edu AU VIC WA NT Pre",
+    "category": "music",
+    "googleQuery": "Edu+AU+VIC+WA+NT+Pre:wght@400",
+    "stack": "'Edu AU VIC WA NT Pre', system-ui"
+  },
+  {
+    "slug": "edu-nsw-act-cursive",
+    "family": "Edu NSW ACT Cursive",
+    "category": "music",
+    "googleQuery": "Edu+NSW+ACT+Cursive:wght@400",
+    "stack": "'Edu NSW ACT Cursive', system-ui"
+  },
+  {
+    "slug": "edu-nsw-act-foundation",
+    "family": "Edu NSW ACT Foundation",
+    "category": "music",
+    "googleQuery": "Edu+NSW+ACT+Foundation:wght@400",
+    "stack": "'Edu NSW ACT Foundation', system-ui"
+  },
+  {
+    "slug": "edu-nsw-act-hand-pre",
+    "family": "Edu NSW ACT Hand Pre",
+    "category": "music",
+    "googleQuery": "Edu+NSW+ACT+Hand+Pre:wght@400",
+    "stack": "'Edu NSW ACT Hand Pre', system-ui"
+  },
+  {
+    "slug": "edu-qld-beginner",
+    "family": "Edu QLD Beginner",
+    "category": "music",
+    "googleQuery": "Edu+QLD+Beginner:wght@400",
+    "stack": "'Edu QLD Beginner', system-ui"
+  },
+  {
+    "slug": "edu-qld-hand",
+    "family": "Edu QLD Hand",
+    "category": "music",
+    "googleQuery": "Edu+QLD+Hand:wght@400",
+    "stack": "'Edu QLD Hand', system-ui"
+  },
+  {
+    "slug": "edu-sa-beginner",
+    "family": "Edu SA Beginner",
+    "category": "music",
+    "googleQuery": "Edu+SA+Beginner:wght@400",
+    "stack": "'Edu SA Beginner', system-ui"
+  },
+  {
+    "slug": "edu-sa-hand",
+    "family": "Edu SA Hand",
+    "category": "music",
+    "googleQuery": "Edu+SA+Hand:wght@400",
+    "stack": "'Edu SA Hand', system-ui"
+  },
+  {
+    "slug": "edu-tas-beginner",
+    "family": "Edu TAS Beginner",
+    "category": "music",
+    "googleQuery": "Edu+TAS+Beginner:wght@400",
+    "stack": "'Edu TAS Beginner', system-ui"
+  },
+  {
+    "slug": "edu-vic-wa-nt-beginner",
+    "family": "Edu VIC WA NT Beginner",
+    "category": "music",
+    "googleQuery": "Edu+VIC+WA+NT+Beginner:wght@400",
+    "stack": "'Edu VIC WA NT Beginner', system-ui"
+  },
+  {
+    "slug": "edu-vic-wa-nt-hand",
+    "family": "Edu VIC WA NT Hand",
+    "category": "music",
+    "googleQuery": "Edu+VIC+WA+NT+Hand:wght@400",
+    "stack": "'Edu VIC WA NT Hand', system-ui"
+  },
+  {
+    "slug": "edu-vic-wa-nt-hand-pre",
+    "family": "Edu VIC WA NT Hand Pre",
+    "category": "music",
+    "googleQuery": "Edu+VIC+WA+NT+Hand+Pre:wght@400",
+    "stack": "'Edu VIC WA NT Hand Pre', system-ui"
+  },
+  {
+    "slug": "engagement",
+    "family": "Engagement",
+    "category": "music",
+    "googleQuery": "Engagement:wght@400",
+    "stack": "'Engagement', system-ui"
+  },
+  {
+    "slug": "ephesis",
+    "family": "Ephesis",
+    "category": "music",
+    "googleQuery": "Ephesis:wght@400",
+    "stack": "'Ephesis', system-ui"
+  },
+  {
+    "slug": "estonia",
+    "family": "Estonia",
+    "category": "music",
+    "googleQuery": "Estonia:wght@400",
+    "stack": "'Estonia', system-ui"
+  },
+  {
+    "slug": "explora",
+    "family": "Explora",
+    "category": "music",
+    "googleQuery": "Explora:wght@400",
+    "stack": "'Explora', system-ui"
+  },
+  {
+    "slug": "felipa",
+    "family": "Felipa",
+    "category": "music",
+    "googleQuery": "Felipa:wght@400",
+    "stack": "'Felipa', system-ui"
+  },
+  {
+    "slug": "festive",
+    "family": "Festive",
+    "category": "music",
+    "googleQuery": "Festive:wght@400",
+    "stack": "'Festive', system-ui"
+  },
+  {
+    "slug": "fleur-de-leah",
+    "family": "Fleur De Leah",
+    "category": "music",
+    "googleQuery": "Fleur+De+Leah:wght@400",
+    "stack": "'Fleur De Leah', system-ui"
+  },
+  {
+    "slug": "fondamento",
+    "family": "Fondamento",
+    "category": "music",
+    "googleQuery": "Fondamento:wght@400",
+    "stack": "'Fondamento', system-ui"
+  },
+  {
+    "slug": "fuggles",
+    "family": "Fuggles",
+    "category": "music",
+    "googleQuery": "Fuggles:wght@400",
+    "stack": "'Fuggles', system-ui"
+  },
+  {
+    "slug": "fuzzy-bubbles",
+    "family": "Fuzzy Bubbles",
+    "category": "music",
+    "googleQuery": "Fuzzy+Bubbles:wght@400",
+    "stack": "'Fuzzy Bubbles', system-ui"
+  },
+  {
+    "slug": "gaegu",
+    "family": "Gaegu",
+    "category": "music",
+    "googleQuery": "Gaegu:wght@400",
+    "stack": "'Gaegu', system-ui"
+  },
+  {
+    "slug": "gamja-flower",
+    "family": "Gamja Flower",
+    "category": "music",
+    "googleQuery": "Gamja+Flower:wght@400",
+    "stack": "'Gamja Flower', system-ui"
+  },
+  {
+    "slug": "give-you-glory",
+    "family": "Give You Glory",
+    "category": "music",
+    "googleQuery": "Give+You+Glory:wght@400",
+    "stack": "'Give You Glory', system-ui"
+  },
+  {
+    "slug": "gochi-hand",
+    "family": "Gochi Hand",
+    "category": "music",
+    "googleQuery": "Gochi+Hand:wght@400",
+    "stack": "'Gochi Hand', system-ui"
+  },
+  {
+    "slug": "grape-nuts",
+    "family": "Grape Nuts",
+    "category": "music",
+    "googleQuery": "Grape+Nuts:wght@400",
+    "stack": "'Grape Nuts', system-ui"
+  },
+  {
+    "slug": "grechen-fuemen",
+    "family": "Grechen Fuemen",
+    "category": "music",
+    "googleQuery": "Grechen+Fuemen:wght@400",
+    "stack": "'Grechen Fuemen', system-ui"
+  },
+  {
+    "slug": "grey-qo",
+    "family": "Grey Qo",
+    "category": "music",
+    "googleQuery": "Grey+Qo:wght@400",
+    "stack": "'Grey Qo', system-ui"
+  },
+  {
+    "slug": "gveret-levin",
+    "family": "Gveret Levin",
+    "category": "music",
+    "googleQuery": "Gveret+Levin:wght@400",
+    "stack": "'Gveret Levin', system-ui"
+  },
+  {
+    "slug": "gwendolyn",
+    "family": "Gwendolyn",
+    "category": "music",
+    "googleQuery": "Gwendolyn:wght@400",
+    "stack": "'Gwendolyn', system-ui"
+  },
+  {
+    "slug": "hachi-maru-pop",
+    "family": "Hachi Maru Pop",
+    "category": "music",
+    "googleQuery": "Hachi+Maru+Pop:wght@400",
+    "stack": "'Hachi Maru Pop', system-ui"
+  },
+  {
+    "slug": "handlee",
+    "family": "Handlee",
+    "category": "music",
+    "googleQuery": "Handlee:wght@400",
+    "stack": "'Handlee', system-ui"
+  },
+  {
+    "slug": "herr-von-muellerhoff",
+    "family": "Herr Von Muellerhoff",
+    "category": "music",
+    "googleQuery": "Herr+Von+Muellerhoff:wght@400",
+    "stack": "'Herr Von Muellerhoff', system-ui"
+  },
+  {
+    "slug": "hi-melody",
+    "family": "Hi Melody",
+    "category": "music",
+    "googleQuery": "Hi+Melody:wght@400",
+    "stack": "'Hi Melody', system-ui"
+  },
+  {
+    "slug": "homemade-apple",
+    "family": "Homemade Apple",
+    "category": "music",
+    "googleQuery": "Homemade+Apple:wght@400",
+    "stack": "'Homemade Apple', system-ui"
+  },
+  {
+    "slug": "hurricane",
+    "family": "Hurricane",
+    "category": "music",
+    "googleQuery": "Hurricane:wght@400",
+    "stack": "'Hurricane', system-ui"
+  },
+  {
+    "slug": "iansui",
+    "family": "Iansui",
+    "category": "music",
+    "googleQuery": "Iansui:wght@400",
+    "stack": "'Iansui', system-ui"
+  },
+  {
+    "slug": "imperial-script",
+    "family": "Imperial Script",
+    "category": "music",
+    "googleQuery": "Imperial+Script:wght@400",
+    "stack": "'Imperial Script', system-ui"
+  },
+  {
+    "slug": "indie-flower",
+    "family": "Indie Flower",
+    "category": "music",
+    "googleQuery": "Indie+Flower:wght@400",
+    "stack": "'Indie Flower', system-ui"
+  },
+  {
+    "slug": "ingrid-darling",
+    "family": "Ingrid Darling",
+    "category": "music",
+    "googleQuery": "Ingrid+Darling:wght@400",
+    "stack": "'Ingrid Darling', system-ui"
+  },
+  {
+    "slug": "inspiration",
+    "family": "Inspiration",
+    "category": "music",
+    "googleQuery": "Inspiration:wght@400",
+    "stack": "'Inspiration', system-ui"
+  },
+  {
+    "slug": "island-moments",
+    "family": "Island Moments",
+    "category": "music",
+    "googleQuery": "Island+Moments:wght@400",
+    "stack": "'Island Moments', system-ui"
+  },
+  {
+    "slug": "italianno",
+    "family": "Italianno",
+    "category": "music",
+    "googleQuery": "Italianno:wght@400",
+    "stack": "'Italianno', system-ui"
+  },
+  {
+    "slug": "itim",
+    "family": "Itim",
+    "category": "music",
+    "googleQuery": "Itim:wght@400",
+    "stack": "'Itim', system-ui"
+  },
+  {
+    "slug": "jim-nightshade",
+    "family": "Jim Nightshade",
+    "category": "music",
+    "googleQuery": "Jim+Nightshade:wght@400",
+    "stack": "'Jim Nightshade', system-ui"
+  },
+  {
+    "slug": "julee",
+    "family": "Julee",
+    "category": "music",
+    "googleQuery": "Julee:wght@400",
+    "stack": "'Julee', system-ui"
+  },
+  {
+    "slug": "just-me-again-down-here",
+    "family": "Just Me Again Down Here",
+    "category": "music",
+    "googleQuery": "Just+Me+Again+Down+Here:wght@400",
+    "stack": "'Just Me Again Down Here', system-ui"
+  },
+  {
+    "slug": "kapakana",
+    "family": "Kapakana",
+    "category": "music",
+    "googleQuery": "Kapakana:wght@400",
+    "stack": "'Kapakana', system-ui"
+  },
+  {
+    "slug": "kavivanar",
+    "family": "Kavivanar",
+    "category": "music",
+    "googleQuery": "Kavivanar:wght@400",
+    "stack": "'Kavivanar', system-ui"
+  },
+  {
+    "slug": "kings",
+    "family": "Kings",
+    "category": "music",
+    "googleQuery": "Kings:wght@400",
+    "stack": "'Kings', system-ui"
+  },
+  {
+    "slug": "klee-one",
+    "family": "Klee One",
+    "category": "music",
+    "googleQuery": "Klee+One:wght@400",
+    "stack": "'Klee One', system-ui"
+  },
+  {
+    "slug": "kolker-brush",
+    "family": "Kolker Brush",
+    "category": "music",
+    "googleQuery": "Kolker+Brush:wght@400",
+    "stack": "'Kolker Brush', system-ui"
+  },
+  {
+    "slug": "kristi",
+    "family": "Kristi",
+    "category": "music",
+    "googleQuery": "Kristi:wght@400",
+    "stack": "'Kristi', system-ui"
+  },
+  {
+    "slug": "lxgw-wenkai-tc",
+    "family": "LXGW WenKai TC",
+    "category": "music",
+    "googleQuery": "LXGW+WenKai+TC:wght@400",
+    "stack": "'LXGW WenKai TC', system-ui"
+  },
+  {
+    "slug": "la-belle-aurore",
+    "family": "La Belle Aurore",
+    "category": "music",
+    "googleQuery": "La+Belle+Aurore:wght@400",
+    "stack": "'La Belle Aurore', system-ui"
+  },
+  {
+    "slug": "lakki-reddy",
+    "family": "Lakki Reddy",
+    "category": "music",
+    "googleQuery": "Lakki+Reddy:wght@400",
+    "stack": "'Lakki Reddy', system-ui"
+  },
+  {
+    "slug": "lavishly-yours",
+    "family": "Lavishly Yours",
+    "category": "music",
+    "googleQuery": "Lavishly+Yours:wght@400",
+    "stack": "'Lavishly Yours', system-ui"
+  },
+  {
+    "slug": "league-script",
+    "family": "League Script",
+    "category": "music",
+    "googleQuery": "League+Script:wght@400",
+    "stack": "'League Script', system-ui"
+  },
+  {
+    "slug": "licorice",
+    "family": "Licorice",
+    "category": "music",
+    "googleQuery": "Licorice:wght@400",
+    "stack": "'Licorice', system-ui"
+  },
+  {
+    "slug": "liu-jian-mao-cao",
+    "family": "Liu Jian Mao Cao",
+    "category": "music",
+    "googleQuery": "Liu+Jian+Mao+Cao:wght@400",
+    "stack": "'Liu Jian Mao Cao', system-ui"
+  },
+  {
+    "slug": "long-cang",
+    "family": "Long Cang",
+    "category": "music",
+    "googleQuery": "Long+Cang:wght@400",
+    "stack": "'Long Cang', system-ui"
+  },
+  {
+    "slug": "love-light",
+    "family": "Love Light",
+    "category": "music",
+    "googleQuery": "Love+Light:wght@400",
+    "stack": "'Love Light', system-ui"
+  },
+  {
+    "slug": "lovers-quarrel",
+    "family": "Lovers Quarrel",
+    "category": "music",
+    "googleQuery": "Lovers+Quarrel:wght@400",
+    "stack": "'Lovers Quarrel', system-ui"
+  },
+  {
+    "slug": "lugrasimo",
+    "family": "Lugrasimo",
+    "category": "music",
+    "googleQuery": "Lugrasimo:wght@400",
+    "stack": "'Lugrasimo', system-ui"
+  },
+  {
+    "slug": "lumanosimo",
+    "family": "Lumanosimo",
+    "category": "music",
+    "googleQuery": "Lumanosimo:wght@400",
+    "stack": "'Lumanosimo', system-ui"
+  },
+  {
+    "slug": "luxurious-script",
+    "family": "Luxurious Script",
+    "category": "music",
+    "googleQuery": "Luxurious+Script:wght@400",
+    "stack": "'Luxurious Script', system-ui"
+  },
+  {
+    "slug": "ma-shan-zheng",
+    "family": "Ma Shan Zheng",
+    "category": "music",
+    "googleQuery": "Ma+Shan+Zheng:wght@400",
+    "stack": "'Ma Shan Zheng', system-ui"
+  },
+  {
+    "slug": "mali",
+    "family": "Mali",
+    "category": "music",
+    "googleQuery": "Mali:wght@400",
+    "stack": "'Mali', system-ui"
+  },
+  {
+    "slug": "mansalva",
+    "family": "Mansalva",
+    "category": "music",
+    "googleQuery": "Mansalva:wght@400",
+    "stack": "'Mansalva', system-ui"
+  },
+  {
+    "slug": "marck-script",
+    "family": "Marck Script",
+    "category": "music",
+    "googleQuery": "Marck+Script:wght@400",
+    "stack": "'Marck Script', system-ui"
+  },
+  {
+    "slug": "mea-culpa",
+    "family": "Mea Culpa",
+    "category": "music",
+    "googleQuery": "Mea+Culpa:wght@400",
+    "stack": "'Mea Culpa', system-ui"
+  },
+  {
+    "slug": "meddon",
+    "family": "Meddon",
+    "category": "music",
+    "googleQuery": "Meddon:wght@400",
+    "stack": "'Meddon', system-ui"
+  },
+  {
+    "slug": "meie-script",
+    "family": "Meie Script",
+    "category": "music",
+    "googleQuery": "Meie+Script:wght@400",
+    "stack": "'Meie Script', system-ui"
+  },
+  {
+    "slug": "meow-script",
+    "family": "Meow Script",
+    "category": "music",
+    "googleQuery": "Meow+Script:wght@400",
+    "stack": "'Meow Script', system-ui"
+  },
+  {
+    "slug": "merienda",
+    "family": "Merienda",
+    "category": "music",
+    "googleQuery": "Merienda:wght@400",
+    "stack": "'Merienda', system-ui"
+  },
+  {
+    "slug": "miss-fajardose",
+    "family": "Miss Fajardose",
+    "category": "music",
+    "googleQuery": "Miss+Fajardose:wght@400",
+    "stack": "'Miss Fajardose', system-ui"
+  },
+  {
+    "slug": "molle",
+    "family": "Molle",
+    "category": "music",
+    "googleQuery": "Molle:wght@400",
+    "stack": "'Molle', system-ui"
+  },
+  {
+    "slug": "monsieur-la-doulaise",
+    "family": "Monsieur La Doulaise",
+    "category": "music",
+    "googleQuery": "Monsieur+La+Doulaise:wght@400",
+    "stack": "'Monsieur La Doulaise', system-ui"
+  },
+  {
+    "slug": "montecarlo",
+    "family": "MonteCarlo",
+    "category": "music",
+    "googleQuery": "MonteCarlo:wght@400",
+    "stack": "'MonteCarlo', system-ui"
+  },
+  {
+    "slug": "montez",
+    "family": "Montez",
+    "category": "music",
+    "googleQuery": "Montez:wght@400",
+    "stack": "'Montez', system-ui"
+  },
+  {
+    "slug": "moon-dance",
+    "family": "Moon Dance",
+    "category": "music",
+    "googleQuery": "Moon+Dance:wght@400",
+    "stack": "'Moon Dance', system-ui"
+  },
+  {
+    "slug": "mr-bedfort",
+    "family": "Mr Bedfort",
+    "category": "music",
+    "googleQuery": "Mr+Bedfort:wght@400",
+    "stack": "'Mr Bedfort', system-ui"
+  },
+  {
+    "slug": "mr-dafoe",
+    "family": "Mr Dafoe",
+    "category": "music",
+    "googleQuery": "Mr+Dafoe:wght@400",
+    "stack": "'Mr Dafoe', system-ui"
+  },
+  {
+    "slug": "mr-de-haviland",
+    "family": "Mr De Haviland",
+    "category": "music",
+    "googleQuery": "Mr+De+Haviland:wght@400",
+    "stack": "'Mr De Haviland', system-ui"
+  },
+  {
+    "slug": "mrs-saint-delafield",
+    "family": "Mrs Saint Delafield",
+    "category": "music",
+    "googleQuery": "Mrs+Saint+Delafield:wght@400",
+    "stack": "'Mrs Saint Delafield', system-ui"
+  },
+  {
+    "slug": "mrs-sheppards",
+    "family": "Mrs Sheppards",
+    "category": "music",
+    "googleQuery": "Mrs+Sheppards:wght@400",
+    "stack": "'Mrs Sheppards', system-ui"
+  },
+  {
+    "slug": "ms-madi",
+    "family": "Ms Madi",
+    "category": "music",
+    "googleQuery": "Ms+Madi:wght@400",
+    "stack": "'Ms Madi', system-ui"
+  },
+  {
+    "slug": "my-soul",
+    "family": "My Soul",
+    "category": "music",
+    "googleQuery": "My+Soul:wght@400",
+    "stack": "'My Soul', system-ui"
+  },
+  {
+    "slug": "mynerve",
+    "family": "Mynerve",
+    "category": "music",
+    "googleQuery": "Mynerve:wght@400",
+    "stack": "'Mynerve', system-ui"
+  },
+  {
+    "slug": "nanum-brush-script",
+    "family": "Nanum Brush Script",
+    "category": "music",
+    "googleQuery": "Nanum+Brush+Script:wght@400",
+    "stack": "'Nanum Brush Script', system-ui"
+  },
+  {
+    "slug": "nanum-gothic-coding",
+    "family": "Nanum Gothic Coding",
+    "category": "music",
+    "googleQuery": "Nanum+Gothic+Coding:wght@400",
+    "stack": "'Nanum Gothic Coding', system-ui"
+  },
+  {
+    "slug": "nanum-pen-script",
+    "family": "Nanum Pen Script",
+    "category": "music",
+    "googleQuery": "Nanum+Pen+Script:wght@400",
+    "stack": "'Nanum Pen Script', system-ui"
+  },
+  {
+    "slug": "neonderthaw",
+    "family": "Neonderthaw",
+    "category": "music",
+    "googleQuery": "Neonderthaw:wght@400",
+    "stack": "'Neonderthaw', system-ui"
+  },
+  {
+    "slug": "nerko-one",
+    "family": "Nerko One",
+    "category": "music",
+    "googleQuery": "Nerko+One:wght@400",
+    "stack": "'Nerko One', system-ui"
+  },
+  {
+    "slug": "neucha",
+    "family": "Neucha",
+    "category": "music",
+    "googleQuery": "Neucha:wght@400",
+    "stack": "'Neucha', system-ui"
+  },
+  {
+    "slug": "norican",
+    "family": "Norican",
+    "category": "music",
+    "googleQuery": "Norican:wght@400",
+    "stack": "'Norican', system-ui"
+  },
+  {
+    "slug": "ole",
+    "family": "Ole",
+    "category": "music",
+    "googleQuery": "Ole:wght@400",
+    "stack": "'Ole', system-ui"
+  },
+  {
+    "slug": "oooh-baby",
+    "family": "Oooh Baby",
+    "category": "music",
+    "googleQuery": "Oooh+Baby:wght@400",
+    "stack": "'Oooh Baby', system-ui"
+  },
+  {
+    "slug": "pangolin",
+    "family": "Pangolin",
+    "category": "music",
+    "googleQuery": "Pangolin:wght@400",
+    "stack": "'Pangolin', system-ui"
+  },
+  {
+    "slug": "passions-conflict",
+    "family": "Passions Conflict",
+    "category": "music",
+    "googleQuery": "Passions+Conflict:wght@400",
+    "stack": "'Passions Conflict', system-ui"
+  },
+  {
+    "slug": "permanent-marker",
+    "family": "Permanent Marker",
+    "category": "music",
+    "googleQuery": "Permanent+Marker:wght@400",
+    "stack": "'Permanent Marker', system-ui"
+  },
+  {
+    "slug": "petemoss",
+    "family": "Petemoss",
+    "category": "music",
+    "googleQuery": "Petemoss:wght@400",
+    "stack": "'Petemoss', system-ui"
+  },
+  {
+    "slug": "petit-formal-script",
+    "family": "Petit Formal Script",
+    "category": "music",
+    "googleQuery": "Petit+Formal+Script:wght@400",
+    "stack": "'Petit Formal Script', system-ui"
+  }
+]
