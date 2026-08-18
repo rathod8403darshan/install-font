@@ -133,7 +133,7 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
 
   const stageRef = useRef<HTMLDivElement>(null);
   const previewRef = useRef<HTMLParagraphElement>(null);
-  const sampleRef = useRef<HTMLSpanElement>(null);
+  const sampleRef = useRef<HTMLParagraphElement>(null);
 
   const activeMeta = PREVIEW_FONT_META[settings.fontKey];
   const display = previewText.trim() || "iPhone";
