@@ -4,7 +4,7 @@
   /* Fixed header: estimate bar height; top “float” gap drops to 0 while scrolling */
   --site-header-bar: clamp(3.65rem, 3.25rem + 1.2vw, 4.35rem);
   --site-header-top-spacer: clamp(0.5rem, 0.35rem + 0.6vw, 0.875rem);
-  /* Fixed page inset: always clears the tallest (undocked) header — never shrinks on scroll/dock */
+  /* Fixed page inset: always clears the tallest (undocked) header - never shrinks on scroll/dock */
   --site-main-padding: calc(
     env(safe-area-inset-top, 0px) + var(--site-header-top-spacer) +
       var(--site-header-measured, var(--site-header-bar))
@@ -15,6 +15,7 @@
   );
   --background: #07070a;
   --foreground: #fafafa;
+  color-scheme: dark;
   --header-surface: rgba(255, 255, 255, 0.04);
   --header-surface-solid: rgba(7, 7, 10, 0.94);
   --header-border: rgba(255, 255, 255, 0.08);
@@ -114,6 +115,25 @@
   margin-right: -50vw;
 }
 
+/* Hero: full viewport until 1900px, then freeze */
+.hero-bleed {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+@media (min-width: 1900px) {
+  .hero-bleed {
+    width: 1900px;
+    max-width: 1900px;
+    margin-left: -950px;
+    margin-right: -950px;
+  }
+}
+
 @media (max-width: 767px) {
   :root {
     --site-max-width: 90vw;
@@ -121,7 +141,8 @@
     --page-gutter: 0.75rem;
   }
 
-  .full-bleed {
+  .full-bleed,
+  .hero-bleed {
     left: auto;
     width: 100%;
     max-width: none;
@@ -150,6 +171,7 @@ html[data-header-docked] {
 }
 
 html.light {
+  color-scheme: light;
   /* Page: soft gray so the white header and chips read clearly */
   --background: #eceff4;
   --foreground: #09090b;
@@ -257,7 +279,7 @@ html:not(.light) body {
   transition: background-color 0.35s ease, color 0.35s ease;
 }
 
-/* Decorative layers — cheaper blur, pause paint cost while scrolling */
+/* Decorative layers - cheaper blur, pause paint cost while scrolling */
 .ambient-bg {
   contain: strict;
   isolation: isolate;
@@ -381,7 +403,7 @@ html.is-scrolling .ambient-spotlight {
   border-color: color-mix(in oklab, var(--brand-blue) 24%, var(--header-border));
 }
 
-/* Generator panel — vertical scroll only, no horizontal bar */
+/* Generator panel - vertical scroll only, no horizontal bar */
 .generator-panel-scroll {
   overflow-x: hidden;
   overflow-y: auto;
@@ -467,7 +489,7 @@ html.is-scrolling .group\/card:hover [data-cat-face] {
   transform: none;
 }
 
-/* Hero floating previews — CSS drift instead of GSAP loops */
+/* Hero floating previews - CSS drift instead of GSAP loops */
 @keyframes hero-float-a {
   0%,
   100% {
@@ -757,23 +779,134 @@ html.is-scrolling .hero-float-c {
   }
 }
 
-@keyframes library-specimen-float {
-  0%,
-  100% {
-    transform: translateY(0);
+@keyframes library-draw {
+  from {
+    stroke-dashoffset: 1;
   }
-  50% {
-    transform: translateY(-4px);
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
-.library-specimen {
-  animation: library-specimen-float 3.6s ease-in-out infinite;
+@keyframes library-glyph-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes library-readout-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.library-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.library-stage-active .library-draw {
+  animation: library-draw 1.1s ease-out forwards;
+}
+
+.library-stage-active .library-draw-delay {
+  animation-delay: 0.18s;
+}
+
+.library-glyph {
+  animation: library-glyph-in 0.32s ease-out;
+}
+
+@keyframes playground-live {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes playground-glow {
+  0%,
+  100% {
+    opacity: 0.42;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes playground-guide {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.playground-live-dot {
+  animation: playground-live 1.8s ease-in-out infinite;
+}
+
+.playground-stage-glow {
+  animation: playground-glow 5s ease-in-out infinite;
+}
+
+.playground-active .playground-guide {
+  animation: playground-guide 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: left center;
+}
+
+.playground-active .playground-guide-2 {
+  animation-delay: 0.08s;
+}
+
+.playground-active .playground-guide-3 {
+  animation-delay: 0.16s;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .library-specimen {
+  .playground-live-dot,
+  .playground-stage-glow,
+  .playground-active .playground-guide {
     animation: none;
+  }
+
+  .playground-active .playground-guide {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.library-readout {
+  animation: library-readout-in 0.32s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .library-stage-active .library-draw,
+  .library-glyph,
+  .library-readout {
+    animation: none;
+  }
+
+  .library-draw {
+    stroke-dashoffset: 0;
   }
 }
 
@@ -843,7 +976,7 @@ html.is-scrolling .hero-float-c {
   animation: hero-scroll-hint 1.4s ease-in-out infinite;
 }
 
-/* Header shell: full-width centering (no transform on the bar — avoids “cut off” clipping) */
+/* Header shell: full-width centering (no transform on the bar - avoids “cut off” clipping) */
 .site-header-shell {
   padding-top: env(safe-area-inset-top, 0px);
   pointer-events: none;
@@ -859,7 +992,7 @@ html.is-scrolling .hero-float-c {
   }
 }
 
-/* Header entrance — opacity only (transform broke centering with left-1/2) */
+/* Header entrance - opacity only (transform broke centering with left-1/2) */
 @keyframes site-header-enter {
   from {
     opacity: 0;
@@ -1061,6 +1194,15 @@ html.light .category-topic-section {
     transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+@media (max-width: 1023px) {
+  [data-font-card],
+  [data-cat-card],
+  [data-marketing-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-font-card],
   [data-cat-card],
@@ -1071,7 +1213,7 @@ html.light .category-topic-section {
   }
 }
 
-/* CSS marquee — GPU-friendly vs GSAP xPercent loop */
+/* CSS marquee - GPU-friendly vs GSAP xPercent loop */
 @keyframes marquee-scroll {
   from {
     transform: translate3d(0, 0, 0);
@@ -1097,6 +1239,78 @@ html.is-scrolling .marquee-track {
 .content-section {
   content-visibility: auto;
   contain-intrinsic-size: auto 720px;
+}
+
+@keyframes discover-specimen {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -7px, 0);
+  }
+}
+
+@keyframes discover-shine {
+  from {
+    transform: translate3d(-120%, 0, 0) rotate(18deg);
+  }
+  to {
+    transform: translate3d(180%, 0, 0) rotate(18deg);
+  }
+}
+
+.discover-live-dot {
+  animation: playground-live 1.8s ease-in-out infinite;
+}
+
+.discover-card.is-revealed .discover-specimen {
+  animation: discover-specimen 4.8s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.discover-card-shine {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    color-mix(in oklab, var(--foreground) 14%, transparent) 50%,
+    transparent 60%
+  );
+  opacity: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .discover-card:hover .discover-card-face {
+    border-color: color-mix(in oklab, var(--accent) 42%, var(--card-border));
+    box-shadow: 0 22px 40px -24px color-mix(in oklab, var(--accent) 45%, transparent);
+  }
+
+  .discover-card:hover .discover-specimen {
+    animation-play-state: paused;
+    transform: scale(1.08);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .discover-card:hover .discover-aa {
+    color: var(--accent);
+    transform: scale(1.12);
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .discover-card:hover .discover-card-shine {
+    opacity: 1;
+    animation: discover-shine 0.85s ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .discover-live-dot,
+  .discover-card.is-revealed .discover-specimen,
+  .discover-card:hover .discover-card-shine {
+    animation: none;
+  }
 }
 
 .font-card-grid {

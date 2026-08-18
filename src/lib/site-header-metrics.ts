@@ -1,6 +1,6 @@
 /**
  * Records header bar height only. Main-column padding must NOT use
- * getBoundingClientRect().bottom — that value shrinks while scrolling when the
+ * getBoundingClientRect().bottom - that value shrinks while scrolling when the
  * header docks and causes content to jump under the fixed header.
  */
 export function updateSiteHeaderMetrics(headerEl: HTMLElement | null) {

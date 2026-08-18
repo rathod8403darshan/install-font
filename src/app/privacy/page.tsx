@@ -7,7 +7,7 @@ import { getPrivacyMetaKeywords } from "@/lib/seo-keywords";
 export const metadata = buildPageMetadata({
   title: "Privacy Policy",
   description:
-    "Install fonts privacy policy — how installfont.com and the iFont app handle data, cookies, Google Fonts previews, and your rights.",
+    "Install fonts privacy policy - how installfont.com and the iFont app handle data, cookies, Google Fonts previews, and your rights.",
   path: "/privacy",
   keywords: getPrivacyMetaKeywords(),
 });

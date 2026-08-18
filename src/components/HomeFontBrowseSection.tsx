@@ -65,7 +65,7 @@ export function HomeFontBrowseSection() {
 
   const subtitle =
     category === "all"
-      ? "Thousands of free Google Fonts — filter by category, topic, and sort order."
+      ? "Thousands of free Google Fonts - filter by category, topic, and sort order."
       : CATEGORY_META[category].blurb;
 
   const onCategoryChange = (next: BrowseCategory) => {

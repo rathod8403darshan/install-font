@@ -32,7 +32,7 @@ export function LikedFontsPage() {
               Liked Fonts
             </h1>
             <p className="mt-2 text-base text-[var(--hero-muted)] sm:text-lg">
-              Fonts you saved with the heart — stored on this device
+              Fonts you saved with the heart - stored on this device
             </p>
           </header>
 

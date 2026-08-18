@@ -96,21 +96,23 @@ export function subscribeScrolling(
 }
 
 /**
- * Scroll-reveal for card lists (IntersectionObserver only — no resize scans).
+ * Scroll-reveal for card lists (IntersectionObserver only - no resize scans).
  */
 export function observeCardReveal(
   root: HTMLElement,
   selector: string,
   staggerMs = 28,
 ): () => void {
-  const cards = Array.from(root.querySelectorAll<HTMLElement>(selector));
+  const cards = Array.from(root.querySelectorAll<HTMLElement>(selector)).filter(
+    (el) => getComputedStyle(el).display !== "none",
+  );
   if (!cards.length) return () => {};
 
   const reveal = (el: HTMLElement) => {
     el.classList.add("is-revealed");
   };
 
-  if (prefersReducedMotion()) {
+  if (prefersReducedMotion() || isCoarseOrNarrow()) {
     cards.forEach(reveal);
     return () => {};
   }
@@ -125,7 +127,7 @@ export function observeCardReveal(
         observer.unobserve(el);
       });
     },
-    { rootMargin: "0px 0px 8% 0px", threshold: 0.08 },
+    { rootMargin: "0px 0px 25% 0px", threshold: 0 },
   );
 
   cards.forEach((card, i) => {

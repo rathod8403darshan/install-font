@@ -81,7 +81,7 @@ function GamepadIcon({ className }: { className?: string }) {
   );
 }
 
-/** Logo / brand category — stroke style to match other nav icons */
+/** Logo / brand category - stroke style to match other nav icons */
 function LogoIcon({ className }: { className?: string }) {
   return (
     <svg

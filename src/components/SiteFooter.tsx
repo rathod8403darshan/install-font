@@ -114,14 +114,14 @@ export function SiteFooter() {
       <div className="theme-accent-line pointer-events-none absolute inset-x-0 top-0 h-px" />
 
       <div className="mx-auto flex w-full flex-col">
-        <div className="grid grid-cols-1 items-start gap-8 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-10">
+        <div className="grid grid-cols-2 items-start gap-x-6 gap-y-8 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-10">
           <FooterColumn title="Popular Fonts">
             <FooterNavList items={popularFonts} />
           </FooterColumn>
 
           <FooterColumn
             title="Trending"
-            className="order-2 sm:order-3 sm:col-span-2 lg:order-2 lg:col-span-1"
+            className="order-3 col-span-2 lg:order-2 lg:col-span-1"
           >
             <div className="flex flex-wrap gap-2">
               {trendingTags.map((tag) => (
@@ -130,7 +130,7 @@ export function SiteFooter() {
             </div>
           </FooterColumn>
 
-          <FooterColumn title="Other Links" className="order-3 sm:order-2 lg:order-3">
+          <FooterColumn title="Other Links" className="order-2 lg:order-3">
             <FooterNavList items={otherLinks} />
           </FooterColumn>
         </div>

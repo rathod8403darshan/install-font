@@ -353,7 +353,7 @@ export function FontGenerator({
 
   const handleShare = useCallback(async () => {
     const url = window.location.href;
-    const title = `${card.label} — Installfont`;
+    const title = `${card.label} - Installfont`;
     const text = `Preview and download ${card.label} on Installfont.`;
     setShareMessage(null);
     try {
@@ -392,16 +392,16 @@ export function FontGenerator({
     stagedFontRef.current = settings.fontKey;
     if (reduce || !changedFont) return;
 
-    gsap.fromTo(
-      el,
+      gsap.fromTo(
+        el,
       { opacity: 0.4, y: 10 },
-      {
-        opacity: 1,
-        y: 0,
+        {
+          opacity: 1,
+          y: 0,
         duration: 0.35,
-        ease: "power2.out",
-      },
-    );
+          ease: "power2.out",
+        },
+      );
   }, [settings.fontKey]);
 
   return (
@@ -419,7 +419,7 @@ export function FontGenerator({
             {card.label} Generator
           </h2>
           <p className="mt-1.5 max-w-xl text-sm text-[var(--hero-muted)] sm:text-base">
-            Adjust every control on the left — the preview updates instantly on
+            Adjust every control on the left - the preview updates instantly on
             the right. Font suggestions appear below.
           </p>
         </header>
@@ -429,11 +429,11 @@ export function FontGenerator({
             <div className="shrink-0 space-y-3 border-b border-[color:var(--header-border)] p-4 sm:p-5 sm:pb-4">
               <div>
                 <FieldLabel>Preview text</FieldLabel>
-                <input
-                  type="text"
+            <input
+              type="text"
                   value={previewText}
                   onChange={(e) => onPreviewTextChange(e.target.value)}
-                  placeholder="Enter preview text…"
+              placeholder="Enter preview text…"
                   className="mt-1.5 w-full rounded-lg border border-[color:var(--header-border)] bg-[var(--header-surface)] px-3 py-2 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent)]/40"
                 />
               </div>
@@ -453,7 +453,7 @@ export function FontGenerator({
                   className={`block truncate text-base text-[var(--foreground)] ${activeMeta.className}`}
                 >
                   {previewText || card.previewText}
-                </span>
+              </span>
               </div>
             </div>
 
@@ -779,10 +779,10 @@ export function FontGenerator({
                   >
                     <CloudDownloadIcon className="size-[18px] sm:size-5" />
                   </button>
-                  <span
+                    <span
                     className="w-px shrink-0 self-stretch bg-[var(--header-border)]"
-                    aria-hidden
-                  />
+                      aria-hidden
+                    />
                   <button
                     type="button"
                     onClick={handleShare}
@@ -792,8 +792,8 @@ export function FontGenerator({
                   >
                     <ShareIcon className="size-[18px] sm:size-5" />
                   </button>
-                </div>
-              </div>
+            </div>
+          </div>
 
               {downloadError || shareMessage ? (
                 <p
@@ -824,7 +824,7 @@ export function FontGenerator({
                         )}
                       >
                         {char}
-                      </span>
+                </span>
                     ))}
                   </p>
                   <span className="mt-4 inline-block text-[11px] uppercase tracking-[0.22em] text-[var(--header-muted)]">
@@ -832,9 +832,9 @@ export function FontGenerator({
                     {GENERATOR_STYLE_PRESETS.find(
                       (p) => p.id === settings.stylePresetId,
                     )?.label ?? "Custom"}
-                  </span>
-                </div>
+                </span>
               </div>
+            </div>
           </div>
         </div>
       </div>

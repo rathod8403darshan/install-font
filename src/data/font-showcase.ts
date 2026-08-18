@@ -118,7 +118,7 @@ export function getAllCards(): ShowcaseCard[] {
 
 /**
  * Curated slugs only. Used by `generateStaticParams` so we keep build times
- * fast — catalog-derived fonts render on-demand via `dynamicParams = true`.
+ * fast - catalog-derived fonts render on-demand via `dynamicParams = true`.
  */
 export function getAllSlugs(): string[] {
   return Array.from(bySlug.keys());

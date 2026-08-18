@@ -8,7 +8,7 @@ import { buildPageMetadata } from "@/lib/seo";
 import { recentAdditions } from "@/data/font-showcase";
 
 export const metadata = buildPageMetadata({
-  // Keep this a child page — do not compete with the homepage for brand queries.
+  // Keep this a child page - do not compete with the homepage for brand queries.
   title: "Recent Font Additions",
   description:
     "Browse newly added movie, TV, album, and brand typefaces. Preview and download the latest Google Fonts every week.",
@@ -31,7 +31,7 @@ const breadcrumbJsonLd = buildBreadcrumbJsonLd([
 const collectionJsonLd = buildCollectionPageJsonLd({
   name: "Recent Font Additions",
   description:
-    "Latest font additions curated weekly from Google Fonts — a child listing of Install Fonts.",
+    "Latest font additions curated weekly from Google Fonts - a child listing of Install Fonts.",
   path: "/recent-additions",
   numberOfItems: recentAdditions.length,
 });

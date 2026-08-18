@@ -40,7 +40,7 @@ The script (`scripts/build-font-catalog.mjs`) tries, in order:
 3. The embedded curated list in `scripts/fallback-catalog.mjs`.
 
 Raw responses are cached in `scripts/.cache/webfonts.json` (git-ignored). The
-runtime UI never reads any API key — each category page injects a single
+runtime UI never reads any API key - each category page injects a single
 `fonts.googleapis.com/css2` `<link>` for the 20 families on the current page.
 
 ## Learn More

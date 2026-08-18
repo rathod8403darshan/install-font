@@ -1,16 +1,17 @@
+import Link from "next/link";
 import {
   PREVIEW_FONT_META,
   type PreviewFontKey,
 } from "@/fonts/preview-fonts";
 
 /** Fewer families = less font download + layout work on the home page. */
-const MARQUEE: { text: string; key: PreviewFontKey }[] = [
-  { text: "Famous", key: "bebas" },
-  { text: "Editorial", key: "cinzel" },
-  { text: "Display", key: "pacifico" },
-  { text: "Script", key: "lobster" },
-  { text: "Pixel", key: "bungee" },
-  { text: "Neon", key: "monoton" },
+const MARQUEE: { text: string; key: PreviewFontKey; href: string }[] = [
+  { text: "Famous", key: "bebas", href: "/fonts/bebas-neue" },
+  { text: "Editorial", key: "cinzel", href: "/fonts/cinzel" },
+  { text: "Display", key: "pacifico", href: "/fonts/pacifico" },
+  { text: "Script", key: "lobster", href: "/fonts/lobster" },
+  { text: "Pixel", key: "bungee", href: "/fonts/bungee" },
+  { text: "Neon", key: "monoton", href: "/fonts/monoton" },
 ];
 
 export function FontMarquee() {
@@ -22,12 +23,13 @@ export function FontMarquee() {
         {[...MARQUEE, ...MARQUEE].map((item, i) => {
           const meta = PREVIEW_FONT_META[item.key];
           return (
-            <div key={i} className="flex items-center gap-12">
-              <span
-                className={`text-2xl text-[var(--foreground)]/90 sm:text-3xl md:text-4xl lg:text-5xl ${meta.className}`}
+            <div key={`${item.key}-${i}`} className="flex items-center gap-12">
+              <Link
+                href={item.href}
+                className={`text-2xl text-[var(--foreground)]/90 transition-colors hover:text-[var(--accent)] sm:text-3xl md:text-4xl lg:text-5xl ${meta.className}`}
               >
                 {item.text}
-              </span>
+              </Link>
               <span className="size-1.5 rounded-full bg-[var(--accent)]/70" />
             </div>
           );

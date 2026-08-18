@@ -33,7 +33,7 @@ export function pickMetaKeywords(
   return out;
 }
 
-/** Site-wide terms — merged into most public pages. */
+/** Site-wide terms - merged into most public pages. */
 export const GLOBAL_META_KEYWORDS = pickMetaKeywords([
   "Install fonts",
   "Install Fonts",
@@ -254,7 +254,7 @@ export function getPrivacyMetaKeywords(): string[] {
   ]);
 }
 
-/** Homepage meta description — primary keywords woven in naturally. */
+/** Homepage meta description - primary keywords woven in naturally. */
 export const HOME_META_DESCRIPTION =
   "Install custom fonts on iPhone and iPad. Preview fonts, import TTF & OTF files, install Google Fonts, and use them in Pages, Keynote, Safari, and more.";
 

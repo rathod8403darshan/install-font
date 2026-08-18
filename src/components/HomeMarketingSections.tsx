@@ -19,11 +19,13 @@ import {
   APP_STORE_IFONT_URL,
   GOOGLE_PLAY_INSTALLFONT_URL,
 } from "@/lib/mobile-app-links";
-import { prefersReducedMotion } from "@/lib/motion";
+import { isCoarseOrNarrow, prefersReducedMotion } from "@/lib/motion";
 import { AppleMark, GooglePlayMark } from "@/components/MobileAppStoreIcons";
 import { HomeFontPlayground } from "@/components/HomeFontPlayground";
+import { HomeLibraryVisual } from "@/components/HomeLibraryVisual";
+import { HomeDiscoverFontCards } from "@/components/HomeDiscoverFontCards";
 
-/** Shared readable measure — every marketing section uses the same width. */
+/** Shared readable measure - every marketing section uses the same width. */
 const shell =
   "page-px relative border-t border-[color:var(--header-border)]/40 py-9 sm:py-11";
 const wrap = "mx-auto w-full";
@@ -111,7 +113,13 @@ function Copy({
 }) {
   if (!paragraphs?.length) return null;
   return (
-    <div className={`mt-3 space-y-2 ${center ? "mx-auto max-w-2xl text-center" : ""}`}>
+    <div
+      className={`mt-3 space-y-2 ${
+        center
+          ? "mx-auto max-w-2xl text-center"
+          : "max-lg:text-center lg:text-left"
+      }`}
+    >
       {paragraphs.map((p) => (
         <p
           key={p.slice(0, 48)}
@@ -130,7 +138,7 @@ function Subhead({ children }: { children?: string }) {
   return (
     <h3
       data-m-item
-      className="mt-6 text-[15px] font-semibold text-[var(--foreground)]"
+      className="mt-6 text-[15px] font-semibold text-[var(--foreground)] max-lg:text-center"
     >
       {children}
     </h3>
@@ -140,7 +148,7 @@ function Subhead({ children }: { children?: string }) {
 function ListIntro({ text }: { text?: string }) {
   if (!text) return null;
   return (
-    <p data-m-item className="mt-5 text-sm text-[var(--hero-muted)]">
+    <p data-m-item className="mt-5 text-sm text-[var(--hero-muted)] max-lg:text-center">
       {text}
     </p>
   );
@@ -151,7 +159,9 @@ function Closing({ text, center }: { text?: string; center?: boolean }) {
   return (
     <p
       data-m-item
-      className={`mt-5 text-sm leading-relaxed text-[var(--hero-muted)] ${center ? "mx-auto max-w-2xl text-center" : ""}`}
+      className={`mt-5 text-sm leading-relaxed text-[var(--hero-muted)] ${
+        center ? "mx-auto max-w-2xl text-center" : "max-lg:text-center"
+      }`}
     >
       {text}
     </p>
@@ -205,7 +215,7 @@ function useReveal(ref: RefObject<HTMLElement | null>) {
     if (!el) return;
     const items = Array.from(el.querySelectorAll<HTMLElement>("[data-m-item]"));
     if (!items.length) return;
-    if (prefersReducedMotion()) {
+    if (prefersReducedMotion() || isCoarseOrNarrow()) {
       gsap.set(items, { clearProps: "all", opacity: 1, y: 0 });
       return;
     }
@@ -265,7 +275,7 @@ function Heading({
   center?: boolean;
 }) {
   return (
-    <header data-m-item className={center ? "text-center" : undefined}>
+    <header data-m-item className={center ? "text-center" : "max-lg:text-center"}>
       {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
       <h2 className="text-balance text-[1.4rem] font-semibold leading-[1.2] tracking-[-0.02em] text-[var(--foreground)] sm:text-[1.75rem]">
         {title}
@@ -528,110 +538,43 @@ function StepIcon({ index }: { index: number }) {
   );
 }
 
-function WhyReasonsTimeline({
+function WhyReasonsIndex({
   reasons,
 }: {
   reasons: NonNullable<HomeMarketingSection["reasons"]>;
 }) {
-  const rootRef = useRef<HTMLOListElement>(null);
-  const lineRef = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    const root = rootRef.current;
-    const line = lineRef.current;
-    if (!root || !line) return;
-
-    const items = root.querySelectorAll<HTMLElement>("[data-why-item]");
-    const dots = root.querySelectorAll<HTMLElement>("[data-why-dot]");
-
-    if (prefersReducedMotion()) {
-      root.classList.add("why-active");
-      gsap.set([line, ...items, ...dots], { clearProps: "all", opacity: 1, x: 0, y: 0, scaleY: 1 });
-      return;
-    }
-
-    gsap.set(line, { scaleY: 0, transformOrigin: "top center" });
-    gsap.set(dots, { scale: 0, opacity: 0 });
-    items.forEach((item, i) => {
-      const right = i % 2 === 1;
-      gsap.set(item, { opacity: 0, x: right ? 28 : -28, y: 8 });
-    });
-
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting) return;
-        root.classList.add("why-active");
-        gsap.to(line, { scaleY: 1, duration: 0.85, ease: "power2.out" });
-        gsap.to(dots, {
-          scale: 1,
-          opacity: 1,
-          duration: 0.35,
-          stagger: 0.08,
-          ease: "back.out(1.8)",
-          delay: 0.12,
-        });
-        gsap.to(items, {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          duration: 0.4,
-          stagger: 0.08,
-          ease: "power2.out",
-          delay: 0.18,
-        });
-        io.disconnect();
-      },
-      { threshold: 0.2 },
-    );
-    io.observe(root);
-    return () => {
-      io.disconnect();
-      gsap.killTweensOf([line, ...items, ...dots]);
-    };
-  }, [reasons]);
-
   return (
-    <ol ref={rootRef} className="relative mx-auto mt-8 max-w-2xl">
-      <span
-        className="pointer-events-none absolute left-4 top-1.5 bottom-1.5 w-px -translate-x-1/2 sm:left-1/2"
-        aria-hidden
-      >
-        <span
-          ref={lineRef}
-          className="block h-full w-full bg-[linear-gradient(180deg,transparent,color-mix(in_oklab,var(--accent)_60%,transparent)_8%,color-mix(in_oklab,var(--accent)_60%,transparent)_92%,transparent)]"
-        />
-      </span>
-      {reasons.map((r, i) => {
-        const right = i % 2 === 1;
-        return (
+    <div className="mt-10">
+      <div className="mb-3 flex items-center gap-3">
+        <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--accent)]">
+          Reasons
+        </p>
+        <span className="h-px flex-1 bg-[linear-gradient(90deg,color-mix(in_oklab,var(--accent)_45%,transparent),transparent)]" />
+        <p className="text-[10px] font-medium tabular-nums tracking-[0.18em] text-[var(--hero-muted)]">
+          01-{String(reasons.length).padStart(2, "0")}
+        </p>
+      </div>
+
+      <ol className="border-t border-[color:var(--header-border)]">
+        {reasons.map((r, i) => (
           <li
             key={r.title}
-            className={`relative mb-4 flex last:mb-0 sm:mb-5 ${right ? "sm:justify-end" : "sm:justify-start"}`}
+            data-m-item
+            className="group grid grid-cols-[2.25rem_minmax(0,1fr)] gap-x-3 border-b border-[color:var(--header-border)] py-4 sm:grid-cols-[2.75rem_minmax(11rem,16rem)_minmax(0,1fr)] sm:items-baseline sm:gap-x-8"
           >
-            <span className="absolute left-4 top-1.5 z-[1] -translate-x-1/2 sm:left-1/2">
-              <span
-                data-why-dot
-                className="why-dot block size-2 rounded-full bg-[var(--accent)]"
-              />
+            <span className="pt-0.5 text-[11px] font-medium tabular-nums tracking-[0.14em] text-[var(--accent)] sm:pt-0">
+              {String(i + 1).padStart(2, "0")}
             </span>
-            <div
-              data-why-item
-              className={`ml-7 max-w-none text-left sm:ml-0 sm:w-[calc(50%-0.75rem)] ${right ? "sm:pl-4" : "sm:pr-4 sm:text-right"}`}
-            >
-              <p className="text-[11px] font-semibold tabular-nums tracking-[0.14em] text-[var(--accent)]">
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <h3 className="mt-0.5 text-[15px] font-semibold leading-snug text-[var(--foreground)]">
-                {r.title}
-              </h3>
-              <p className="mt-0.5 text-[13px] leading-snug text-[var(--hero-muted)]">
-                {r.description}
-              </p>
-            </div>
+            <h3 className="text-[15px] font-medium tracking-[-0.01em] text-[var(--foreground)] transition-colors duration-300 group-hover:text-[var(--accent)]">
+              {r.title}
+            </h3>
+            <p className="col-start-2 mt-1.5 text-[13px] leading-relaxed text-[var(--hero-muted)] sm:col-start-3 sm:mt-0">
+              {r.description}
+            </p>
           </li>
-        );
-      })}
-    </ol>
+        ))}
+      </ol>
+    </div>
   );
 }
 
@@ -1487,8 +1430,6 @@ const IMPORT_CARD_ICONS = [
   "download",
   "layers",
   "folder",
-  "type",
-  "google",
 ] as const;
 
 const DEVICES_CARD_ICONS = [
@@ -1629,6 +1570,45 @@ function SafariAdjustIcon({ index }: { index: number }) {
   );
 }
 
+function MakerCard({ section }: { section: HomeMarketingSection }) {
+  const accentPhrase = "Custom Font for iPhone";
+  const titleLead = section.title.includes(accentPhrase)
+    ? section.title.slice(0, section.title.indexOf(accentPhrase)).trimEnd()
+    : section.title;
+
+  return (
+    <div
+      id={section.id}
+      data-m-item
+      className="relative overflow-hidden rounded-[1.75rem] border border-[color:color-mix(in_oklab,var(--accent)_28%,var(--header-border))] bg-[var(--header-surface)]/45 p-6 shadow-[0_24px_60px_-36px_rgba(0,0,0,0.8)] sm:p-8 lg:p-10"
+    >
+      <div className="pointer-events-none absolute -left-10 -top-10 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_70%)]" />
+
+      <div className="relative grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:gap-12">
+        <div className="min-w-0 text-left">
+          <h2 className="text-left text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)] sm:text-[1.9rem]">
+            {titleLead}
+            {section.title.includes(accentPhrase) ? (
+              <>
+                {" "}
+                <span className="text-[var(--accent)]">{accentPhrase}</span>
+              </>
+            ) : null}
+          </h2>
+          <Copy paragraphs={section.paragraphs} />
+          <div className="mt-8 sm:mt-10">
+            <div className="inline-flex rounded-xl shadow-[0_0_42px_-6px_color-mix(in_oklab,var(--accent)_45%,transparent)] [&>[data-m-item]]:mt-0">
+              <Ctas ctas={section.ctas} />
+            </div>
+          </div>
+        </div>
+
+        <FontMakerVisual />
+      </div>
+    </div>
+  );
+}
+
 function MarketingSection({
   section,
   index,
@@ -1670,7 +1650,59 @@ function MarketingSection({
     );
   }
 
-  if (layout === "intro" || layout === "cta") {
+  if (layout === "cta") {
+    const accentPhrase = "Fonts for iPhone";
+    const titleLead = section.title.includes(accentPhrase)
+      ? section.title.slice(0, section.title.indexOf(accentPhrase)).trimEnd()
+      : section.title;
+    const titleTail = section.title.includes(accentPhrase)
+      ? section.title.slice(
+          section.title.indexOf(accentPhrase) + accentPhrase.length,
+        )
+      : "";
+
+    return (
+      <Block id={section.id}>
+        <div className={wrap}>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2
+              data-m-item
+              className="text-balance text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)] sm:text-[1.9rem]"
+            >
+              {titleLead}{" "}
+              <span className="text-[var(--accent)]">{accentPhrase}</span>
+              {titleTail}
+            </h2>
+          </div>
+
+          {section.paragraphs.length ? (
+            <ul className="mt-6 grid grid-cols-1 items-start gap-3 sm:mt-8 sm:grid-cols-2">
+              {section.paragraphs.map((p, i) => (
+                <li
+                  key={p.slice(0, 40)}
+                  data-m-item
+                  className="rounded-xl border border-[color:var(--header-border)] bg-[var(--header-surface)]/45 p-4 sm:p-5"
+                >
+                  <span className="text-[11px] font-semibold tabular-nums tracking-[0.16em] text-[var(--accent)]">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="mt-2.5 text-sm leading-[1.65] text-[var(--hero-muted)]">
+                    {p}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          <div className="mt-8 flex justify-center sm:mt-10">
+            <Ctas ctas={section.ctas} center />
+          </div>
+        </div>
+      </Block>
+    );
+  }
+
+  if (layout === "intro") {
     return (
       <Block id={section.id}>
         <div className={`${wrap} text-center`}>
@@ -1710,7 +1742,7 @@ function MarketingSection({
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 items-start gap-3 sm:grid-cols-2">
+          <div className="mt-8 flex flex-col gap-3 sm:hidden">
             {HOME_FAQ.map((item) => (
               <FaqItem
                 key={item.id}
@@ -1722,6 +1754,25 @@ function MarketingSection({
                 }
               />
             ))}
+          </div>
+          <div className="mt-8 hidden gap-3 sm:grid sm:grid-cols-2 sm:items-start">
+            {[HOME_FAQ.filter((_, i) => i % 2 === 0), HOME_FAQ.filter((_, i) => i % 2 === 1)].map(
+              (column, col) => (
+                <div key={col} className="flex flex-col gap-3">
+                  {column.map((item) => (
+                    <FaqItem
+                      key={item.id}
+                      question={item.question}
+                      answer={item.answer}
+                      open={openFaq === item.id}
+                      onToggle={() =>
+                        setOpenFaq(openFaq === item.id ? null : item.id)
+                      }
+                    />
+                  ))}
+                </div>
+              ),
+            )}
           </div>
         </div>
       </Block>
@@ -1767,10 +1818,10 @@ function MarketingSection({
           <div className="pointer-events-none absolute left-24 top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_12%,transparent),transparent_70%)]" />
 
           <div className="relative grid grid-cols-1 items-start gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
-            <div>
+            <div className="max-lg:text-center">
               <h2
                 data-m-item
-                className="text-balance text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] sm:text-[2rem]"
+                className="text-balance text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] max-lg:text-center sm:text-[2rem]"
               >
                 <span className="text-[var(--foreground)]">{titleLead}</span>
                 {title.includes(accentPhrase) ? (
@@ -1866,7 +1917,7 @@ function MarketingSection({
       <Block id={section.id} soft={soft}>
         <div className={wrap}>
           <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-12">
-            <div className="min-w-0 text-left">
+            <div className="min-w-0 max-lg:text-center">
               <span
                 data-m-item
                 className="inline-flex items-center gap-2 rounded-full border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]"
@@ -1880,7 +1931,7 @@ function MarketingSection({
 
               <h2
                 data-m-item
-                className="mt-4 text-left text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)] sm:text-[2rem]"
+                className="mt-4 text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)] max-lg:text-center sm:text-[2rem]"
               >
                 {titleLead}
                 {title.includes(accentPhrase) ? (
@@ -1894,7 +1945,7 @@ function MarketingSection({
               {leadPara ? (
                 <p
                   data-m-item
-                  className="mt-4 max-w-xl text-left text-sm leading-[1.65] text-[var(--hero-muted)]"
+                  className="mt-4 max-w-xl text-sm leading-[1.65] text-[var(--hero-muted)] max-lg:mx-auto max-lg:text-center"
                 >
                   {leadPara}
                 </p>
@@ -1946,11 +1997,11 @@ function MarketingSection({
           {section.listIntro ? (
             <div
               data-m-item
-              className="mt-12 flex items-center gap-3 sm:mt-14"
+              className="mt-12 flex w-full items-center justify-center gap-3 sm:mt-14"
             >
               <span className="hidden size-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_10px_var(--accent)] sm:block" />
               <span className="hidden h-px flex-1 bg-[linear-gradient(90deg,color-mix(in_oklab,var(--accent)_55%,transparent),var(--header-border))] sm:block" />
-              <p className="shrink-0 text-center text-sm text-[var(--hero-muted)]">
+              <p className="w-full text-center text-sm text-[var(--hero-muted)] sm:w-auto sm:shrink-0">
                 {section.listIntro}
               </p>
               <span className="hidden h-px flex-1 bg-[linear-gradient(90deg,var(--header-border),color-mix(in_oklab,var(--accent)_55%,transparent))] sm:block" />
@@ -1959,17 +2010,21 @@ function MarketingSection({
           ) : null}
 
           {section.bullets?.length ? (
-            <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <ul className="mx-auto mt-6 flex w-full max-w-sm flex-col gap-2 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center">
               {section.bullets.map((item, i) => (
                 <li
                   key={item}
                   data-m-item
-                  className="group flex items-center gap-3 rounded-2xl border border-[color:var(--header-border)] bg-[var(--header-surface)]/40 px-4 py-3.5 text-left transition-[transform,border-color,background-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-[var(--accent)]/40 hover:bg-[var(--header-surface)]/70 hover:shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--accent)_45%,transparent)] last:sm:col-span-2 last:sm:w-[calc((100%-0.75rem)/2)] last:sm:justify-self-center"
+                  className={`group inline-flex w-full items-center gap-2 rounded-full border border-[color:color-mix(in_oklab,var(--accent)_28%,var(--header-border))] bg-[var(--header-surface)]/45 px-3 py-2 text-left transition-[transform,border-color,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-[var(--accent)]/50 hover:bg-[var(--header-surface)]/75 hover:shadow-[0_12px_28px_-18px_color-mix(in_oklab,var(--accent)_45%,transparent)] sm:w-auto sm:py-1.5 ${
+                    i >= 4 ? "max-sm:hidden" : ""
+                  }`}
                 >
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[color-mix(in_oklab,var(--accent)_14%,transparent)] text-[var(--accent)] transition-transform duration-300 group-hover:scale-110">
-                    <FinderAudienceIcon index={i} />
+                  <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--accent)_16%,transparent)] text-[var(--accent)]">
+                    <span className="scale-75">
+                      <FinderAudienceIcon index={i} />
+                    </span>
                   </span>
-                  <span className="text-sm font-medium text-[var(--foreground)]">
+                  <span className="min-w-0 text-[13px] font-medium leading-snug text-[var(--foreground)] sm:whitespace-nowrap">
                     {item}
                   </span>
                 </li>
@@ -1980,12 +2035,12 @@ function MarketingSection({
           {section.closing ? (
             <div
               data-m-item
-              className="mt-8 flex items-start gap-4 rounded-2xl border border-[color:var(--header-border)] bg-[var(--header-surface)]/35 p-5 sm:p-6"
+              className="mx-auto mt-6 flex max-w-3xl items-center gap-3 rounded-2xl border border-[color:var(--header-border)] bg-[var(--header-surface)]/35 px-4 py-3 sm:px-5"
             >
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[color-mix(in_oklab,var(--accent)_16%,transparent)] text-[1.65rem] leading-none text-[var(--accent)]">
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--accent)_16%,transparent)] text-[1.15rem] leading-none text-[var(--accent)]">
                 “
               </span>
-              <p className="pt-1 text-sm leading-relaxed text-[var(--hero-muted)]">
+              <p className="min-w-0 text-[13px] leading-snug text-[var(--hero-muted)]">
                 {section.closing}
               </p>
             </div>
@@ -2067,7 +2122,7 @@ function MarketingSection({
           <div className="pointer-events-none absolute -left-8 -top-8 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_18%,transparent),transparent_70%)]" />
 
           <div className="relative grid grid-cols-1 items-start gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
-            <div>
+            <div className="max-lg:text-center">
               <span
                 data-m-item
                 className="inline-flex items-center gap-2 rounded-full border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]"
@@ -2081,7 +2136,7 @@ function MarketingSection({
 
               <h2
                 data-m-item
-                className="mt-4 text-balance text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)] sm:text-[2rem]"
+                className="mt-4 text-balance text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)] max-lg:text-center sm:text-[2rem]"
               >
                 {titleLead}{" "}
                 {title.includes(accentPhrase) ? (
@@ -2247,7 +2302,7 @@ function MarketingSection({
           </div>
 
           {section.reasons?.length ? (
-            <WhyReasonsTimeline reasons={section.reasons} />
+            <WhyReasonsIndex reasons={section.reasons} />
           ) : null}
 
           <div className="relative mt-8 flex justify-center">
@@ -2259,85 +2314,31 @@ function MarketingSection({
   }
 
   if (layout === "library") {
-    const specimens = [
-      { font: "ui-sans-serif, system-ui, sans-serif", sample: "Aa" },
-      { font: "Georgia, 'Times New Roman', serif", sample: "Aa" },
-      { font: "'Segoe Script', 'Bradley Hand', cursive", sample: "Aa" },
-      { font: "'Comic Sans MS', 'Chalkboard SE', cursive", sample: "Aa" },
-      { font: "Impact, Haettenschweiler, sans-serif", sample: "Aa" },
-    ];
-
     return (
       <Block id={section.id} soft={soft}>
-        <div className={wrap}>
-          <div className="mx-auto max-w-2xl text-center">
-            <Heading eyebrow={section.eyebrow} title={section.title} center />
+        <div className={`${wrap} relative`}>
+          <div className="relative mx-auto max-w-2xl text-center">
+            <span
+              data-m-item
+              className="inline-flex items-center gap-2 rounded-full border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]"
+            >
+              Font Library
+            </span>
+            <div className="mt-4">
+              <Heading eyebrow={section.eyebrow} title={section.title} center />
+            </div>
             <Copy paragraphs={section.paragraphs} center />
             <ListIntro text={section.listIntro} />
           </div>
 
           {section.labeledItems?.length ? (
-            <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {section.labeledItems.map((item, i) => (
-                <li
-                  key={item.label}
-                  data-m-item
-                  className="group flex items-start gap-4 rounded-2xl border border-[color:var(--header-border)] bg-[var(--header-surface)]/35 p-4 text-left transition-[transform,border-color,background-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-[var(--accent)]/40 hover:bg-[var(--header-surface)]/70 hover:shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--accent)_45%,transparent)]"
-                >
-                  <span
-                    className="library-specimen flex size-12 shrink-0 items-center justify-center rounded-xl border border-[color:var(--header-border)] bg-[var(--header-surface)]/60 text-[1.55rem] leading-none text-[var(--foreground)] transition-[color,border-color,background-color,transform] duration-300 group-hover:border-[var(--accent)]/40 group-hover:bg-[color-mix(in_oklab,var(--accent)_12%,transparent)] group-hover:text-[var(--accent)]"
-                    style={{
-                      fontFamily: specimens[i]?.font ?? "inherit",
-                      animationDelay: `${i * 0.28}s`,
-                    }}
-                    aria-hidden
-                  >
-                    {specimens[i]?.sample ?? "Aa"}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold text-[var(--foreground)]">
-                      {item.label}
-                    </p>
-                    {item.text ? (
-                      <p className="mt-1 text-[13px] leading-relaxed text-[var(--hero-muted)]">
-                        {item.text}
-                      </p>
-                    ) : null}
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <HomeLibraryVisual
+              items={section.labeledItems}
+              blocks={section.blocks}
+            />
           ) : null}
 
-          <Closing text={section.closing} center />
-
-          {section.blocks?.length ? (
-            <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-5">
-              {section.blocks.map((block) => (
-                <article
-                  key={block.title}
-                  data-m-item
-                  className="rounded-2xl border border-[color:var(--header-border)] bg-[var(--header-surface)]/25 p-5 text-left sm:p-6"
-                >
-                  <h3 className="text-[15px] font-semibold text-[var(--foreground)]">
-                    {block.title}
-                  </h3>
-                  <div className="mt-3 space-y-2">
-                    {block.paragraphs.map((p) => (
-                      <p
-                        key={p.slice(0, 48)}
-                        className="text-sm leading-[1.6] text-[var(--hero-muted)]"
-                      >
-                        {p}
-                      </p>
-                    ))}
-                  </div>
-                </article>
-              ))}
-            </div>
-          ) : null}
-
-          <div className="mt-10 flex justify-center sm:mt-12">
+          <div className="relative mt-6 flex justify-center">
             <Ctas ctas={section.ctas} center />
           </div>
         </div>
@@ -2349,49 +2350,85 @@ function MarketingSection({
     return (
       <Block id={section.id} soft={soft}>
         <div className={wrap}>
-          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
-            {section.labeledItems?.length ? (
-              <ul className="order-2 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:order-1">
-                {section.labeledItems.map((item, i) => (
-                  <li
-                    key={item.label}
-                    data-m-item
-                    className="group relative overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_38%,var(--header-border))] bg-[var(--header-surface)]/45 p-4 transition-[transform,border-color,background-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-[var(--accent)]/50 hover:bg-[var(--header-surface)]/75 hover:shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--accent)_45%,transparent)] first:border-[var(--accent)]/55 first:shadow-[0_0_24px_-12px_color-mix(in_oklab,var(--accent)_50%,transparent)]"
-                  >
-                    <div className="relative z-[1] flex items-start justify-between gap-3">
-                      <ImportCardIcon
-                        name={DEVICES_CARD_ICONS[i] ?? "user"}
-                      />
-                      <span className="text-2xl font-semibold tabular-nums leading-none text-[var(--accent)]/35">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <p className="relative z-[1] mt-3 text-sm font-semibold text-[var(--foreground)]">
-                      {item.label}
-                    </p>
-                    {item.text ? (
-                      <p className="relative z-[1] mt-1 text-[13px] leading-relaxed text-[var(--hero-muted)]">
-                        {item.text}
-                      </p>
-                    ) : null}
-                    <div className="pointer-events-none absolute -right-6 -top-8 size-24 rounded-full bg-[color-mix(in_oklab,var(--accent)_28%,transparent)] opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
-                  </li>
-                ))}
-              </ul>
-            ) : null}
+          <div className="flex items-center gap-3">
+            <span className="size-1.5 shrink-0 rounded-full bg-[var(--accent)] shadow-[0_0_10px_var(--accent)]" />
+            <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--accent)]">
+              Device index
+            </p>
+            <span className="h-px flex-1 bg-[linear-gradient(90deg,color-mix(in_oklab,var(--accent)_55%,transparent),transparent)]" />
+            <p className="text-[10px] font-medium tabular-nums tracking-[0.18em] text-[var(--hero-muted)]">
+              01-06
+            </p>
+          </div>
 
-            <div className="order-1 lg:order-2">
+          <div className="mt-5 grid grid-cols-1 items-end gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+            <div>
               <Heading eyebrow={section.eyebrow} title={section.title} />
               <Copy paragraphs={section.paragraphs} />
+            </div>
+            {section.listIntro ? (
+              <p data-m-item className="text-sm leading-relaxed text-[var(--hero-muted)] lg:pb-1">
+                {section.listIntro}
+              </p>
+            ) : null}
+          </div>
+
+          {section.labeledItems?.length ? (
+            <ul className="mt-8 grid grid-cols-1 border-y border-[color:var(--header-border)] sm:grid-cols-2">
+              {section.labeledItems.map((item, i) => (
+                <li
+                  key={item.label}
+                  data-m-item
+                  tabIndex={0}
+                  className={`group cursor-default py-4 outline-none sm:px-5 ${
+                    i % 2 === 0
+                      ? "sm:border-r sm:border-[color:var(--header-border)] sm:pl-0"
+                      : "sm:pr-0"
+                  } ${
+                    i < 4
+                      ? "border-b border-[color:var(--header-border)]"
+                      : i < section.labeledItems!.length - 1
+                        ? "border-b border-[color:var(--header-border)] sm:border-b-0"
+                        : ""
+                  }`}
+                >
+                  <div className="flex items-baseline gap-4">
+                    <span className="w-7 shrink-0 text-[11px] font-medium tabular-nums tracking-[0.14em] text-[var(--accent)]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[15px] font-medium tracking-[-0.01em] text-[var(--foreground)] transition-colors duration-300 group-hover:text-[var(--accent)] group-focus-visible:text-[var(--accent)]">
+                        {item.label}
+                      </p>
+                      {item.text ? (
+                        <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]">
+                          <p className="min-h-0 overflow-hidden text-[13px] leading-relaxed text-[var(--hero-muted)]">
+                            <span className="mt-1.5 block opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                              {item.text}
+                            </span>
+                          </p>
+                        </div>
+                      ) : null}
+                      <span className="mt-3 block h-px w-8 bg-[var(--header-border)] transition-[width,background-color] duration-300 group-hover:w-16 group-hover:bg-[var(--accent)] group-focus-visible:w-16 group-focus-visible:bg-[var(--accent)]" />
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 [&>div>h3:first-child]:mt-0">
+            <div className="sm:border-r sm:border-[color:var(--header-border)] sm:pr-10">
               <Subhead>{section.subtitle}</Subhead>
               <Copy paragraphs={section.afterSubtitle} />
+            </div>
+            <div>
               <Subhead>{section.subtitle2}</Subhead>
-              <ListIntro text={section.listIntro} />
               <Closing text={section.closing} />
             </div>
           </div>
 
-          <div className="mt-10 flex justify-center sm:mt-12">
+          <div className="mt-8 flex justify-center">
             <Ctas ctas={section.ctas} center />
           </div>
         </div>
@@ -2483,7 +2520,7 @@ function MarketingSection({
           </div>
 
           {section.labeledItems?.length ? (
-            <ul className="mb-8 flex flex-wrap justify-center gap-2">
+            <ul className="mb-2 flex flex-wrap justify-center gap-2">
               {section.labeledItems.map((item) => (
                 <li
                   key={item.label}
@@ -2496,9 +2533,9 @@ function MarketingSection({
             </ul>
           ) : null}
 
-          <HomeFontPlayground />
+          <HomeDiscoverFontCards />
 
-          <div className="mt-10 flex justify-center sm:mt-12">
+          <div className="mt-8 flex justify-center sm:mt-10">
             <Ctas ctas={section.ctas} center />
           </div>
         </div>
@@ -2507,26 +2544,20 @@ function MarketingSection({
   }
 
   if (layout === "maker") {
-    const title = section.title;
     const accentPhrase = "Custom Font for iPhone";
-    const titleLead = title.includes(accentPhrase)
-      ? title.slice(0, title.indexOf(accentPhrase)).trimEnd()
-      : title;
+    const titleLead = section.title.includes(accentPhrase)
+      ? section.title.slice(0, section.title.indexOf(accentPhrase)).trimEnd()
+      : section.title;
 
     return (
       <Block id={section.id} soft={soft}>
         <div className={wrap}>
-          <div
-            data-m-item
-            className="relative overflow-hidden rounded-[1.75rem] border border-[color:color-mix(in_oklab,var(--accent)_28%,var(--header-border))] bg-[var(--header-surface)]/45 p-6 shadow-[0_24px_60px_-36px_rgba(0,0,0,0.8)] sm:p-8 lg:p-10"
-          >
-            <div className="pointer-events-none absolute -left-10 -top-10 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_70%)]" />
-
-            <div className="relative grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:gap-12">
-              <div className="min-w-0 text-left">
-                <h2 className="text-left text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)] sm:text-[1.9rem]">
+          <HomeFontPlayground
+            intro={
+              <div className="max-lg:text-center">
+                <h2 className="text-balance text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)] max-lg:text-center sm:text-[1.9rem]">
                   {titleLead}
-                  {title.includes(accentPhrase) ? (
+                  {section.title.includes(accentPhrase) ? (
                     <>
                       {" "}
                       <span className="text-[var(--accent)]">{accentPhrase}</span>
@@ -2534,15 +2565,12 @@ function MarketingSection({
                   ) : null}
                 </h2>
                 <Copy paragraphs={section.paragraphs} />
-                <div className="mt-8 sm:mt-10">
-                  <div className="inline-flex rounded-xl shadow-[0_0_42px_-6px_color-mix(in_oklab,var(--accent)_45%,transparent)] [&>[data-m-item]]:mt-0">
-                    <Ctas ctas={section.ctas} />
-                  </div>
-                </div>
               </div>
+            }
+          />
 
-              <FontMakerVisual />
-            </div>
+          <div className="mt-8 flex justify-center">
+            <Ctas ctas={section.ctas} center />
           </div>
         </div>
       </Block>

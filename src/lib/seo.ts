@@ -69,7 +69,7 @@ export function buildPageMetadata({
   const url = absoluteUrl(ogPath);
   const canonicalUrl = absoluteUrl(canonical);
   const keywordList = mergeKeywords(keywords);
-  const imageAlt = `${title} — ${SITE_DISPLAY_NAME}`;
+  const imageAlt = `${title} - ${SITE_DISPLAY_NAME}`;
   const images = defaultSocialImages(imageAlt);
 
   return {
@@ -112,7 +112,7 @@ export function buildNotFoundMetadata(): Metadata {
 export function buildDefaultMetadata(): Metadata {
   const title = "Install Fonts for iPhone & iPad | Font Installer App";
   const description = SITE_META_DESCRIPTION;
-  const images = defaultSocialImages(`${SITE_DISPLAY_NAME} — ${title}`);
+  const images = defaultSocialImages(`${SITE_DISPLAY_NAME} - ${title}`);
 
   return {
     metadataBase: new URL(SITE_URL),

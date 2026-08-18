@@ -7,7 +7,7 @@ import { getAboutMetaKeywords } from "@/lib/seo-keywords";
 export const metadata = buildPageMetadata({
   title: "About",
   description:
-    "About Install fonts — a free font installer and catalog for custom TTF/OTF, Google Fonts, iPhone fonts, reading fonts, and designer typefaces. Works with the iFont app on iOS and Android.",
+    "About Install fonts - a free font installer and catalog for custom TTF/OTF, Google Fonts, iPhone fonts, reading fonts, and designer typefaces. Works with the iFont app on iOS and Android.",
   path: "/about",
   keywords: getAboutMetaKeywords(),
 });
@@ -17,7 +17,7 @@ export default function AboutPage() {
     <>
       <StaticPage
         title="About Installfont"
-        description="We help designers, creators, and fans find the right typeface fast — with live previews, curated collections, and mobile install options."
+        description="We help designers, creators, and fans find the right typeface fast - with live previews, curated collections, and mobile install options."
       >
         <p>
           <strong>{SITE_NAME}</strong> ({SITE_DOMAIN}) is a font discovery platform

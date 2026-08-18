@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { PREVIEW_FONT_META } from "@/fonts/preview-fonts";
 import {
@@ -13,6 +14,7 @@ import { AppleMark } from "@/components/MobileAppStoreIcons";
 type FloatProps = {
   text: string;
   family: string;
+  href: string;
   previewClassName: string;
   positionClass: string;
   floatClass: string;
@@ -22,6 +24,7 @@ type FloatProps = {
 function FloatingPreview({
   text,
   family,
+  href,
   previewClassName,
   positionClass,
   floatClass,
@@ -36,33 +39,33 @@ function FloatingPreview({
   }[glow];
 
   return (
-    <div
-      data-hero-card
-      className={`group/float overflow-hidden rounded-2xl border border-[color:var(--card-border)] bg-[var(--card-bg)] p-4 backdrop-blur-md sm:p-5 ${ring} ${positionClass} ${floatClass}`}
-    >
-      <div className="flex items-center justify-between text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--header-muted)]">
-        <span>{family}</span>
-        <span className="size-1.5 rounded-full bg-[var(--accent)]" />
-      </div>
-      <div
-        className={`mt-2.5 text-[clamp(1.75rem,3.5vw,2.75rem)] leading-none text-[var(--foreground)] ${previewClassName}`}
+    <div data-hero-card className={`${positionClass} ${floatClass}`}>
+      <Link
+        href={href}
+        aria-label={`Preview ${family}`}
+        className={`group/float block overflow-hidden rounded-2xl border border-[color:var(--card-border)] bg-[var(--card-bg)] p-4 backdrop-blur-md transition-[border-color,filter] duration-300 hover:border-[color:color-mix(in_oklab,var(--accent)_40%,var(--card-border))] hover:brightness-110 sm:p-5 ${ring}`}
       >
-        {text}
-      </div>
-      <div className="mt-2.5 flex items-center justify-between text-[10px] text-[var(--header-muted)]">
-        <span>Aa Bb Cc 0123</span>
-        <span className="opacity-60">Free · Variable</span>
-      </div>
+        <div className="flex items-center justify-between text-[10px] font-medium uppercase tracking-[0.18em] text-[var(--header-muted)]">
+          <span>{family}</span>
+          <span className="size-1.5 rounded-full bg-[var(--accent)]" />
+        </div>
+        <div
+          className={`mt-2.5 text-[clamp(1.75rem,3.5vw,2.75rem)] leading-none text-[var(--foreground)] ${previewClassName}`}
+        >
+          {text}
+        </div>
+        <div className="mt-2.5 flex items-center justify-between text-[10px] text-[var(--header-muted)]">
+          <span>Aa Bb Cc 0123</span>
+          <span className="opacity-60">Free · Variable</span>
+        </div>
+      </Link>
     </div>
   );
 }
 
 function HeroFontCards() {
   return (
-    <div
-      className="relative mx-auto h-[min(52vh,22rem)] w-full max-w-[22rem] lg:h-[min(62vh,30rem)] lg:max-w-[32rem] xl:max-w-[36rem]"
-      aria-hidden
-    >
+    <div className="relative mx-auto h-[min(52vh,22rem)] w-full max-w-[22rem] lg:h-[min(62vh,30rem)] lg:max-w-[32rem] xl:max-w-[36rem]">
       <div className="pointer-events-none absolute -left-6 top-8 size-40 rounded-full bg-[var(--accent-2)]/20 blur-3xl" />
       <div className="pointer-events-none absolute right-0 top-1/3 size-44 rounded-full bg-[var(--accent-3)]/18 blur-3xl" />
       <div className="pointer-events-none absolute bottom-4 left-1/4 size-36 rounded-full bg-[var(--accent)]/22 blur-3xl" />
@@ -70,6 +73,7 @@ function HeroFontCards() {
       <FloatingPreview
         text="Aurora"
         family="Cinzel"
+        href="/fonts/cinzel"
         previewClassName={PREVIEW_FONT_META.cinzel.className}
         positionClass="absolute left-0 top-0 z-[1] w-[72%]"
         floatClass="hero-float-a"
@@ -78,6 +82,7 @@ function HeroFontCards() {
       <FloatingPreview
         text="Pacific"
         family="Pacifico"
+        href="/fonts/pacifico"
         previewClassName={PREVIEW_FONT_META.pacifico.className}
         positionClass="absolute right-0 top-[28%] z-[2] w-[74%]"
         floatClass="hero-float-b"
@@ -86,6 +91,7 @@ function HeroFontCards() {
       <FloatingPreview
         text="BOLT"
         family="Bebas Neue"
+        href="/fonts/bebas-neue"
         previewClassName={PREVIEW_FONT_META.bebas.className}
         positionClass="absolute bottom-0 left-[6%] z-[3] w-[74%]"
         floatClass="hero-float-c"
@@ -149,7 +155,7 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="page-px relative overflow-hidden py-9 sm:py-11"
+      className="hero-bleed page-px relative overflow-hidden py-9 sm:py-11"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,color-mix(in_oklab,var(--accent)_8%,transparent),transparent_45%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,color-mix(in_oklab,var(--brand-blue)_10%,transparent),transparent_50%)]" />
@@ -162,7 +168,7 @@ export function HeroSection() {
           >
             Fonts For{" "}
             <span className="font-shimmer">iPhone</span>
-            {" – "}
+            {" - "}
             Install, Create &amp; Customize Fonts on iPhone and iPad
           </h1>
 
@@ -179,7 +185,7 @@ export function HeroSection() {
             <span className="font-semibold text-[var(--accent)]">
               Custom Font for iPhone
             </span>{" "}
-            in seconds — no design skills needed. Just download, tap, and
+            in seconds - no design skills needed. Just download, tap, and
             transform your screen.
           </p>
 

@@ -73,10 +73,10 @@ export async function generateMetadata({
     const items = getCategoryFonts(slug, tag);
     const count = items.length;
     return buildPageMetadata({
-      title: `${titleBase} — Free ${meta.shortLabel} Fonts`,
+      title: `${titleBase} - Free ${meta.shortLabel} Fonts`,
       description: subLabel
-        ? `${subLabel} — ${meta.subtitle} Preview, compare, and download ${count} free ${meta.shortLabel.toLowerCase()} fonts. Install TTF/OTF on iPhone with iFont or use our font preview tool.`
-        : `${meta.subtitle} Browse ${count}+ free ${meta.shortLabel.toLowerCase()} fonts — font preview, font collections, Install TTF/OTF, and custom fonts for iPhone and iPad.`,
+        ? `${subLabel} - ${meta.subtitle} Preview, compare, and download ${count} free ${meta.shortLabel.toLowerCase()} fonts. Install TTF/OTF on iPhone with iFont or use our font preview tool.`
+        : `${meta.subtitle} Browse ${count}+ free ${meta.shortLabel.toLowerCase()} fonts - font preview, font collections, Install TTF/OTF, and custom fonts for iPhone and iPad.`,
       path,
       canonicalPath: `/fonts/${slug}`,
       index: !tag,
@@ -97,7 +97,7 @@ export async function generateMetadata({
   const displayName = fontFamilyLabel(card);
 
   return buildPageMetadata({
-    title: `${displayName} Font — Preview, Download TTF/OTF`,
+    title: `${displayName} Font - Preview, Download TTF/OTF`,
     description: `Preview and download ${displayName} from Google Fonts. Install TTF or OTF on iPhone with iFont, use the font generator, compare similar ${categoryLabel ? `${categoryLabel.toLowerCase()} ` : ""}fonts, and copy CSS on Installfont.`,
     path: `/fonts/${slug}`,
     keywords: getFontDetailMetaKeywords({

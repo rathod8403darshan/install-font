@@ -129,7 +129,7 @@ export function FontSuggestionsSection({ text, selectedKey, onSelect }: Props) {
             Font Suggestions
           </h2>
           <p className="mt-1.5 max-w-2xl text-sm text-[var(--hero-muted)] sm:text-base">
-            See &ldquo;{displayText}&rdquo; in different fonts — tap a card to
+            See &ldquo;{displayText}&rdquo; in different fonts - tap a card to
             use it in the generator above. Heart a font to add it to your{" "}
             <a
               href="/liked"

@@ -1,6 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import {
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
+import gsap from "gsap";
 import {
   PREVIEW_FONT_KEYS,
   PREVIEW_FONT_META,
@@ -15,25 +24,125 @@ import {
   previewSettingsForPreset,
   type GeneratorSettings,
 } from "@/lib/font-generator";
+import { prefersReducedMotion } from "@/lib/motion";
 
 const HOME_PRESETS = GENERATOR_STYLE_PRESETS.filter((p) =>
   ["plain", "super-mario", "neon", "retro-3d"].includes(p.id),
 );
 
-export function HomeFontPlayground() {
+function PlaygroundFontPicker({
+  value,
+  onChange,
+}: {
+  value: PreviewFontKey;
+  onChange: (key: PreviewFontKey) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const listId = useId();
+  const activeMeta = PREVIEW_FONT_META[value];
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointer = (e: PointerEvent) => {
+      if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointer);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointer);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <div ref={rootRef} className="relative z-20">
+      <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[var(--hero-muted)]">
+        Choose font
+      </p>
+      <button
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-controls={listId}
+        onClick={() => setOpen((o) => !o)}
+        className="mt-2 flex w-full items-center justify-between gap-2 border-0 border-b border-[color:var(--header-border)] bg-transparent py-2 text-left outline-none transition-[border-color] hover:border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] focus-visible:border-[var(--accent)]"
+      >
+        <span
+          className={`min-w-0 truncate text-[15px] text-[var(--foreground)] ${activeMeta.className}`}
+        >
+          {familyDisplayName(value)}
+        </span>
+        <svg
+          className={`size-4 shrink-0 text-[var(--hero-muted)] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          aria-hidden
+        >
+          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {open ? (
+        <ul
+          id={listId}
+          role="listbox"
+          aria-label="Choose font"
+          className="font-sort-menu absolute left-0 right-0 z-50 mt-2 max-h-64 overflow-y-auto rounded-xl border border-[color:var(--header-border)] bg-[var(--header-surface-solid)] py-1 shadow-[0_20px_50px_-16px_rgba(0,0,0,0.75)]"
+        >
+          {PREVIEW_FONT_KEYS.map((key) => {
+            const selected = key === value;
+            const meta = PREVIEW_FONT_META[key];
+            return (
+              <li key={key} role="option" aria-selected={selected}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onChange(key);
+                    setOpen(false);
+                  }}
+                  className={`flex w-full px-3 py-2 text-left transition-colors ${
+                    selected
+                      ? "bg-[var(--header-hover)] text-[var(--accent)]"
+                      : "text-[var(--foreground)] hover:bg-[var(--header-hover)]"
+                  }`}
+                >
+                  <span className={`truncate text-[15px] ${meta.className}`}>
+                    {familyDisplayName(key)}
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
+    </div>
+  );
+}
+
+export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
   const [previewText, setPreviewText] = useState("iPhone");
   const [settings, setSettings] = useState<GeneratorSettings>(() =>
     createDefaultGeneratorSettings("pacifico"),
   );
+
+  const stageRef = useRef<HTMLDivElement>(null);
+  const previewRef = useRef<HTMLParagraphElement>(null);
+  const sampleRef = useRef<HTMLSpanElement>(null);
 
   const activeMeta = PREVIEW_FONT_META[settings.fontKey];
   const display = previewText.trim() || "iPhone";
   const textStyle = useMemo(() => {
     const style = buildPreviewTextStyle({
       ...settings,
-      fontSize: Math.min(settings.fontSize, 96),
+      fontSize: Math.min(settings.fontSize, 120),
     });
-    return { ...style, fontSize: "clamp(2.4rem, 6vw, 4.6rem)" };
+    return { ...style, fontSize: "clamp(3rem, 7.5vw, 6.25rem)" };
   }, [settings]);
 
   const presetLabel =
@@ -47,104 +156,169 @@ export function HomeFontPlayground() {
     setSettings((s) => applyStylePreset(s, presetId));
   };
 
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return;
+
+    const activate = () => stage.classList.add("playground-active");
+
+    if (prefersReducedMotion()) {
+      activate();
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
+        activate();
+        io.disconnect();
+      },
+      { threshold: 0.28 },
+    );
+    io.observe(stage);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const el = previewRef.current;
+    if (!el || prefersReducedMotion()) return;
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 22, scale: 0.92, filter: "blur(10px)" },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 0.55,
+        ease: "power3.out",
+      },
+    );
+  }, [settings.fontKey, settings.stylePresetId, display]);
+
+  useEffect(() => {
+    const el = sampleRef.current;
+    if (!el || prefersReducedMotion()) return;
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 8 },
+      { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" },
+    );
+  }, [settings.fontKey, display]);
+
   return (
     <div
       data-m-item
-      className="grid min-w-0 grid-cols-1 overflow-hidden rounded-2xl border border-[color:var(--header-border)] bg-[var(--card-bg)] lg:grid-cols-[minmax(17rem,22rem)_1fr]"
+      className="grid min-w-0 grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:gap-12"
     >
-      <div className="flex min-w-0 flex-col gap-4 border-b border-[color:var(--header-border)] p-4 sm:p-5 lg:border-b-0 lg:border-r">
-        <label className="block">
-          <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--hero-muted)]">
-            Preview text
-          </span>
-          <input
-            type="text"
-            value={previewText}
-            onChange={(e) => setPreviewText(e.target.value)}
-            maxLength={24}
-            className="mt-1.5 w-full rounded-lg border border-[color:var(--header-border)] bg-[var(--header-surface)] px-3 py-2 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent)]/40"
-          />
-        </label>
+      <div className="min-w-0">
+        {intro}
 
-        <label className="block">
-          <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--hero-muted)]">
-            Choose font
-          </span>
-          <select
-            value={settings.fontKey}
-            onChange={(e) => setFont(e.target.value as PreviewFontKey)}
-            className="mt-1.5 w-full rounded-lg border border-[color:var(--header-border)] bg-[var(--header-surface)] px-3 py-2 text-sm text-[var(--foreground)] outline-none focus:border-[var(--accent)]/40"
-          >
-            {PREVIEW_FONT_KEYS.map((key) => (
-              <option key={key} value={key}>
-                {familyDisplayName(key)}
-              </option>
-            ))}
-          </select>
-          <span
-            className={`mt-2 block truncate rounded-lg border border-[color:var(--header-border)] bg-[var(--header-surface)] px-3 py-2 text-center text-[15px] text-[var(--foreground)] ${activeMeta.className}`}
+        <div className="mt-7 space-y-6">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <label className="block">
+              <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-[var(--hero-muted)]">
+                Preview text
+              </span>
+              <input
+                type="text"
+                value={previewText}
+                onChange={(e) => setPreviewText(e.target.value)}
+                maxLength={24}
+                className="mt-2 w-full border-0 border-b border-[color:var(--header-border)] bg-transparent py-2 text-sm text-[var(--foreground)] outline-none transition-[border-color] focus:border-[var(--accent)]"
+              />
+            </label>
+
+            <PlaygroundFontPicker value={settings.fontKey} onChange={setFont} />
+          </div>
+
+          <p
+            ref={sampleRef}
+            className={`truncate text-[1.35rem] leading-none text-[var(--foreground)] ${activeMeta.className}`}
           >
             {display}
-          </span>
-        </label>
-
-        <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--hero-muted)]">
-            Choose style
           </p>
-          <ul className="mt-2 space-y-1.5">
-            {HOME_PRESETS.map((preset) => {
-              const selected = settings.stylePresetId === preset.id;
-              const sampleStyle = buildPreviewTextStyle({
-                ...previewSettingsForPreset(settings.fontKey, preset.id),
-                fontSize: 22,
-              });
-              return (
-                <li key={preset.id}>
+
+          <div>
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[var(--hero-muted)]">
+              Choose style
+            </p>
+            <div className="mt-2 border-t border-[color:var(--header-border)]">
+              {HOME_PRESETS.map((preset) => {
+                const selected = settings.stylePresetId === preset.id;
+                const previewSettings = previewSettingsForPreset(
+                  settings.fontKey,
+                  preset.id,
+                );
+                const miniStyle: CSSProperties = {
+                  ...buildPreviewTextStyle({
+                    ...previewSettings,
+                    fontSize: 22,
+                  }),
+                  lineHeight: 1,
+                };
+
+                return (
                   <button
+                    key={preset.id}
                     type="button"
                     onClick={() => setPreset(preset.id)}
-                    className={`flex w-full items-center gap-3 rounded-xl border px-3 py-2 text-left transition-colors ${
+                    aria-pressed={selected}
+                    className={`flex w-full items-center justify-between gap-4 border-b border-[color:var(--header-border)] py-3 text-left outline-none transition-colors ${
                       selected
-                        ? "border-[var(--accent)] bg-[color-mix(in_oklab,var(--accent)_10%,transparent)]"
-                        : "border-[color:var(--header-border)] bg-[var(--header-surface)]/40 hover:border-[var(--accent)]/30"
+                        ? "text-[var(--accent)]"
+                        : "text-[var(--foreground)] hover:text-[var(--accent)]"
                     }`}
                   >
+                    <span className="text-[13px] font-medium tracking-wide">
+                      {preset.label}
+                    </span>
                     <span
-                      className={`size-3.5 shrink-0 rounded-full border ${
-                        selected
-                          ? "border-[var(--accent)] bg-[var(--accent)]"
-                          : "border-[color:var(--header-border)]"
-                      }`}
-                    />
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-[12px] font-medium text-[var(--foreground)]">
-                        {preset.label}
-                      </span>
-                      <span
-                        className={`mt-0.5 block truncate text-[15px] leading-none ${activeMeta.className}`}
-                        style={sampleStyle}
-                      >
-                        ABCDEF
-                      </span>
+                      className={`${activeMeta.className} max-w-[55%] truncate text-right`}
+                      style={miniStyle}
+                    >
+                      ABCDEF
                     </span>
                   </button>
-                </li>
-              );
-            })}
-          </ul>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="relative flex min-h-[16rem] flex-col items-center justify-center bg-[color-mix(in_oklab,var(--background)_70%,transparent)] px-5 py-10 sm:min-h-[20rem]">
-        <p
-          className={`max-w-full break-words text-center font-semibold leading-[1.05] tracking-tight ${activeMeta.className}`}
-          style={textStyle}
-        >
-          {display}
-        </p>
-        <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--hero-muted)]">
-          {familyDisplayName(settings.fontKey)} — {presetLabel}
+      <div
+        ref={stageRef}
+        className="playground-stage relative flex min-h-[18rem] flex-col justify-center overflow-hidden px-2 py-6 sm:min-h-[22rem] lg:sticky lg:top-[calc(var(--site-header-offset)+1.25rem)] lg:min-h-[26rem]"
+      >
+        <div className="pointer-events-none playground-stage-glow absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_68%)]" />
+
+        <div className="relative mb-6 flex items-center justify-between">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--hero-muted)]">
+            Live preview
+          </p>
+          <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
+            <span className="playground-live-dot size-1.5 rounded-full bg-[var(--accent)]" />
+            Live
+          </span>
+        </div>
+
+        <div className="relative flex min-h-[11rem] flex-col items-center justify-center sm:min-h-[14rem]">
+          <span className="playground-guide playground-guide-1 pointer-events-none absolute left-[8%] right-[8%] top-[22%] h-px bg-[var(--header-border)]" />
+          <span className="playground-guide playground-guide-2 pointer-events-none absolute left-[8%] right-[8%] top-1/2 h-px bg-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))]" />
+          <span className="playground-guide playground-guide-3 pointer-events-none absolute left-[8%] right-[8%] top-[78%] h-px bg-[var(--header-border)]" />
+
+          <p
+            ref={previewRef}
+            className={`relative z-[1] max-w-full break-words text-center font-semibold leading-[1.05] tracking-tight ${activeMeta.className}`}
+            style={textStyle}
+          >
+            {display}
+          </p>
+        </div>
+
+        <p className="relative mt-6 text-center text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--hero-muted)]">
+          {familyDisplayName(settings.fontKey)} - {presetLabel}
         </p>
       </div>
     </div>

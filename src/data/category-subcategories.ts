@@ -6,7 +6,7 @@ export type Subcategory = {
   shortLabel: string;
 };
 
-/** Topic chips shown under each main category (Google Fonts–style browse). */
+/** Topic chips shown under each main category (Google Fonts-style browse). */
 export const SUBCATEGORIES: Record<FontCategorySlug, Subcategory[]> = {
   game: [
     { slug: "action-adventure", label: "Action & Adventure Fonts", shortLabel: "Action" },

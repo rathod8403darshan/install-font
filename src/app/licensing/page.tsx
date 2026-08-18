@@ -7,7 +7,7 @@ import { getLicensingMetaKeywords } from "@/lib/seo-keywords";
 export const metadata = buildPageMetadata({
   title: "Licensing",
   description:
-    "Font licensing on Install fonts — Google Fonts OFL, TTF/OTF usage, what you can download, and how Installfont and iFont content is protected.",
+    "Font licensing on Install fonts - Google Fonts OFL, TTF/OTF usage, what you can download, and how Installfont and iFont content is protected.",
   path: "/licensing",
   keywords: getLicensingMetaKeywords(),
 });
@@ -46,7 +46,7 @@ export default function LicensingPage() {
       </p>
       <p>
         {SITE_NAME} does not sell fonts or grant rights beyond what the original
-        licensor provides. We are a discovery and preview tool — not a font foundry.
+        licensor provides. We are a discovery and preview tool - not a font foundry.
       </p>
 
       <h2 className="text-lg font-semibold text-[var(--foreground)]">

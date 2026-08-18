@@ -39,7 +39,7 @@ export function RecentAdditionsPage() {
               Latest and Greatest Fonts
             </p>
             <p className="mt-4 text-sm leading-relaxed text-[var(--hero-muted)]/90">
-              New picks added weekly — preview famous and trending typefaces,
+              New picks added weekly - preview famous and trending typefaces,
               then open any font to download or install on your phone.
             </p>
           </header>
