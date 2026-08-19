@@ -20,6 +20,7 @@ import {
   applyStylePreset,
   buildPreviewTextStyle,
   createDefaultGeneratorSettings,
+  GENERATOR_STYLE_BLURBS,
   GENERATOR_STYLE_PRESETS,
   previewSettingsForPreset,
   type GeneratorSettings,
@@ -257,6 +258,7 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
                   }),
                   lineHeight: 1,
                 };
+                const blurb = GENERATOR_STYLE_BLURBS[preset.id] ?? "";
 
                 return (
                   <button
@@ -264,20 +266,37 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
                     type="button"
                     onClick={() => setPreset(preset.id)}
                     aria-pressed={selected}
-                    className={`flex w-full items-center justify-between gap-4 border-b border-[color:var(--header-border)] py-3 text-left outline-none transition-colors ${
-                      selected
-                        ? "text-[var(--accent)]"
-                        : "text-[var(--foreground)] hover:text-[var(--accent)]"
-                    }`}
+                    className="group/style flex w-full items-center justify-between gap-4 border-b border-[color:var(--header-border)] py-3.5 text-left outline-none"
                   >
-                    <span className="text-[13px] font-medium tracking-wide">
-                      {preset.label}
+                    <span className="min-w-0 flex-1">
+                      <span
+                        className={`block text-[13px] font-medium tracking-wide transition-colors ${
+                          selected
+                            ? "text-[var(--accent)]"
+                            : "text-[var(--foreground)] group-hover/style:text-[var(--accent)]"
+                        }`}
+                      >
+                        {preset.label}
+                      </span>
+                      {blurb ? (
+                        <span className="mt-1 block line-clamp-2 text-[12px] font-normal leading-snug tracking-normal text-[var(--hero-muted)]">
+                          {blurb}
+                        </span>
+                      ) : null}
                     </span>
                     <span
-                      className={`${activeMeta.className} max-w-[55%] truncate text-right`}
-                      style={miniStyle}
+                      className={`shrink-0 rounded-lg border px-3 py-2 transition-[border-color,background-color,box-shadow] duration-300 ${
+                        selected
+                          ? "border-[color:color-mix(in_oklab,var(--accent)_55%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_12%,transparent)] shadow-[0_0_22px_-8px_color-mix(in_oklab,var(--accent)_70%,transparent)]"
+                          : "border-[color:var(--header-border)] bg-[var(--header-surface)]/40 group-hover/style:border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] group-hover/style:bg-[color-mix(in_oklab,var(--accent)_8%,transparent)]"
+                      }`}
                     >
-                      ABCDEF
+                      <span
+                        className={`${activeMeta.className} max-w-[9.5rem] truncate text-right sm:max-w-[11rem]`}
+                        style={miniStyle}
+                      >
+                        ABCDEF
+                      </span>
                     </span>
                   </button>
                 );
@@ -289,7 +308,7 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
 
       <div
         ref={stageRef}
-        className="playground-stage relative flex min-h-[18rem] flex-col justify-center overflow-hidden px-2 py-6 sm:min-h-[22rem] lg:sticky lg:top-[calc(var(--site-header-offset)+1.25rem)] lg:min-h-[26rem]"
+        className="playground-stage relative flex min-h-[18rem] flex-col justify-center overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_6%,var(--header-surface))] px-5 py-6 shadow-[0_0_48px_-14px_color-mix(in_oklab,var(--accent)_58%,transparent)] sm:min-h-[22rem] sm:px-6 sm:py-7 lg:sticky lg:top-[calc(var(--site-header-offset)+1.25rem)] lg:min-h-[26rem]"
       >
         <div className="pointer-events-none playground-stage-glow absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_68%)]" />
 

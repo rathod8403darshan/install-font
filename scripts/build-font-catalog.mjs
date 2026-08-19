@@ -36,7 +36,7 @@ const CATEGORIES = ["movie", "music", "game", "logo", "book"];
 
 const PER_CATEGORY = 200;
 
-/** Pattern overrides — applied before the Google taxonomy bucket. */
+/** Pattern overrides - applied before the Google taxonomy bucket. */
 const NAME_OVERRIDES = [
   { test: /(press\s*start|pixel|vt323|silkscreen|jersey|kode\s*mono|major\s*mono|workbench|honk|sixtyfour|nabla|orbitron|tourney|audiowide|bungee|monoton|wallpoet|black\s*ops|faster\s*one|joti|rubik\s*pixels|rubik\s*glitch|rubik\s*bubbles|rubik\s*broken|rubik\s*microbe|rubik\s*moonrocks|rubik\s*puddles|rubik\s*scribble|rubik\s*spray|rubik\s*storm|rubik\s*vinyl|rubik\s*wet|rubik\s*beastly|rubik\s*lines|geo|special\s*elite|share\s*tech\s*mono|cutive\s*mono)/i, category: "game" },
   { test: /(pacifico|lobster|allura|great\s*vibes|dancing\s*script|sacramento|satisfy|kaushan|cookie|tangerine|parisienne|alex\s*brush|yellowtail|niconne|euphoria|grand\s*hotel|leckerli|kalam|caveat|shadows\s*into\s*light|amatic|patrick\s*hand|gloria\s*hallelujah|architects\s*daughter|covered\s*by\s*your\s*grace|nothing\s*you\s*could\s*do|over\s*the\s*rainbow|reenie\s*beanie|rock\s*salt|shadow\s*into\s*light|special\s*elite|swanky\s*and\s*moo\s*moo|the\s*girl\s*next\s*door|just\s*another\s*hand|loved\s*by\s*the\s*king)/i, category: "music" },
@@ -209,7 +209,7 @@ function serialize(items, cat, takenSlugs) {
 async function main() {
   const items = await loadCatalog();
   if (!items || items.length === 0) {
-    throw new Error("Empty catalog — refusing to write empty category files.");
+    throw new Error("Empty catalog - refusing to write empty category files.");
   }
 
   const buckets = bucketize(items);

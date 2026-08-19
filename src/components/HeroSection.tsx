@@ -197,7 +197,7 @@ export function HeroSection() {
               href={APP_STORE_IFONT_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-zinc-950 shadow-[0_16px_40px_-16px_color-mix(in_oklab,var(--accent)_55%,transparent)] transition-[filter,transform] hover:-translate-y-px hover:brightness-110 active:scale-[0.98]"
+              className="cta-highlight"
             >
               <AppleMark className="size-5" />
               Download Install Font on the App Store

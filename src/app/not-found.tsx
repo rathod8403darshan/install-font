@@ -19,7 +19,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="mt-8 inline-flex rounded-xl bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-zinc-950 transition-[filter] hover:brightness-110"
+          className="cta-highlight mt-8"
         >
           Back to home
         </Link>

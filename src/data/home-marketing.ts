@@ -59,14 +59,6 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
     paragraphs: [
       "Finding the right typeface should be exciting - not frustrating. Install Font gives you access to a growing collection of Fonts For iPhone and iPad Fonts, making it easier to find a style for every project.",
     ],
-    labeledItems: [
-      { label: "Students", text: "" },
-      { label: "Professionals", text: "" },
-      { label: "Designers", text: "" },
-      { label: "Content creators", text: "" },
-      { label: "Business owners", text: "" },
-      { label: "Everyday iPhone users", text: "" },
-    ],
     ctas: [
       { label: "Get Fonts For iPhone Free", href: "app-store" },
       { label: "Explore Fonts for iPhone", href: "/fonts/movie" },
@@ -195,6 +187,7 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
     title: "A Large Fonts Library in One App",
     paragraphs: [
       "Searching for fonts across multiple websites can be time-consuming. Install Font brings a dedicated Fonts Library experience together in one place.",
+      "With thousands of fonts available, you can explore different categories and styles according to the type of project you are working on.",
     ],
     listIntro: "You can discover typography suitable for:",
     labeledItems: [

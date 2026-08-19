@@ -104,6 +104,17 @@ export const GENERATOR_STYLE_PRESETS: {
   },
 ];
 
+export const GENERATOR_STYLE_BLURBS: Record<string, string> = {
+  plain:
+    "Clean letters with no outline, glow, or extra depth. A simple base for any typeface.",
+  "super-mario":
+    "A bold fill with a white outline and a slight drop, in a classic game-title look.",
+  neon:
+    "Bright edges and a soft halo so the letters read like a neon sign on a dark screen.",
+  "retro-3d":
+    "Stacked color and extrusion that give the letters a retro 3D poster look.",
+};
+
 export function createDefaultGeneratorSettings(
   fontKey: PreviewFontKey,
 ): GeneratorSettings {

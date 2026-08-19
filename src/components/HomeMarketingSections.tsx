@@ -66,19 +66,16 @@ function Ctas({
     >
       {ctas.map((cta, i) => {
         const href = resolveCtaHref(cta.href);
-        const primary = i === 0;
+        const store = cta.href === "app-store" || cta.href === "google-play";
+        const primary = i === 0 || store;
         const cls = primary
-          ? `inline-flex max-w-full items-center gap-1.5 rounded-xl bg-[var(--accent)] font-semibold text-zinc-950 transition-[transform,filter] hover:-translate-y-px hover:brightness-110 active:scale-[0.98] sm:gap-2 ${
-              compact
-                ? "px-3 py-2 text-[11px] leading-tight sm:px-4 sm:py-2.5 sm:text-sm"
-                : "px-4 py-2.5 text-sm"
-            }`
-          : "inline-flex items-center rounded-xl border border-[color:var(--header-border)] bg-[var(--header-surface)] px-4 py-2.5 text-sm font-medium text-[var(--foreground)] transition-colors hover:bg-[var(--header-hover)]";
+          ? `cta-highlight ${compact ? "cta-highlight-compact" : ""}`
+          : "cta-secondary";
         const icon =
           cta.href === "app-store" ? (
-            <AppleMark className={compact ? "size-3.5 shrink-0 sm:size-[1.1rem]" : "size-[1.1rem]"} />
+            <AppleMark className={compact ? "size-4 shrink-0 sm:size-5" : "size-5"} />
           ) : cta.href === "google-play" ? (
-            <GooglePlayMark className={compact ? "size-3.5 shrink-0 sm:size-[1.1rem]" : "size-[1.1rem]"} />
+            <GooglePlayMark className={compact ? "size-4 shrink-0 sm:size-5" : "size-5"} />
           ) : null;
         if (isExternalCta(cta.href)) {
           return (
@@ -275,11 +272,12 @@ function Heading({
   center?: boolean;
 }) {
   return (
-    <header data-m-item className={center ? "text-center" : "max-lg:text-center"}>
+    <header
+      data-m-item
+      className={`w-full ${center ? "text-center" : "max-lg:text-center"}`}
+    >
       {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-      <h2 className="text-balance text-[1.4rem] font-semibold leading-[1.2] tracking-[-0.02em] text-[var(--foreground)] sm:text-[1.75rem]">
-        {title}
-      </h2>
+      <h2 className="section-h2">{title}</h2>
     </header>
   );
 }
@@ -1586,7 +1584,7 @@ function MakerCard({ section }: { section: HomeMarketingSection }) {
 
       <div className="relative grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:gap-12">
         <div className="min-w-0 text-left">
-          <h2 className="text-left text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)] sm:text-[1.9rem]">
+          <h2 className="section-h2 text-left">
             {titleLead}
             {section.title.includes(accentPhrase) ? (
               <>
@@ -1633,7 +1631,7 @@ function MarketingSection({
           >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--accent)_18%,transparent),transparent_68%)]" />
             <div className="pointer-events-none absolute -left-10 top-0 h-40 w-40 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_70%)]" />
-            <h2 className="relative text-balance text-[1.65rem] font-semibold tracking-[-0.03em] text-[var(--foreground)] sm:text-[2.1rem]">
+            <h2 className="section-h2 relative">
               {section.title}
             </h2>
             <div className="relative mt-8 flex justify-center sm:mt-10">
@@ -1664,10 +1662,10 @@ function MarketingSection({
     return (
       <Block id={section.id}>
         <div className={wrap}>
-          <div className="mx-auto max-w-2xl text-center">
+          <div className="w-full text-center">
             <h2
               data-m-item
-              className="text-balance text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)] sm:text-[1.9rem]"
+              className="section-h2"
             >
               {titleLead}{" "}
               <span className="text-[var(--accent)]">{accentPhrase}</span>
@@ -1724,7 +1722,7 @@ function MarketingSection({
     return (
       <Block id={section.id} soft={soft}>
         <div className={wrap}>
-          <div className="mx-auto max-w-2xl text-center">
+          <div className="w-full text-center">
             <Heading eyebrow={section.eyebrow} title={section.title} center />
             <Copy paragraphs={section.paragraphs} center />
             <p
@@ -1821,7 +1819,7 @@ function MarketingSection({
             <div className="max-lg:text-center">
               <h2
                 data-m-item
-                className="text-balance text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] max-lg:text-center sm:text-[2rem]"
+                className="section-h2 max-lg:text-center"
               >
                 <span className="text-[var(--foreground)]">{titleLead}</span>
                 {title.includes(accentPhrase) ? (
@@ -1931,7 +1929,7 @@ function MarketingSection({
 
               <h2
                 data-m-item
-                className="mt-4 text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)] max-lg:text-center sm:text-[2rem]"
+                className="section-h2 mt-4 max-lg:text-center"
               >
                 {titleLead}
                 {title.includes(accentPhrase) ? (
@@ -2060,7 +2058,7 @@ function MarketingSection({
     return (
       <Block id={section.id} soft={soft}>
         <div className={wrap}>
-          <div className="mx-auto max-w-2xl text-center">
+          <div className="w-full text-center">
             <Heading eyebrow={section.eyebrow} title={section.title} center />
             <Copy paragraphs={section.paragraphs} center />
             <ListIntro text={section.listIntro} />
@@ -2136,7 +2134,7 @@ function MarketingSection({
 
               <h2
                 data-m-item
-                className="mt-4 text-balance text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)] max-lg:text-center sm:text-[2rem]"
+                className="section-h2 mt-4 max-lg:text-center"
               >
                 {titleLead}{" "}
                 {title.includes(accentPhrase) ? (
@@ -2269,7 +2267,7 @@ function MarketingSection({
         <div className={`${wrap} relative`}>
           <div className="pointer-events-none absolute -left-8 -top-8 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_70%)]" />
 
-          <div className="relative mx-auto max-w-2xl text-center">
+          <div className="relative w-full text-center">
             <Heading eyebrow={section.eyebrow} title={section.title} center />
             <Copy paragraphs={section.paragraphs} center />
           </div>
@@ -2317,7 +2315,7 @@ function MarketingSection({
     return (
       <Block id={section.id} soft={soft}>
         <div className={`${wrap} relative`}>
-          <div className="relative mx-auto max-w-2xl text-center">
+          <div className="relative w-full text-center">
             <span
               data-m-item
               className="inline-flex items-center gap-2 rounded-full border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]"
@@ -2338,7 +2336,9 @@ function MarketingSection({
             />
           ) : null}
 
-          <div className="relative mt-6 flex justify-center">
+          <Closing text={section.closing} center />
+
+          <div className="relative mt-8 flex justify-center">
             <Ctas ctas={section.ctas} center />
           </div>
         </div>
@@ -2361,72 +2361,90 @@ function MarketingSection({
             </p>
           </div>
 
-          <div className="mt-5 grid grid-cols-1 items-end gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-            <div>
-              <Heading eyebrow={section.eyebrow} title={section.title} />
-              <Copy paragraphs={section.paragraphs} />
-            </div>
-            {section.listIntro ? (
-              <p data-m-item className="text-sm leading-relaxed text-[var(--hero-muted)] lg:pb-1">
-                {section.listIntro}
-              </p>
-            ) : null}
-          </div>
+          <header data-m-item className="mt-5 w-full max-lg:text-center">
+            {section.eyebrow ? <Eyebrow>{section.eyebrow}</Eyebrow> : null}
+            <h2 className="section-h2 section-h2-oneline">{section.title}</h2>
+          </header>
 
-          {section.labeledItems?.length ? (
-            <ul className="mt-8 grid grid-cols-1 border-y border-[color:var(--header-border)] sm:grid-cols-2">
-              {section.labeledItems.map((item, i) => (
-                <li
-                  key={item.label}
-                  data-m-item
-                  tabIndex={0}
-                  className={`group cursor-default py-4 outline-none sm:px-5 ${
-                    i % 2 === 0
-                      ? "sm:border-r sm:border-[color:var(--header-border)] sm:pl-0"
-                      : "sm:pr-0"
-                  } ${
-                    i < 4
-                      ? "border-b border-[color:var(--header-border)]"
-                      : i < section.labeledItems!.length - 1
-                        ? "border-b border-[color:var(--header-border)] sm:border-b-0"
-                        : ""
-                  }`}
-                >
-                  <div className="flex items-baseline gap-4">
-                    <span className="w-7 shrink-0 text-[11px] font-medium tabular-nums tracking-[0.14em] text-[var(--accent)]">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-[15px] font-medium tracking-[-0.01em] text-[var(--foreground)] transition-colors duration-300 group-hover:text-[var(--accent)] group-focus-visible:text-[var(--accent)]">
-                        {item.label}
-                      </p>
-                      {item.text ? (
-                        <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]">
-                          <p className="min-h-0 overflow-hidden text-[13px] leading-relaxed text-[var(--hero-muted)]">
-                            <span className="mt-1.5 block opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-                              {item.text}
-                            </span>
-                          </p>
-                        </div>
-                      ) : null}
-                      <span className="mt-3 block h-px w-8 bg-[var(--header-border)] transition-[width,background-color] duration-300 group-hover:w-16 group-hover:bg-[var(--accent)] group-focus-visible:w-16 group-focus-visible:bg-[var(--accent)]" />
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
+          <Copy paragraphs={section.paragraphs} />
+
+          {section.subtitle ? (
+            <div
+              data-m-item
+              className="relative mt-6 overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_42%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_7%,var(--header-surface))] px-5 py-5 shadow-[0_0_36px_-12px_color-mix(in_oklab,var(--accent)_55%,transparent)] sm:px-6 sm:py-6"
+            >
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_left,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_62%)]" />
+              <h3 className="relative text-[1.25rem] font-semibold tracking-[-0.025em] text-[var(--accent)] sm:text-[1.45rem]">
+                {section.subtitle}
+              </h3>
+              {section.afterSubtitle?.length ? (
+                <div className="relative mt-2 space-y-2">
+                  {section.afterSubtitle.map((p) => (
+                    <p
+                      key={p.slice(0, 48)}
+                      className="text-sm leading-[1.65] text-[var(--foreground)]/80"
+                    >
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           ) : null}
 
-          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 [&>div>h3:first-child]:mt-0">
-            <div className="sm:border-r sm:border-[color:var(--header-border)] sm:pr-10">
-              <Subhead>{section.subtitle}</Subhead>
-              <Copy paragraphs={section.afterSubtitle} />
-            </div>
-            <div>
-              <Subhead>{section.subtitle2}</Subhead>
-              <Closing text={section.closing} />
-            </div>
-          </div>
+          {section.labeledItems?.length ? (
+            <>
+              {section.listIntro ? (
+                <p
+                  data-m-item
+                  className="mt-8 text-[13px] font-medium text-[var(--hero-muted)] max-lg:text-center"
+                >
+                  {section.listIntro}
+                </p>
+              ) : null}
+              <ul className="mt-3 grid grid-cols-1 border-y border-[color:var(--header-border)] sm:grid-cols-2">
+                {section.labeledItems.map((item, i) => (
+                  <li
+                    key={item.label}
+                    data-m-item
+                    tabIndex={0}
+                    className={`group cursor-default py-4 outline-none sm:px-5 ${
+                      i % 2 === 0
+                        ? "sm:border-r sm:border-[color:var(--header-border)] sm:pl-0"
+                        : "sm:pr-0"
+                    } ${
+                      i < 4
+                        ? "border-b border-[color:var(--header-border)]"
+                        : i < section.labeledItems!.length - 1
+                          ? "border-b border-[color:var(--header-border)] sm:border-b-0"
+                          : ""
+                    }`}
+                  >
+                    <div className="flex items-baseline gap-4">
+                      <span className="w-7 shrink-0 text-[11px] font-medium tabular-nums tracking-[0.14em] text-[var(--accent)]">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[15px] font-medium tracking-[-0.01em] text-[var(--foreground)] transition-colors duration-300 group-hover:text-[var(--accent)] group-focus-visible:text-[var(--accent)]">
+                          {item.label}
+                        </p>
+                        {item.text ? (
+                          <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]">
+                            <p className="min-h-0 overflow-hidden text-[13px] leading-relaxed text-[var(--hero-muted)]">
+                              <span className="mt-1.5 block opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                                {item.text}
+                              </span>
+                            </p>
+                          </div>
+                        ) : null}
+                        <span className="mt-3 block h-px w-8 bg-[var(--header-border)] transition-[width,background-color] duration-300 group-hover:w-16 group-hover:bg-[var(--accent)] group-focus-visible:w-16 group-focus-visible:bg-[var(--accent)]" />
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
 
           <div className="mt-8 flex justify-center">
             <Ctas ctas={section.ctas} center />
@@ -2519,20 +2537,6 @@ function MarketingSection({
             <Copy paragraphs={section.paragraphs} center />
           </div>
 
-          {section.labeledItems?.length ? (
-            <ul className="mb-2 flex flex-wrap justify-center gap-2">
-              {section.labeledItems.map((item) => (
-                <li
-                  key={item.label}
-                  data-m-item
-                  className="rounded-lg border border-[color:var(--header-border)] bg-[var(--header-surface)]/40 px-3 py-1.5 text-[13px] text-[var(--foreground)]/90"
-                >
-                  {item.label}
-                </li>
-              ))}
-            </ul>
-          ) : null}
-
           <HomeDiscoverFontCards />
 
           <div className="mt-8 flex justify-center sm:mt-10">
@@ -2555,7 +2559,7 @@ function MarketingSection({
           <HomeFontPlayground
             intro={
               <div className="max-lg:text-center">
-                <h2 className="text-balance text-[1.55rem] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)] max-lg:text-center sm:text-[1.9rem]">
+                <h2 className="section-h2 max-lg:text-center">
                   {titleLead}
                   {section.title.includes(accentPhrase) ? (
                     <>

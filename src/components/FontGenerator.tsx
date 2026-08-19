@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import gsap from "gsap";
 import {
   PREVIEW_FONT_KEYS,
@@ -13,6 +14,7 @@ import {
   buildPreviewTextStyle,
   createDefaultGeneratorSettings,
   FONT_SIZE_OPTIONS,
+  GENERATOR_STYLE_BLURBS,
   GENERATOR_STYLE_PRESETS,
   perLetterTransform,
   previewSettingsForPreset,
@@ -155,25 +157,133 @@ function SelectField<T extends string | number>({
   options: { value: T; label: string }[];
   disabled?: boolean;
 }) {
+  const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const listId = useId();
+  const selected = options.find((o) => o.value === value) ?? options[0];
+  const [menu, setMenu] = useState({
+    top: 0,
+    left: 0,
+    width: 0,
+    maxHeight: 240,
+  });
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const placeMenu = useCallback(() => {
+    const el = btnRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const gap = 6;
+    const spaceBelow = window.innerHeight - r.bottom - 12;
+    const spaceAbove = r.top - 12;
+    const openUp = spaceBelow < 160 && spaceAbove > spaceBelow;
+    const maxHeight = Math.min(240, openUp ? spaceAbove : spaceBelow);
+    setMenu({
+      top: openUp ? r.top - gap - maxHeight : r.bottom + gap,
+      left: r.left,
+      width: r.width,
+      maxHeight: Math.max(120, maxHeight),
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    placeMenu();
+    const onPointer = (e: PointerEvent) => {
+      const t = e.target as Node;
+      if (rootRef.current?.contains(t)) return;
+      const menuEl = document.getElementById(listId);
+      if (menuEl?.contains(t)) return;
+      setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointer);
+    window.addEventListener("keydown", onKey);
+    window.addEventListener("resize", placeMenu);
+    window.addEventListener("scroll", placeMenu, true);
+    return () => {
+      document.removeEventListener("pointerdown", onPointer);
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", placeMenu);
+      window.removeEventListener("scroll", placeMenu, true);
+    };
+  }, [open, listId, placeMenu]);
+
   return (
-    <div className={`min-w-0 ${disabled ? "pointer-events-none opacity-45" : ""}`}>
+    <div
+      ref={rootRef}
+      className={`relative min-w-0 ${disabled ? "pointer-events-none opacity-45" : ""}`}
+    >
       <FieldLabel>{label}</FieldLabel>
-      <select
-        value={String(value)}
-        onChange={(e) => {
-          const raw = e.target.value;
-          const match = options.find((o) => String(o.value) === raw);
-          if (match) onChange(match.value);
-        }}
+      <button
+        ref={btnRef}
+        type="button"
         disabled={disabled}
-        className="mt-1.5 w-full rounded-lg border border-[color:var(--header-border)] bg-[var(--header-surface)] px-2.5 py-2 text-[12px] text-[var(--foreground)] outline-none focus:border-[var(--accent)]/40"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-controls={listId}
+        onClick={() => setOpen((o) => !o)}
+        className="mt-1.5 flex w-full items-center justify-between gap-2 rounded-lg border border-[color:var(--header-border)] bg-[var(--header-surface)] px-2.5 py-2 text-left text-[12px] text-[var(--foreground)] outline-none transition-[border-color] hover:border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] focus-visible:border-[var(--accent)]"
       >
-        {options.map((o) => (
-          <option key={String(o.value)} value={String(o.value)}>
-            {o.label}
-          </option>
-        ))}
-      </select>
+        <span className="min-w-0 truncate">{selected?.label}</span>
+        <svg
+          className={`size-3.5 shrink-0 text-[var(--hero-muted)] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          aria-hidden
+        >
+          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      {mounted && open
+        ? createPortal(
+            <ul
+              id={listId}
+              role="listbox"
+              aria-label={typeof label === "string" ? label : "Options"}
+              style={{
+                top: menu.top,
+                left: menu.left,
+                width: menu.width,
+                maxHeight: menu.maxHeight,
+              }}
+              className="font-sort-menu fixed z-[80] overflow-y-auto rounded-xl border border-[color:var(--header-border)] bg-[var(--header-surface-solid)] py-1 shadow-[0_20px_50px_-16px_rgba(0,0,0,0.75)]"
+            >
+              {options.map((o) => {
+                const isOn = o.value === value;
+                return (
+                  <li key={String(o.value)} role="option" aria-selected={isOn}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onChange(o.value);
+                        setOpen(false);
+                      }}
+                      className={`flex w-full px-3 py-2 text-left text-[12px] transition-colors ${
+                        isOn
+                          ? "bg-[var(--header-hover)] text-[var(--accent)]"
+                          : "text-[var(--foreground)] hover:bg-[var(--header-hover)]"
+                      }`}
+                    >
+                      {o.label}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>,
+            document.body,
+          )
+        : null}
     </div>
   );
 }
@@ -238,14 +348,15 @@ function StylePresetPicker({
   return (
     <div>
       <FieldLabel>Choose style</FieldLabel>
-      <div className="mt-2 space-y-2">
+      <div className="mt-2 border-t border-[color:var(--header-border)]">
         {GENERATOR_STYLE_PRESETS.map((preset) => {
           const selected = preset.id === selectedId;
           const previewSettings = previewSettingsForPreset(fontKey, preset.id);
           const miniStyle: React.CSSProperties = {
             ...buildPreviewTextStyle({ ...previewSettings, fontSize: 22 }),
-            lineHeight: 1.05,
+            lineHeight: 1,
           };
+          const blurb = GENERATOR_STYLE_BLURBS[preset.id] ?? "";
 
           return (
             <button
@@ -253,37 +364,38 @@ function StylePresetPicker({
               type="button"
               onClick={() => onSelect(preset.id)}
               aria-pressed={selected}
-              className={`w-full min-w-0 rounded-xl border px-3 py-2.5 text-left transition-[border-color,background-color,box-shadow] ${
-                selected
-                  ? "border-[color:var(--chip-active-border)] bg-[var(--chip-active-bg)] ring-1 ring-[color:color-mix(in_oklab,var(--accent)_35%,transparent)]"
-                  : "border-[color:var(--header-border)] bg-[var(--header-surface)] hover:border-[color:color-mix(in_oklab,var(--accent)_22%,var(--header-border))] hover:bg-[var(--header-hover)]"
-              }`}
+              className="group/style flex w-full items-center justify-between gap-3 border-b border-[color:var(--header-border)] py-3 text-left outline-none"
             >
-              <div className="flex items-center justify-between gap-2">
-                <span className="text-[11px] font-semibold tracking-wide text-[var(--foreground)]">
+              <span className="min-w-0 flex-1">
+                <span
+                  className={`block text-[12px] font-semibold tracking-wide transition-colors ${
+                    selected
+                      ? "text-[var(--accent)]"
+                      : "text-[var(--foreground)] group-hover/style:text-[var(--accent)]"
+                  }`}
+                >
                   {preset.label}
                 </span>
+                {blurb ? (
+                  <span className="mt-1 block line-clamp-2 text-[11px] font-normal leading-snug tracking-normal text-[var(--hero-muted)]">
+                    {blurb}
+                  </span>
+                ) : null}
+              </span>
+              <span
+                className={`shrink-0 rounded-lg border px-2.5 py-2 transition-[border-color,background-color,box-shadow] duration-300 ${
+                  selected
+                    ? "border-[color:color-mix(in_oklab,var(--accent)_55%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_12%,transparent)] shadow-[0_0_22px_-8px_color-mix(in_oklab,var(--accent)_70%,transparent)]"
+                    : "border-[color:var(--header-border)] bg-[var(--background)]/50 group-hover/style:border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] group-hover/style:bg-[color-mix(in_oklab,var(--accent)_8%,transparent)]"
+                }`}
+              >
                 <span
-                  className={`flex size-4 shrink-0 items-center justify-center rounded-full border ${
-                    selected
-                      ? "border-[var(--accent)] bg-[var(--accent)]"
-                      : "border-[color:var(--header-border)] bg-transparent"
-                  }`}
-                  aria-hidden
-                >
-                  {selected ? (
-                    <span className="size-1.5 rounded-full bg-white" />
-                  ) : null}
-                </span>
-              </div>
-              <div className="mt-2 max-w-full overflow-hidden rounded-lg border border-[color:var(--header-border)]/70 bg-[var(--background)]/60 px-2 py-2">
-                <span
-                  className={`${fontClassName} block max-w-full truncate text-center`}
+                  className={`${fontClassName} block max-w-[7.5rem] truncate text-right sm:max-w-[8.5rem]`}
                   style={miniStyle}
                 >
                   ABCDEF
                 </span>
-              </div>
+              </span>
             </button>
           );
         })}
@@ -334,6 +446,12 @@ export function FontGenerator({
   );
 
   const activeMeta = PREVIEW_FONT_META[settings.fontKey];
+  const presetLabel =
+    GENERATOR_STYLE_PRESETS.find((p) => p.id === settings.stylePresetId)
+      ?.label ?? "Custom";
+  const previewBlurb =
+    GENERATOR_STYLE_BLURBS[settings.stylePresetId] ??
+    "Adjust every control on the left - the preview updates instantly on the right.";
   const downloadGoogleQuery =
     card.googleQuery ?? activeMeta.googleQuery;
   const downloadLabel =
@@ -410,15 +528,15 @@ export function FontGenerator({
       className="page-px relative scroll-mt-[var(--site-header-offset)] border-t border-[color:var(--header-border)]/80 py-[var(--section-py)]"
     >
       <div className="page-container">
-        <header className="mb-10">
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[color:var(--header-border)] bg-[var(--header-surface)] px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--hero-muted)] backdrop-blur-md">
-            <span className="size-1 rounded-full bg-[var(--accent)]" />
+        <header className="mb-8 w-full sm:mb-10">
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
+            <span className="size-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_10px_var(--accent)]" />
             Live preview
           </div>
-          <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--foreground)] sm:text-4xl">
+          <h2 className="section-h2">
             {card.label} Generator
           </h2>
-          <p className="mt-1.5 max-w-xl text-sm text-[var(--hero-muted)] sm:text-base">
+          <p className="mt-2 max-w-2xl text-sm leading-[1.65] text-[var(--hero-muted)]">
             Adjust every control on the left - the preview updates instantly on
             the right. Font suggestions appear below.
           </p>
@@ -756,12 +874,22 @@ export function FontGenerator({
           </div>
 
           <div
-            className="relative overflow-hidden rounded-2xl border border-[color:var(--card-border)] backdrop-blur-xl transition-[background-color] duration-200"
+            className="group/preview playground-stage playground-active relative overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] shadow-[0_0_48px_-14px_color-mix(in_oklab,var(--accent)_58%,transparent)] backdrop-blur-xl transition-[background-color] duration-200"
             style={containerStyle}
           >
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)]/40 to-transparent" />
+              <div className="pointer-events-none playground-stage-glow absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_68%)]" />
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)]/55 to-transparent" />
 
-              <div className="absolute right-3 top-3 z-20 flex items-stretch sm:right-4 sm:top-4">
+              <div className="relative z-20 flex items-start justify-between gap-3 px-4 pt-4 sm:px-5 sm:pt-5">
+                <div className="flex items-center gap-3">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--hero-muted)]">
+                    Live preview
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
+                    <span className="playground-live-dot size-1.5 rounded-full bg-[var(--accent)]" />
+                    Live
+                  </span>
+                </div>
                 <div
                   className="flex overflow-hidden rounded-xl border border-[color:var(--header-border)] bg-[var(--header-surface-solid)] shadow-[0_8px_28px_-8px_rgba(0,0,0,0.55)]"
                   role="toolbar"
@@ -797,7 +925,7 @@ export function FontGenerator({
 
               {downloadError || shareMessage ? (
                 <p
-                  className="absolute left-3 right-3 top-14 z-20 rounded-lg border border-[color:var(--header-border)] bg-[var(--header-surface-solid)] px-3 py-1.5 text-center text-[11px] text-[var(--foreground)]/90 shadow-md sm:left-4 sm:right-auto sm:top-16"
+                  className="relative z-20 mx-4 mt-3 rounded-lg border border-[color:var(--header-border)] bg-[var(--header-surface-solid)] px-3 py-1.5 text-center text-[11px] text-[var(--foreground)]/90 shadow-md sm:mx-5"
                   role="status"
                   aria-live="polite"
                 >
@@ -805,10 +933,14 @@ export function FontGenerator({
                 </p>
               ) : null}
 
-              <div className="flex min-h-[320px] items-center justify-center p-6 sm:min-h-[420px] sm:p-12">
+              <div className="relative flex min-h-[320px] flex-col items-center justify-center px-6 pb-16 pt-8 sm:min-h-[420px] sm:px-12">
+                <span className="playground-guide playground-guide-1 pointer-events-none absolute left-[10%] right-[10%] top-[28%] h-px bg-[var(--header-border)]" />
+                <span className="playground-guide playground-guide-2 pointer-events-none absolute left-[10%] right-[10%] top-1/2 h-px bg-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))]" />
+                <span className="playground-guide playground-guide-3 pointer-events-none absolute left-[10%] right-[10%] top-[72%] h-px bg-[var(--header-border)]" />
+
                 <div
                   ref={previewRef}
-                  className="max-w-full text-center will-change-transform"
+                  className="relative z-[1] max-w-full text-center will-change-transform"
                 >
                   <p
                     className={`font-semibold leading-[1.05] tracking-tight ${activeMeta.className}`}
@@ -827,14 +959,15 @@ export function FontGenerator({
                 </span>
                     ))}
                   </p>
-                  <span className="mt-4 inline-block text-[11px] uppercase tracking-[0.22em] text-[var(--header-muted)]">
-                    {familyDisplayName(settings.fontKey)} ·{" "}
-                    {GENERATOR_STYLE_PRESETS.find(
-                      (p) => p.id === settings.stylePresetId,
-                    )?.label ?? "Custom"}
-                </span>
+                  <p className="mx-auto mt-5 max-w-md line-clamp-2 text-sm leading-snug text-[var(--hero-muted)]">
+                    {previewBlurb}
+                  </p>
+                </div>
+
+                <p className="pointer-events-none absolute inset-x-6 bottom-5 text-center text-[11px] uppercase tracking-[0.22em] text-[var(--header-muted)] opacity-0 transition-opacity duration-300 group-hover/preview:opacity-100 group-focus-within/preview:opacity-100">
+                    {familyDisplayName(settings.fontKey)} · {presetLabel}
+                </p>
               </div>
-            </div>
           </div>
         </div>
       </div>
