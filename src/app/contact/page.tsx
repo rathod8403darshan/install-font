@@ -30,7 +30,7 @@ export default function ContactPage() {
         </p>
         <a
           href={`mailto:${CONTACT_EMAIL}`}
-          className="mt-4 inline-flex items-center justify-center rounded-full border border-[color:var(--accent)]/40 bg-[color:color-mix(in_oklab,var(--accent)_12%,transparent)] px-6 py-3 text-sm font-semibold text-[var(--foreground)] transition-[border-color,background-color,transform] hover:-translate-y-0.5 hover:border-[var(--accent)]/60 hover:bg-[color:color-mix(in_oklab,var(--accent)_18%,transparent)]"
+          className="cta-action mt-4 inline-flex items-center justify-center rounded-full border border-[color:var(--accent)]/40 bg-[color:color-mix(in_oklab,var(--accent)_12%,transparent)] px-6 py-3 text-sm font-semibold text-[var(--foreground)] transition-[border-color,background-color,transform] hover:-translate-y-0.5 hover:border-[var(--accent)]/60 hover:bg-[color:color-mix(in_oklab,var(--accent)_18%,transparent)]"
         >
           {CONTACT_EMAIL}
         </a>

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import gsap from "gsap";
+import { AccentTitle } from "@/components/AccentTitle";
 import {
   PREVIEW_FONT_KEYS,
   PREVIEW_FONT_META,
@@ -534,7 +535,7 @@ export function FontGenerator({
             Live preview
           </div>
           <h2 className="section-h2">
-            {card.label} Generator
+            <AccentTitle text={`${card.label} Generator`} />
           </h2>
           <p className="mt-2 max-w-2xl text-sm leading-[1.65] text-[var(--hero-muted)]">
             Adjust every control on the left - the preview updates instantly on

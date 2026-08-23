@@ -7,6 +7,7 @@ import { getSubcategoryLabel } from "@/data/category-subcategories";
 import { CategoryTopicSection } from "@/components/CategoryTopicSection";
 import { CategoryFontCrawlNav } from "@/components/CategoryFontCrawlNav";
 import { CategoryFontSection } from "@/components/CategoryFontSection";
+import { AccentTitle } from "@/components/AccentTitle";
 
 type Props = {
   category: FontCategorySlug;
@@ -37,7 +38,7 @@ export function FontCategoryPage({ category, tag }: Props) {
               {total} typefaces · Google Fonts
             </span>
             <h1 className="text-2xl font-semibold tracking-[-0.025em] text-[var(--foreground)] sm:text-3xl md:text-4xl lg:text-[2.6rem]">
-              {subLabel ?? meta.label}
+              <AccentTitle text={subLabel ?? meta.label} />
             </h1>
             <p className="max-w-xl text-sm leading-relaxed text-[var(--hero-muted)] sm:text-base">
               {meta.blurb}

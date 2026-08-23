@@ -387,7 +387,7 @@ export function FontDetailHero({ card }: { card: ShowcaseCard }) {
                         type="button"
                         disabled={isDownloading}
                         onClick={() => handleDownload(v.fontKey, v.name)}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-[var(--accent)] px-3.5 py-1.5 text-[12px] font-semibold text-zinc-950 shadow-[0_0_18px_-6px_color-mix(in_oklab,var(--accent)_55%,transparent)] transition-[filter,box-shadow,opacity] duration-200 hover:brightness-110 hover:shadow-[0_0_24px_-4px_color-mix(in_oklab,var(--accent)_70%,transparent)] disabled:cursor-wait disabled:opacity-70"
+                        className="cta-action inline-flex items-center gap-1.5 rounded-full bg-[var(--accent)] px-3.5 py-1.5 text-[12px] font-semibold text-zinc-950 shadow-[0_0_18px_-6px_color-mix(in_oklab,var(--accent)_55%,transparent)] transition-[filter,box-shadow,opacity] duration-200 hover:brightness-110 hover:shadow-[0_0_24px_-4px_color-mix(in_oklab,var(--accent)_70%,transparent)] disabled:cursor-wait disabled:opacity-70"
                       >
                         <DownloadIcon className="size-3.5" />
                         {isDownloading ? "Downloading…" : "Download"}
@@ -395,7 +395,7 @@ export function FontDetailHero({ card }: { card: ShowcaseCard }) {
                       <button
                         type="button"
                         onClick={redirectToMobileAppStore}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--header-border)] bg-[var(--header-surface)] px-3 py-1.5 text-[12px] font-medium text-[var(--foreground)]/90 backdrop-blur-md transition-[border-color,background-color] hover:border-[var(--accent)]/40 hover:bg-[var(--header-hover)]"
+                        className="cta-action inline-flex items-center gap-1.5 rounded-full border border-[color:var(--header-border)] bg-[var(--header-surface)] px-3 py-1.5 text-[12px] font-medium text-[var(--foreground)]/90 backdrop-blur-md transition-[border-color,background-color] hover:border-[var(--accent)]/40 hover:bg-[var(--header-hover)]"
                       >
                         <CartIcon className="size-3.5" />
                         Get
@@ -403,7 +403,7 @@ export function FontDetailHero({ card }: { card: ShowcaseCard }) {
                       <button
                         type="button"
                         onClick={scrollToGenerator}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--header-border)] bg-[var(--header-surface)] px-3 py-1.5 text-[12px] font-medium text-[var(--foreground)]/90 backdrop-blur-md transition-[border-color,background-color] hover:border-[var(--accent)]/40 hover:bg-[var(--header-hover)]"
+                        className="cta-action inline-flex items-center gap-1.5 rounded-full border border-[color:var(--header-border)] bg-[var(--header-surface)] px-3 py-1.5 text-[12px] font-medium text-[var(--foreground)]/90 backdrop-blur-md transition-[border-color,background-color] hover:border-[var(--accent)]/40 hover:bg-[var(--header-hover)]"
                       >
                         <SparklesIcon className="size-3.5 text-[var(--accent)]" />
                         Generate

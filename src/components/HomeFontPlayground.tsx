@@ -31,6 +31,14 @@ const HOME_PRESETS = GENERATOR_STYLE_PRESETS.filter((p) =>
   ["plain", "super-mario", "neon", "retro-3d"].includes(p.id),
 );
 
+function StepMark({ n }: { n: string }) {
+  return (
+    <span className="inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-[10px] font-bold leading-none text-[#09090b]">
+      {n}
+    </span>
+  );
+}
+
 function PlaygroundFontPicker({
   value,
   onChange,
@@ -61,24 +69,22 @@ function PlaygroundFontPicker({
 
   return (
     <div ref={rootRef} className="relative z-20">
-      <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[var(--hero-muted)]">
-        Choose font
-      </p>
       <button
         type="button"
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}
+        aria-label="Choose font"
         onClick={() => setOpen((o) => !o)}
-        className="mt-2 flex w-full items-center justify-between gap-2 border-0 border-b border-[color:var(--header-border)] bg-transparent py-2 text-left outline-none transition-[border-color] hover:border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] focus-visible:border-[var(--accent)]"
+        className="flex w-full items-center justify-between gap-2 rounded-xl border border-[color:color-mix(in_oklab,var(--accent)_28%,var(--header-border))] bg-[var(--search-bar-bg)] px-3 py-3 text-left outline-none transition-[border-color,background-color,box-shadow] hover:border-[color:color-mix(in_oklab,var(--accent)_50%,var(--header-border))] focus-visible:border-[var(--accent)] focus-visible:shadow-[0_0_0_3px_color-mix(in_oklab,var(--accent)_22%,transparent)]"
       >
         <span
-          className={`min-w-0 truncate text-[15px] text-[var(--foreground)] ${activeMeta.className}`}
+          className={`min-w-0 truncate text-[16px] text-[var(--foreground)] ${activeMeta.className}`}
         >
           {familyDisplayName(value)}
         </span>
         <svg
-          className={`size-4 shrink-0 text-[var(--hero-muted)] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`size-4 shrink-0 text-[var(--accent)] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -134,7 +140,6 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
 
   const stageRef = useRef<HTMLDivElement>(null);
   const previewRef = useRef<HTMLParagraphElement>(null);
-  const sampleRef = useRef<HTMLParagraphElement>(null);
 
   const activeMeta = PREVIEW_FONT_META[settings.fontKey];
   const display = previewText.trim() || "iPhone";
@@ -197,110 +202,145 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
     );
   }, [settings.fontKey, settings.stylePresetId, display]);
 
-  useEffect(() => {
-    const el = sampleRef.current;
-    if (!el || prefersReducedMotion()) return;
-    gsap.fromTo(
-      el,
-      { opacity: 0, y: 8 },
-      { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" },
-    );
-  }, [settings.fontKey, display]);
-
   return (
     <div
       data-m-item
-      className="grid min-w-0 grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] lg:gap-12"
+      className="grid min-w-0 grid-cols-1 items-start gap-8 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:gap-8 lg:gap-10"
     >
       <div className="min-w-0">
         {intro}
 
-        <div className="mt-7 space-y-6">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            <label className="block">
-              <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-[var(--hero-muted)]">
-                Preview text
-              </span>
-              <input
-                type="text"
-                value={previewText}
-                onChange={(e) => setPreviewText(e.target.value)}
-                maxLength={24}
-                className="mt-2 w-full border-0 border-b border-[color:var(--header-border)] bg-transparent py-2 text-sm text-[var(--foreground)] outline-none transition-[border-color] focus:border-[var(--accent)]"
-              />
-            </label>
+        <div className="relative mt-7 overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_28%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_5%,var(--header-surface))] p-4 shadow-[0_0_40px_-18px_color-mix(in_oklab,var(--accent)_45%,transparent)] sm:p-5">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,color-mix(in_oklab,var(--accent)_12%,transparent),transparent_60%)]" />
 
-            <PlaygroundFontPicker value={settings.fontKey} onChange={setFont} />
-          </div>
-
-          <p
-            ref={sampleRef}
-            className={`truncate text-[1.35rem] leading-none text-[var(--foreground)] ${activeMeta.className}`}
-          >
-            {display}
-          </p>
-
-          <div>
-            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-[var(--hero-muted)]">
-              Choose style
-            </p>
-            <div className="mt-2 border-t border-[color:var(--header-border)]">
-              {HOME_PRESETS.map((preset) => {
-                const selected = settings.stylePresetId === preset.id;
-                const previewSettings = previewSettingsForPreset(
-                  settings.fontKey,
-                  preset.id,
-                );
-                const miniStyle: CSSProperties = {
-                  ...buildPreviewTextStyle({
-                    ...previewSettings,
-                    fontSize: 22,
-                  }),
-                  lineHeight: 1,
-                };
-                const blurb = GENERATOR_STYLE_BLURBS[preset.id] ?? "";
-
-                return (
-                  <button
-                    key={preset.id}
-                    type="button"
-                    onClick={() => setPreset(preset.id)}
-                    aria-pressed={selected}
-                    className="group/style flex w-full items-center justify-between gap-4 border-b border-[color:var(--header-border)] py-3.5 text-left outline-none"
+          <div className="relative space-y-6">
+            <div>
+              <p className="mb-2 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground)]">
+                <StepMark n="1" />
+                Type your text
+              </p>
+              <label className="block">
+                <span className="sr-only">Type the text to preview</span>
+                <span className="relative block">
+                  <svg
+                    className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[var(--accent)]"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    aria-hidden
                   >
-                    <span className="min-w-0 flex-1">
-                      <span
-                        className={`block text-[13px] font-medium tracking-wide transition-colors ${
-                          selected
-                            ? "text-[var(--accent)]"
-                            : "text-[var(--foreground)] group-hover/style:text-[var(--accent)]"
-                        }`}
-                      >
-                        {preset.label}
-                      </span>
-                      {blurb ? (
-                        <span className="mt-1 block line-clamp-2 text-[12px] font-normal leading-snug tracking-normal text-[var(--hero-muted)]">
-                          {blurb}
-                        </span>
-                      ) : null}
-                    </span>
-                    <span
-                      className={`shrink-0 rounded-lg border px-3 py-2 transition-[border-color,background-color,box-shadow] duration-300 ${
+                    <path d="M4 20h16" strokeLinecap="round" />
+                    <path d="M9 4l-3 16M18 4l-3 16M8 9h9" strokeLinecap="round" />
+                  </svg>
+                  <input
+                    type="text"
+                    value={previewText}
+                    onChange={(e) => setPreviewText(e.target.value)}
+                    maxLength={24}
+                    placeholder="Type here to change the preview"
+                    autoComplete="off"
+                    className="w-full rounded-xl border-2 border-[color:color-mix(in_oklab,var(--accent)_45%,var(--header-border))] bg-[var(--search-bar-bg)] py-3 pl-10 pr-14 text-[15px] font-medium text-[var(--foreground)] outline-none placeholder:text-[var(--hero-muted)] transition-[border-color,box-shadow] focus:border-[var(--accent)] focus:shadow-[0_0_0_4px_color-mix(in_oklab,var(--accent)_22%,transparent)]"
+                  />
+                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 font-mono text-[10px] tabular-nums text-[var(--hero-muted)]">
+                    {previewText.length}/24
+                  </span>
+                </span>
+              </label>
+              <p className="mt-2 text-[12px] leading-snug text-[var(--hero-muted)]">
+                Edit this field. The styled result updates as you type.
+              </p>
+            </div>
+
+            <div>
+              <p className="mb-2 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground)]">
+                <StepMark n="2" />
+                Choose a font
+              </p>
+              <PlaygroundFontPicker value={settings.fontKey} onChange={setFont} />
+            </div>
+
+            <div>
+              <div className="mb-2 flex items-center justify-between gap-3">
+                <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground)]">
+                  <StepMark n="3" />
+                  Choose a style
+                </p>
+                <p className="text-[10px] font-medium tabular-nums tracking-[0.14em] text-[var(--accent)]">
+                  {String(
+                    HOME_PRESETS.findIndex((p) => p.id === settings.stylePresetId) +
+                      1,
+                  ).padStart(2, "0")}{" "}
+                  / {String(HOME_PRESETS.length).padStart(2, "0")}
+                </p>
+              </div>
+
+              <div className="overflow-hidden rounded-xl border border-[color:var(--header-border)] bg-[var(--header-surface)]/25">
+                {HOME_PRESETS.map((preset, i) => {
+                  const selected = settings.stylePresetId === preset.id;
+                  const previewSettings = previewSettingsForPreset(
+                    settings.fontKey,
+                    preset.id,
+                  );
+                  const miniStyle: CSSProperties = {
+                    ...buildPreviewTextStyle({
+                      ...previewSettings,
+                      fontSize: 22,
+                    }),
+                    lineHeight: 1,
+                  };
+                  const blurb = GENERATOR_STYLE_BLURBS[preset.id] ?? "";
+
+                  return (
+                    <button
+                      key={preset.id}
+                      type="button"
+                      onClick={() => setPreset(preset.id)}
+                      aria-pressed={selected}
+                      className={`group/style flex w-full items-center justify-between gap-4 px-3.5 py-3.5 text-left outline-none transition-[background-color,box-shadow] duration-300 ${
+                        i < HOME_PRESETS.length - 1
+                          ? "border-b border-[color:var(--header-border)]"
+                          : ""
+                      } ${
                         selected
-                          ? "border-[color:color-mix(in_oklab,var(--accent)_55%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_12%,transparent)] shadow-[0_0_22px_-8px_color-mix(in_oklab,var(--accent)_70%,transparent)]"
-                          : "border-[color:var(--header-border)] bg-[var(--header-surface)]/40 group-hover/style:border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] group-hover/style:bg-[color-mix(in_oklab,var(--accent)_8%,transparent)]"
+                          ? "bg-[color-mix(in_oklab,var(--accent)_10%,transparent)] shadow-[inset_3px_0_0_0_var(--accent)]"
+                          : "hover:bg-[var(--header-surface)]/45"
                       }`}
                     >
-                      <span
-                        className={`${activeMeta.className} max-w-[9.5rem] truncate text-right sm:max-w-[11rem]`}
-                        style={miniStyle}
-                      >
-                        ABCDEF
+                      <span className="min-w-0 flex-1">
+                        <span
+                          className={`block text-[13px] font-semibold tracking-wide transition-colors ${
+                            selected
+                              ? "text-[var(--accent)]"
+                              : "text-[var(--foreground)] group-hover/style:text-[var(--accent)]"
+                          }`}
+                        >
+                          {preset.label}
+                        </span>
+                        {blurb ? (
+                          <span className="mt-1 block line-clamp-2 text-[12px] font-normal leading-snug tracking-normal text-[var(--hero-muted)]">
+                            {blurb}
+                          </span>
+                        ) : null}
                       </span>
-                    </span>
-                  </button>
-                );
-              })}
+                      <span
+                        className={`shrink-0 rounded-lg border px-3 py-2 transition-[border-color,background-color,box-shadow] duration-300 ${
+                          selected
+                            ? "border-[color:color-mix(in_oklab,var(--accent)_55%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_14%,transparent)] shadow-[0_0_22px_-8px_color-mix(in_oklab,var(--accent)_70%,transparent)]"
+                            : "border-[color:var(--header-border)] bg-[var(--background)]/45 group-hover/style:border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] group-hover/style:bg-[color-mix(in_oklab,var(--accent)_8%,transparent)]"
+                        }`}
+                      >
+                        <span
+                          className={`${activeMeta.className} max-w-[9.5rem] truncate text-right sm:max-w-[11rem]`}
+                          style={miniStyle}
+                        >
+                          ABCDEF
+                        </span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -308,21 +348,25 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
 
       <div
         ref={stageRef}
-        className="playground-stage relative flex min-h-[18rem] flex-col justify-center overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_6%,var(--header-surface))] px-5 py-6 shadow-[0_0_48px_-14px_color-mix(in_oklab,var(--accent)_58%,transparent)] sm:min-h-[22rem] sm:px-6 sm:py-7 lg:sticky lg:top-[calc(var(--site-header-offset)+1.25rem)] lg:min-h-[26rem]"
+        className="playground-stage group/preview relative flex min-h-[18rem] flex-col justify-center overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_45%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_7%,var(--header-surface))] px-5 py-6 shadow-[0_0_52px_-12px_color-mix(in_oklab,var(--accent)_62%,transparent)] sm:min-h-[22rem] sm:px-6 sm:py-7 md:sticky md:top-[calc(var(--site-header-offset)+1.25rem)] md:min-h-[24rem] lg:min-h-[28rem]"
       >
-        <div className="pointer-events-none playground-stage-glow absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_68%)]" />
+        <div className="pointer-events-none playground-stage-glow absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--accent)_18%,transparent),transparent_68%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)]/55 to-transparent" />
 
-        <div className="relative mb-6 flex items-center justify-between">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--hero-muted)]">
-            Live preview
+        <div className="relative mb-5 flex items-center justify-between gap-3">
+          <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground)]">
+            <span className="inline-flex size-5 items-center justify-center rounded-full border border-[color:color-mix(in_oklab,var(--accent)_50%,var(--header-border))] text-[10px] font-bold text-[var(--accent)]">
+              4
+            </span>
+            Result
           </p>
-          <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_10%,transparent)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
             <span className="playground-live-dot size-1.5 rounded-full bg-[var(--accent)]" />
-            Live
+            Live preview
           </span>
         </div>
 
-        <div className="relative flex min-h-[11rem] flex-col items-center justify-center sm:min-h-[14rem]">
+        <div className="relative flex min-h-[11rem] flex-1 flex-col items-center justify-center sm:min-h-[14rem]">
           <span className="playground-guide playground-guide-1 pointer-events-none absolute left-[8%] right-[8%] top-[22%] h-px bg-[var(--header-border)]" />
           <span className="playground-guide playground-guide-2 pointer-events-none absolute left-[8%] right-[8%] top-1/2 h-px bg-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))]" />
           <span className="playground-guide playground-guide-3 pointer-events-none absolute left-[8%] right-[8%] top-[78%] h-px bg-[var(--header-border)]" />
@@ -336,8 +380,8 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
           </p>
         </div>
 
-        <p className="relative mt-6 text-center text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--hero-muted)]">
-          {familyDisplayName(settings.fontKey)} - {presetLabel}
+        <p className="relative mt-5 text-center text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--hero-muted)] transition-colors group-hover/preview:text-[var(--accent)]">
+          {familyDisplayName(settings.fontKey)} · {presetLabel}
         </p>
       </div>
     </div>

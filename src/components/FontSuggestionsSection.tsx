@@ -11,6 +11,7 @@ import {
 import { downloadGoogleFontTtf } from "@/lib/download-font-client";
 import { observeCardReveal } from "@/lib/motion";
 import { FontFavoriteButton } from "@/components/FontFavoriteButton";
+import { AccentTitle } from "@/components/AccentTitle";
 import { useLikedFonts } from "@/hooks/use-liked-fonts";
 import { likedIdForPreviewKey } from "@/lib/liked-fonts";
 
@@ -126,7 +127,7 @@ export function FontSuggestionsSection({ text, selectedKey, onSelect }: Props) {
             id={`${SECTION_ID}-title`}
             className="text-3xl font-semibold tracking-[-0.02em] text-[var(--foreground)] sm:text-4xl md:text-[2.6rem]"
           >
-            Font Suggestions
+            <AccentTitle text="Font Suggestions" />
           </h2>
           <p className="mt-1.5 max-w-2xl text-sm text-[var(--hero-muted)] sm:text-base">
             See &ldquo;{displayText}&rdquo; in different fonts - tap a card to

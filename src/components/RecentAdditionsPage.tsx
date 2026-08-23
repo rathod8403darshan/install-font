@@ -9,6 +9,7 @@ import { LoadMoreButton } from "@/components/LoadMoreButton";
 import { useLoadMore } from "@/hooks/use-load-more";
 import { DEFAULT_FONT_SORT, type FontSortMode } from "@/lib/font-sort";
 import { sortShowcaseCards } from "@/lib/showcase-sort";
+import { AccentTitle } from "@/components/AccentTitle";
 
 const PAGE_SIZE = 8;
 
@@ -33,7 +34,7 @@ export function RecentAdditionsPage() {
               {total} fonts
             </div>
             <h1 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--foreground)] sm:text-4xl md:text-[2.75rem]">
-              Recent Additions
+              <AccentTitle text="Recent Additions" />
             </h1>
             <p className="mt-2 text-base text-[var(--hero-muted)] sm:text-lg">
               Latest and Greatest Fonts

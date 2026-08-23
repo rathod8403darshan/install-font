@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { AccentTitle } from "@/components/AccentTitle";
 
 type Props = {
   title: string;
@@ -16,7 +17,7 @@ export function StaticPage({ title, description, children }: Props) {
             Install fonts
           </div>
           <h1 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--foreground)] sm:text-4xl">
-            {title}
+            <AccentTitle text={title} />
           </h1>
           <p className="mt-3 text-base leading-relaxed text-[var(--hero-muted)] sm:text-lg">
             {description}

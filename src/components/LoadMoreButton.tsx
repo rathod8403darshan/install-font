@@ -35,7 +35,7 @@ export function LoadMoreButton({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className={`group/btn relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-[color:var(--header-border)] bg-[var(--header-surface)] px-6 py-3 text-sm font-medium text-[var(--foreground)] backdrop-blur-md transition-[transform,border-color,background-color,box-shadow,opacity] duration-300 hover:-translate-y-0.5 hover:border-[var(--accent)]/40 hover:bg-[var(--header-hover)] hover:shadow-[0_18px_40px_-22px_color-mix(in_oklab,var(--accent)_55%,transparent)] disabled:pointer-events-none disabled:opacity-50 ${className}`}
+      className={`cta-action group/btn relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-[color:var(--header-border)] bg-[var(--header-surface)] px-6 py-3 text-sm font-medium text-[var(--foreground)] backdrop-blur-md transition-[transform,border-color,background-color,box-shadow,opacity] duration-300 hover:-translate-y-0.5 hover:border-[var(--accent)]/40 hover:bg-[var(--header-hover)] hover:shadow-[0_18px_40px_-22px_color-mix(in_oklab,var(--accent)_55%,transparent)] disabled:pointer-events-none disabled:opacity-50 ${className}`}
     >
       <span
         aria-hidden

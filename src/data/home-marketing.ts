@@ -46,6 +46,7 @@ export type HomeMarketingSection = {
     | "devices"
     | "library"
     | "finder"
+    | "import-finder"
     | "management"
     | "safari"
     | "why";
@@ -54,14 +55,14 @@ export type HomeMarketingSection = {
 export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
   {
     id: "discover",
-    eyebrow: "Powerful Features",
+    eyebrow: "Font Discovery",
     title: "Discover Thousands of Fonts for iPhone and iPad",
     paragraphs: [
       "Finding the right typeface should be exciting - not frustrating. Install Font gives you access to a growing collection of Fonts For iPhone and iPad Fonts, making it easier to find a style for every project.",
     ],
     ctas: [
-      { label: "Get Fonts For iPhone Free", href: "app-store" },
       { label: "Explore Fonts for iPhone", href: "/fonts/movie" },
+      { label: "Get Fonts for iPhone Free", href: "app-store" },
     ],
     layout: "features",
   },
@@ -69,13 +70,9 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
     id: "handwriting",
     title: "Create Your Own Custom Font for iPhone",
     paragraphs: [
-      "Sometimes the perfect font does not exist in a font library.",
-      "It exists in your handwriting.",
+    
       "Install Fonts helps you turn your handwriting into a Custom Font For iPhone, allowing you to create a more personal typography experience. Your handwriting can become part of your creative toolkit instead of remaining limited to paper or handwritten notes.",
       "The Font Maker feature is designed to help you create your own font from your handwriting. This can be useful for creators, artists, students, designers, journaling enthusiasts, and anyone who wants their digital text to feel more personal.",
-      "A Custom Font For iPhone can add personality to creative projects and give your typography a style that feels uniquely yours.",
-      "Your font does not have to look like everyone else's.",
-      "Create something that looks like you.",
     ],
     ctas: [{ label: "Create a Custom Font for iPhone", href: "app-store" }],
     layout: "maker",
@@ -164,23 +161,50 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
     layout: "devices",
   },
   {
-    id: "import",
+    id: "import-finder",
+    eyebrow: "Import + Identify",
     title: "Import Fonts From Anywhere",
     paragraphs: [
-      "Already found the perfect font online? You don't necessarily need to start your search again.",
-      "Install Font allows you to import supported font files from the web and other available locations on your device.",
-      "This makes it easier to build your own collection of Fonts For iPhone based on the styles you discover. You can also explore the Google Fonts library and discover additional typography options.",
-      "Whether a designer sends you a font file, you download a typeface from a supported website, or you already have font files stored on your device, you can bring compatible files into your font workflow.",
+      "Already found the perfect font online? You don't have to start your search from scratch.",
+      "Install Font lets you import supported font files directly from the web and other sources on your device.",
     ],
-    bullets: [".ttf", ".ttc", ".otf", "Google Fonts"],
-    subtitle: "Your Fonts, Your Way",
+    bullets: [".ttf", ".ttc", ".otf"],
+    blocks: [
+      {
+        title: "Import External Files",
+        paragraphs: [
+          "Bring in compatible files sent by designers, downloaded from supported websites, or stored on your device.",
+        ],
+      },
+      {
+        title: "Google Fonts Integration",
+        paragraphs: [
+          "Explore the Google Fonts library directly to uncover additional typography options.",
+        ],
+      },
+    ],
+    subtitle: "Identify a Font From an Image",
     afterSubtitle: [
-      "You don't have to rely only on a preselected collection.",
-      "Import the fonts you love. Discover new ones. Build a collection that works for your projects.",
-      "That's the freedom behind Custom Font For iPhone.",
+      "Ever spotted a font on a poster, ad, website, screenshot, product package, or social post and wanted to know its name?",
+      "Install Font includes a Font Finder tool that helps identify fonts from an image. Instead of browsing thousands of typefaces by hand, start with a picture and look for lettering that matches what you found.",
     ],
-    ctas: [{ label: "Import Custom Fonts Now", href: "app-store" }],
-    layout: "import",
+    listIntro: "This can be particularly helpful for:",
+    labeledItems: [
+      { label: "Designers", text: "Researching typography for creative work." },
+      { label: "Students", text: "Working on creative projects and assignments." },
+      { label: "Content creators", text: "Matching lettering from posts, videos, and campaigns." },
+      { label: "Brand teams", text: "Finding type that fits marketing and identity work." },
+      { label: "Social designers", text: "Turning a screenshot into a usable type direction." },
+      { label: "Typography fans", text: "Learning the name behind a style you spotted." },
+      { label: "Similar-font hunters", text: "Starting from an image instead of thousands of names." },
+    ],
+    closing:
+      "Don't limit yourself to a preset library. Import the fonts you love, discover new ones, and build a personalized collection for your projects. That's the power of Custom Font For iPhone.",
+    ctas: [
+      { label: "Import Custom Fonts Now", href: "app-store" },
+      { label: "Install Font Finder App", href: "app-store" },
+    ],
+    layout: "import-finder",
   },
   {
     id: "library",
@@ -239,35 +263,12 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
     layout: "library",
   },
   {
-    id: "font-finder",
-    title: "Identify a Font From an Image",
-    paragraphs: [
-      "Have you ever seen a font in a poster, advertisement, website, screenshot, packaging design, or social media post and wondered what it was called?",
-      "Install Font includes a Font Finder feature that can help you identify fonts using an image.",
-      "Instead of manually searching through thousands of typefaces, you can start with an image and look for typography that resembles what you have discovered.",
-    ],
-    listIntro: "This can be particularly helpful for:",
-    bullets: [
-      "Designers researching typography",
-      "Students working on creative projects",
-      "Content creators",
-      "Brand and marketing teams",
-      "Social media designers",
-      "Typography enthusiasts",
-      "People looking for a similar font",
-    ],
-    closing:
-      "Font identification can turn inspiration into a practical starting point. Once you know what style you are looking for, finding an appropriate typeface becomes much easier.",
-    ctas: [{ label: "Install Font Finder App", href: "app-store" }],
-    layout: "finder",
-  },
-  {
     id: "more-features",
     title: "More Features to Make Font Management Easier",
     paragraphs: [
       "Install Font can continue evolving as a complete font-management companion for Apple users.",
     ],
-    listIntro: "Useful future-facing capabilities can include:",
+    listIntro: "",
     bullets: [
       "Font preview before installation",
       "Search by font name",

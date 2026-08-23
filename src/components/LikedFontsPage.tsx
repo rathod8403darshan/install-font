@@ -5,6 +5,7 @@ import { useMemo } from "react";
 import { ShowcaseFontGrid } from "@/components/ShowcaseFontGrid";
 import { useLikedFonts } from "@/hooks/use-liked-fonts";
 import { resolveLikedItems } from "@/lib/liked-fonts";
+import { AccentTitle } from "@/components/AccentTitle";
 
 export function LikedFontsPage() {
   const { ids, count } = useLikedFonts();
@@ -29,7 +30,7 @@ export function LikedFontsPage() {
               {count} liked
             </div>
             <h1 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--foreground)] sm:text-4xl md:text-[2.75rem]">
-              Liked Fonts
+              <AccentTitle text="Liked Fonts" />
             </h1>
             <p className="mt-2 text-base text-[var(--hero-muted)] sm:text-lg">
               Fonts you saved with the heart - stored on this device

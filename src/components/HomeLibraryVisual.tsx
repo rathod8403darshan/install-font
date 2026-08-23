@@ -28,7 +28,7 @@ export function HomeLibraryVisual({
   const uid = useId().replace(/:/g, "");
   const rootRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-  const [source, setSource] = useState<number | null>(null);
+  const [openSource, setOpenSource] = useState<number | null>(null);
   const current = items[active] ?? items[0];
   const specimen = SPECIMENS[active] ?? SPECIMENS[0];
 
@@ -113,8 +113,8 @@ export function HomeLibraryVisual({
         </div>
       </div>
 
-      <div className="relative grid grid-cols-1 lg:grid-cols-2">
-        <ul className="lg:border-r lg:border-[color:var(--header-border)]">
+      <div className="relative grid grid-cols-1 md:grid-cols-2">
+        <ul className="md:border-r md:border-[color:var(--header-border)]">
           {items.map((item, i) => {
             const on = i === active;
             return (
@@ -126,7 +126,7 @@ export function HomeLibraryVisual({
                   onFocus={() => setActive(i)}
                   onClick={() => setActive(i)}
                   className={`w-full px-4 py-2.5 text-left outline-none transition-colors duration-200 ${
-                    i < items.length - 1 ? "border-b border-[color:var(--header-border)]" : "max-lg:border-b max-lg:border-[color:var(--header-border)]"
+                    i < items.length - 1 ? "border-b border-[color:var(--header-border)]" : "max-md:border-b max-md:border-[color:var(--header-border)]"
                   }`}
                 >
                   <span className="flex items-center gap-2.5">
@@ -151,68 +151,62 @@ export function HomeLibraryVisual({
         </ul>
 
         {blocks.length ? (
-          <div
-            className="flex flex-col lg:min-h-full"
-            onMouseLeave={() => setSource(null)}
-          >
+          <div className="flex flex-col md:min-h-full">
             {blocks.map((block, i) => {
-              const on = i === source;
+              const open = openSource === i;
               const teaser = twoLineTeaser(block.paragraphs);
               const extra = block.paragraphs.slice(1);
               return (
-                <article
+                <button
                   key={block.title}
-                  tabIndex={0}
-                  onMouseEnter={() => setSource(i)}
-                  onFocus={() => setSource(i)}
-                  onBlur={(e) => {
-                    if (!e.currentTarget.parentElement?.contains(e.relatedTarget)) {
-                      setSource(null);
-                    }
-                  }}
-                  className={`flex flex-1 flex-col justify-center px-4 py-3.5 outline-none transition-[background-color,box-shadow] duration-300 ${
+                  type="button"
+                  aria-expanded={open}
+                  onClick={() =>
+                    setOpenSource((current) => (current === i ? null : i))
+                  }
+                  className={`relative flex flex-1 flex-col justify-center bg-[color-mix(in_oklab,var(--accent)_7%,transparent)] px-4 py-5 text-left shadow-[inset_0_0_28px_-18px_color-mix(in_oklab,var(--accent)_35%,transparent)] outline-none transition-[filter] duration-200 hover:brightness-110 focus-visible:ring-2 focus-visible:ring-[var(--accent)]/40 sm:px-5 sm:py-6 ${
                     i < blocks.length - 1 ? "border-b border-[color:var(--header-border)]" : ""
-                  } ${
-                    on
-                      ? "bg-[color-mix(in_oklab,var(--accent)_10%,transparent)] shadow-[inset_0_0_40px_-18px_color-mix(in_oklab,var(--accent)_55%,transparent)]"
-                      : ""
                   }`}
                 >
-                  <div className="flex items-start gap-3">
-                    <LibrarySourceMark variant={i === 0 ? "google" : "archive"} active={on} />
+                  <div
+                    className="pointer-events-none absolute inset-y-3 left-0 w-[2px] rounded-full bg-[var(--accent)]/70"
+                    aria-hidden
+                  />
+                  <div className="flex items-start gap-4">
+                    <LibrarySourceMark variant={i === 0 ? "google" : "archive"} />
                     <div className="min-w-0 flex-1">
-                      <h3
-                        className={`text-[14px] font-semibold tracking-[-0.01em] transition-colors duration-300 ${
-                          on ? "text-[var(--accent)]" : "text-[var(--foreground)]"
-                        }`}
-                      >
-                        {block.title}
-                      </h3>
-                      {teaser ? (
-                        <p
-                          className={`mt-1 text-[13px] leading-snug text-[var(--hero-muted)] ${
-                            on ? "" : "line-clamp-2"
-                          }`}
+                      <div className="flex items-start justify-between gap-3">
+                        <h3 className="text-[1.05rem] font-semibold tracking-[-0.02em] text-[var(--accent)] sm:text-[1.2rem]">
+                          {block.title}
+                        </h3>
+                        <svg
+                          className={`mt-1 size-4 shrink-0 text-[var(--accent)] transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          aria-hidden
                         >
-                          {on ? block.paragraphs[0] : teaser}
+                          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                      {teaser ? (
+                        <p className="mt-1.5 line-clamp-2 text-sm leading-[1.55] text-[var(--hero-muted)]">
+                          {teaser}
                         </p>
                       ) : null}
                       {extra.length ? (
                         <div
                           className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-                            on ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                            open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                           }`}
                         >
                           <div className="min-h-0 overflow-hidden">
-                            <div
-                              className={`space-y-1.5 pt-1.5 transition-opacity duration-300 ${
-                                on ? "opacity-100" : "opacity-0"
-                              }`}
-                            >
+                            <div className="space-y-1.5 pt-2">
                               {extra.map((p) => (
                                 <p
                                   key={p.slice(0, 48)}
-                                  className="text-[13px] leading-snug text-[var(--hero-muted)]"
+                                  className="text-sm leading-[1.55] text-[var(--hero-muted)]"
                                 >
                                   {p}
                                 </p>
@@ -223,7 +217,7 @@ export function HomeLibraryVisual({
                       ) : null}
                     </div>
                   </div>
-                </article>
+                </button>
               );
             })}
           </div>
@@ -233,22 +227,10 @@ export function HomeLibraryVisual({
   );
 }
 
-function LibrarySourceMark({
-  variant,
-  active,
-}: {
-  variant: "google" | "archive";
-  active: boolean;
-}) {
+function LibrarySourceMark({ variant }: { variant: "google" | "archive" }) {
   return (
-    <span
-      className={`mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg border text-[var(--accent)] transition-[border-color,background-color,box-shadow] duration-300 ${
-        active
-          ? "border-[color:color-mix(in_oklab,var(--accent)_55%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_14%,transparent)] shadow-[0_0_16px_-6px_color-mix(in_oklab,var(--accent)_70%,transparent)]"
-          : "border-[color:var(--header-border)] bg-[var(--header-surface)]/50"
-      }`}
-    >
-      <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+    <span className="mt-0.5 flex size-11 shrink-0 items-center justify-center rounded-xl border border-[color:color-mix(in_oklab,var(--accent)_45%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_12%,transparent)] text-[var(--accent)] shadow-[0_0_12px_-8px_color-mix(in_oklab,var(--accent)_40%,transparent)]">
+      <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
         {variant === "google" ? (
           <path d="M12 7.2a4.8 4.8 0 1 0 4.2 2.5h-4.2v2.6h7A8 8 0 1 1 12 4" strokeLinecap="round" strokeLinejoin="round" />
         ) : (

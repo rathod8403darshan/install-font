@@ -5,6 +5,7 @@ import {
   useEffect,
   useRef,
   useState,
+  type CSSProperties,
   type ReactNode,
   type RefObject,
 } from "react";
@@ -22,6 +23,7 @@ import {
 import { isCoarseOrNarrow, prefersReducedMotion } from "@/lib/motion";
 import { AppleMark, GooglePlayMark } from "@/components/MobileAppStoreIcons";
 import { HomeFontPlayground } from "@/components/HomeFontPlayground";
+import { AccentTitle } from "@/components/AccentTitle";
 import { HomeLibraryVisual } from "@/components/HomeLibraryVisual";
 import { HomeDiscoverFontCards } from "@/components/HomeDiscoverFontCards";
 
@@ -49,33 +51,70 @@ function Eyebrow({ children }: { children: ReactNode }) {
   );
 }
 
+function ExploreMark({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.85"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <circle cx="12" cy="12" r="9" />
+      <path d="M14.5 9.5l-1.2 4.8-4.8 1.2 1.2-4.8 4.8-1.2z" fill="currentColor" stroke="none" />
+      <path d="M12 3v1.5M12 19.5V21M3 12h1.5M19.5 12H21" />
+    </svg>
+  );
+}
+
 function Ctas({
   ctas,
   center,
   compact,
+  row,
+  stack,
 }: {
   ctas?: HomeCta[];
   center?: boolean;
   compact?: boolean;
+  row?: boolean;
+  stack?: boolean;
 }) {
   if (!ctas?.length) return null;
   return (
     <div
       data-m-item
-      className={`mt-5 flex max-w-full flex-wrap gap-2.5 ${center ? "justify-center" : ""}`}
+      className={`mt-5 max-w-full ${
+        row
+          ? "cta-row flex gap-2.5"
+          : stack
+            ? "cta-stack"
+            : "flex flex-wrap gap-2.5"
+      } ${center && !stack ? "justify-center" : ""}`}
     >
       {ctas.map((cta, i) => {
         const href = resolveCtaHref(cta.href);
         const store = cta.href === "app-store" || cta.href === "google-play";
-        const primary = i === 0 || store;
+        const allStore = ctas.every(
+          (item) => item.href === "app-store" || item.href === "google-play",
+        );
+        const primary = i === 0 || (store && allStore);
         const cls = primary
-          ? `cta-highlight ${compact ? "cta-highlight-compact" : ""}`
+          ? `cta-highlight ${compact || row ? "cta-highlight-compact" : ""}`
           : "cta-secondary";
+        const iconClass = row
+          ? "size-4 shrink-0 sm:size-5"
+          : "size-3.5 shrink-0 sm:size-5";
         const icon =
           cta.href === "app-store" ? (
-            <AppleMark className={compact ? "size-4 shrink-0 sm:size-5" : "size-5"} />
+            <AppleMark className={iconClass} />
           ) : cta.href === "google-play" ? (
-            <GooglePlayMark className={compact ? "size-4 shrink-0 sm:size-5" : "size-5"} />
+            <GooglePlayMark className={iconClass} />
+          ) : /explore/i.test(cta.label) ? (
+            <ExploreMark className={iconClass} />
           ) : null;
         if (isExternalCta(cta.href)) {
           return (
@@ -93,6 +132,7 @@ function Ctas({
         }
         return (
           <Link key={cta.label} href={href} className={cls}>
+            {icon}
             {cta.label}
           </Link>
         );
@@ -114,7 +154,7 @@ function Copy({
       className={`mt-3 space-y-2 ${
         center
           ? "mx-auto max-w-2xl text-center"
-          : "max-lg:text-center lg:text-left"
+          : "max-md:text-center md:text-left"
       }`}
     >
       {paragraphs.map((p) => (
@@ -135,7 +175,7 @@ function Subhead({ children }: { children?: string }) {
   return (
     <h3
       data-m-item
-      className="mt-6 text-[15px] font-semibold text-[var(--foreground)] max-lg:text-center"
+      className="mt-6 text-[15px] font-semibold text-[var(--foreground)] max-md:text-center"
     >
       {children}
     </h3>
@@ -145,7 +185,7 @@ function Subhead({ children }: { children?: string }) {
 function ListIntro({ text }: { text?: string }) {
   if (!text) return null;
   return (
-    <p data-m-item className="mt-5 text-sm text-[var(--hero-muted)] max-lg:text-center">
+    <p data-m-item className="mt-5 text-sm text-[var(--hero-muted)] max-md:text-center">
       {text}
     </p>
   );
@@ -157,7 +197,7 @@ function Closing({ text, center }: { text?: string; center?: boolean }) {
     <p
       data-m-item
       className={`mt-5 text-sm leading-relaxed text-[var(--hero-muted)] ${
-        center ? "mx-auto max-w-2xl text-center" : "max-lg:text-center"
+        center ? "mx-auto max-w-2xl text-center" : "max-md:text-center"
       }`}
     >
       {text}
@@ -274,10 +314,12 @@ function Heading({
   return (
     <header
       data-m-item
-      className={`w-full ${center ? "text-center" : "max-lg:text-center"}`}
+      className={`w-full ${center ? "text-center" : "max-md:text-center"}`}
     >
       {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-      <h2 className="section-h2">{title}</h2>
+      <h2 className="section-h2">
+        <AccentTitle text={title} />
+      </h2>
     </header>
   );
 }
@@ -330,152 +372,6 @@ function FaqItem({
   );
 }
 
-/** Map checklist / highlight bullets into chips (no side panel). */
-function FontMakerVisual() {
-  const rootRef = useRef<HTMLDivElement>(null);
-  const letterRef = useRef<SVGPathElement>(null);
-  const baselineRef = useRef<SVGLineElement>(null);
-
-  useEffect(() => {
-    const root = rootRef.current;
-    const letter = letterRef.current;
-    if (!root || !letter) return;
-
-    const len = letter.getTotalLength();
-
-    const activate = () => {
-      root.classList.add("maker-active");
-      if (prefersReducedMotion()) {
-        gsap.set(letter, { strokeDasharray: len, strokeDashoffset: 0, fillOpacity: 0.12 });
-        return;
-      }
-      gsap.set(letter, {
-        strokeDasharray: len,
-        strokeDashoffset: len,
-        fillOpacity: 0,
-      });
-      if (baselineRef.current) {
-        gsap.fromTo(
-          baselineRef.current,
-          { scaleX: 0 },
-          { scaleX: 1, duration: 0.5, ease: "power2.out", transformOrigin: "left center" },
-        );
-      }
-      gsap
-        .timeline()
-        .to(letter, { strokeDashoffset: 0, duration: 1.5, ease: "power2.inOut" })
-        .to(letter, { fillOpacity: 0.14, duration: 0.45, ease: "power1.out" }, "-=0.25");
-    };
-
-    if (prefersReducedMotion()) {
-      activate();
-      return;
-    }
-
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting) return;
-        activate();
-        io.disconnect();
-      },
-      { threshold: 0.35 },
-    );
-    io.observe(root);
-    return () => {
-      io.disconnect();
-      gsap.killTweensOf([letter, baselineRef.current].filter(Boolean));
-    };
-  }, []);
-
-  return (
-    <div
-      ref={rootRef}
-      data-m-item
-      className="relative mx-auto w-full max-w-[17.5rem] overflow-hidden rounded-2xl border border-[color:var(--header-border)] bg-[var(--card-bg)] shadow-[0_20px_50px_-28px_rgba(0,0,0,0.65)] lg:mx-0 lg:justify-self-end"
-      aria-hidden
-    >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--accent)_10%,transparent),transparent_55%)]" />
-
-      <div className="relative border-b border-[color:var(--header-border)]/80 px-4 py-3">
-        <div className="flex items-center justify-between">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--hero-muted)]">
-            Font Maker
-          </p>
-          <span className="rounded-md bg-[color:color-mix(in_oklab,var(--accent)_16%,transparent)] px-2 py-0.5 text-[10px] font-semibold text-[var(--accent)]">
-            Live
-          </span>
-        </div>
-        <p className="mt-1 text-xs text-[var(--header-muted)]">
-          Handwriting → Custom Font
-        </p>
-      </div>
-
-      <div className="relative flex items-end justify-center px-5 pb-2 pt-6">
-        <svg
-          className="h-[8.5rem] w-full"
-          viewBox="0 0 200 140"
-          fill="none"
-        >
-          {/* Baseline + guides */}
-          <line
-            x1="24"
-            y1="40"
-            x2="176"
-            y2="40"
-            stroke="var(--header-border)"
-            strokeWidth="1"
-            strokeDasharray="3 5"
-          />
-          <line
-            ref={baselineRef}
-            x1="24"
-            y1="108"
-            x2="176"
-            y2="108"
-            stroke="var(--accent)"
-            strokeOpacity="0.45"
-            strokeWidth="1.25"
-          />
-          <line
-            x1="24"
-            y1="118"
-            x2="176"
-            y2="118"
-            stroke="var(--header-border)"
-            strokeWidth="1"
-          />
-
-          {/* Single professional glyph stroke (capital A stylized) */}
-          <path
-            ref={letterRef}
-            d="M52 108 L96 28 L140 108 M68 78 H124"
-            stroke="var(--foreground)"
-            strokeWidth="3.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="var(--accent)"
-          />
-        </svg>
-      </div>
-
-      <div className="relative flex items-center justify-between gap-2 border-t border-[color:var(--header-border)]/80 px-4 py-3">
-        <div>
-          <p className="text-sm font-semibold text-[var(--foreground)]">Your Style</p>
-          <p className="text-[11px] text-[var(--hero-muted)]">Custom Font for iPhone</p>
-        </div>
-        <div className="flex gap-1.5">
-          <span className="rounded-md border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] px-1.5 py-0.5 text-[10px] text-[var(--accent)]">
-            TTF
-          </span>
-          <span className="rounded-md border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] px-1.5 py-0.5 text-[10px] text-[var(--accent)]">
-            OTF
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function highlightChips(section: HomeMarketingSection): string[] {
   if (section.id === "trusted") {
     return [
@@ -485,7 +381,7 @@ function highlightChips(section: HomeMarketingSection): string[] {
       "Verified install",
     ];
   }
-  if (section.id === "import") {
+  if (section.id === "import" || section.id === "import-finder") {
     return [".ttf", ".ttc", ".otf", "Web import", "Google Fonts"];
   }
   if (section.id === "font-finder") {
@@ -536,42 +432,180 @@ function StepIcon({ index }: { index: number }) {
   );
 }
 
-function WhyReasonsIndex({
-  reasons,
-}: {
-  reasons: NonNullable<HomeMarketingSection["reasons"]>;
-}) {
+function WhyChooseBoard({ section }: { section: HomeMarketingSection }) {
+  const reasons = section.reasons ?? [];
+  const [active, setActive] = useState(0);
+  const pausedRef = useRef(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const playRef = useRef<() => void>(() => {});
+  const count = reasons.length;
+  const current = reasons[active] ?? reasons[0];
+  const stats = [
+    { value: "5,000+", label: "Fonts" },
+    { value: "iPhone + iPad", label: "One app" },
+    { value: ".ttf .otf", label: "Formats" },
+  ];
+
+  useEffect(() => {
+    const panel = panelRef.current;
+    if (!panel || prefersReducedMotion() || count < 2) return;
+
+    let timer: number | undefined;
+    let inView = false;
+
+    const stop = () => {
+      window.clearTimeout(timer);
+      timer = undefined;
+    };
+    const play = () => {
+      stop();
+      if (!inView || pausedRef.current) return;
+      timer = window.setTimeout(() => {
+        setActive((i) => (i + 1) % count);
+        play();
+      }, 3800);
+    };
+    playRef.current = play;
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        inView = Boolean(entry?.isIntersecting);
+        if (inView) play();
+        else stop();
+      },
+      { threshold: 0.3 },
+    );
+    io.observe(panel);
+    return () => {
+      io.disconnect();
+      stop();
+    };
+  }, [count]);
+
   return (
-    <div className="mt-10">
-      <div className="mb-3 flex items-center gap-3">
-        <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--accent)]">
-          Reasons
-        </p>
-        <span className="h-px flex-1 bg-[linear-gradient(90deg,color-mix(in_oklab,var(--accent)_45%,transparent),transparent)]" />
-        <p className="text-[10px] font-medium tabular-nums tracking-[0.18em] text-[var(--hero-muted)]">
-          01-{String(reasons.length).padStart(2, "0")}
-        </p>
+    <div className={`${wrap} relative`}>
+      <div className="pointer-events-none absolute -left-10 top-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_70%)]" />
+      <div className="pointer-events-none absolute -right-8 bottom-0 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--brand-blue)_14%,transparent),transparent_70%)]" />
+
+      <div className="relative grid grid-cols-1 items-start gap-10 md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.18fr)] md:gap-10 lg:gap-14 xl:gap-16">
+        <div className="min-w-0 max-md:text-center">
+          <p
+            data-m-item
+            className="inline-flex items-center gap-2 font-mono text-[10px] font-medium tracking-[0.22em] text-[var(--accent)]"
+          >
+            <span className="size-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_10px_var(--accent)]" />
+            WHY CHOOSE // 10 SIGNALS
+          </p>
+          <div className="mt-4">
+            <Heading title={section.title} />
+          </div>
+          <Copy paragraphs={section.paragraphs} />
+
+          <dl
+            data-m-item
+            className="mt-8 grid grid-cols-3 gap-3 max-md:mx-auto max-md:max-w-md"
+          >
+            {stats.map((stat) => (
+              <div key={stat.label} className="min-w-0 text-left max-md:text-center">
+                <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
+                  {stat.label}
+                </dt>
+                <dd className="mt-1 text-[1.05rem] font-semibold tracking-[-0.03em] text-[var(--foreground)] sm:text-[1.2rem]">
+                  {stat.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <div className="mt-8 hidden md:block">
+            <Ctas ctas={section.ctas} />
+          </div>
+        </div>
+
+        <div
+          ref={panelRef}
+          data-m-item
+          onPointerEnter={() => {
+            pausedRef.current = true;
+          }}
+          onPointerLeave={() => {
+            pausedRef.current = false;
+            playRef.current();
+          }}
+          className="min-w-0"
+        >
+          <div className="relative min-h-0 sm:min-h-[11rem]">
+            <p
+              key={`n-${active}`}
+              className="why-choose-num pointer-events-none select-none"
+              aria-hidden
+            >
+              {String(active + 1).padStart(2, "0")}
+            </p>
+            <div className="relative -mt-8 sm:-mt-10">
+              <p className="font-mono text-[10px] tabular-nums tracking-[0.18em] text-[var(--hero-muted)]">
+                {String(active + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
+              </p>
+              <h3
+                key={`t-${active}`}
+                className="why-choose-copy mt-2 text-[clamp(1.45rem,2.6vw,2rem)] font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--foreground)]"
+              >
+                {current?.title}
+              </h3>
+              <p
+                key={`d-${active}`}
+                className="why-choose-copy mt-3 max-w-xl text-[14px] leading-relaxed text-[var(--hero-muted)] sm:text-[15px]"
+              >
+                {current?.description}
+              </p>
+            </div>
+            <span
+              key={active}
+              className="more-feat-progress mt-5 block h-px origin-left bg-[var(--accent)]"
+              aria-hidden
+            />
+          </div>
+
+          <div
+            role="tablist"
+            aria-label="Reasons to choose Install Font"
+            className="mt-3 grid grid-cols-1 gap-x-6 gap-y-0.5 sm:mt-5 sm:grid-cols-2"
+          >
+            {reasons.map((reason, i) => {
+              const on = i === active;
+              return (
+                <button
+                  key={reason.title}
+                  type="button"
+                  role="tab"
+                  aria-selected={on}
+                  tabIndex={on ? 0 : -1}
+                  onPointerEnter={() => setActive(i)}
+                  onFocus={() => setActive(i)}
+                  className={`flex items-baseline gap-2.5 border-t border-[color:var(--header-border)] py-2.5 text-left outline-none transition-colors ${
+                    on ? "text-[var(--foreground)]" : "text-[var(--hero-muted)] hover:text-[var(--foreground)]"
+                  }`}
+                >
+                  <span
+                    className={`shrink-0 font-mono text-[10px] tabular-nums tracking-[0.14em] ${
+                      on ? "text-[var(--accent)]" : ""
+                    }`}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="min-w-0 truncate text-[13px] font-medium tracking-[-0.01em] sm:text-[14px]">
+                    {reason.title}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
-      <ol className="border-t border-[color:var(--header-border)]">
-        {reasons.map((r, i) => (
-          <li
-            key={r.title}
-            data-m-item
-            className="group grid grid-cols-[2.25rem_minmax(0,1fr)] gap-x-3 border-b border-[color:var(--header-border)] py-4 sm:grid-cols-[2.75rem_minmax(11rem,16rem)_minmax(0,1fr)] sm:items-baseline sm:gap-x-8"
-          >
-            <span className="pt-0.5 text-[11px] font-medium tabular-nums tracking-[0.14em] text-[var(--accent)] sm:pt-0">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <h3 className="text-[15px] font-medium tracking-[-0.01em] text-[var(--foreground)] transition-colors duration-300 group-hover:text-[var(--accent)]">
-              {r.title}
-            </h3>
-            <p className="col-start-2 mt-1.5 text-[13px] leading-relaxed text-[var(--hero-muted)] sm:col-start-3 sm:mt-0">
-              {r.description}
-            </p>
-          </li>
-        ))}
-      </ol>
+      <div className="relative mt-8 flex justify-center md:hidden">
+        <Ctas ctas={section.ctas} center />
+      </div>
     </div>
   );
 }
@@ -583,6 +617,7 @@ function HowToTimeline({
 }) {
   const lineRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState<number | null>(null);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -652,30 +687,72 @@ function HowToTimeline({
       />
 
       <ol className="relative grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-4">
-        {steps.map((step, i) => (
-          <li
-            key={step.title}
-            className="relative flex gap-4 sm:flex-col sm:items-center sm:text-center"
-          >
-            <span
-              data-step-node
-              className="howto-node relative z-[1] flex size-10 shrink-0 items-center justify-center rounded-full border border-[color:color-mix(in_oklab,var(--accent)_45%,transparent)] bg-[var(--background)] text-[var(--accent)]"
+        {steps.map((step, i) => {
+          const expanded = open === i;
+          return (
+            <li
+              key={step.title}
+              className="relative flex gap-4 sm:flex-col sm:items-center sm:text-center"
             >
-              <StepIcon index={i} />
-            </span>
-            <div data-step-copy className="min-w-0 pt-1 sm:pt-3">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
-                Step {i + 1}
-              </p>
-              <h3 className="mt-1 text-[15px] font-semibold text-[var(--foreground)]">
-                {step.title}
-              </h3>
-              <p className="mt-1.5 text-[13px] leading-relaxed text-[var(--hero-muted)]">
-                {step.description}
-              </p>
-            </div>
-          </li>
-        ))}
+              <span
+                data-step-node
+                className="howto-node relative z-[1] flex size-10 shrink-0 items-center justify-center rounded-full border border-[color:color-mix(in_oklab,var(--accent)_45%,transparent)] bg-[var(--background)] text-[var(--accent)]"
+              >
+                <StepIcon index={i} />
+              </span>
+              <div data-step-copy className="min-w-0 flex-1 pt-1 sm:pt-3">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
+                  Step {i + 1}
+                </p>
+                <button
+                  type="button"
+                  aria-expanded={expanded}
+                  aria-controls={`howto-step-${i}`}
+                  onClick={() => setOpen((cur) => (cur === i ? null : i))}
+                  className="mt-1 flex w-full items-center gap-2 text-left sm:pointer-events-none sm:block sm:text-center"
+                >
+                  <span className="min-w-0 flex-1 text-[15px] font-semibold text-[var(--foreground)]">
+                    {step.title}
+                  </span>
+                  <svg
+                    className={`size-4 shrink-0 text-[var(--accent)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none sm:hidden ${
+                      expanded ? "rotate-180" : "rotate-0"
+                    }`}
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden
+                  >
+                    <path
+                      d="M4 6l4 4 4-4"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+                <div
+                  className={`grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none sm:grid-rows-[1fr] ${
+                    expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                  }`}
+                >
+                  <div className="min-h-0 overflow-hidden">
+                    <p
+                      id={`howto-step-${i}`}
+                      className={`mt-1.5 text-[13px] leading-relaxed text-[var(--hero-muted)] transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none sm:translate-y-0 sm:opacity-100 ${
+                        expanded
+                          ? "translate-y-0 opacity-100"
+                          : "-translate-y-1 opacity-0"
+                      }`}
+                    >
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </li>
+          );
+        })}
       </ol>
     </div>
   );
@@ -813,7 +890,7 @@ function TrustedVisual() {
     <div
       ref={rootRef}
       data-m-item
-      className="relative mx-auto w-full max-w-[22rem] lg:mx-0 lg:justify-self-end"
+      className="relative mx-auto w-full max-w-[22rem] md:mx-0 md:justify-self-end"
       aria-hidden
     >
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--accent)_14%,transparent),transparent_62%)]" />
@@ -859,159 +936,6 @@ function TrustedVisual() {
           ))}
         </ul>
       </div>
-    </div>
-  );
-}
-
-function DevicesVisual() {
-  const rootRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const root = rootRef.current;
-    if (!root) return;
-
-    if (prefersReducedMotion()) {
-      root.classList.add("devices-active");
-      return;
-    }
-
-    const phone = root.querySelector("[data-device-phone]");
-    const tablet = root.querySelector("[data-device-tablet]");
-    const sync = root.querySelectorAll("[data-device-sync]");
-
-    gsap.set([phone, tablet], { opacity: 0, y: 18 });
-    gsap.set(sync, { opacity: 0, scale: 0.85 });
-
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting) return;
-        root.classList.add("devices-active");
-        gsap
-          .timeline()
-          .to(tablet, { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" })
-          .to(
-            phone,
-            { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" },
-            "-=0.28",
-          )
-          .to(
-            sync,
-            {
-              opacity: 1,
-              scale: 1,
-              duration: 0.4,
-              stagger: 0.08,
-              ease: "back.out(1.4)",
-            },
-            "-=0.15",
-          );
-        io.disconnect();
-      },
-      { threshold: 0.3 },
-    );
-    io.observe(root);
-    return () => {
-      io.disconnect();
-      gsap.killTweensOf([phone, tablet, ...sync]);
-    };
-  }, []);
-
-  return (
-    <div
-      ref={rootRef}
-      data-m-item
-      className="relative mx-auto w-full max-w-[21rem] lg:mx-0 lg:justify-self-start"
-      aria-hidden
-    >
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_40%_45%,color-mix(in_oklab,var(--accent)_14%,transparent),transparent_68%)]" />
-
-      <div className="relative h-[17rem]">
-        {/* Sync link */}
-        <svg
-          className="pointer-events-none absolute inset-0 size-full"
-          viewBox="0 0 320 272"
-          fill="none"
-          aria-hidden
-        >
-          <path
-            data-device-sync
-            className="devices-sync-line"
-            d="M175 118c28 8 48 28 62 52"
-            stroke="var(--accent)"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeDasharray="4 6"
-            opacity="0.55"
-          />
-        </svg>
-
-        {/* iPad */}
-        <div
-          data-device-tablet
-          className="absolute left-0 top-2 h-[15rem] w-[11.5rem] rounded-[1.2rem] border border-[color:var(--header-border)] bg-[var(--card-bg)] shadow-[0_28px_55px_-32px_rgba(0,0,0,0.75)]"
-        >
-          <div className="absolute inset-x-3 top-3 bottom-3 flex flex-col rounded-xl border border-[color:var(--header-border)]/70 bg-[color:color-mix(in_oklab,var(--header-surface)_50%,transparent)] p-3.5">
-            <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-[var(--hero-muted)]">
-              iPad
-            </p>
-            <div className="mt-auto mb-auto">
-              <p
-                data-device-sync
-                className="text-[2rem] leading-none tracking-tight text-[var(--foreground)]"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-              >
-                Aa
-              </p>
-              <p
-                data-device-sync
-                className="mt-2 text-[11px] text-[var(--hero-muted)]"
-              >
-                Same typeface
-              </p>
-            </div>
-            <div
-              data-device-sync
-              className="h-1.5 w-14 rounded-full bg-[var(--accent)]"
-            />
-          </div>
-        </div>
-
-        {/* iPhone */}
-        <div
-          data-device-phone
-          className="devices-phone absolute bottom-0 right-0 h-[13rem] w-[6.6rem] rounded-[1.4rem] border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] bg-[var(--card-bg)] shadow-[0_22px_44px_-26px_rgba(0,0,0,0.8)]"
-        >
-          <div className="absolute inset-x-[0.45rem] top-[0.55rem] bottom-[0.55rem] flex flex-col rounded-[1.05rem] border border-[color:var(--header-border)]/70 bg-[color:color-mix(in_oklab,var(--header-surface)_55%,transparent)] px-2.5 py-2.5">
-            <div className="mx-auto h-1 w-8 rounded-full bg-[var(--header-border)]" />
-            <p className="mt-2 text-center text-[8px] font-semibold uppercase tracking-[0.14em] text-[var(--hero-muted)]">
-              iPhone
-            </p>
-            <div className="mt-auto mb-auto text-center">
-              <p
-                data-device-sync
-                className="text-[1.45rem] leading-none text-[var(--foreground)]"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-              >
-                Aa
-              </p>
-              <p
-                data-device-sync
-                className="mt-1.5 text-[9px] text-[var(--hero-muted)]"
-              >
-                Synced
-              </p>
-            </div>
-            <div
-              data-device-sync
-              className="mx-auto h-1 w-9 rounded-full bg-[var(--accent)]"
-            />
-          </div>
-        </div>
-      </div>
-
-      <p className="mt-4 text-center text-[11px] tracking-wide text-[var(--hero-muted)] lg:text-left">
-        One install · consistent across screens
-      </p>
     </div>
   );
 }
@@ -1102,7 +1026,7 @@ function FontFinderVisual() {
         className="relative rounded-3xl border border-[color:var(--header-border)] bg-[var(--card-bg)] p-4 shadow-[0_28px_55px_-32px_rgba(0,0,0,0.75)] sm:p-5"
       >
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center">
-          <div className="relative w-full max-w-[13.75rem] shrink-0 overflow-hidden rounded-2xl border border-[color:var(--header-border)]/80 aspect-[3/4]">
+          <div className="relative w-[8.25rem] shrink-0 overflow-hidden rounded-2xl border border-[color:var(--header-border)]/80 aspect-[3/4] sm:w-full sm:max-w-[13.75rem]">
             <svg
               className="absolute inset-0 size-full"
               viewBox="0 0 240 320"
@@ -1127,30 +1051,30 @@ function FontFinderVisual() {
 
             <span
               data-finder-corner
-              className="absolute left-3 top-3 size-4 border-l-2 border-t-2 border-[var(--accent)]"
+              className="absolute left-2 top-2 size-3 border-l-2 border-t-2 border-[var(--accent)] sm:left-3 sm:top-3 sm:size-4"
             />
             <span
               data-finder-corner
-              className="absolute right-3 top-3 size-4 border-r-2 border-t-2 border-[var(--accent)]"
+              className="absolute right-2 top-2 size-3 border-r-2 border-t-2 border-[var(--accent)] sm:right-3 sm:top-3 sm:size-4"
             />
             <span
               data-finder-corner
-              className="absolute bottom-3 left-3 size-4 border-b-2 border-l-2 border-[var(--accent)]"
+              className="absolute bottom-2 left-2 size-3 border-b-2 border-l-2 border-[var(--accent)] sm:bottom-3 sm:left-3 sm:size-4"
             />
             <span
               data-finder-corner
-              className="absolute bottom-3 right-3 size-4 border-b-2 border-r-2 border-[var(--accent)]"
+              className="absolute bottom-2 right-2 size-3 border-b-2 border-r-2 border-[var(--accent)] sm:bottom-3 sm:right-3 sm:size-4"
             />
 
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-4 pb-5 pt-16">
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 pb-3 pt-10 sm:px-4 sm:pb-5 sm:pt-16">
               <p
-                className="text-[2.15rem] leading-none tracking-tight text-white"
+                className="text-[1.35rem] leading-none tracking-tight text-white sm:text-[2.15rem]"
                 style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
               >
                 Aa
               </p>
               <p
-                className="mt-2 text-[12px] text-white/80"
+                className="mt-1.5 text-[10px] text-white/80 sm:mt-2 sm:text-[12px]"
                 style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
               >
                 The quick brown fox
@@ -1207,6 +1131,8 @@ function FontFinderVisual() {
 const FEATURE_GROUPS = [
   {
     label: "Discover",
+    blurb: "Preview and find the right typeface before you install.",
+    icon: "search" as const,
     items: [
       "Font preview before installation",
       "Search by font name",
@@ -1218,6 +1144,8 @@ const FEATURE_GROUPS = [
   },
   {
     label: "Organize",
+    blurb: "Keep favorites, recents, and collections in one library.",
+    icon: "layers" as const,
     items: [
       "Favorite fonts",
       "Recently viewed fonts",
@@ -1229,6 +1157,8 @@ const FEATURE_GROUPS = [
   },
   {
     label: "Manage",
+    blurb: "Stay in control of files, shares, and backups.",
+    icon: "folder" as const,
     items: [
       "Duplicate font detection",
       "Font metadata and designer information",
@@ -1239,187 +1169,14 @@ const FEATURE_GROUPS = [
   },
   {
     label: "Workflow",
+    blurb: "Compare, preview, and stay in sync across Apple devices.",
+    icon: "phone" as const,
     items: [
       "Quick font previews",
       "Dark Mode support",
       "Font comparison tools",
       "Cross-device workflow support",
     ],
-  },
-];
-
-type FeatureBentoIconName =
-  | "search"
-  | "spark"
-  | "heart"
-  | "stack"
-  | "flow"
-  | "grid";
-
-function FeatureBentoIcon({ name }: { name: FeatureBentoIconName }) {
-  const id = `fb-${name}`;
-  return (
-    <svg
-      className="size-10 shrink-0"
-      viewBox="0 0 40 40"
-      fill="none"
-      aria-hidden
-    >
-      {name === "search" ? (
-        <>
-          <rect width="40" height="40" rx="12" fill={`url(#${id}-bg)`} />
-          <circle cx="18" cy="18" r="7" stroke={`url(#${id}-fg)`} strokeWidth="2" />
-          <path d="M23.2 23.2L28 28" stroke={`url(#${id}-fg)`} strokeWidth="2" strokeLinecap="round" />
-          <defs>
-            <linearGradient id={`${id}-bg`} x1="6" y1="4" x2="34" y2="38">
-              <stop stopColor="#3ecf8e" stopOpacity="0.28" />
-              <stop offset="1" stopColor="#4d93fc" stopOpacity="0.12" />
-            </linearGradient>
-            <linearGradient id={`${id}-fg`} x1="12" y1="10" x2="28" y2="30">
-              <stop stopColor="#3ecf8e" />
-              <stop offset="1" stopColor="#4d93fc" />
-            </linearGradient>
-          </defs>
-        </>
-      ) : null}
-      {name === "spark" ? (
-        <>
-          <rect width="40" height="40" rx="12" fill={`url(#${id}-bg)`} />
-          <path
-            d="M20 9l1.7 6.3L28 17l-6.3 1.7L20 25l-1.7-6.3L12 17l6.3-1.7L20 9z"
-            fill={`url(#${id}-fg)`}
-          />
-          <path d="M29 24l.8 2.4 2.4.8-2.4.8L29 30.4l-.8-2.4-2.4-.8 2.4-.8L29 24z" fill="#c4b5fd" />
-          <defs>
-            <linearGradient id={`${id}-bg`} x1="8" y1="4" x2="34" y2="36">
-              <stop stopColor="#8b5cf6" stopOpacity="0.3" />
-              <stop offset="1" stopColor="#4d93fc" stopOpacity="0.1" />
-            </linearGradient>
-            <linearGradient id={`${id}-fg`} x1="14" y1="10" x2="26" y2="24">
-              <stop stopColor="#c4b5fd" />
-              <stop offset="1" stopColor="#8b5cf6" />
-            </linearGradient>
-          </defs>
-        </>
-      ) : null}
-      {name === "heart" ? (
-        <>
-          <rect width="40" height="40" rx="12" fill={`url(#${id}-bg)`} />
-          <path
-            d="M20 28s-7.2-4.4-9.2-8.2C9.2 16.8 10.4 13 14 13c2 0 3.4 1.1 6 3.4C22.6 14.1 24 13 26 13c3.6 0 4.8 3.8 3.2 6.8C27.2 23.6 20 28 20 28z"
-            fill={`url(#${id}-fg)`}
-          />
-          <defs>
-            <linearGradient id={`${id}-bg`} x1="8" y1="6" x2="32" y2="36">
-              <stop stopColor="#f5c16c" stopOpacity="0.28" />
-              <stop offset="1" stopColor="#f59e0b" stopOpacity="0.1" />
-            </linearGradient>
-            <linearGradient id={`${id}-fg`} x1="12" y1="13" x2="28" y2="28">
-              <stop stopColor="#fde68a" />
-              <stop offset="1" stopColor="#f59e0b" />
-            </linearGradient>
-          </defs>
-        </>
-      ) : null}
-      {name === "stack" ? (
-        <>
-          <rect width="40" height="40" rx="12" fill={`url(#${id}-bg)`} />
-          <path
-            d="M12 16.5L20 13l8 3.5-8 3.5-8-3.5z"
-            stroke={`url(#${id}-fg)`}
-            strokeWidth="1.7"
-            strokeLinejoin="round"
-          />
-          <path d="M12 20.5l8 3.5 8-3.5" stroke={`url(#${id}-fg)`} strokeWidth="1.7" strokeLinecap="round" />
-          <path d="M12 24.5l8 3.5 8-3.5" stroke={`url(#${id}-fg)`} strokeWidth="1.7" strokeLinecap="round" />
-          <defs>
-            <linearGradient id={`${id}-bg`} x1="6" y1="4" x2="34" y2="36">
-              <stop stopColor="#3ecf8e" stopOpacity="0.26" />
-              <stop offset="1" stopColor="#059669" stopOpacity="0.1" />
-            </linearGradient>
-            <linearGradient id={`${id}-fg`} x1="12" y1="13" x2="28" y2="28">
-              <stop stopColor="#6ee7b7" />
-              <stop offset="1" stopColor="#3ecf8e" />
-            </linearGradient>
-          </defs>
-        </>
-      ) : null}
-      {name === "flow" ? (
-        <>
-          <rect width="40" height="40" rx="12" fill={`url(#${id}-bg)`} />
-          <circle cx="20" cy="20" r="8" stroke={`url(#${id}-fg)`} strokeWidth="3.2" strokeDasharray="16 8" />
-          <circle cx="20" cy="20" r="3.2" fill={`url(#${id}-fg)`} />
-          <defs>
-            <linearGradient id={`${id}-bg`} x1="8" y1="4" x2="32" y2="36">
-              <stop stopColor="#3ecf8e" stopOpacity="0.24" />
-              <stop offset="1" stopColor="#4d93fc" stopOpacity="0.14" />
-            </linearGradient>
-            <linearGradient id={`${id}-fg`} x1="12" y1="12" x2="28" y2="28">
-              <stop stopColor="#3ecf8e" />
-              <stop offset="1" stopColor="#4d93fc" />
-            </linearGradient>
-          </defs>
-        </>
-      ) : null}
-      {name === "grid" ? (
-        <>
-          <rect width="40" height="40" rx="12" fill={`url(#${id}-bg)`} />
-          <rect x="12" y="12" width="7" height="7" rx="1.5" fill={`url(#${id}-fg)`} />
-          <rect x="21" y="12" width="7" height="7" rx="1.5" fill={`url(#${id}-fg)`} opacity="0.7" />
-          <rect x="12" y="21" width="7" height="7" rx="1.5" fill={`url(#${id}-fg)`} opacity="0.7" />
-          <rect x="21" y="21" width="7" height="7" rx="1.5" fill={`url(#${id}-fg)`} />
-          <defs>
-            <linearGradient id={`${id}-bg`} x1="8" y1="6" x2="34" y2="34">
-              <stop stopColor="#3ecf8e" stopOpacity="0.26" />
-              <stop offset="1" stopColor="#14b8a6" stopOpacity="0.1" />
-            </linearGradient>
-            <linearGradient id={`${id}-fg`} x1="12" y1="12" x2="28" y2="28">
-              <stop stopColor="#5eead4" />
-              <stop offset="1" stopColor="#3ecf8e" />
-            </linearGradient>
-          </defs>
-        </>
-      ) : null}
-    </svg>
-  );
-}
-
-const FEATURE_BENTO = [
-  {
-    title: FEATURE_GROUPS[0].label,
-    icon: "search" as const,
-    items: FEATURE_GROUPS[0].items.slice(0, 3),
-    span: "lg:col-span-2",
-  },
-  {
-    title: null,
-    icon: "spark" as const,
-    items: FEATURE_GROUPS[0].items.slice(3),
-    span: "lg:col-span-1",
-  },
-  {
-    title: FEATURE_GROUPS[1].label,
-    icon: "heart" as const,
-    items: FEATURE_GROUPS[1].items.slice(0, 3),
-    span: "lg:col-span-2",
-  },
-  {
-    title: FEATURE_GROUPS[2].label,
-    icon: "stack" as const,
-    items: FEATURE_GROUPS[2].items,
-    span: "lg:col-span-2",
-  },
-  {
-    title: FEATURE_GROUPS[3].label,
-    icon: "flow" as const,
-    items: FEATURE_GROUPS[3].items,
-    span: "lg:col-span-2",
-  },
-  {
-    title: null,
-    icon: "grid" as const,
-    items: FEATURE_GROUPS[1].items.slice(3),
-    span: "lg:col-span-1",
   },
 ];
 
@@ -1430,32 +1187,7 @@ const IMPORT_CARD_ICONS = [
   "folder",
 ] as const;
 
-const DEVICES_CARD_ICONS = [
-  "student",
-  "briefcase",
-  "pen",
-  "camera",
-  "building",
-  "user",
-] as const;
-
-const WHY_CARD_ICONS = [
-  "layers",
-  "download",
-  "pen",
-  "search",
-  "type",
-  "google",
-  "folder",
-  "apps",
-  "phone",
-  "briefcase",
-] as const;
-
-type AccentCardIconName =
-  | (typeof IMPORT_CARD_ICONS)[number]
-  | (typeof DEVICES_CARD_ICONS)[number]
-  | (typeof WHY_CARD_ICONS)[number];
+type AccentCardIconName = (typeof IMPORT_CARD_ICONS)[number] | "phone";
 
 function ImportCardIcon({ name }: { name: AccentCardIconName }) {
   return (
@@ -1487,66 +1219,236 @@ function ImportCardIcon({ name }: { name: AccentCardIconName }) {
             <path d="M12 12v5M12 17l-2-2M12 17l2-2" strokeLinecap="round" strokeLinejoin="round" />
           </>
         ) : null}
-        {name === "type" ? (
-          <>
-            <rect x="5" y="5" width="14" height="14" rx="2" />
-            <path d="M9 16V9h6" strokeLinecap="round" strokeLinejoin="round" />
-          </>
-        ) : null}
-        {name === "google" ? (
-          <path d="M12 7.2a4.8 4.8 0 1 0 4.2 2.5h-4.2v2.6h7A8 8 0 1 1 12 4" strokeLinecap="round" strokeLinejoin="round" />
-        ) : null}
-        {name === "student" ? (
-          <>
-            <path d="M3.5 10L12 6l8.5 4L12 14 3.5 10z" strokeLinejoin="round" />
-            <path d="M7 12v4.2c0 .5 2.2 2.3 5 2.3s5-1.8 5-2.3V12" strokeLinecap="round" />
-            <path d="M20.5 10v5.5" strokeLinecap="round" />
-          </>
-        ) : null}
-        {name === "briefcase" ? (
-          <>
-            <path d="M8 8V6.8A1.8 1.8 0 0 1 9.8 5h4.4A1.8 1.8 0 0 1 16 6.8V8M5 8h14v10H5V8z" strokeLinejoin="round" />
-            <path d="M5 13h14" strokeLinecap="round" />
-          </>
-        ) : null}
-        {name === "pen" ? (
-          <path d="M5 19l3.2-.7L18 8.5 15.5 6 5.7 15.8 5 19zM13.8 7.7l2.5 2.5" strokeLinecap="round" strokeLinejoin="round" />
-        ) : null}
-        {name === "camera" ? (
-          <>
-            <rect x="4" y="7" width="16" height="11" rx="2" />
-            <circle cx="12" cy="12.5" r="2.4" />
-            <path d="M9 7l1.2-2h3.6L15 7" strokeLinecap="round" />
-          </>
-        ) : null}
-        {name === "building" ? (
-          <>
-            <path d="M5 20V7l7-3 7 3v13" strokeLinejoin="round" />
-            <path d="M10 20v-5h4v5M9 10h.01M12 10h.01M15 10h.01M9 13.5h.01M12 13.5h.01M15 13.5h.01" strokeLinecap="round" />
-          </>
-        ) : null}
-        {name === "user" ? (
-          <>
-            <circle cx="12" cy="8.5" r="3.2" />
-            <path d="M5.5 19c.8-3.2 3.2-5 6.5-5s5.7 1.8 6.5 5" strokeLinecap="round" />
-          </>
-        ) : null}
         {name === "phone" ? (
           <>
             <rect x="7" y="3.5" width="10" height="17" rx="2" />
             <path d="M11 17.5h2" strokeLinecap="round" />
           </>
         ) : null}
-        {name === "apps" ? (
-          <>
-            <rect x="5" y="5" width="6" height="6" rx="1.2" />
-            <rect x="13" y="5" width="6" height="6" rx="1.2" />
-            <rect x="5" y="13" width="6" height="6" rx="1.2" />
-            <rect x="13" y="13" width="6" height="6" rx="1.2" />
-          </>
-        ) : null}
       </svg>
     </span>
+  );
+}
+
+function MoreFeaturesBoard({ section }: { section: HomeMarketingSection }) {
+  const [active, setActive] = useState(0);
+  const pausedRef = useRef(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const playRef = useRef<() => void>(() => {});
+  const group = FEATURE_GROUPS[active] ?? FEATURE_GROUPS[0];
+  const total = FEATURE_GROUPS.reduce((sum, g) => sum + g.items.length, 0);
+  const tabCount = FEATURE_GROUPS.length;
+
+  useEffect(() => {
+    const panel = panelRef.current;
+    if (!panel || prefersReducedMotion()) return;
+
+    let timer: number | undefined;
+    let inView = false;
+
+    const stop = () => {
+      window.clearTimeout(timer);
+      timer = undefined;
+    };
+    const play = () => {
+      stop();
+      if (!inView || pausedRef.current) return;
+      timer = window.setTimeout(() => {
+        setActive((i) => (i + 1) % tabCount);
+        play();
+      }, 3800);
+    };
+    playRef.current = play;
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        inView = Boolean(entry?.isIntersecting);
+        if (inView) play();
+        else stop();
+      },
+      { threshold: 0.35 },
+    );
+    io.observe(panel);
+    return () => {
+      io.disconnect();
+      stop();
+    };
+  }, [tabCount]);
+
+  const pause = () => {
+    pausedRef.current = true;
+    panelRef.current?.classList.add("is-paused");
+  };
+  const resume = () => {
+    pausedRef.current = false;
+    panelRef.current?.classList.remove("is-paused");
+    playRef.current();
+  };
+  const showTab = (index: number) => {
+    setActive(index);
+  };
+
+  return (
+    <div className={`${wrap} relative`}>
+      <div className="pointer-events-none absolute -right-10 top-0 h-64 w-64 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_14%,transparent),transparent_70%)]" />
+
+      <div className="relative grid grid-cols-1 items-start gap-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-10 lg:gap-12">
+        <div className="min-w-0 max-md:text-center">
+          <p
+            data-m-item
+            className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--accent)]"
+          >
+            <span className="size-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_10px_var(--accent)]" />
+            Companion roadmap
+          </p>
+
+          <h2 data-m-item className="section-h2 mt-4">
+            <AccentTitle text={section.title} />
+          </h2>
+
+          <Copy paragraphs={section.paragraphs} />
+          <ListIntro text={section.listIntro} />
+
+          <dl
+            data-m-item
+            className="mt-7 grid grid-cols-2 gap-3 sm:max-w-sm max-md:mx-auto"
+          >
+            <div className="rounded-2xl border border-[color:var(--header-border)] bg-[var(--header-surface)]/40 px-4 py-3 text-left">
+              <dt className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--hero-muted)]">
+                Capabilities
+              </dt>
+              <dd className="mt-1 text-[1.45rem] font-semibold tabular-nums tracking-tight text-[var(--foreground)]">
+                {total}
+              </dd>
+            </div>
+            <div className="rounded-2xl border border-[color:var(--header-border)] bg-[var(--header-surface)]/40 px-4 py-3 text-left">
+              <dt className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--hero-muted)]">
+                Modules
+              </dt>
+              <dd className="mt-1 text-[1.45rem] font-semibold tabular-nums tracking-tight text-[var(--foreground)]">
+                {String(FEATURE_GROUPS.length).padStart(2, "0")}
+              </dd>
+            </div>
+          </dl>
+
+          <div className="mt-8 hidden md:block">
+            <Ctas ctas={section.ctas} />
+          </div>
+        </div>
+
+        <div
+          ref={panelRef}
+          data-m-item
+          onPointerEnter={pause}
+          onPointerLeave={resume}
+          className="overflow-hidden rounded-[1.6rem] border border-[color:color-mix(in_oklab,var(--accent)_32%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_5%,var(--header-surface))] shadow-[0_28px_60px_-32px_rgba(0,0,0,0.78)]"
+        >
+          <div className="flex items-center gap-3 border-b border-[color:var(--header-border)] px-4 py-3">
+            <span className="flex gap-1.5" aria-hidden>
+              <span className="size-2 rounded-full bg-[color-mix(in_oklab,var(--foreground)_22%,transparent)]" />
+              <span className="size-2 rounded-full bg-[color-mix(in_oklab,var(--foreground)_16%,transparent)]" />
+              <span className="size-2 rounded-full bg-[color-mix(in_oklab,var(--accent)_70%,transparent)]" />
+            </span>
+            <p className="min-w-0 flex-1 truncate text-[12px] font-medium tracking-wide text-[var(--foreground)]/85">
+              InstallFont · Manager
+            </p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
+              Live
+            </p>
+          </div>
+          <span
+            key={active}
+            className="more-feat-progress block h-px origin-left bg-[var(--accent)]"
+            aria-hidden
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-[10.5rem_minmax(0,1fr)] lg:grid-cols-[11.5rem_minmax(0,1fr)]">
+            <div
+              role="tablist"
+              aria-label="Feature modules"
+              className="grid grid-cols-2 gap-1.5 border-b border-[color:var(--header-border)] p-2 md:flex md:flex-col md:gap-1 md:border-b-0 md:border-r md:border-[color:var(--header-border)] md:p-3"
+            >
+              {FEATURE_GROUPS.map((item, i) => {
+                const on = i === active;
+                return (
+                  <button
+                    key={item.label}
+                    type="button"
+                    role="tab"
+                    aria-selected={on}
+                    tabIndex={on ? 0 : -1}
+                    onPointerEnter={() => showTab(i)}
+                    onFocus={() => showTab(i)}
+                    className={`relative flex min-w-0 items-center gap-2 overflow-hidden rounded-xl px-2.5 py-2 text-left outline-none transition-[background-color,color,box-shadow] duration-200 sm:gap-2.5 sm:px-3 sm:py-2.5 ${
+                      on
+                        ? "bg-[color-mix(in_oklab,var(--accent)_14%,transparent)] text-[var(--accent)] shadow-[inset_2px_0_0_0_var(--accent)]"
+                        : "text-[var(--foreground)]/80 hover:bg-[var(--header-surface)]/55 hover:text-[var(--foreground)]"
+                    }`}
+                  >
+                    <span className={on ? "" : "opacity-70"}>
+                      <ImportCardIcon name={item.icon} />
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-[13px] font-semibold tracking-wide">
+                        {item.label}
+                      </span>
+                      <span className="mt-0.5 block text-[10px] tabular-nums tracking-[0.12em] text-[var(--hero-muted)]">
+                        {String(item.items.length).padStart(2, "0")} items
+                      </span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="min-w-0 p-4 sm:p-5">
+              <div className="min-w-0">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
+                  {String(active + 1).padStart(2, "0")} /{" "}
+                  {String(FEATURE_GROUPS.length).padStart(2, "0")}
+                </p>
+                <h3 className="mt-1 text-[1.15rem] font-semibold tracking-[-0.02em] text-[var(--foreground)]">
+                  {group.label}
+                </h3>
+                <p className="mt-1 text-[13px] leading-snug text-[var(--hero-muted)]">
+                  {group.blurb}
+                </p>
+              </div>
+
+              <ol
+                key={group.label}
+                className="mt-4 divide-y divide-[color:var(--header-border)] overflow-hidden rounded-xl border border-[color:var(--header-border)] bg-[var(--background)]/30"
+              >
+                {group.items.map((item, i) => (
+                  <li
+                    key={item}
+                    className="more-feat-row flex items-center gap-3 px-3.5 py-2.5"
+                    style={{ animationDelay: `${i * 40}ms` }}
+                  >
+                    <span className="w-6 shrink-0 text-[11px] font-semibold tabular-nums tracking-[0.12em] text-[var(--accent)]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="min-w-0 text-[13px] font-medium leading-snug text-[var(--foreground)]">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+
+              {section.closing ? (
+                <p className="mt-4 text-[12px] leading-relaxed text-[var(--hero-muted)]">
+                  {section.closing}
+                </p>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-8 flex justify-center md:hidden">
+        <Ctas ctas={section.ctas} center />
+      </div>
+    </div>
   );
 }
 
@@ -1568,40 +1470,465 @@ function SafariAdjustIcon({ index }: { index: number }) {
   );
 }
 
-function MakerCard({ section }: { section: HomeMarketingSection }) {
-  const accentPhrase = "Custom Font for iPhone";
-  const titleLead = section.title.includes(accentPhrase)
-    ? section.title.slice(0, section.title.indexOf(accentPhrase)).trimEnd()
-    : section.title;
+const SAFARI_PRESETS: {
+  value: string;
+  page: CSSProperties;
+  themeFill?: boolean;
+}[] = [
+  {
+    value: "Serif",
+    page: { fontFamily: "Georgia, 'Times New Roman', serif" },
+  },
+  {
+    value: "18 px",
+    page: { fontSize: "1.32rem" },
+  },
+  {
+    value: "1.85",
+    page: { lineHeight: 1.85 },
+  },
+  {
+    value: "0.08 em",
+    page: { letterSpacing: "0.06em" },
+  },
+  {
+    value: "Relaxed",
+    page: { marginBottom: "1.15em" },
+  },
+  {
+    value: "Accent",
+    page: { color: "var(--accent)" },
+  },
+  {
+    value: "Theme",
+    themeFill: true,
+    page: { color: "var(--foreground)" },
+  },
+];
+
+function SafariReaderBoard({ section }: { section: HomeMarketingSection }) {
+  const items = section.bullets ?? [];
+  const [active, setActive] = useState(0);
+  const pausedRef = useRef(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const playRef = useRef<() => void>(() => {});
+  const tabCount = Math.max(items.length, 1);
+  const preset = SAFARI_PRESETS[active] ?? SAFARI_PRESETS[0];
+
+  useEffect(() => {
+    const panel = panelRef.current;
+    if (!panel || prefersReducedMotion()) return;
+
+    let timer: number | undefined;
+    let inView = false;
+
+    const stop = () => {
+      window.clearTimeout(timer);
+      timer = undefined;
+    };
+    const play = () => {
+      stop();
+      if (!inView || pausedRef.current) return;
+      timer = window.setTimeout(() => {
+        setActive((i) => (i + 1) % tabCount);
+        play();
+      }, 3800);
+    };
+    playRef.current = play;
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        inView = Boolean(entry?.isIntersecting);
+        if (inView) play();
+        else stop();
+      },
+      { threshold: 0.3 },
+    );
+    io.observe(panel);
+    return () => {
+      io.disconnect();
+      stop();
+    };
+  }, [tabCount]);
+
+  const pause = () => {
+    pausedRef.current = true;
+    panelRef.current?.classList.add("is-paused");
+  };
+  const resume = () => {
+    pausedRef.current = false;
+    panelRef.current?.classList.remove("is-paused");
+    playRef.current();
+  };
+
+  const pageStyle: CSSProperties = {
+    fontFamily: "ui-sans-serif, system-ui, sans-serif",
+    fontSize: "0.95rem",
+    lineHeight: 1.5,
+    letterSpacing: "0.01em",
+    color: "var(--foreground)",
+    ...preset.page,
+  };
 
   return (
-    <div
-      id={section.id}
-      data-m-item
-      className="relative overflow-hidden rounded-[1.75rem] border border-[color:color-mix(in_oklab,var(--accent)_28%,var(--header-border))] bg-[var(--header-surface)]/45 p-6 shadow-[0_24px_60px_-36px_rgba(0,0,0,0.8)] sm:p-8 lg:p-10"
-    >
-      <div className="pointer-events-none absolute -left-10 -top-10 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_70%)]" />
-
-      <div className="relative grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_17.5rem] lg:gap-12">
-        <div className="min-w-0 text-left">
-          <h2 className="section-h2 text-left">
-            {titleLead}
-            {section.title.includes(accentPhrase) ? (
-              <>
-                {" "}
-                <span className="text-[var(--accent)]">{accentPhrase}</span>
-              </>
-            ) : null}
+    <div className={`${wrap} relative`}>
+      <div className="relative flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-8">
+        <div className="min-w-0">
+          <p
+            data-m-item
+            className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--accent)]"
+          >
+            <span className="size-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_10px_var(--accent)]" />
+            Safari reading
+          </p>
+          <h2 data-m-item className="section-h2 mt-2">
+            <AccentTitle text={section.title} />
           </h2>
-          <Copy paragraphs={section.paragraphs} />
-          <div className="mt-8 sm:mt-10">
-            <div className="inline-flex rounded-xl shadow-[0_0_42px_-6px_color-mix(in_oklab,var(--accent)_45%,transparent)] [&>[data-m-item]]:mt-0">
-              <Ctas ctas={section.ctas} />
+        </div>
+        <div className="hidden shrink-0 md:block [&>[data-m-item]]:mt-0">
+          <Ctas ctas={section.ctas} compact />
+        </div>
+      </div>
+
+      {section.paragraphs.length ? (
+        <div className="mt-3 grid grid-cols-1 gap-x-6 gap-y-1.5 sm:grid-cols-2">
+          {section.paragraphs.map((p) => (
+            <p
+              key={p.slice(0, 48)}
+              data-m-item
+              className="text-[13px] leading-snug text-[var(--hero-muted)]"
+            >
+              {p.split(/(Install Fonts)/g).map((part, idx) =>
+                part === "Install Fonts" ? (
+                  <span key={idx} className="font-semibold text-[var(--accent)]">
+                    {part}
+                  </span>
+                ) : (
+                  <span key={idx}>{part}</span>
+                ),
+              )}
+            </p>
+          ))}
+        </div>
+      ) : null}
+
+      <div
+        ref={panelRef}
+        data-m-item
+        onPointerEnter={pause}
+        onPointerLeave={resume}
+        className="safari-hud relative mt-5 overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_38%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_6%,var(--header-surface))] shadow-[0_0_40px_-18px_color-mix(in_oklab,var(--accent)_45%,transparent)]"
+      >
+        <span className="safari-hud-corner safari-hud-corner-tl" aria-hidden />
+        <span className="safari-hud-corner safari-hud-corner-tr" aria-hidden />
+        <span className="safari-hud-corner safari-hud-corner-bl" aria-hidden />
+        <span className="safari-hud-corner safari-hud-corner-br" aria-hidden />
+        <div className="safari-hud-grid pointer-events-none absolute inset-0" aria-hidden />
+
+        <div className="relative flex items-center gap-3 border-b border-[color:color-mix(in_oklab,var(--accent)_22%,var(--header-border))] px-3 py-2 sm:px-4">
+          <span className="flex gap-1" aria-hidden>
+            <span className="size-1.5 rounded-full bg-[color-mix(in_oklab,var(--foreground)_28%,transparent)]" />
+            <span className="size-1.5 rounded-full bg-[color-mix(in_oklab,var(--foreground)_18%,transparent)]" />
+            <span className="size-1.5 rounded-full bg-[var(--accent)]" />
+          </span>
+          <p className="min-w-0 flex-1 truncate font-mono text-[10px] tracking-[0.14em] text-[var(--hero-muted)]">
+            READER.INSTALLFONT.COM / LIVE
+          </p>
+          <p className="font-mono text-[10px] tabular-nums tracking-[0.16em] text-[var(--accent)]">
+            {String(active + 1).padStart(2, "0")} / {String(tabCount).padStart(2, "0")}
+          </p>
+        </div>
+        <span
+          key={active}
+          className="more-feat-progress relative z-[1] block h-px origin-left bg-[var(--accent)]"
+          aria-hidden
+        />
+
+        <div className="relative grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_13rem] lg:grid-cols-[minmax(0,1fr)_15.5rem]">
+          <div
+            className={`safari-reader-page flex flex-col justify-center px-4 py-4 sm:px-6 sm:py-5 ${
+              preset.themeFill
+                ? "is-theme"
+                : "bg-[color-mix(in_oklab,var(--background)_55%,transparent)]"
+            }`}
+          >
+            <div className="flex items-center justify-between gap-3">
+              <p className="font-mono text-[9px] font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+                Viewport · Safari
+              </p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--hero-muted)]">
+                {items[active] ?? "Adjust"} · {preset.value}
+              </p>
             </div>
+            <h3
+              className="mt-3 text-[clamp(1.35rem,2.4vw,1.85rem)] font-semibold tracking-[-0.04em]"
+              style={pageStyle}
+            >
+              Fonts that feel like yours
+            </h3>
+            <p className="mt-2 max-w-xl" style={pageStyle}>
+              Safari reading should match how you like to see type - not the
+              default a website picked for you.
+            </p>
+            <p
+              className="mt-2 max-w-xl"
+              style={{
+                ...pageStyle,
+                marginBottom: preset.page.marginBottom ?? 0,
+              }}
+            >
+              Change style, size, spacing, and color until the page is
+              comfortable to sit with.
+            </p>
+            {section.closing ? (
+              <p className="mt-3 max-w-xl text-[12px] leading-snug text-[var(--hero-muted)]">
+                {section.closing.split(/(personalized)/g).map((part, idx) =>
+                  part === "personalized" ? (
+                    <span key={idx} className="font-semibold text-[var(--accent)]">
+                      {part}
+                    </span>
+                  ) : (
+                    <span key={idx}>{part}</span>
+                  ),
+                )}
+              </p>
+            ) : null}
+          </div>
+
+          <div
+            role="tablist"
+            aria-label="Safari reading controls"
+            className="relative z-[1] grid grid-cols-2 gap-1 border-t border-[color:color-mix(in_oklab,var(--accent)_22%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_5%,var(--header-surface-solid))] p-1.5 md:grid-cols-1 md:border-l md:border-t-0"
+          >
+            {items.map((item, i) => {
+              const on = i === active;
+              return (
+                <button
+                  key={item}
+                  type="button"
+                  role="tab"
+                  aria-selected={on}
+                  tabIndex={on ? 0 : -1}
+                  onPointerEnter={() => setActive(i)}
+                  onFocus={() => setActive(i)}
+                  className={`safari-hud-tab relative flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-left outline-none transition-[background-color,color,box-shadow] duration-200 ${
+                    on ? "" : "text-[var(--foreground)]/80"
+                  }`}
+                >
+                  <span className="flex size-6 shrink-0 items-center justify-center opacity-80">
+                    <SafariAdjustIcon index={i} />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-[11px] font-semibold tracking-wide">
+                      {item}
+                    </span>
+                    <span className="mt-0.5 block font-mono text-[10px] tabular-nums tracking-[0.08em] text-[var(--hero-muted)]">
+                      {SAFARI_PRESETS[i]?.value ?? "Adjust"}
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
+      </div>
 
-        <FontMakerVisual />
+      <div className="mt-4 flex justify-center md:hidden">
+        <Ctas ctas={section.ctas} center compact />
+      </div>
+    </div>
+  );
+}
+
+const FONT_FORMAT_HINTS: Record<string, string> = {
+  ".ttf": "TrueType Font",
+  ".ttc": "TrueType Collection",
+  ".otf": "OpenType Font",
+};
+
+function HoverCopy({ children }: { children: ReactNode }) {
+  return (
+    <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
+      <div className="min-h-0 overflow-hidden">
+        <div className="pt-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ImportFinderPair({ section }: { section: HomeMarketingSection }) {
+  const finderTitle = section.subtitle ?? "Identify a Font From an Image";
+  const finderLead = section.afterSubtitle?.[0];
+  const finderMore = section.afterSubtitle?.slice(1) ?? [];
+  const importCta = section.ctas?.[0] ? [section.ctas[0]] : [];
+  const finderCta = section.ctas?.[1] ? [section.ctas[1]] : section.ctas?.slice(0, 1) ?? [];
+
+  return (
+    <div className={`${wrap} relative`}>
+      <div className="pointer-events-none absolute -left-8 -top-10 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_18%,transparent),transparent_70%)]" />
+      <div className="pointer-events-none absolute -right-8 bottom-0 h-48 w-48 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--brand-blue)_14%,transparent),transparent_70%)]" />
+
+      <div className="relative mb-6 flex items-center gap-3 max-md:justify-center">
+        <span className="size-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_10px_var(--accent)]" />
+        <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--accent)]">
+          {section.eyebrow ?? "Import + Identify"}
+        </p>
+        <span className="h-px flex-1 bg-[linear-gradient(90deg,color-mix(in_oklab,var(--accent)_55%,transparent),transparent)] max-md:hidden" />
+      </div>
+
+      <div className="relative grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+        <article
+          tabIndex={0}
+          className="group relative flex flex-col overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_32%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_5%,var(--header-surface))] p-5 outline-none transition-[border-color,box-shadow] duration-300 hover:border-[color:color-mix(in_oklab,var(--accent)_55%,var(--header-border))] hover:shadow-[0_0_40px_-18px_color-mix(in_oklab,var(--accent)_50%,transparent)] focus-visible:border-[var(--accent)] sm:p-6"
+        >
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
+              <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+                <path d="M12 4v10" strokeLinecap="round" />
+                <path d="M8 10l4 4 4-4" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M5 18h14" strokeLinecap="round" />
+              </svg>
+              Import
+            </p>
+            <span className="font-mono text-[10px] tabular-nums tracking-[0.16em] text-[var(--hero-muted)]">
+              08
+            </span>
+          </div>
+
+          <h2 className="section-h2 text-[clamp(1.35rem,2.2vw,1.85rem)]">
+            <AccentTitle text={section.title} />
+          </h2>
+          {section.paragraphs[0] ? (
+            <p className="mt-3 text-sm leading-relaxed text-[var(--hero-muted)]">
+              {section.paragraphs[0]}
+            </p>
+          ) : null}
+          <HoverCopy>
+            {section.paragraphs.slice(1).map((p) => (
+              <p key={p.slice(0, 40)} className="text-sm leading-relaxed text-[var(--hero-muted)]">
+                {p}
+              </p>
+            ))}
+          </HoverCopy>
+
+          {section.bullets?.length ? (
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {section.bullets.map((item) => (
+                <li
+                  key={item}
+                  className="group/fmt relative inline-flex items-center gap-2 rounded-full border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] px-3 py-1.5 font-mono text-[12px] text-[var(--foreground)]/90"
+                >
+                  <span className="size-1.5 rounded-full bg-[var(--accent)]" />
+                  {item}
+                  {FONT_FORMAT_HINTS[item] ? (
+                    <span className="hidden text-[10px] font-sans tracking-normal text-[var(--hero-muted)] sm:group-hover/fmt:inline">
+                      {FONT_FORMAT_HINTS[item]}
+                    </span>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          {section.blocks?.length ? (
+            <div className="mt-5 space-y-2">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground)]">
+                Build your custom iPhone collection
+              </p>
+              {section.blocks.map((block) => (
+                <div
+                  key={block.title}
+                  className="rounded-xl border border-[color:var(--header-border)] bg-[var(--header-surface)]/40 px-3.5 py-3"
+                >
+                  <p className="text-[13px] font-semibold text-[var(--foreground)]">
+                    {block.title}
+                  </p>
+                  {block.paragraphs[0] ? (
+                    <HoverCopy>
+                      <p className="text-[13px] leading-relaxed text-[var(--hero-muted)]">
+                        {block.paragraphs[0]}
+                      </p>
+                    </HoverCopy>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          ) : null}
+
+          {section.closing ? (
+            <HoverCopy>
+              <p className="text-[13px] leading-relaxed text-[var(--hero-muted)]">
+                {section.closing}
+              </p>
+            </HoverCopy>
+          ) : null}
+
+          <div className="mt-auto pt-5 [&>[data-m-item]]:mt-0">
+            <Ctas ctas={importCta} compact />
+          </div>
+        </article>
+
+        <article
+          tabIndex={0}
+          className="group relative flex flex-col overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_32%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_5%,var(--header-surface))] p-5 outline-none transition-[border-color,box-shadow] duration-300 hover:border-[color:color-mix(in_oklab,var(--accent)_55%,var(--header-border))] hover:shadow-[0_0_40px_-18px_color-mix(in_oklab,var(--accent)_50%,transparent)] focus-visible:border-[var(--accent)] sm:p-6"
+        >
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
+              <svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+                <circle cx="11" cy="11" r="6.5" />
+                <path d="M16 16l4 4" strokeLinecap="round" />
+              </svg>
+              Identify
+            </p>
+            <span className="font-mono text-[10px] tabular-nums tracking-[0.16em] text-[var(--hero-muted)]">
+              09
+            </span>
+          </div>
+
+          <h2 className="section-h2 text-[clamp(1.35rem,2.2vw,1.85rem)]">
+            <AccentTitle text={finderTitle} />
+          </h2>
+          {finderLead ? (
+            <p className="mt-3 text-sm leading-relaxed text-[var(--hero-muted)]">
+              {finderLead}
+            </p>
+          ) : null}
+          {finderMore.length ? (
+            <HoverCopy>
+              {finderMore.map((p) => (
+                <p key={p.slice(0, 40)} className="text-sm leading-relaxed text-[var(--hero-muted)]">
+                  {p}
+                </p>
+              ))}
+            </HoverCopy>
+          ) : null}
+
+          {section.labeledItems?.length ? (
+            <div className="mt-5">
+              {section.listIntro ? (
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground)]">
+                  {section.listIntro}
+                </p>
+              ) : null}
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {section.labeledItems.map((item) => (
+                  <li
+                    key={item.label}
+                    className="rounded-full border border-[color:color-mix(in_oklab,var(--accent)_28%,var(--header-border))] bg-[var(--header-surface)]/45 px-3 py-1.5 text-[13px] font-medium text-[var(--foreground)]"
+                  >
+                    {item.label}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          <div className="mt-auto pt-5 [&>[data-m-item]]:mt-0">
+            <Ctas ctas={finderCta} compact />
+          </div>
+        </article>
       </div>
     </div>
   );
@@ -1632,7 +1959,7 @@ function MarketingSection({
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--accent)_18%,transparent),transparent_68%)]" />
             <div className="pointer-events-none absolute -left-10 top-0 h-40 w-40 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_70%)]" />
             <h2 className="section-h2 relative">
-              {section.title}
+              <AccentTitle text={section.title} />
             </h2>
             <div className="relative mt-8 flex justify-center sm:mt-10">
               <div className="max-w-full rounded-xl shadow-[0_0_42px_-6px_color-mix(in_oklab,var(--accent)_45%,transparent)] [&>[data-m-item]]:mt-0">
@@ -1649,27 +1976,12 @@ function MarketingSection({
   }
 
   if (layout === "cta") {
-    const accentPhrase = "Fonts for iPhone";
-    const titleLead = section.title.includes(accentPhrase)
-      ? section.title.slice(0, section.title.indexOf(accentPhrase)).trimEnd()
-      : section.title;
-    const titleTail = section.title.includes(accentPhrase)
-      ? section.title.slice(
-          section.title.indexOf(accentPhrase) + accentPhrase.length,
-        )
-      : "";
-
     return (
       <Block id={section.id}>
         <div className={wrap}>
           <div className="w-full text-center">
-            <h2
-              data-m-item
-              className="section-h2"
-            >
-              {titleLead}{" "}
-              <span className="text-[var(--accent)]">{accentPhrase}</span>
-              {titleTail}
+            <h2 data-m-item className="section-h2">
+              <AccentTitle text={section.title} />
             </h2>
           </div>
 
@@ -1781,15 +2093,15 @@ function MarketingSection({
     return (
       <Block id={section.id} soft={soft}>
         <div className={wrap}>
-          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
+          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1.15fr_0.85fr] md:gap-10 lg:gap-12">
             <div>
               <Heading eyebrow={section.eyebrow} title={section.title} />
               <Copy paragraphs={section.paragraphs} />
               <Subhead>{section.subtitle}</Subhead>
               <Copy paragraphs={section.afterSubtitle} />
 
-              <div className="mt-10 sm:mt-12">
-                <Ctas ctas={section.ctas} />
+              <div className="mt-10 sm:mt-12 max-md:flex max-md:justify-center">
+                <Ctas ctas={section.ctas} compact />
               </div>
             </div>
 
@@ -1800,12 +2112,16 @@ function MarketingSection({
     );
   }
 
+  if (layout === "import-finder") {
+    return (
+      <Block id={section.id} soft={soft}>
+        <ImportFinderPair section={section} />
+      </Block>
+    );
+  }
+
   if (layout === "import") {
     const title = section.title;
-    const accentPhrase = "From Anywhere";
-    const titleLead = title.includes(accentPhrase)
-      ? title.slice(0, title.indexOf(accentPhrase)).trimEnd()
-      : title;
     const bodyParas = section.afterSubtitle?.slice(0, -1) ?? [];
     const highlight = section.afterSubtitle?.at(-1);
 
@@ -1815,21 +2131,13 @@ function MarketingSection({
           <div className="pointer-events-none absolute -left-8 -top-10 h-64 w-64 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_22%,transparent),transparent_70%)]" />
           <div className="pointer-events-none absolute left-24 top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_12%,transparent),transparent_70%)]" />
 
-          <div className="relative grid grid-cols-1 items-start gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
-            <div className="max-lg:text-center">
+          <div className="relative grid grid-cols-1 items-start gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-10 lg:gap-12">
+            <div className="max-md:text-center">
               <h2
                 data-m-item
-                className="section-h2 max-lg:text-center"
+                className="section-h2 section-h2-oneline max-md:text-center"
               >
-                <span className="text-[var(--foreground)]">{titleLead}</span>
-                {title.includes(accentPhrase) ? (
-                  <>
-                    <br />
-                    <span className="text-[var(--accent)]">
-                      {accentPhrase}
-                    </span>
-                  </>
-                ) : null}
+                <AccentTitle text={title} />
               </h2>
 
               <Subhead>{section.subtitle}</Subhead>
@@ -1904,18 +2212,14 @@ function MarketingSection({
 
   if (layout === "finder") {
     const title = section.title;
-    const accentPhrase = "From an Image";
-    const titleLead = title.includes(accentPhrase)
-      ? title.slice(0, title.indexOf(accentPhrase)).trimEnd()
-      : title;
     const featureParas = section.paragraphs.slice(1, 3);
     const leadPara = section.paragraphs[0];
 
     return (
       <Block id={section.id} soft={soft}>
         <div className={wrap}>
-          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-12">
-            <div className="min-w-0 max-lg:text-center">
+          <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] md:gap-10 lg:gap-12">
+            <div className="min-w-0 max-md:text-center">
               <span
                 data-m-item
                 className="inline-flex items-center gap-2 rounded-full border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]"
@@ -1929,21 +2233,15 @@ function MarketingSection({
 
               <h2
                 data-m-item
-                className="section-h2 mt-4 max-lg:text-center"
+                className="section-h2 section-h2-oneline mt-4 max-md:text-center"
               >
-                {titleLead}
-                {title.includes(accentPhrase) ? (
-                  <>
-                    <br />
-                    <span className="text-[var(--accent)]">{accentPhrase}</span>
-                  </>
-                ) : null}
+                <AccentTitle text={title} />
               </h2>
 
               {leadPara ? (
                 <p
                   data-m-item
-                  className="mt-4 max-w-xl text-sm leading-[1.65] text-[var(--hero-muted)] max-lg:mx-auto max-lg:text-center"
+                  className="mt-4 max-w-xl text-sm leading-[1.65] text-[var(--hero-muted)] max-md:mx-auto max-md:text-center"
                 >
                   {leadPara}
                 </p>
@@ -1987,7 +2285,7 @@ function MarketingSection({
               ) : null}
             </div>
 
-            <div className="w-full lg:justify-self-end">
+            <div className="w-full md:justify-self-end">
               <FontFinderVisual />
             </div>
           </div>
@@ -2057,256 +2355,23 @@ function MarketingSection({
   if (layout === "management") {
     return (
       <Block id={section.id} soft={soft}>
-        <div className={wrap}>
-          <div className="w-full text-center">
-            <Heading eyebrow={section.eyebrow} title={section.title} center />
-            <Copy paragraphs={section.paragraphs} center />
-            <ListIntro text={section.listIntro} />
-          </div>
-
-          <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            {FEATURE_BENTO.map((card) => (
-              <article
-                key={`${card.title ?? "more"}-${card.items[0]}`}
-                data-m-item
-                className={`group flex min-h-[13.5rem] flex-col rounded-2xl border border-[color:var(--header-border)] bg-[var(--header-surface)]/55 p-5 text-left transition-[transform,border-color,background-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-[var(--accent)]/35 hover:bg-[var(--header-surface)]/80 hover:shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--accent)_45%,transparent)] ${card.span}`}
-              >
-                <div
-                  className={`flex items-center gap-3 ${card.title ? "" : "mb-1"}`}
-                >
-                  <FeatureBentoIcon name={card.icon} />
-                  {card.title ? (
-                    <h3 className="text-[15px] font-semibold text-[var(--foreground)]">
-                      {card.title}
-                    </h3>
-                  ) : null}
-                </div>
-                <ul className="mt-4 flex-1 space-y-2">
-                  {card.items.map((item) => (
-                    <li
-                      key={item}
-                      className="text-[13px] leading-relaxed text-[var(--hero-muted)]"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-
-          <Closing text={section.closing} center />
-
-          <div className="mt-10 flex justify-center sm:mt-12">
-            <Ctas ctas={section.ctas} center />
-          </div>
-        </div>
+        <MoreFeaturesBoard section={section} />
       </Block>
     );
   }
 
   if (layout === "safari") {
-    const title = section.title;
-    const accentPhrase = "Experience";
-    const titleLead = title.includes(accentPhrase)
-      ? title.slice(0, title.lastIndexOf(accentPhrase)).trimEnd()
-      : title;
-    const leadParas = section.paragraphs.slice(0, 2);
-    const featureParas = section.paragraphs.slice(2);
-
     return (
       <Block id={section.id} soft={soft}>
-        <div className={`${wrap} relative`}>
-          <div className="pointer-events-none absolute -left-8 -top-8 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_18%,transparent),transparent_70%)]" />
-
-          <div className="relative grid grid-cols-1 items-start gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
-            <div className="max-lg:text-center">
-              <span
-                data-m-item
-                className="inline-flex items-center gap-2 rounded-full border border-[color:color-mix(in_oklab,var(--accent)_40%,var(--header-border))] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]"
-              >
-                <svg className="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                  <circle cx="12" cy="12" r="3" />
-                  <path d="M12 4v2M12 18v2M4 12h2M18 12h2M6.4 6.4l1.4 1.4M16.2 16.2l1.4 1.4M17.6 6.4l-1.4 1.4M7.8 16.2l-1.4 1.4" strokeLinecap="round" />
-                </svg>
-                Safari
-              </span>
-
-              <h2
-                data-m-item
-                className="section-h2 mt-4 max-lg:text-center"
-              >
-                {titleLead}{" "}
-                {title.includes(accentPhrase) ? (
-                  <span className="text-[var(--accent)]">{accentPhrase}</span>
-                ) : null}
-              </h2>
-
-              {leadParas.length ? <Copy paragraphs={leadParas} /> : null}
-
-              {featureParas.length ? (
-                <ul className="mt-6 space-y-4">
-                  {featureParas.map((p, i) => (
-                    <li
-                      key={p.slice(0, 40)}
-                      data-m-item
-                      className="flex items-start gap-3"
-                    >
-                      <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-xl bg-[color-mix(in_oklab,var(--accent)_16%,transparent)] text-[var(--accent)] shadow-[0_0_16px_-6px_var(--accent)]">
-                        {i === 0 ? (
-                          <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                            <path d="M5 19V6.5A1.5 1.5 0 0 1 6.5 5H19v14H6.5A1.5 1.5 0 0 0 5 20.5V19z" strokeLinejoin="round" />
-                            <path d="M9 9h7M9 13h5" strokeLinecap="round" />
-                          </svg>
-                        ) : (
-                          <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                            <circle cx="12" cy="12" r="3.2" />
-                            <path d="M3.5 12S7 6.5 12 6.5 20.5 12 20.5 12 17 17.5 12 17.5 3.5 12 3.5 12z" />
-                          </svg>
-                        )}
-                      </span>
-                      <p className="text-sm leading-relaxed text-[var(--hero-muted)]">
-                        {p.split(/(Install Fonts)/g).map((part, idx) =>
-                          part === "Install Fonts" ? (
-                            <span key={idx} className="font-semibold text-[var(--foreground)]">
-                              {part}
-                            </span>
-                          ) : (
-                            <span key={idx}>{part}</span>
-                          ),
-                        )}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-
-              <div className="mt-8 sm:mt-10">
-                <div className="inline-flex rounded-xl shadow-[0_0_42px_-6px_color-mix(in_oklab,var(--accent)_45%,transparent)] [&>[data-m-item]]:mt-0">
-                  <Ctas ctas={section.ctas} />
-                </div>
-              </div>
-            </div>
-
-            <div>
-              {section.listIntro ? (
-                <div
-                  data-m-item
-                  className="mb-5 flex items-center gap-3"
-                >
-                  <span className="h-px flex-1 bg-[linear-gradient(90deg,color-mix(in_oklab,var(--accent)_55%,transparent),var(--header-border))]" />
-                  <p className="shrink-0 text-[13px] text-[var(--accent)]">
-                    {section.listIntro}
-                  </p>
-                  <span className="h-px flex-1 bg-[linear-gradient(90deg,var(--header-border),color-mix(in_oklab,var(--accent)_55%,transparent))]" />
-                </div>
-              ) : null}
-
-              {section.bullets?.length ? (
-                <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  {section.bullets.map((item, i) => (
-                    <li
-                      key={item}
-                      data-m-item
-                      className="group flex items-center gap-3 rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_28%,var(--header-border))] bg-[var(--header-surface)]/40 px-4 py-3.5 text-left transition-[transform,border-color,background-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-[var(--accent)]/45 hover:bg-[var(--header-surface)]/70 hover:shadow-[0_18px_40px_-24px_color-mix(in_oklab,var(--accent)_45%,transparent)] last:sm:col-span-2 last:sm:w-[calc((100%-0.75rem)/2)] last:sm:justify-self-center"
-                    >
-                      <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--accent)_16%,transparent)] text-[var(--accent)] shadow-[0_0_14px_-6px_var(--accent)]">
-                        <SafariAdjustIcon index={i} />
-                      </span>
-                      <span className="min-w-0 flex-1 text-sm font-semibold text-[var(--foreground)]">
-                        {item}
-                      </span>
-                      <span className="text-[var(--hero-muted)] transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden>
-                        ›
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-
-              {section.closing ? (
-                <div
-                  data-m-item
-                  className="mt-4 flex items-start gap-4 rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_28%,var(--header-border))] bg-[var(--header-surface)]/35 p-4 sm:p-5"
-                >
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[color-mix(in_oklab,var(--accent)_16%,transparent)] text-[var(--accent)]">
-                    <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                      <path d="M5 19V6.5A1.5 1.5 0 0 1 6.5 5H19v14H6.5A1.5 1.5 0 0 0 5 20.5V19z" strokeLinejoin="round" />
-                      <path d="M9 9h7M9 13h5" strokeLinecap="round" />
-                    </svg>
-                  </span>
-                  <p className="pt-1 text-sm leading-relaxed text-[var(--hero-muted)]">
-                    {section.closing.split(/(personalized)/g).map((part, idx) =>
-                      part === "personalized" ? (
-                        <span key={idx} className="font-medium text-[var(--accent)]">
-                          {part}
-                        </span>
-                      ) : (
-                        <span key={idx}>{part}</span>
-                      ),
-                    )}
-                  </p>
-                </div>
-              ) : null}
-            </div>
-          </div>
-        </div>
+        <SafariReaderBoard section={section} />
       </Block>
     );
   }
 
   if (layout === "why") {
-    const stats = [
-      { value: "5,000+", label: "Fonts" },
-      { value: "iPhone + iPad", label: "One app" },
-      { value: ".ttf .otf", label: "Formats" },
-    ];
-
     return (
       <Block id={section.id} soft={soft}>
-        <div className={`${wrap} relative`}>
-          <div className="pointer-events-none absolute -left-8 -top-8 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_70%)]" />
-
-          <div className="relative w-full text-center">
-            <Heading eyebrow={section.eyebrow} title={section.title} center />
-            <Copy paragraphs={section.paragraphs} center />
-          </div>
-
-          <div
-            data-m-item
-            className="relative mx-auto mt-8 flex max-w-3xl flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-0"
-          >
-            {stats.map((stat, i) => (
-              <div
-                key={stat.label}
-                className="flex items-center sm:flex-1 sm:justify-center"
-              >
-                {i > 0 ? (
-                  <span
-                    className="hidden h-8 w-px bg-[color:color-mix(in_oklab,var(--accent)_35%,var(--header-border))] sm:mr-0 sm:block"
-                    aria-hidden
-                  />
-                ) : null}
-                <div className="text-center sm:px-6">
-                  <p className="text-[1.55rem] font-semibold tracking-[-0.03em] text-[var(--foreground)] sm:text-[1.75rem]">
-                    {stat.value}
-                  </p>
-                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
-                    {stat.label}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {section.reasons?.length ? (
-            <WhyReasonsIndex reasons={section.reasons} />
-          ) : null}
-
-          <div className="relative mt-8 flex justify-center">
-            <Ctas ctas={section.ctas} center />
-          </div>
-        </div>
+        <WhyChooseBoard section={section} />
       </Block>
     );
   }
@@ -2361,9 +2426,11 @@ function MarketingSection({
             </p>
           </div>
 
-          <header data-m-item className="mt-5 w-full max-lg:text-center">
+          <header data-m-item className="mt-5 w-full max-md:text-center">
             {section.eyebrow ? <Eyebrow>{section.eyebrow}</Eyebrow> : null}
-            <h2 className="section-h2 section-h2-oneline">{section.title}</h2>
+            <h2 className="section-h2 section-h2-oneline">
+              <AccentTitle text={section.title} />
+            </h2>
           </header>
 
           <Copy paragraphs={section.paragraphs} />
@@ -2397,7 +2464,7 @@ function MarketingSection({
               {section.listIntro ? (
                 <p
                   data-m-item
-                  className="mt-8 text-[13px] font-medium text-[var(--hero-muted)] max-lg:text-center"
+                  className="mt-8 text-[13px] font-medium text-[var(--hero-muted)] max-md:text-center"
                 >
                   {section.listIntro}
                 </p>
@@ -2446,7 +2513,16 @@ function MarketingSection({
             </>
           ) : null}
 
-          <div className="mt-8 flex justify-center">
+          {section.closing ? (
+            <p
+              data-m-item
+              className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-[var(--hero-muted)]"
+            >
+              {section.closing}
+            </p>
+          ) : null}
+
+          <div className="mt-5 flex justify-center">
             <Ctas ctas={section.ctas} center />
           </div>
         </div>
@@ -2539,8 +2615,8 @@ function MarketingSection({
 
           <HomeDiscoverFontCards />
 
-          <div className="mt-8 flex justify-center sm:mt-10">
-            <Ctas ctas={section.ctas} center />
+          <div className="mt-8 flex w-full justify-center sm:mt-10">
+            <Ctas ctas={section.ctas} center stack />
           </div>
         </div>
       </Block>
@@ -2548,27 +2624,16 @@ function MarketingSection({
   }
 
   if (layout === "maker") {
-    const accentPhrase = "Custom Font for iPhone";
-    const titleLead = section.title.includes(accentPhrase)
-      ? section.title.slice(0, section.title.indexOf(accentPhrase)).trimEnd()
-      : section.title;
-
     return (
       <Block id={section.id} soft={soft}>
         <div className={wrap}>
           <HomeFontPlayground
             intro={
-              <div className="max-lg:text-center">
-                <h2 className="section-h2 max-lg:text-center">
-                  {titleLead}
-                  {section.title.includes(accentPhrase) ? (
-                    <>
-                      {" "}
-                      <span className="text-[var(--accent)]">{accentPhrase}</span>
-                    </>
-                  ) : null}
+              <div className="max-md:text-center">
+                <h2 className="section-h2 max-md:text-center">
+                  <AccentTitle text={section.title} />
                 </h2>
-                <Copy paragraphs={section.paragraphs} />
+                <Copy paragraphs={section.paragraphs.slice(0, 3)} />
               </div>
             }
           />

@@ -13,6 +13,7 @@ import { observeCardReveal } from "@/lib/motion";
 import { LoadMoreButton } from "@/components/LoadMoreButton";
 import { CopyCssButton } from "@/components/CopyCssButton";
 import { FontFavoriteButton } from "@/components/FontFavoriteButton";
+import { AccentTitle } from "@/components/AccentTitle";
 import { likedIdFromSlug } from "@/lib/liked-fonts";
 
 function ArrowIcon({ className }: { className?: string }) {
@@ -107,7 +108,7 @@ export function FontShowcaseSection({
               {total} fonts
             </div>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-[var(--foreground)] sm:text-4xl md:text-[2.6rem]">
-              {title}
+              <AccentTitle text={title} />
             </h2>
             <p className="mt-1.5 text-sm text-[var(--hero-muted)] sm:text-base">
               {subtitle}

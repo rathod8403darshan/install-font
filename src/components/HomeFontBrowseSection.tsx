@@ -15,6 +15,7 @@ import {
 } from "@/data/category-subcategories";
 import { CategoryFontSection } from "@/components/CategoryFontSection";
 import { FontSortDropdown } from "@/components/FontSortDropdown";
+import { AccentTitle } from "@/components/AccentTitle";
 import {
   DEFAULT_FONT_SORT,
   sortCategoryFonts,
@@ -142,7 +143,7 @@ export function HomeFontBrowseSection() {
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
           <div className="min-w-0 flex-1">
             <h2 className="text-2xl font-semibold tracking-[-0.025em] text-[var(--foreground)] sm:text-3xl md:text-4xl lg:text-[2.6rem]">
-              {title}
+              <AccentTitle text={title} />
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-[var(--hero-muted)] sm:text-base">
               {subtitle}
