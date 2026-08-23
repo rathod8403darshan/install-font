@@ -16,7 +16,7 @@ const MARQUEE: { text: string; key: PreviewFontKey; href: string }[] = [
 
 export function FontMarquee() {
   return (
-    <div className="full-bleed relative overflow-hidden border-y border-[color:var(--header-border)] bg-[var(--header-surface)] py-6">
+    <div className="hero-bleed relative overflow-hidden border-y border-[color:var(--header-border)] bg-[var(--header-surface)] py-6">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[var(--background)] to-transparent sm:w-24" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[var(--background)] to-transparent sm:w-24" />
       <div className="marquee-track flex w-max items-center gap-12">

@@ -29,7 +29,7 @@ import { HomeDiscoverFontCards } from "@/components/HomeDiscoverFontCards";
 
 /** Shared readable measure - every marketing section uses the same width. */
 const shell =
-  "page-px relative border-t border-[color:var(--header-border)]/40 py-9 sm:py-11";
+  "full-bleed page-px relative border-t border-[color:var(--header-border)]/40 py-9 sm:py-11";
 const wrap = "mx-auto w-full";
 
 function resolveCtaHref(href: HomeCta["href"]): string {

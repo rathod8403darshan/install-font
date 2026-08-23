@@ -125,32 +125,39 @@
   }
 }
 
-/* Break out of the 85vw site shell to true viewport width */
+/* Other full-bleed blocks stay in the site shell. */
 .full-bleed {
   position: relative;
-  left: 50%;
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
-/* Hero: full viewport until 1900px, then freeze */
+/* Hero only: span the viewport on large screens without a sideways scrollbar. */
 .hero-bleed {
   position: relative;
-  left: 50%;
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
-@media (min-width: 1900px) {
+@media (min-width: 768px) {
   .hero-bleed {
-    width: 1900px;
-    max-width: 1900px;
-    margin-left: -950px;
-    margin-right: -950px;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+}
+
+@media (min-width: 1950px) {
+  .hero-bleed.hero-viewport {
+    width: 1950px;
+    max-width: 1950px;
+    margin-left: calc(50% - 975px);
+    margin-right: calc(50% - 975px);
   }
 }
 
@@ -177,16 +184,17 @@
 
 @media (max-width: 767px) {
   :root {
-    --site-max-width: 90vw;
-    --header-max-width: 90vw;
-    --page-gutter: 0.75rem;
+    --site-max-width: 100%;
+    --header-max-width: 100%;
+    --page-gutter: 1rem;
   }
 
+  /* 100vw includes scrollbar/chrome and causes sideways scroll. Use 100%. */
   .full-bleed,
   .hero-bleed {
     left: auto;
     width: 100%;
-    max-width: none;
+    max-width: 100%;
     margin-left: 0;
     margin-right: 0;
   }
@@ -308,6 +316,9 @@ html.light {
 html,
 body {
   background: var(--background);
+  overflow-x: clip;
+  max-width: 100%;
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -1552,6 +1563,7 @@ html.is-scrolling .marquee-track {
 
 .cta-highlight {
   display: inline-flex;
+  min-width: 0;
   max-width: 100%;
   align-items: center;
   justify-content: center;
@@ -1719,8 +1731,11 @@ html.is-scrolling .marquee-track {
   }
 
   html body .hero-viewport .cta-highlight {
-    width: fit-content;
-    max-width: 100%;
+    width: auto;
+    max-width: 85%;
+    min-width: 0;
+    padding-inline: 1.15rem;
+    white-space: normal;
     text-align: center;
   }
 

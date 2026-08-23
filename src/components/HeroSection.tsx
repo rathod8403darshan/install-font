@@ -461,7 +461,7 @@ function HeroPhoneStage() {
   return (
     <div
       data-hero-stage
-      className="relative mx-auto flex w-full max-w-[17rem] scale-[0.84] items-center justify-center py-6 sm:max-w-[19rem] sm:scale-95 sm:py-6 md:ml-auto md:mr-0 md:h-[16rem] md:py-0 lg:h-[18rem] lg:max-w-[24rem] lg:scale-100"
+      className="relative mx-auto flex w-full max-w-[17rem] scale-[0.84] items-center justify-center overflow-x-clip py-6 sm:max-w-[19rem] sm:scale-95 sm:py-6 md:ml-auto md:mr-0 md:h-[16rem] md:overflow-visible md:py-0 lg:h-[18rem] lg:max-w-[24rem] lg:scale-100"
     >
       <HeroOrbit />
       <HeroSparkles />
@@ -567,17 +567,17 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="hero-bleed hero-viewport relative overflow-hidden"
+      className="hero-bleed hero-viewport relative"
     >
       <div className="hero-field-grid pointer-events-none absolute inset-0" aria-hidden />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,color-mix(in_oklab,var(--accent)_14%,transparent),transparent_48%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,color-mix(in_oklab,var(--brand-blue)_14%,transparent),transparent_52%)]" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[var(--header-max-width)] flex-1 flex-col pl-[clamp(0.85rem,2vw,1.5rem)] pr-[var(--page-gutter)]">
-      <div className="grid w-full flex-1 grid-cols-1 items-center gap-10 sm:gap-8 md:grid-cols-[minmax(0,1fr)_minmax(16rem,1fr)] md:gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)] xl:gap-10">
+      <div className="relative z-10 flex w-full min-w-0 flex-1 flex-col px-[clamp(1.25rem,5vw,5.5rem)]">
+      <div className="grid w-full min-w-0 flex-1 grid-cols-1 items-center gap-10 sm:gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] md:gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:gap-8">
         <div
           ref={contentRef}
-          className="relative z-10 w-full max-w-2xl text-center md:max-w-none md:text-left"
+          className="relative z-10 min-w-0 w-full text-center md:max-w-none md:text-left"
         >
           <p
             data-hero-item
@@ -599,7 +599,7 @@ export function HeroSection() {
 
           <p
             data-hero-item
-            className="mt-3.5 max-w-xl text-pretty text-[13px] leading-relaxed text-[#c4c4cc] sm:text-[14px] lg:max-w-lg"
+            className="mt-3.5 w-full text-pretty text-[13px] leading-relaxed text-[#c4c4cc] sm:text-[14px] md:max-w-xl lg:max-w-lg"
           >
             Looking for the best{" "}
             <span className="font-semibold text-[var(--foreground)]">
@@ -616,7 +616,7 @@ export function HeroSection() {
 
           <div
             data-hero-item
-            className="mt-6 flex flex-col items-center sm:mt-5 sm:flex-row sm:items-center sm:justify-center md:justify-start"
+            className="mt-6 flex w-full flex-col items-center sm:mt-5 sm:flex-row sm:items-center sm:justify-center md:w-auto md:justify-start"
           >
             <a
               href={APP_STORE_IFONT_URL}

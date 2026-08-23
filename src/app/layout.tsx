@@ -42,7 +42,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="relative flex min-h-full flex-col overflow-x-hidden font-sans text-[var(--foreground)]">
+      <body className="relative flex min-h-full flex-col overflow-x-clip font-sans text-[var(--foreground)]">
         <JsonLd data={organizationJsonLd} />
         <AmbientBackground />
         <div className="relative z-10 mx-auto flex min-h-0 w-full min-w-0 max-w-[var(--site-max-width)] flex-1 flex-col">
