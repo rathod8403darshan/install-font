@@ -361,7 +361,7 @@ function HeroPhoneScreen() {
 function HeroPhone() {
   return (
     <div
-      className="hero-phone relative z-10 mx-auto aspect-[9/19] w-[11.5rem] rounded-[2.25rem] border border-white/15 bg-gradient-to-b from-[#232329] to-[#08080b] p-[0.4rem] shadow-[0_0_0_5px_rgba(0,0,0,0.55)_inset,0_36px_70px_-26px_rgba(0,0,0,0.85),0_0_54px_-14px_color-mix(in_oklab,var(--accent)_38%,transparent)] sm:w-[12rem] lg:w-[12.5rem]"
+      className="hero-phone relative z-10 mx-auto aspect-[9/19] w-[11.5rem] rounded-[2.25rem] border border-white/15 bg-gradient-to-b from-[#232329] to-[#08080b] p-[0.4rem] shadow-[0_0_0_5px_rgba(0,0,0,0.55)_inset,0_36px_70px_-26px_rgba(0,0,0,0.85),0_0_54px_-14px_color-mix(in_oklab,var(--accent)_38%,transparent)] sm:w-[12rem] lg:w-[12.5rem] xl:w-[13.5rem]"
     >
       <span
         className="pointer-events-none absolute -right-[3px] top-[24%] h-9 w-[3px] rounded-r-sm bg-white/25"
@@ -461,7 +461,7 @@ function HeroPhoneStage() {
   return (
     <div
       data-hero-stage
-      className="relative mx-auto flex w-full max-w-[17rem] scale-[0.84] items-center justify-center overflow-x-clip py-6 sm:max-w-[19rem] sm:scale-95 sm:py-6 md:ml-auto md:mr-0 md:h-[16rem] md:overflow-visible md:py-0 lg:h-[18rem] lg:max-w-[24rem] lg:scale-100"
+      className="relative mx-auto flex w-full max-w-[17rem] scale-[0.84] items-center justify-center overflow-x-clip py-6 sm:max-w-[19rem] sm:scale-95 sm:py-6 md:ml-auto md:mr-0 md:h-[16rem] md:scale-100 md:overflow-visible md:py-0 lg:h-[18rem] lg:max-w-[24rem] xl:h-[19.5rem] xl:max-w-[26rem]"
     >
       <HeroOrbit />
       <HeroSparkles />
@@ -574,22 +574,14 @@ export function HeroSection() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,color-mix(in_oklab,var(--brand-blue)_14%,transparent),transparent_52%)]" />
 
       <div className="relative z-10 flex w-full min-w-0 flex-1 flex-col px-[clamp(1.25rem,5vw,5.5rem)]">
-      <div className="grid w-full min-w-0 flex-1 grid-cols-1 items-center gap-10 sm:gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] md:gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:gap-8">
+      <div className="grid w-full min-w-0 flex-1 grid-cols-1 items-center gap-10 sm:gap-8 md:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] md:gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(20rem,0.8fr)] lg:gap-8 xl:mx-auto xl:max-w-[74rem] 2xl:max-w-[82rem]">
         <div
           ref={contentRef}
           className="relative z-10 min-w-0 w-full text-center md:max-w-none md:text-left"
         >
-          <p
-            data-hero-item
-            className="mb-3 inline-flex items-center gap-2 font-mono text-[9px] font-medium tracking-[0.2em] text-[var(--accent)] sm:text-[10px]"
-          >
-            <span className="size-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_12px_var(--accent)]" />
-            INSTALLFONT // iOS
-          </p>
-
           <h1
             data-hero-item
-            className="text-balance text-[clamp(1.65rem,3.6vw,2.65rem)] font-semibold leading-[1.14] tracking-[-0.04em] text-[var(--foreground)]"
+            className="text-balance text-[clamp(1.65rem,3.6vw,2.65rem)] font-semibold leading-[1.14] tracking-[-0.04em] text-[var(--foreground)] min-[1800px]:text-[3.1rem]"
           >
             Fonts For{" "}
             <span className="font-shimmer">iPhone</span>
@@ -599,7 +591,7 @@ export function HeroSection() {
 
           <p
             data-hero-item
-            className="mt-3.5 w-full text-pretty text-[13px] leading-relaxed text-[#c4c4cc] sm:text-[14px] md:max-w-xl lg:max-w-lg"
+            className="mt-3.5 w-full text-pretty text-[13px] leading-relaxed text-[#c4c4cc] sm:text-[14px] md:max-w-xl lg:max-w-lg min-[1800px]:text-[15.5px]"
           >
             Looking for the best{" "}
             <span className="font-semibold text-[var(--foreground)]">
@@ -625,7 +617,7 @@ export function HeroSection() {
               className="cta-highlight"
             >
               <AppleMark className="size-3.5 sm:size-5" />
-              Download Install Font on the App Store
+              Try Free Now
             </a>
           </div>
         </div>

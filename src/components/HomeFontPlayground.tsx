@@ -26,6 +26,7 @@ import {
   type GeneratorSettings,
 } from "@/lib/font-generator";
 import { prefersReducedMotion } from "@/lib/motion";
+import { APP_STORE_IFONT_URL } from "@/lib/mobile-app-links";
 
 const HOME_PRESETS = GENERATOR_STYLE_PRESETS.filter((p) =>
   ["plain", "super-mario", "neon", "retro-3d"].includes(p.id),
@@ -33,7 +34,7 @@ const HOME_PRESETS = GENERATOR_STYLE_PRESETS.filter((p) =>
 
 function StepMark({ n }: { n: string }) {
   return (
-    <span className="inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-[10px] font-bold leading-none text-[#09090b]">
+    <span className="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-[var(--accent)] text-[11px] font-bold leading-none text-[#09090b]">
       {n}
     </span>
   );
@@ -132,11 +133,51 @@ function PlaygroundFontPicker({
   );
 }
 
+function DownloadGlyph({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.9"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M12 4v11" />
+      <path d="M8 11l4 4 4-4" />
+      <path d="M5 18h14" />
+    </svg>
+  );
+}
+
+function ShareGlyph({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.9"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <circle cx="18" cy="5" r="2.4" />
+      <circle cx="6" cy="12" r="2.4" />
+      <circle cx="18" cy="19" r="2.4" />
+      <path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4" />
+    </svg>
+  );
+}
+
 export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
   const [previewText, setPreviewText] = useState("iPhone");
   const [settings, setSettings] = useState<GeneratorSettings>(() =>
     createDefaultGeneratorSettings("pacifico"),
   );
+  const [shareState, setShareState] = useState<"idle" | "copied">("idle");
 
   const stageRef = useRef<HTMLDivElement>(null);
   const previewRef = useRef<HTMLParagraphElement>(null);
@@ -160,6 +201,28 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
 
   const setPreset = (presetId: string) => {
     setSettings((s) => applyStylePreset(s, presetId));
+  };
+
+  const handleShare = async () => {
+    const shareText = `"${display}" styled with ${familyDisplayName(settings.fontKey)} (${presetLabel}) - made with Install Font.`;
+    const shareUrl = typeof window !== "undefined" ? window.location.href : "";
+
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({ title: "Install Font", text: shareText, url: shareUrl });
+      } catch {
+        // Cancelled or unsupported - no action needed.
+      }
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(`${shareText} ${shareUrl}`.trim());
+      setShareState("copied");
+      window.setTimeout(() => setShareState("idle"), 2000);
+    } catch {
+      // Clipboard unavailable - fail silently.
+    }
   };
 
   useEffect(() => {
@@ -210,12 +273,12 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
       <div className="min-w-0">
         {intro}
 
-        <div className="relative mt-7 overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_28%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_5%,var(--header-surface))] p-4 shadow-[0_0_40px_-18px_color-mix(in_oklab,var(--accent)_45%,transparent)] sm:p-5">
+        <div className="relative mt-7 overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_28%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_5%,var(--header-surface))] p-5 shadow-[0_0_40px_-18px_color-mix(in_oklab,var(--accent)_45%,transparent)] sm:p-6">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,color-mix(in_oklab,var(--accent)_12%,transparent),transparent_60%)]" />
 
-          <div className="relative space-y-6">
+          <div className="relative space-y-7">
             <div>
-              <p className="mb-2 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground)]">
+              <p className="mb-2.5 flex items-center gap-2 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-[var(--foreground)]">
                 <StepMark n="1" />
                 Type your text
               </p>
@@ -240,20 +303,20 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
                     maxLength={24}
                     placeholder="Type here to change the preview"
                     autoComplete="off"
-                    className="w-full rounded-xl border-2 border-[color:color-mix(in_oklab,var(--accent)_45%,var(--header-border))] bg-[var(--search-bar-bg)] py-3 pl-10 pr-14 text-[15px] font-medium text-[var(--foreground)] outline-none placeholder:text-[var(--hero-muted)] transition-[border-color,box-shadow] focus:border-[var(--accent)] focus:shadow-[0_0_0_4px_color-mix(in_oklab,var(--accent)_22%,transparent)]"
+                    className="w-full rounded-xl border-2 border-[color:color-mix(in_oklab,var(--accent)_45%,var(--header-border))] bg-[var(--search-bar-bg)] py-3.5 pl-10 pr-14 text-[16px] font-medium text-[var(--foreground)] outline-none placeholder:text-[var(--hero-muted)] transition-[border-color,box-shadow] focus:border-[var(--accent)] focus:shadow-[0_0_0_4px_color-mix(in_oklab,var(--accent)_22%,transparent)]"
                   />
                   <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 font-mono text-[10px] tabular-nums text-[var(--hero-muted)]">
                     {previewText.length}/24
                   </span>
                 </span>
               </label>
-              <p className="mt-2 text-[12px] leading-snug text-[var(--hero-muted)]">
+              <p className="mt-2 text-[13px] leading-snug text-[var(--hero-muted)]">
                 Edit this field. The styled result updates as you type.
               </p>
             </div>
 
             <div>
-              <p className="mb-2 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground)]">
+              <p className="mb-2.5 flex items-center gap-2 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-[var(--foreground)]">
                 <StepMark n="2" />
                 Choose a font
               </p>
@@ -262,7 +325,7 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
 
             <div>
               <div className="mb-2 flex items-center justify-between gap-3">
-                <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground)]">
+                <p className="flex items-center gap-2 text-[12.5px] font-semibold uppercase tracking-[0.14em] text-[var(--foreground)]">
                   <StepMark n="3" />
                   Choose a style
                 </p>
@@ -309,7 +372,7 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
                     >
                       <span className="min-w-0 flex-1">
                         <span
-                          className={`block text-[13px] font-semibold tracking-wide transition-colors ${
+                          className={`block text-[14.5px] font-semibold tracking-wide transition-colors ${
                             selected
                               ? "text-[var(--accent)]"
                               : "text-[var(--foreground)] group-hover/style:text-[var(--accent)]"
@@ -318,7 +381,7 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
                           {preset.label}
                         </span>
                         {blurb ? (
-                          <span className="mt-1 block line-clamp-2 text-[12px] font-normal leading-snug tracking-normal text-[var(--hero-muted)]">
+                          <span className="mt-1 block line-clamp-2 text-[13px] font-normal leading-snug tracking-normal text-[var(--hero-muted)]">
                             {blurb}
                           </span>
                         ) : null}
@@ -383,6 +446,26 @@ export function HomeFontPlayground({ intro }: { intro?: ReactNode }) {
         <p className="relative mt-5 text-center text-[10px] font-medium uppercase tracking-[0.22em] text-[var(--hero-muted)] transition-colors group-hover/preview:text-[var(--accent)]">
           {familyDisplayName(settings.fontKey)} · {presetLabel}
         </p>
+
+        <div className="relative mt-5 flex items-center justify-center gap-2.5">
+          <a
+            href={APP_STORE_IFONT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-highlight cta-highlight-compact"
+          >
+            <DownloadGlyph className="size-4" />
+            Download
+          </a>
+          <button
+            type="button"
+            onClick={handleShare}
+            className="cta-secondary cta-highlight-compact"
+          >
+            <ShareGlyph className="size-4" />
+            {shareState === "copied" ? "Copied!" : "Share"}
+          </button>
+        </div>
       </div>
     </div>
   );

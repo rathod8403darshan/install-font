@@ -61,18 +61,17 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
       "Finding the right typeface should be exciting - not frustrating. Install Font gives you access to a growing collection of Fonts For iPhone and iPad Fonts, making it easier to find a style for every project.",
     ],
     ctas: [
-      { label: "Explore Fonts for iPhone", href: "/fonts/movie" },
+      { label: "Explore More Fonts for iPhone", href: "/fonts/movie" },
       { label: "Get Fonts for iPhone Free", href: "app-store" },
     ],
     layout: "features",
   },
   {
     id: "handwriting",
+    eyebrow: "Design. Preview. Download.",
     title: "Create Your Own Custom Font for iPhone",
     paragraphs: [
-    
       "Install Fonts helps you turn your handwriting into a Custom Font For iPhone, allowing you to create a more personal typography experience. Your handwriting can become part of your creative toolkit instead of remaining limited to paper or handwritten notes.",
-      "The Font Maker feature is designed to help you create your own font from your handwriting. This can be useful for creators, artists, students, designers, journaling enthusiasts, and anyone who wants their digital text to feel more personal.",
     ],
     ctas: [{ label: "Create a Custom Font for iPhone", href: "app-store" }],
     layout: "maker",
@@ -102,22 +101,6 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
     layout: "steps",
   },
   {
-    id: "trusted",
-    title: "Trusted, Safe, and App Store Approved",
-    paragraphs: [
-      "We know how important it is to trust the apps on your device. InstallFont follows Apple's official guidelines for how to Install Fonts, meaning every font profile is generated safely - nothing hidden, nothing sketchy.",
-    ],
-    subtitle: "A Verified Way to Manage iOS Fonts",
-    afterSubtitle: [
-      "Unlike random tutorials circulating online, our app gives you a verified, App Store-approved way to manage iOS Fonts and Apple Fonts. You're always in control, and you can remove any installed font anytime from your device settings.",
-      "This commitment to safety is part of why so many users choose InstallFont over piecing together Custom Font for iPhone installations manually. When you want Fonts for iPhone that are beautiful and secure, we're built exactly for that.",
-    ],
-    ctas: [
-      { label: "Download the Trusted Fonts for iPhone App", href: "app-store" },
-    ],
-    layout: "trusted",
-  },
-  {
     id: "apple-screens",
     title: "Fonts for iPhone and iPad Fonts - One App, Every Apple Screen",
     paragraphs: [
@@ -125,86 +108,10 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
     ],
     subtitle: "Consistent Apple Fonts Across Devices",
     afterSubtitle: [
-      "Because our platform is built around the Apple Fonts ecosystem, everything stays consistent - the same font looks sharp whether you're viewing it on iPhone or iPad Fonts displays. This kind of cross-device consistency is core to what makes InstallFont different.",
+      "Because our platform is built around the Apple Fonts ecosystem, everything stays consistent. The same font looks sharp whether you're viewing it on iPhone or iPad Fonts displays. This kind of cross device consistency is core to what makes InstallFont different.",
     ],
-    subtitle2: "Designed for Everyday Creativity",
-    listIntro: "Install Font can be useful for:",
-    labeledItems: [
-      {
-        label: "Students",
-        text: "Make assignments, presentations, and projects more visually engaging.",
-      },
-      {
-        label: "Professionals",
-        text: "Maintain typography that matches your personal or business style.",
-      },
-      {
-        label: "Designers",
-        text: "Quickly explore and manage different typefaces for creative projects.",
-      },
-      {
-        label: "Content Creators",
-        text: "Find typography that works with your digital content.",
-      },
-      {
-        label: "Business Owners",
-        text: "Build a recognizable visual identity using consistent fonts.",
-      },
-      {
-        label: "Everyday Users",
-        text: "Simply enjoy having more font choices on your device.",
-      },
-    ],
-    closing:
-      "With Install Font, discovering iOS Fonts becomes a more enjoyable part of your creative workflow.",
-    ctas: [{ label: "Download App on the App Store", href: "app-store" }],
+    ctas: [{ label: "Try Free Now", href: "app-store" }],
     layout: "devices",
-  },
-  {
-    id: "import-finder",
-    eyebrow: "Import + Identify",
-    title: "Import Fonts From Anywhere",
-    paragraphs: [
-      "Already found the perfect font online? You don't have to start your search from scratch.",
-      "Install Font lets you import supported font files directly from the web and other sources on your device.",
-    ],
-    bullets: [".ttf", ".ttc", ".otf"],
-    blocks: [
-      {
-        title: "Import External Files",
-        paragraphs: [
-          "Bring in compatible files sent by designers, downloaded from supported websites, or stored on your device.",
-        ],
-      },
-      {
-        title: "Google Fonts Integration",
-        paragraphs: [
-          "Explore the Google Fonts library directly to uncover additional typography options.",
-        ],
-      },
-    ],
-    subtitle: "Identify a Font From an Image",
-    afterSubtitle: [
-      "Ever spotted a font on a poster, ad, website, screenshot, product package, or social post and wanted to know its name?",
-      "Install Font includes a Font Finder tool that helps identify fonts from an image. Instead of browsing thousands of typefaces by hand, start with a picture and look for lettering that matches what you found.",
-    ],
-    listIntro: "This can be particularly helpful for:",
-    labeledItems: [
-      { label: "Designers", text: "Researching typography for creative work." },
-      { label: "Students", text: "Working on creative projects and assignments." },
-      { label: "Content creators", text: "Matching lettering from posts, videos, and campaigns." },
-      { label: "Brand teams", text: "Finding type that fits marketing and identity work." },
-      { label: "Social designers", text: "Turning a screenshot into a usable type direction." },
-      { label: "Typography fans", text: "Learning the name behind a style you spotted." },
-      { label: "Similar-font hunters", text: "Starting from an image instead of thousands of names." },
-    ],
-    closing:
-      "Don't limit yourself to a preset library. Import the fonts you love, discover new ones, and build a personalized collection for your projects. That's the power of Custom Font For iPhone.",
-    ctas: [
-      { label: "Import Custom Fonts Now", href: "app-store" },
-      { label: "Install Font Finder App", href: "app-store" },
-    ],
-    layout: "import-finder",
   },
   {
     id: "library",
@@ -213,7 +120,6 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
       "Searching for fonts across multiple websites can be time-consuming. Install Font brings a dedicated Fonts Library experience together in one place.",
       "With thousands of fonts available, you can explore different categories and styles according to the type of project you are working on.",
     ],
-    listIntro: "You can discover typography suitable for:",
     labeledItems: [
       {
         label: "Minimal designs",
@@ -236,8 +142,6 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
         text: "Strong and distinctive fonts for headings, posters, titles, and promotional designs.",
       },
     ],
-    closing:
-      "A good font library is not only about quantity. It is also about helping you find the right style for the right project.",
     blocks: [
       {
         title: "Google Fonts Library",
@@ -251,24 +155,75 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
       {
         title: "Discover Fonts From DaFont and More",
         paragraphs: [
-          "The world of typography extends far beyond one font collection.",
           "Install Font can help you work with fonts from popular online sources such as DaFont and more, giving you additional opportunities to discover interesting and unusual typefaces.",
           "From classic typography to experimental lettering, the web contains an enormous range of font styles.",
           "When downloading fonts from external websites, always check the license and usage conditions. A font being available for download does not necessarily mean that it is free for commercial use.",
-          "Install Font focuses on helping you bring supported font files into your iPhone or iPad workflow while giving you more freedom to explore typography.",
         ],
       },
     ],
-    ctas: [{ label: "Explore Full Font Library", href: "app-store" }],
+    ctas: [{ label: "Try Free Now", href: "app-store" }],
     layout: "library",
+  },
+  {
+    id: "import-finder",
+    eyebrow: "Import + Identify",
+    title: "Import Fonts From Anywhere",
+    paragraphs: [
+      "Already found the perfect font online? You don't need to start your search over.",
+      "Install Font allows you to import supported font files directly from the web and other locations on your device.",
+      "Designed to integrate seamlessly with common font formats, it supports:",
+    ],
+    bullets: [".ttf", ".ttc", ".otf"],
+    blocks: [
+      {
+        title: "Import External Files",
+        paragraphs: [
+          "Bring in compatible files sent by designers, downloaded from supported websites, or stored on your device.",
+        ],
+      },
+      {
+        title: "Google Fonts Integration",
+        paragraphs: [
+          "Explore the Google Fonts library directly to uncover additional typography options.",
+        ],
+      },
+      {
+        title: "Your Fonts, Your Way",
+        paragraphs: [
+          "Don't limit yourself to a preselected collection. Import the fonts you love, discover new ones, and build a personalized set tailored to your projects. That is the freedom of Custom Font For iPhone.",
+        ],
+      },
+    ],
+    subtitle: "Identify a Font From an Image",
+    afterSubtitle: [
+      "Have you ever seen a font in a poster, advertisement, website, screenshot, packaging design, or social media post and wondered what it was called? Install Font includes a Font Finder feature that can help you identify fonts using an image.",
+      "Instead of manually searching through thousands of typefaces, you can start with an image and look for typography that resembles what you have discovered.",
+    ],
+    listIntro: "This can be particularly helpful for:",
+    closing:
+      "Font identification can turn inspiration into a practical starting point. Once you know what style you are looking for, finding an appropriate typeface becomes much easier.",
+    labeledItems: [
+      { label: "Designers researching typography", text: "Researching typography for creative work." },
+      { label: "Students working on creative projects", text: "Working on creative projects and assignments." },
+      { label: "Content creators", text: "Matching lettering from posts, videos, and campaigns." },
+      { label: "Brand and marketing teams", text: "Finding type that fits marketing and identity work." },
+      { label: "Social media designers", text: "Turning a screenshot into a usable type direction." },
+      { label: "Typography enthusiasts", text: "Learning the name behind a style you spotted." },
+      { label: "People looking for a similar font", text: "Starting from an image instead of thousands of names." },
+    ],
+    ctas: [
+      { label: "Try Free Now", href: "app-store" },
+      { label: "Install Font Finder App", href: "app-store" },
+    ],
+    layout: "import-finder",
   },
   {
     id: "more-features",
     title: "More Features to Make Font Management Easier",
     paragraphs: [
       "Install Font can continue evolving as a complete font-management companion for Apple users.",
+      "Useful future-facing capabilities can include:",
     ],
-    listIntro: "",
     bullets: [
       "Font preview before installation",
       "Search by font name",
@@ -292,21 +247,32 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
       "Custom font organization",
       "Cross-device workflow support",
     ],
-    closing:
-      "These features can make it easier to move from font discovery to actual design work.",
-    ctas: [{ label: "Explore All Font Features", href: "app-store" }],
+    ctas: [{ label: "Try Free Now", href: "app-store" }],
     layout: "management",
+  },
+  {
+    id: "trusted",
+    title: "Trusted, Safe, and App Store Approved",
+    paragraphs: [
+      "We know how important it is to trust the apps on your device. InstallFont follows Apple's official guidelines for how to Install Fonts, meaning every font profile is generated safely, nothing hidden, nothing sketchy.",
+    ],
+    subtitle: "A Verified Way to Manage iOS Fonts",
+    afterSubtitle: [
+      "Unlike random tutorials circulating online, our app gives you a verified, App Store-approved way to manage iOS Fonts and Apple Fonts. You're always in control, and you can remove any installed font anytime from your device settings.",
+      "This commitment to safety is part of why so many users choose InstallFont over piecing together Custom Font for iPhone installations manually. When you want Fonts for iPhone that are beautiful and secure, we're built exactly for that.",
+    ],
+    ctas: [
+      { label: "Download the Trusted Fonts for iPhone App", href: "app-store" },
+    ],
+    layout: "trusted",
   },
   {
     id: "safari",
     title: "Customize Your Safari Reading Experience",
     paragraphs: [
-      "Typography is not only useful when you create content.",
-      "It can also change how you experience content.",
-      "Install Fonts includes Safari customization features that allow you to personalize supported web reading experiences with font style, size, spacing, and color settings.",
       "If a website's default typography does not feel comfortable for your reading preferences, customization gives you more control over the visual experience.",
+      "Safari customization features that allow you to personalize supported web reading experiences with Font style, Font size, Line height, Letter spacing, Paragraph spacing, Text color, Background color settings.",
     ],
-    listIntro: "You can adjust elements such as:",
     bullets: [
       "Font style",
       "Font size",
@@ -318,7 +284,7 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
     ],
     closing:
       "This transforms your font collection from a simple design resource into a more personalized reading and browsing experience.",
-    ctas: [{ label: "Customize Safari Fonts Now", href: "app-store" }],
+    ctas: [{ label: "Try Free Now", href: "app-store" }],
     layout: "safari",
   },
   {
@@ -385,10 +351,9 @@ export const HOME_MARKETING_SECTIONS: HomeMarketingSection[] = [
     id: "ready",
     title: "Ready to Change Fonts for iPhone?",
     paragraphs: [
-      "Your device says a lot about you - let it reflect your style. With InstallFont, discovering and installing Custom Font for iPhone takes less time than choosing lunch. Browse the collection, preview instantly, and transform your typography in seconds.",
       "Join thousands of users who've already made the switch. Whether you're after clean iOS Fonts for daily use or something bold enough to stand out, your next favorite Fonts for iPhone style is one tap away. And if you're on a tablet too, don't forget to explore our matching iPad Fonts collection.",
     ],
-    ctas: [{ label: "Get Custom Fonts For iPhone Free", href: "app-store" }],
+    ctas: [{ label: "Get Started Free", href: "app-store" }],
     layout: "cta",
   },
   {

@@ -26,6 +26,17 @@ import { HomeFontPlayground } from "@/components/HomeFontPlayground";
 import { AccentTitle } from "@/components/AccentTitle";
 import { HomeLibraryVisual } from "@/components/HomeLibraryVisual";
 import { HomeDiscoverFontCards } from "@/components/HomeDiscoverFontCards";
+import { HomePowerfulFeaturesTabs } from "@/components/HomePowerfulFeaturesTabs";
+
+/** Sections 6-11 - shown as a merged mobile-only tab strip instead of six
+ * stacked sections. Desktop keeps rendering each of these normally. */
+const POWERFUL_FEATURE_IDS = new Set([
+  "apple-screens",
+  "library",
+  "import-finder",
+  "more-features",
+  "trusted",
+]);
 
 /** Shared readable measure - every marketing section uses the same width. */
 const shell =
@@ -1646,7 +1657,7 @@ function SafariReaderBoard({ section }: { section: HomeMarketingSection }) {
 
         <div className="relative grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_13rem] lg:grid-cols-[minmax(0,1fr)_15.5rem]">
           <div
-            className={`safari-reader-page flex flex-col justify-center px-4 py-4 sm:px-6 sm:py-5 ${
+            className={`safari-reader-page order-2 flex flex-col justify-center px-4 py-4 sm:px-6 sm:py-5 md:order-none ${
               preset.themeFill
                 ? "is-theme"
                 : "bg-[color-mix(in_oklab,var(--background)_55%,transparent)]"
@@ -1698,7 +1709,7 @@ function SafariReaderBoard({ section }: { section: HomeMarketingSection }) {
           <div
             role="tablist"
             aria-label="Safari reading controls"
-            className="relative z-[1] grid grid-cols-2 gap-1 border-t border-[color:color-mix(in_oklab,var(--accent)_22%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_5%,var(--header-surface-solid))] p-1.5 md:grid-cols-1 md:border-l md:border-t-0"
+            className="relative z-[1] order-1 grid grid-cols-2 gap-1 border-b border-[color:color-mix(in_oklab,var(--accent)_22%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_5%,var(--header-surface-solid))] p-1.5 md:order-none md:grid-cols-1 md:border-t-0 md:border-b-0 md:border-l"
           >
             {items.map((item, i) => {
               const on = i === active;
@@ -1746,11 +1757,19 @@ const FONT_FORMAT_HINTS: Record<string, string> = {
   ".otf": "OpenType Font",
 };
 
-function HoverCopy({ children }: { children: ReactNode }) {
+function HoverCopy({ children, open }: { children: ReactNode; open?: boolean }) {
   return (
-    <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
+    <div
+      className={`grid transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr] ${
+        open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+      }`}
+    >
       <div className="min-h-0 overflow-hidden">
-        <div className="pt-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">
+        <div
+          className={`pt-2 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 ${
+            open ? "opacity-100" : "opacity-0"
+          }`}
+        >
           {children}
         </div>
       </div>
@@ -1764,6 +1783,11 @@ function ImportFinderPair({ section }: { section: HomeMarketingSection }) {
   const finderMore = section.afterSubtitle?.slice(1) ?? [];
   const importCta = section.ctas?.[0] ? [section.ctas[0]] : [];
   const finderCta = section.ctas?.[1] ? [section.ctas[1]] : section.ctas?.slice(0, 1) ?? [];
+
+  // Hidden extra copy normally reveals on hover, which doesn't exist on
+  // touch devices - so each card also toggles open on tap.
+  const [importOpen, setImportOpen] = useState(false);
+  const [finderOpen, setFinderOpen] = useState(false);
 
   return (
     <div className={`${wrap} relative`}>
@@ -1781,7 +1805,9 @@ function ImportFinderPair({ section }: { section: HomeMarketingSection }) {
       <div className="relative grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
         <article
           tabIndex={0}
-          className="group relative flex flex-col overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_32%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_5%,var(--header-surface))] p-5 outline-none transition-[border-color,box-shadow] duration-300 hover:border-[color:color-mix(in_oklab,var(--accent)_55%,var(--header-border))] hover:shadow-[0_0_40px_-18px_color-mix(in_oklab,var(--accent)_50%,transparent)] focus-visible:border-[var(--accent)] sm:p-6"
+          onClick={() => setImportOpen((v) => !v)}
+          aria-expanded={importOpen}
+          className="group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_32%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_5%,var(--header-surface))] p-5 outline-none transition-[border-color,box-shadow] duration-300 hover:border-[color:color-mix(in_oklab,var(--accent)_55%,var(--header-border))] hover:shadow-[0_0_40px_-18px_color-mix(in_oklab,var(--accent)_50%,transparent)] focus-visible:border-[var(--accent)] sm:p-6"
         >
           <div className="mb-4 flex items-center justify-between gap-3">
             <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
@@ -1805,7 +1831,7 @@ function ImportFinderPair({ section }: { section: HomeMarketingSection }) {
               {section.paragraphs[0]}
             </p>
           ) : null}
-          <HoverCopy>
+          <HoverCopy open={importOpen}>
             {section.paragraphs.slice(1).map((p) => (
               <p key={p.slice(0, 40)} className="text-sm leading-relaxed text-[var(--hero-muted)]">
                 {p}
@@ -1846,7 +1872,7 @@ function ImportFinderPair({ section }: { section: HomeMarketingSection }) {
                     {block.title}
                   </p>
                   {block.paragraphs[0] ? (
-                    <HoverCopy>
+                    <HoverCopy open={importOpen}>
                       <p className="text-[13px] leading-relaxed text-[var(--hero-muted)]">
                         {block.paragraphs[0]}
                       </p>
@@ -1857,22 +1883,19 @@ function ImportFinderPair({ section }: { section: HomeMarketingSection }) {
             </div>
           ) : null}
 
-          {section.closing ? (
-            <HoverCopy>
-              <p className="text-[13px] leading-relaxed text-[var(--hero-muted)]">
-                {section.closing}
-              </p>
-            </HoverCopy>
-          ) : null}
-
-          <div className="mt-auto pt-5 [&>[data-m-item]]:mt-0">
+          <div
+            className="mt-auto pt-5 [&>[data-m-item]]:mt-0"
+            onClick={(e) => e.stopPropagation()}
+          >
             <Ctas ctas={importCta} compact />
           </div>
         </article>
 
         <article
           tabIndex={0}
-          className="group relative flex flex-col overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_32%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_5%,var(--header-surface))] p-5 outline-none transition-[border-color,box-shadow] duration-300 hover:border-[color:color-mix(in_oklab,var(--accent)_55%,var(--header-border))] hover:shadow-[0_0_40px_-18px_color-mix(in_oklab,var(--accent)_50%,transparent)] focus-visible:border-[var(--accent)] sm:p-6"
+          onClick={() => setFinderOpen((v) => !v)}
+          aria-expanded={finderOpen}
+          className="group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_32%,var(--header-border))] bg-[color-mix(in_oklab,var(--accent)_5%,var(--header-surface))] p-5 outline-none transition-[border-color,box-shadow] duration-300 hover:border-[color:color-mix(in_oklab,var(--accent)_55%,var(--header-border))] hover:shadow-[0_0_40px_-18px_color-mix(in_oklab,var(--accent)_50%,transparent)] focus-visible:border-[var(--accent)] sm:p-6"
         >
           <div className="mb-4 flex items-center justify-between gap-3">
             <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
@@ -1896,7 +1919,7 @@ function ImportFinderPair({ section }: { section: HomeMarketingSection }) {
             </p>
           ) : null}
           {finderMore.length ? (
-            <HoverCopy>
+            <HoverCopy open={finderOpen}>
               {finderMore.map((p) => (
                 <p key={p.slice(0, 40)} className="text-sm leading-relaxed text-[var(--hero-muted)]">
                   {p}
@@ -1906,26 +1929,49 @@ function ImportFinderPair({ section }: { section: HomeMarketingSection }) {
           ) : null}
 
           {section.labeledItems?.length ? (
-            <div className="mt-5">
-              {section.listIntro ? (
-                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground)]">
-                  {section.listIntro}
-                </p>
-              ) : null}
-              <ul className="mt-3 flex flex-wrap gap-2">
-                {section.labeledItems.map((item) => (
-                  <li
-                    key={item.label}
-                    className="rounded-full border border-[color:color-mix(in_oklab,var(--accent)_28%,var(--header-border))] bg-[var(--header-surface)]/45 px-3 py-1.5 text-[13px] font-medium text-[var(--foreground)]"
-                  >
-                    {item.label}
-                  </li>
-                ))}
-              </ul>
+            <div
+              className={`grid transition-[grid-template-rows] duration-300 ease-out md:grid-rows-[1fr] ${
+                finderOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+              }`}
+            >
+              <div className="min-h-0 overflow-hidden">
+                <div
+                  className={`mt-5 transition-opacity duration-300 md:opacity-100 ${
+                    finderOpen ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  {section.listIntro ? (
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--foreground)]">
+                      {section.listIntro}
+                    </p>
+                  ) : null}
+                  <ul className="mt-3 flex flex-wrap gap-2">
+                    {section.labeledItems.map((item) => (
+                      <li
+                        key={item.label}
+                        className="rounded-full border border-[color:color-mix(in_oklab,var(--accent)_28%,var(--header-border))] bg-[var(--header-surface)]/45 px-3 py-1.5 text-[13px] font-medium text-[var(--foreground)]"
+                      >
+                        {item.label}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           ) : null}
 
-          <div className="mt-auto pt-5 [&>[data-m-item]]:mt-0">
+          {section.closing ? (
+            <HoverCopy open={finderOpen}>
+              <p className="text-[13px] leading-relaxed text-[var(--hero-muted)]">
+                {section.closing}
+              </p>
+            </HoverCopy>
+          ) : null}
+
+          <div
+            className="mt-auto pt-5 [&>[data-m-item]]:mt-0"
+            onClick={(e) => e.stopPropagation()}
+          >
             <Ctas ctas={finderCta} compact />
           </div>
         </article>
@@ -1986,7 +2032,13 @@ function MarketingSection({
           </div>
 
           {section.paragraphs.length ? (
-            <ul className="mt-6 grid grid-cols-1 items-start gap-3 sm:mt-8 sm:grid-cols-2">
+            <ul
+              className={`mx-auto mt-6 grid grid-cols-1 items-start gap-3 sm:mt-8 ${
+                section.paragraphs.length > 1
+                  ? "max-w-3xl sm:grid-cols-2"
+                  : "max-w-2xl"
+              }`}
+            >
               {section.paragraphs.map((p, i) => (
                 <li
                   key={p.slice(0, 40)}
@@ -2630,6 +2682,7 @@ function MarketingSection({
           <HomeFontPlayground
             intro={
               <div className="max-md:text-center">
+                {section.eyebrow ? <Eyebrow>{section.eyebrow}</Eyebrow> : null}
                 <h2 className="section-h2 max-md:text-center">
                   <AccentTitle text={section.title} />
                 </h2>
@@ -2721,18 +2774,50 @@ function MarketingSection({
 
 export function HomeMarketingSections() {
   const [openFaq, setOpenFaq] = useState<string | null>(HOME_FAQ[0]?.id ?? null);
+  const powerfulFeatureSections = HOME_MARKETING_SECTIONS.filter((s) =>
+    POWERFUL_FEATURE_IDS.has(s.id),
+  );
+  const firstPowerfulFeatureIndex = HOME_MARKETING_SECTIONS.findIndex((s) =>
+    POWERFUL_FEATURE_IDS.has(s.id),
+  );
 
   return (
-    <div className="flex flex-col">
-      {HOME_MARKETING_SECTIONS.map((section, index) => (
-        <MarketingSection
-          key={section.id}
-          section={section}
-          index={index}
-          openFaq={openFaq}
-          setOpenFaq={setOpenFaq}
-        />
-      ))}
+    <div className="home-sections flex flex-col">
+      {HOME_MARKETING_SECTIONS.map((section, index) => {
+        if (!POWERFUL_FEATURE_IDS.has(section.id)) {
+          return (
+            <MarketingSection
+              key={section.id}
+              section={section}
+              index={index}
+              openFaq={openFaq}
+              setOpenFaq={setOpenFaq}
+            />
+          );
+        }
+
+        const showTabsHere = index === firstPowerfulFeatureIndex;
+
+        // `contents` keeps this wrapper out of the flex layout entirely, so
+        // it has no effect on desktop, which only ever sees the md:block child.
+        return (
+          <div key={section.id} className="contents">
+            {showTabsHere ? (
+              <div className="md:hidden">
+                <HomePowerfulFeaturesTabs sections={powerfulFeatureSections} />
+              </div>
+            ) : null}
+            <div className="hidden md:block">
+              <MarketingSection
+                section={section}
+                index={index}
+                openFaq={openFaq}
+                setOpenFaq={setOpenFaq}
+              />
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }

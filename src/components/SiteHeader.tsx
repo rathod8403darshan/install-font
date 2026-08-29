@@ -168,6 +168,38 @@ function SearchIcon({ className }: { className?: string }) {
   );
 }
 
+function MenuIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      aria-hidden
+    >
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </svg>
+  );
+}
+
+function CloseIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      aria-hidden
+    >
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  );
+}
+
 const navItems: {
   slug: FontCategorySlug;
   Icon: typeof FilmIcon;
@@ -181,6 +213,7 @@ const navItems: {
 
 export function SiteHeader() {
   const [searchOpen, setSearchOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [isLight, setIsLight] = useState(false);
   const [headerDocked, setHeaderDocked] = useState(false);
   const [headerEntered, setHeaderEntered] = useState(false);
@@ -247,20 +280,31 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = searchOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (searchOpen) setMenuOpen(false);
   }, [searchOpen]);
 
   useEffect(() => {
-    if (!searchOpen) return;
+    document.body.style.overflow = searchOpen || menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [searchOpen, menuOpen]);
+
+  useEffect(() => {
+    if (!searchOpen && !menuOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeSearch();
+      if (e.key === "Escape") {
+        closeSearch();
+        setMenuOpen(false);
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [searchOpen, closeSearch]);
+  }, [searchOpen, menuOpen, closeSearch]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -299,13 +343,22 @@ export function SiteHeader() {
         backdropRef={searchBackdropRef}
       />
 
+      {menuOpen ? (
+        <button
+          type="button"
+          className="fixed inset-0 z-[139] bg-black/45 md:hidden"
+          aria-label="Close menu"
+          onClick={() => setMenuOpen(false)}
+        />
+      ) : null}
+
       <div
         ref={shellRef}
         className="site-header-shell fixed inset-x-0 z-[140] flex justify-center px-[max(0px,env(safe-area-inset-left,0px))]"
       >
         <header
           ref={rootRef}
-          className={`site-header-bar w-full max-w-[var(--header-max-width)] border border-[color:var(--header-border)] bg-[var(--header-surface-solid)] px-2.5 py-2 shadow-[var(--header-shadow)] transition-[background-color,border-color,box-shadow,border-radius] duration-300 ease-out sm:px-5 sm:py-2.5 md:px-6 md:py-3 md:bg-[var(--header-surface)] md:backdrop-blur-md ${
+          className={`site-header-bar relative w-full max-w-[var(--header-max-width)] border border-[color:var(--header-border)] bg-[var(--header-surface-solid)] px-2.5 py-2 shadow-[var(--header-shadow)] transition-[background-color,border-color,box-shadow,border-radius] duration-300 ease-out sm:px-5 sm:py-2.5 md:px-6 md:py-3 md:bg-[var(--header-surface)] md:backdrop-blur-md ${
             headerEntered ? "is-entering" : "opacity-0"
           } ${
             headerDocked ? "md:bg-[var(--header-surface-solid)] md:backdrop-blur-none" : ""
@@ -315,7 +368,7 @@ export function SiteHeader() {
               : "rounded-b-[1.25rem] sm:rounded-[1.75rem] md:rounded-4xl"
           }`}
         >
-        <div className="grid w-full min-w-0 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-1 max-md:gap-0.5 md:flex md:min-w-0 md:items-center md:gap-2 lg:gap-3 xl:gap-4">
+        <div className="flex w-full min-w-0 items-center justify-between gap-2 md:grid md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:gap-2 lg:gap-3 xl:gap-4">
           <div className="flex min-w-0 items-center justify-self-start md:shrink-0">
             <Link
               href="/"
@@ -348,7 +401,7 @@ export function SiteHeader() {
 
           <nav
             ref={navRef}
-            className="site-header-nav flex min-w-0 max-w-full items-center justify-center justify-self-center gap-0 overflow-x-auto py-0.5 max-md:gap-0 md:flex-1 md:justify-center md:gap-0.5 lg:gap-1"
+            className="site-header-nav hidden min-w-0 max-w-full items-center justify-center justify-self-center gap-0 overflow-x-auto py-0.5 md:flex md:flex-1 md:justify-center md:gap-0.5 lg:gap-1"
             aria-label="Main"
           >
             {navItems.map(({ slug, Icon }) => {
@@ -364,10 +417,10 @@ export function SiteHeader() {
                   className="group text-[var(--foreground)]/90"
                 >
                   <span
-                    className={`flex shrink-0 items-center gap-1 rounded-lg px-0.5 py-1 text-[12px] font-medium transition-colors max-md:px-1 max-md:py-1.5 sm:gap-1.5 sm:px-2 sm:py-2 sm:text-[12.5px] lg:gap-2 lg:px-2.5 lg:text-[13px] ${
+                    className={`flex shrink-0 items-center gap-1 rounded-lg px-0.5 py-1 text-[12px] font-bold text-[var(--foreground)] transition-colors max-md:px-1 max-md:py-1.5 sm:gap-1.5 sm:px-2 sm:py-2 sm:text-[12.5px] lg:gap-2 lg:px-2.5 lg:text-[13px] ${
                       isActive
-                        ? "bg-[var(--header-hover)] text-[var(--foreground)] shadow-[inset_0_0_0_1px_var(--chip-active-border)]"
-                        : "text-[var(--header-muted)] hover:bg-[var(--header-hover)] hover:text-[var(--foreground)]"
+                        ? "bg-[var(--header-hover)] shadow-[inset_0_0_0_1px_var(--chip-active-border)]"
+                        : "hover:bg-[var(--header-hover)]"
                     }`}
                   >
                     <span className="flex size-[18px] items-center justify-center sm:size-4 md:size-[18px]">
@@ -385,28 +438,28 @@ export function SiteHeader() {
             })}
           </nav>
 
-          <div className="flex min-w-0 items-center justify-self-end gap-1.5 md:shrink-0 sm:gap-3">
+          <div className="flex min-w-0 items-center justify-self-end gap-0.5 md:shrink-0 md:gap-3">
           <div
             ref={storeRef}
-            className="hidden shrink-0 items-center gap-px rounded-xl border border-[color:var(--header-border)] bg-[var(--header-hover)]/25 p-0.5 md:flex md:gap-0.5"
+            className="flex shrink-0 items-center gap-0.5 rounded-xl border border-[color:var(--header-border)] bg-[var(--header-hover)]/60 p-0.5 max-md:gap-0 max-md:border-0 max-md:bg-transparent"
           >
-            <a
-              href={GOOGLE_PLAY_INSTALLFONT_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg p-2 text-[var(--foreground)]/90 opacity-90 transition-[background-color,color,transform] duration-200 hover:bg-[var(--header-hover)] hover:opacity-100 active:scale-[0.96]"
-              aria-label="Get Installfont on Google Play"
-            >
-              <GooglePlayMark className="size-5 sm:size-6" />
-            </a>
             <a
               href={APP_STORE_IFONT_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg p-2 text-[var(--foreground)]/90 transition-[background-color,color,transform] duration-200 hover:bg-[var(--header-hover)] hover:opacity-100 active:scale-[0.96]"
+              className="rounded-lg p-1.5 text-[var(--foreground)]/90 transition-[background-color,color,transform] duration-200 hover:bg-[var(--header-hover)] hover:opacity-100 active:scale-[0.96] sm:p-2"
               aria-label="Get iFont on the App Store"
             >
-              <AppleMark className="size-5 sm:size-6" />
+              <AppleMark className="size-5 lg:size-6" />
+            </a>
+            <a
+              href={GOOGLE_PLAY_INSTALLFONT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg p-1.5 text-[var(--foreground)]/90 opacity-90 transition-[background-color,color,transform] duration-200 hover:bg-[var(--header-hover)] hover:opacity-100 active:scale-[0.96] sm:p-2"
+              aria-label="Get Installfont on Google Play"
+            >
+              <GooglePlayMark className="size-5 lg:size-6" />
             </a>
           </div>
 
@@ -453,14 +506,64 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={toggleTheme}
-              className="rounded-lg p-2 text-[var(--foreground)]/90 transition-colors hover:bg-[var(--header-hover)] sm:p-2"
+              className="hidden rounded-lg p-2 text-[var(--foreground)]/90 transition-colors hover:bg-[var(--header-hover)] md:inline-flex sm:p-2"
               aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"}
             >
               <ThemeHalfIcon className={headerIconSizeClass} />
             </button>
+            <button
+              type="button"
+              onClick={() => setMenuOpen((open) => !open)}
+              className="rounded-lg p-2 text-[var(--foreground)]/90 transition-colors hover:bg-[var(--header-hover)] md:hidden"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? (
+                <CloseIcon className={headerIconSizeClass} />
+              ) : (
+                <MenuIcon className={headerIconSizeClass} />
+              )}
+            </button>
           </div>
           </div>
         </div>
+        {menuOpen ? (
+          <div className="absolute inset-x-0 top-full z-50 mt-1.5 overflow-hidden rounded-2xl border border-[color:var(--header-border)] bg-[var(--header-surface-solid)] p-2 shadow-[var(--header-shadow)] md:hidden">
+            <nav className="grid gap-0.5" aria-label="Categories">
+              {navItems.map(({ slug, Icon }) => {
+                const meta = CATEGORY_META[slug];
+                const href = `/fonts/${slug}`;
+                const isActive = pathname === href;
+                return (
+                  <Link
+                    key={slug}
+                    href={href}
+                    onClick={() => setMenuOpen(false)}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-[14px] font-medium ${
+                      isActive
+                        ? "bg-[var(--header-hover)] text-[var(--foreground)]"
+                        : "text-[var(--foreground)]/90 hover:bg-[var(--header-hover)]"
+                    }`}
+                  >
+                    <Icon className="size-4 shrink-0 opacity-90" />
+                    {meta.label}
+                  </Link>
+                );
+              })}
+            </nav>
+            <div className="mt-2 flex items-center border-t border-[color:var(--header-border)] px-1 pt-2">
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="inline-flex items-center gap-2 rounded-xl px-3 py-2.5 text-[14px] font-medium text-[var(--foreground)]/90 hover:bg-[var(--header-hover)]"
+              >
+                <ThemeHalfIcon className="size-4" />
+                {isLight ? "Dark theme" : "Light theme"}
+              </button>
+            </div>
+          </div>
+        ) : null}
         </header>
       </div>
     </>

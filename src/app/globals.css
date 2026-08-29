@@ -125,6 +125,49 @@
   }
 }
 
+/* Home page sections: the clamp()s above plateau well before ultra-wide
+   screens, so bump every section's type a step further past 1800px.
+   Rules are ordered smallest -> largest original size on purpose: several
+   elements pair a base size with a larger sm:/md:/lg: variant of a
+   *different* size on the same element (e.g. text-[13px] sm:text-[14px]),
+   and since every selector here shares the same specificity, source order
+   is what makes the larger (truly active) size win instead of the smaller
+   one it's layered over. Do not alphabetize or otherwise reorder this list. */
+@media (min-width: 1800px) {
+  .section-h2 {
+    font-size: 2.85rem;
+  }
+
+  .home-sections [class*="text-[9px]"] { font-size: 10px; }
+  .home-sections [class*="text-[10px]"] { font-size: 11px; }
+  .home-sections [class*="text-[11px]"] { font-size: 12px; }
+  .home-sections [class*="text-[11.5px]"] { font-size: 12.5px; }
+  .home-sections [class*="text-[12px]"] { font-size: 13px; }
+  .home-sections .text-xs { font-size: 0.85rem; }
+  .home-sections [class*="text-[12.5px]"] { font-size: 13.5px; }
+  .home-sections [class*="text-[13px]"] { font-size: 14.5px; }
+  .home-sections [class*="text-[14px]"] { font-size: 15.5px; }
+  .home-sections .text-sm { font-size: 0.975rem; }
+  .home-sections [class*="text-[15px]"] { font-size: 16.5px; }
+  .home-sections [class*="text-[16px]"] { font-size: 17.5px; }
+  .home-sections .text-base { font-size: 1.1rem; }
+  .home-sections [class*="text-[1rem]"] { font-size: 1.1rem; }
+  .home-sections [class*="text-[1.05rem]"] { font-size: 1.15rem; }
+  .home-sections .text-lg { font-size: 1.25rem; }
+  .home-sections [class*="text-[1.15rem]"] { font-size: 1.25rem; }
+  .home-sections [class*="text-[1.2rem]"] { font-size: 1.3rem; }
+  .home-sections [class*="text-[1.25rem]"] { font-size: 1.35rem; }
+  .home-sections [class*="text-[1.35rem]"] { font-size: 1.45rem; }
+  .home-sections [class*="text-[1.45rem]"] { font-size: 1.55rem; }
+  .home-sections .text-2xl { font-size: 1.65rem; }
+  .home-sections .text-3xl { font-size: 2.05rem; }
+  .home-sections [class*="text-[2.15rem]"] { font-size: 2.35rem; }
+  .home-sections .text-4xl { font-size: 2.45rem; }
+  .home-sections [class*="text-[2.6rem]"] { font-size: 2.85rem; }
+  .home-sections [class*="text-[3.5rem]"] { font-size: 3.85rem; }
+  .home-sections [class*="text-[4.25rem]"] { font-size: 4.65rem; }
+}
+
 /* Other full-bleed blocks stay in the site shell. */
 .full-bleed {
   position: relative;
@@ -640,10 +683,10 @@ html.is-scrolling .group\/card:hover [data-cat-face] {
 @keyframes hero-phone-drift {
   0%,
   100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translate3d(0, -8px, 0) rotate(0.6deg);
+    transform: translate3d(0, -8px, 0);
   }
 }
 
@@ -689,10 +732,10 @@ html.is-scrolling .group\/card:hover [data-cat-face] {
 @keyframes hero-chip-drift {
   0%,
   100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translate3d(0, -8px, 0) rotate(-1.2deg);
+    transform: translate3d(0, -8px, 0);
   }
 }
 
@@ -824,6 +867,43 @@ html.is-scrolling .hero-tick {
 
 .more-feat-progress {
   animation: more-feat-progress 3.8s linear;
+}
+
+@keyframes powerful-feature-slide-next {
+  from {
+    opacity: 0;
+    transform: translate3d(18px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes powerful-feature-slide-prev {
+  from {
+    opacity: 0;
+    transform: translate3d(-18px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.powerful-feature-slide-next {
+  animation: powerful-feature-slide-next 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.powerful-feature-slide-prev {
+  animation: powerful-feature-slide-prev 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .powerful-feature-slide-next,
+  .powerful-feature-slide-prev {
+    animation: none;
+  }
 }
 
 .safari-reader-page {
@@ -1354,6 +1434,15 @@ html.light .category-topic-section {
   scrollbar-width: none;
 }
 
+.powerful-feature-tabs-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.powerful-feature-tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 .font-sort-menu {
   animation: font-sort-menu-in 0.18s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -1608,6 +1697,12 @@ html.is-scrolling .marquee-track {
 
 .hero-viewport .cta-highlight {
   font-size: 0.8rem;
+}
+
+@media (min-width: 1800px) {
+  .hero-viewport .cta-highlight {
+    font-size: 0.95rem;
+  }
 }
 
 @media (min-width: 640px) {
